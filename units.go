@@ -7,14 +7,14 @@ import (
 	"strings"
 )
 
-// Return all registered Units, sorted by name and quantity
+// All returns all registered Units, sorted by name and quantity
 func All() []Unit {
 	units := make(UnitList, 0, len(unitMap))
 	for _, u := range unitMap {
 		units = append(units, u)
 	}
 	sort.Sort(units)
-	return []Unit(units)
+	return units
 }
 
 // MustConvertFloat converts a provided float from one Unit to another, panicking on error
@@ -40,18 +40,19 @@ func ConvertFloat(x float64, from, to Unit) (Value, error) {
 	return Value{x, to}, nil
 }
 
-// Find Unit matching name or symbol provided
+// Find a Unit matching the given name, symbol or alias
 func Find(s string) (Unit, error) {
+	allUnits := All()
 
 	// first try case-sensitive match
-	for _, u := range unitMap {
+	for _, u := range allUnits {
 		if matchUnit(s, u, true) {
 			return u, nil
 		}
 	}
 
 	// then case-insensitive
-	for _, u := range unitMap {
+	for _, u := range allUnits {
 		if matchUnit(s, u, false) {
 			return u, nil
 		}
@@ -60,7 +61,7 @@ func Find(s string) (Unit, error) {
 	// finally, try stripping plural suffix
 	if strings.HasSuffix(s, "s") || strings.HasSuffix(s, "S") {
 		s = s[:len(s)-1]
-		for _, u := range unitMap {
+		for _, u := range allUnits {
 			if matchUnit(s, u, false) {
 				return u, nil
 			}
@@ -70,6 +71,7 @@ func Find(s string) (Unit, error) {
 	return Unit{}, errors.New("unit \"" + s + "\" not found")
 }
 
+// matchUnit returns true if the provided string matches the provided Unit's name, symbol, or aliases
 func matchUnit(s string, u Unit, matchCase bool) bool {
 	for _, name := range u.Names() {
 		if matchCase {
