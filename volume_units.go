@@ -4,7 +4,8 @@ var (
 	Volume = UnitOptionQuantity("volume")
 
 	// metric
-	Liter      = NewUnit("liter", "l", Volume, SI, UnitOptionAliases("litre"))
+
+	Liter      = NewUnit("liter", "l", Volume, SI)
 	ExaLiter   = Exa(Liter)
 	PetaLiter  = Peta(Liter)
 	TeraLiter  = Tera(Liter)
@@ -36,6 +37,14 @@ var (
 )
 
 func init() {
+	TeraLiter.AddAliases("cubic kilometer", "cubic kilometre", "km³", "km3", "km^3", "km**3", "㎦")
+	GigaLiter.AddAliases("cubic hectometer", "cubic hectometre", "hm³", "hm3", "hm^3", "hm**3", "mcm")
+	MegaLiter.AddAliases("cubic decameter", "cubic decametre", "dam³", "dam3", "dam^3", "dam**3")
+	KiloLiter.AddAliases("cubic meter", "cubic metre", "cum", "cbm", "m³", "m3", "m^3", "m**3", "㎥")
+	Liter.AddAliases("litre", "cubic decimeter", "cubic decimetre", "dm³", "dm3", "dm^3", "dm**3")
+	MilliLiter.AddAliases("cubic centimeter", "cubic centimetre", "cc", "ccm", "cm³", "cm3", "cm^3", "cm**3", "㎤")
+	MicroLiter.AddAliases("cubic millimeter", "cubic millimetre", "mm³", "mm3", "mm^3", "mm**3", "㎣")
+
 	NewRatioConversion(Quart, Liter, 1.1365225)
 	NewRatioConversion(Pint, Liter, 0.56826125)
 	NewRatioConversion(Gallon, Liter, 4.54609)
