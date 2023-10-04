@@ -78,7 +78,7 @@ func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 		opts = append(opts, UnitOptionAliases(magAlias))
 	}
 
-	// append any supplmental options
+	// append any supplemental options
 	opts = append(opts, addOpts...)
 
 	// append quantity name opt
