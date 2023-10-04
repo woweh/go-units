@@ -53,10 +53,10 @@ func (u Unit) Names() []string {
 	return append(names, u.aliases...)
 }
 
-// Return the system of units this Unit belongs to, if any
+// System returns the system of units this Unit belongs to, if any
 func (u Unit) System() string { return u.system }
 
-// Return the plural name for this unit
+// PluralName returns the plural name for this unit
 func (u Unit) PluralName() string {
 	switch u.plural {
 	case "none":
@@ -66,6 +66,12 @@ func (u Unit) PluralName() string {
 	default: // custom plural name
 		return u.plural
 	}
+}
+
+// AddAliases adds additional names, spellings, or symbols that this unit may be referred to as
+func (u Unit) AddAliases(a ...string) Unit {
+	u.aliases = append(u.aliases, a...)
+	return u
 }
 
 // Option that may be passed to NewUnit
