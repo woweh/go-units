@@ -63,18 +63,21 @@ var (
 )
 
 func init() {
+	// https://www.calculatorsoup.com/calculators/conversions/area.php
+
 	// metric
-	NewRatioConversion(SquareMeter, SquareMilliMeter, 1000000.0)
-	NewRatioConversion(SquareMeter, SquareCentiMeter, 10000.0)
-	NewRatioConversion(SquareMeter, SquareDeciMeter, 100.0)
-	NewRatioConversion(SquareMeter, SquareDecaMeter, 0.01)
-	NewRatioConversion(SquareMeter, SquareHectoMeter, 0.0001)
-	NewRatioConversion(SquareMeter, SquareKiloMeter, 0.000001)
+	NewRatioConversion(SquareMilliMeter, SquareMeter, 0.000001)
+	NewRatioConversion(SquareCentiMeter, SquareMeter, 0.0001)
+	NewRatioConversion(SquareDeciMeter, SquareMeter, 0.01)
+	NewRatioConversion(SquareMeter, SquareMeter, 1.0)
+	NewRatioConversion(SquareDecaMeter, SquareMeter, 100.0)
+	NewRatioConversion(SquareHectoMeter, SquareMeter, 10000.0)
+	NewRatioConversion(SquareKiloMeter, SquareMeter, 1000000.0)
 
 	// imperial
-	NewRatioConversion(SquareKiloMeter, SquareMile, 0.38610215854245)
-	NewRatioConversion(SquareKiloMeter, Acre, 247.10538146717)
-	NewRatioConversion(SquareMeter, SquareInch, 1550.0031000062)
-	NewRatioConversion(SquareMeter, SquareFoot, 10.76391041671)
-	NewRatioConversion(SquareMeter, SquareYard, 1.1959900463011)
+	NewRatioConversion(SquareInch, SquareMeter, 0.00064516)
+	NewRatioConversion(SquareFoot, SquareMeter, 0.09290304)
+	NewRatioConversion(SquareYard, SquareMeter, 0.83612736)
+	NewRatioConversion(SquareMile, SquareMeter, 2589988.110336)
+	NewRatioConversion(Acre, SquareMeter, 4046.8564224)
 }
