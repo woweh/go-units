@@ -42,6 +42,19 @@ var (
 	Pint       = NewUnit("pint", "pt", Volume, BI)
 	Gallon     = NewUnit("gallon", "gal", Volume, BI)
 	FluidOunce = NewUnit("fluid ounce", "fl oz", Volume, BI, UnitOptionAliases("floz"))
+	CubicFoot  = NewUnit(
+		"cubic foot", "ft³", Volume, BI, UnitOptionAliases("cu ft", "cuft", "cft", "ft^3", "ft**3", "ft3"),
+	)
+	CubicYard = NewUnit(
+		"cubic yard", "yd³", Volume, BI, UnitOptionAliases("cu yd", "cuyd", "cyd", "yd^3", "yd**3", "yd3"),
+	)
+	CubicInch = NewUnit(
+		"cubic inch", "in³", Volume, BI, UnitOptionAliases("cu in", "cuin", "cin", "in^3", "in**3", "in3"),
+	)
+	CubicMile = NewUnit(
+		"cubic mile", "mi³", Volume, BI, UnitOptionAliases("cu mi", "cumi", "cubmi", "mi^3", "mi**3", "mi3"),
+	)
+	AcreFoot = NewUnit("acre foot", "ac ft", Volume, BI, UnitOptionAliases("acre-ft", "acreft", "ac-ft", "acft"))
 
 	// US
 	FluidQuart          = NewUnit("fluid quart", "fl qt", Volume, US)
@@ -55,6 +68,12 @@ func init() {
 	NewRatioConversion(Pint, Liter, 0.56826125)
 	NewRatioConversion(Gallon, Liter, 4.54609)
 	NewRatioConversion(FluidOunce, MilliLiter, 28.4130625)
+
+	NewRatioConversion(CubicInch, Liter, 0.016387064)
+	NewRatioConversion(CubicFoot, Liter, 28.316846592)
+	NewRatioConversion(CubicYard, Liter, 764.554857984)
+	NewRatioConversion(AcreFoot, Liter, 1233481.84)
+	NewRatioConversion(CubicMile, Liter, 4168181825440.64)
 
 	NewRatioConversion(FluidQuart, Liter, 0.946352946)
 	NewRatioConversion(FluidPint, Liter, 0.473176473)
