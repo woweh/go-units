@@ -17,6 +17,29 @@ type conversionTest struct {
 }
 
 var convTests = []conversionTest{
+	{"cubic kilometer", "liter", "1000000000000"},
+	{"cubic hectometer", "liter", "1000000000"},
+	{"cubic decameter", "liter", "1000000"},
+	{"cubic meter", "liter", "1000"},
+	{"cubic meter", "cubic decimeter", "1000"},
+	{"㎥", "l", "1000"},
+	{"cubic centimeter", "liter", "0.001"},
+	{"cubic millimeter", "liter", "0.000001"},
+	{"square kilometer", "square meter", "1000000"},
+	{"square hectometer", "square meter", "10000"},
+	{"square decameter", "square meter", "100"},
+	{"square meter", "square decimeter", "100"},
+	{"square meter", "square centimeter", "10000"},
+	{"square meter", "square millimeter", "1000000"},
+	{"m2", "mm2", "1000000"},
+	{"square decimeter", "square centimeter", "100"},
+	{"square decimeter", "square millimeter", "10000"},
+	{"square centimeter", "square millimeter", "100"},
+	{"square mile", "square kilometer", "2.589988"},
+	{"acre", "square kilometer", "0.00404686"},
+	{"square yard", "square meter", "0.836127"},
+	{"square foot", "square meter", "0.092903"},
+	{"square inch", "square meter", "0.00064516"},
 	{"yard", "millimeter", "914.4"},
 	{"yard", "decimeter", "9.144"},
 	{"yard", "attometer", "914399999999999872"},
@@ -3951,24 +3974,30 @@ func testConversions(t *testing.T, convTests []conversionTest) {
 	fmtOpts := FmtOptions{false, false, 6}
 	for _, cTest := range convTests {
 		label := fmt.Sprintf("%s <-> %s conversion", cTest.from, cTest.to)
-		t.Run(label, func(t *testing.T) {
-			u1, err := Find(cTest.from)
-			if err != nil {
-				t.Fatal(err.Error())
-			}
-			u2, err := Find(cTest.to)
-			if err != nil {
-				t.Fatal(err.Error())
-			}
-			res := MustConvertFloat(1.0, u1, u2)
-			assert.Equal(t, cTest.val, res.Fmt(fmtOpts),
-				"%s -> %s conversion test failed", cTest.from, cTest.to)
+		t.Run(
+			label, func(t *testing.T) {
+				u1, err := Find(cTest.from)
+				if err != nil {
+					t.Fatal(err.Error())
+				}
+				u2, err := Find(cTest.to)
+				if err != nil {
+					t.Fatal(err.Error())
+				}
+				res := MustConvertFloat(1.0, u1, u2)
+				assert.Equal(
+					t, cTest.val, res.Fmt(fmtOpts),
+					"%s -> %s conversion test failed", cTest.from, cTest.to,
+				)
 
-			// test inverse conversion
-			ires := MustConvertFloat(res.Float(), u2, u1)
-			assert.Equal(t, 1.0, roundFloat(ires.Float(), 12),
-				"%s <- %s conversion test failed", cTest.from, cTest.to)
-		})
+				// test inverse conversion
+				ires := MustConvertFloat(res.Float(), u2, u1)
+				assert.Equal(
+					t, 1.0, roundFloat(ires.Float(), 12),
+					"%s <- %s conversion test failed", cTest.from, cTest.to,
+				)
+			},
+		)
 	}
 }
 

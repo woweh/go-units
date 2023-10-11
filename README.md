@@ -83,3 +83,15 @@ fmt.Printf("%s = %s\n", val, val.MustConvert(Dong)) // "25 dings = 2500 dongs"
 KiloDong := u.Kilo(Dong)
 fmt.Println(u.MustConvertFloat(1000.0, Dong, KiloDong)) // "1 kilodong"
 ```
+
+### References / Further Reading
+Furey, Edward "Conversion Calculators" at https://www.calculatorsoup.com/calculators/conversions/ from CalculatorSoup, https://www.calculatorsoup.com - Online Calculators
+
+The National Institute of Standards and Technology (NIST) - The NIST Guide for the use of the International System of Units -
+Appendix B, subsections B.8 Factors for Units Listed Alphabetically and B.9 Factors for units listed by kind of quantity or field of science.
+- https://physics.nist.gov/cuu/pdf/sp811.pdf
+- https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8
+- https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9
+
+Wikipedia contributors. "Conversion of units" Wikipedia, The Free Encyclopedia. Wikipedia, The Free Encyclopedia.
+- https://en.wikipedia.org/wiki/Conversion_of_units

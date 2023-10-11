@@ -23,10 +23,10 @@ var (
 	AttoMeter  = Atto(Meter)
 
 	Angstrom = NewUnit("angstrom", "Å", Length, BI, UnitOptionPlural("angstroms"))
-	Inch     = NewUnit("inch", "in", Length, BI, UnitOptionPlural("inches"))
-	Foot     = NewUnit("foot", "ft", Length, BI, UnitOptionPlural("feet"))
+	Inch     = NewUnit("inch", "in", Length, BI, UnitOptionPlural("inches"), UnitOptionAliases("″", "in."))
+	Foot     = NewUnit("foot", "ft", Length, BI, UnitOptionPlural("feet"), UnitOptionAliases("′", "ft."))
 	Yard     = NewUnit("yard", "yd", Length, BI)
-	Mile     = NewUnit("mile", "mi", Length, BI)
+	Mile     = NewUnit("mile", "mi", Length, BI, UnitOptionAliases("mi."))
 	League   = NewUnit("league", "lea", Length, BI)
 	Furlong  = NewUnit("furlong", "fur", Length, BI)
 )

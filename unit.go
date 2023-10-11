@@ -42,7 +42,7 @@ func NewUnit(name, symbol string, opts ...UnitOption) Unit {
 }
 
 // Returns all names and symbols this unit may be referred to
-func (u Unit) Names() []string {
+func (u *Unit) Names() []string {
 	names := []string{u.Name}
 	if u.Symbol != "" {
 		names = append(names, u.Symbol)
@@ -53,11 +53,11 @@ func (u Unit) Names() []string {
 	return append(names, u.aliases...)
 }
 
-// Return the system of units this Unit belongs to, if any
-func (u Unit) System() string { return u.system }
+// System returns the system of units this Unit belongs to, if any
+func (u *Unit) System() string { return u.system }
 
-// Return the plural name for this unit
-func (u Unit) PluralName() string {
+// PluralName returns the plural name for this unit
+func (u *Unit) PluralName() string {
 	switch u.plural {
 	case "none":
 		return u.Name
