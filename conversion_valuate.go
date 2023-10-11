@@ -1,14 +1,19 @@
-//+build !novaluate
+//go:build !novaluate
+// +build !novaluate
 
 package units
 
-import "github.com/Knetic/govaluate"
+import (
+	"math"
+
+	"github.com/Knetic/govaluate"
+)
 
 // NewConversion registers a new conversion formula from one Unit to another
-func NewConversion(from, to Unit, formula string) {
+func NewConversion(from, to *Unit, formula string) (err error) {
 	expr, err := govaluate.NewEvaluableExpression(formula)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	// create conversion function
@@ -18,10 +23,12 @@ func NewConversion(from, to Unit, formula string) {
 
 		res, err := expr.Evaluate(params)
 		if err != nil {
-			panic(err)
+			return math.NaN()
 		}
 		return res.(float64)
 	}
 
 	NewConversionFromFn(from, to, fn, formula)
+
+	return nil
 }

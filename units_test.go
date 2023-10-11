@@ -13,12 +13,12 @@ func aggrNames() (a []string) {
 }
 
 // aggregate units by quantity
-func aggrByQuantity() map[string][]Unit {
-	m := make(map[string][]Unit)
+func aggrByQuantity() map[string][]*Unit {
+	m := make(map[string][]*Unit)
 
 	for _, u := range All() {
 		if _, ok := m[u.Quantity]; !ok {
-			m[u.Quantity] = []Unit{}
+			m[u.Quantity] = []*Unit{}
 		}
 		m[u.Quantity] = append(m[u.Quantity], u)
 	}
@@ -61,12 +61,12 @@ func TestPathResolve(t *testing.T) {
 	for qname, qunits := range aggrByQuantity() {
 		t.Logf("testing conversion paths for quantity: %s", qname)
 		for _, u1 := range qunits {
-			v1 := NewValue(1.0, u1)
+			v1 := NewValue(1.0, *u1)
 			for _, u2 := range qunits {
 				if u1.Name == u2.Name {
 					continue
 				}
-				_, err := v1.Convert(u2)
+				_, err := v1.Convert(*u2)
 				if err != nil {
 					t.Errorf("failed to resolve path: %s -> %s", u1.Name, u2.Name)
 				}

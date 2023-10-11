@@ -25,11 +25,13 @@ var magNames = []string{
 	"atto",
 }
 
-type magFn func(Unit, ...UnitOption) Unit
+type magFn func(*Unit, ...UnitOption) *Unit
 
 func TestMagnitudes(t *testing.T) {
-	u := NewUnit("dong", "₫")
-	for i, mfn := range []magFn{Exa, Peta, Tera, Giga, Mega, Kilo, Hecto, Deca, Deci, Centi, Milli, Micro, Nano, Pico, Femto, Atto} {
+	u := newUnit("dong", "₫")
+	for i, mfn := range []magFn{
+		Exa, Peta, Tera, Giga, Mega, Kilo, Hecto, Deca, Deci, Centi, Milli, Micro, Nano, Pico, Femto, Atto,
+	} {
 		mu := mfn(u)
 		t.Logf("created mag unit: %s (%s)", mu.Name, mu.Symbol)
 		assert.Equal(t, mu.Name, magNames[i]+"dong")

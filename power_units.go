@@ -4,7 +4,7 @@ var (
 	Power = UnitOptionQuantity("power")
 
 	// metric
-	Watt      = NewUnit("watt", "W", Power)
+	Watt      = newUnit("watt", "W", Power)
 	KiloWatt  = Kilo(Watt)
 	MegaWatt  = Mega(Watt)
 	GigaWatt  = Giga(Watt)

@@ -22,10 +22,16 @@ type Value struct {
 // NewValue creates a new Value instance
 func NewValue(v float64, u Unit) Value { return Value{v, u} }
 
-func (v Value) Unit() Unit     { return v.unit }
+// Unit returns the Unit of this Value
+func (v Value) Unit() Unit { return v.unit }
+
+// Float returns the float value of this Value
 func (v Value) Float() float64 { return v.val }
+
+// String returns a string representation of this Value
 func (v Value) String() string { return v.Fmt(DefaultFmtOptions) }
 
+// Fmt returns a string representation of this Value, using the provided FmtOptions
 func (v Value) Fmt(opts FmtOptions) string {
 	var label string
 
@@ -54,7 +60,7 @@ func (v Value) Fmt(opts FmtOptions) string {
 	return vstr + " " + label
 }
 
-// MustConvert converts this Value to another Unit, panicking on error
+// MustConvert converts this Value to another Unit, PANICKING on error
 func (v Value) MustConvert(to Unit) Value {
 	newV, err := v.Convert(to)
 	if err != nil {
@@ -70,7 +76,7 @@ func (v Value) Convert(to Unit) (Value, error) {
 		return v, nil
 	}
 
-	return ConvertFloat(v.val, v.unit, to)
+	return ConvertFloat(v.val, &v.unit, &to)
 }
 
 // Trim trailing zeros from formatted float string

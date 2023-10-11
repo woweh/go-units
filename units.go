@@ -8,7 +8,7 @@ import (
 )
 
 // All returns all registered Units, sorted by name and quantity
-func All() []Unit {
+func All() []*Unit {
 	units := make(UnitList, 0, len(unitMap))
 	for _, u := range unitMap {
 		units = append(units, u)
@@ -17,8 +17,8 @@ func All() []Unit {
 	return units
 }
 
-// MustConvertFloat converts a provided float from one Unit to another, panicking on error
-func MustConvertFloat(x float64, from, to Unit) Value {
+// MustConvertFloat converts a provided float from one Unit to another, PANICKING on error
+func MustConvertFloat(x float64, from, to *Unit) Value {
 	val, err := ConvertFloat(x, from, to)
 	if err != nil {
 		panic(err)
@@ -27,7 +27,7 @@ func MustConvertFloat(x float64, from, to Unit) Value {
 }
 
 // ConvertFloat converts a provided float from one Unit to another
-func ConvertFloat(x float64, from, to Unit) (Value, error) {
+func ConvertFloat(x float64, from, to *Unit) (Value, error) {
 	path, err := ResolveConversion(from, to)
 	if err != nil {
 		return Value{}, err
@@ -37,11 +37,12 @@ func ConvertFloat(x float64, from, to Unit) (Value, error) {
 		x = c.Fn(x)
 	}
 
-	return Value{x, to}, nil
+	return Value{x, *to}, nil
 }
 
 // Find a Unit matching the given name, symbol or alias
-func Find(s string) (Unit, error) {
+func Find(s string) (*Unit, error) {
+
 	allUnits := All()
 
 	// first try case-sensitive match
@@ -68,11 +69,11 @@ func Find(s string) (Unit, error) {
 		}
 	}
 
-	return Unit{}, errors.New("unit \"" + s + "\" not found")
+	return nil, errors.New("unit \"" + s + "\" not found")
 }
 
 // matchUnit returns true if the provided string matches the provided Unit's name, symbol, or aliases
-func matchUnit(s string, u Unit, matchCase bool) bool {
+func matchUnit(s string, u *Unit, matchCase bool) bool {
 	for _, name := range u.Names() {
 		if matchCase {
 			if name == s {

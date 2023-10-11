@@ -39,33 +39,33 @@ var mags = map[string]magnitude{
 
 // Magnitude prefix methods create and return a new Unit, while automatically registering
 // conversions to and from the provided base Unit
-func Quetta(b Unit, o ...UnitOption) Unit { return mags["quetta"].makeUnit(b, o...) }
-func Ronna(b Unit, o ...UnitOption) Unit  { return mags["ronna"].makeUnit(b, o...) }
-func Yotta(b Unit, o ...UnitOption) Unit  { return mags["yotta"].makeUnit(b, o...) }
-func Zetta(b Unit, o ...UnitOption) Unit  { return mags["zetta"].makeUnit(b, o...) }
-func Exa(b Unit, o ...UnitOption) Unit    { return mags["exa"].makeUnit(b, o...) }
-func Peta(b Unit, o ...UnitOption) Unit   { return mags["peta"].makeUnit(b, o...) }
-func Tera(b Unit, o ...UnitOption) Unit   { return mags["tera"].makeUnit(b, o...) }
-func Giga(b Unit, o ...UnitOption) Unit   { return mags["giga"].makeUnit(b, o...) }
-func Mega(b Unit, o ...UnitOption) Unit   { return mags["mega"].makeUnit(b, o...) }
-func Kilo(b Unit, o ...UnitOption) Unit   { return mags["kilo"].makeUnit(b, o...) }
-func Hecto(b Unit, o ...UnitOption) Unit  { return mags["hecto"].makeUnit(b, o...) }
-func Deca(b Unit, o ...UnitOption) Unit   { return mags["deca"].makeUnit(b, o...) }
-func Deci(b Unit, o ...UnitOption) Unit   { return mags["deci"].makeUnit(b, o...) }
-func Centi(b Unit, o ...UnitOption) Unit  { return mags["centi"].makeUnit(b, o...) }
-func Milli(b Unit, o ...UnitOption) Unit  { return mags["milli"].makeUnit(b, o...) }
-func Micro(b Unit, o ...UnitOption) Unit  { return mags["micro"].makeUnit(b, o...) }
-func Nano(b Unit, o ...UnitOption) Unit   { return mags["nano"].makeUnit(b, o...) }
-func Pico(b Unit, o ...UnitOption) Unit   { return mags["pico"].makeUnit(b, o...) }
-func Femto(b Unit, o ...UnitOption) Unit  { return mags["femto"].makeUnit(b, o...) }
-func Atto(b Unit, o ...UnitOption) Unit   { return mags["atto"].makeUnit(b, o...) }
-func Zepto(b Unit, o ...UnitOption) Unit  { return mags["zepto"].makeUnit(b, o...) }
-func Yocto(b Unit, o ...UnitOption) Unit  { return mags["yocto"].makeUnit(b, o...) }
-func Ronto(b Unit, o ...UnitOption) Unit  { return mags["ronto"].makeUnit(b, o...) }
-func Quecto(b Unit, o ...UnitOption) Unit { return mags["quecto"].makeUnit(b, o...) }
+func Quetta(b *Unit, o ...UnitOption) *Unit { return mags["quetta"].makeUnit(b, o...) }
+func Ronna(b *Unit, o ...UnitOption) *Unit  { return mags["ronna"].makeUnit(b, o...) }
+func Yotta(b *Unit, o ...UnitOption) *Unit  { return mags["yotta"].makeUnit(b, o...) }
+func Zetta(b *Unit, o ...UnitOption) *Unit  { return mags["zetta"].makeUnit(b, o...) }
+func Exa(b *Unit, o ...UnitOption) *Unit    { return mags["exa"].makeUnit(b, o...) }
+func Peta(b *Unit, o ...UnitOption) *Unit   { return mags["peta"].makeUnit(b, o...) }
+func Tera(b *Unit, o ...UnitOption) *Unit   { return mags["tera"].makeUnit(b, o...) }
+func Giga(b *Unit, o ...UnitOption) *Unit   { return mags["giga"].makeUnit(b, o...) }
+func Mega(b *Unit, o ...UnitOption) *Unit   { return mags["mega"].makeUnit(b, o...) }
+func Kilo(b *Unit, o ...UnitOption) *Unit   { return mags["kilo"].makeUnit(b, o...) }
+func Hecto(b *Unit, o ...UnitOption) *Unit  { return mags["hecto"].makeUnit(b, o...) }
+func Deca(b *Unit, o ...UnitOption) *Unit   { return mags["deca"].makeUnit(b, o...) }
+func Deci(b *Unit, o ...UnitOption) *Unit   { return mags["deci"].makeUnit(b, o...) }
+func Centi(b *Unit, o ...UnitOption) *Unit  { return mags["centi"].makeUnit(b, o...) }
+func Milli(b *Unit, o ...UnitOption) *Unit  { return mags["milli"].makeUnit(b, o...) }
+func Micro(b *Unit, o ...UnitOption) *Unit  { return mags["micro"].makeUnit(b, o...) }
+func Nano(b *Unit, o ...UnitOption) *Unit   { return mags["nano"].makeUnit(b, o...) }
+func Pico(b *Unit, o ...UnitOption) *Unit   { return mags["pico"].makeUnit(b, o...) }
+func Femto(b *Unit, o ...UnitOption) *Unit  { return mags["femto"].makeUnit(b, o...) }
+func Atto(b *Unit, o ...UnitOption) *Unit   { return mags["atto"].makeUnit(b, o...) }
+func Zepto(b *Unit, o ...UnitOption) *Unit  { return mags["zepto"].makeUnit(b, o...) }
+func Yocto(b *Unit, o ...UnitOption) *Unit  { return mags["yocto"].makeUnit(b, o...) }
+func Ronto(b *Unit, o ...UnitOption) *Unit  { return mags["ronto"].makeUnit(b, o...) }
+func Quecto(b *Unit, o ...UnitOption) *Unit { return mags["quecto"].makeUnit(b, o...) }
 
-// Create magnitude unit and conversion given a base unit
-func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
+// makeUnit creates a magnitude unit and conversion given a base unit
+func (mag magnitude) makeUnit(base *Unit, addOpts ...UnitOption) *Unit {
 	name := mag.Prefix + base.Name
 	symbol := mag.Symbol + base.Symbol
 
@@ -84,7 +84,7 @@ func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 	// append quantity name opt
 	opts = append(opts, UnitOptionQuantity(base.Quantity))
 
-	u := NewUnit(name, symbol, opts...)
+	u := newUnit(name, symbol, opts...)
 
 	// only create conversions to and from base unit
 	ratio := 1.0 * math.Pow(10.0, mag.Power)

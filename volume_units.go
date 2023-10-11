@@ -5,7 +5,7 @@ var (
 
 	// metric
 
-	Liter = NewUnit(
+	Liter = newUnit(
 		"liter", "l", Volume, SI,
 		UnitOptionAliases("litre", "cubic decimeter", "cubic decimetre", "dm³", "dm3", "dm^3", "dm**3"),
 	)
@@ -38,29 +38,29 @@ var (
 	AttoLiter  = Atto(Liter)
 
 	// imperial
-	Quart      = NewUnit("quart", "qt", Volume, BI)
-	Pint       = NewUnit("pint", "pt", Volume, BI)
-	Gallon     = NewUnit("gallon", "gal", Volume, BI)
-	FluidOunce = NewUnit("fluid ounce", "fl oz", Volume, BI, UnitOptionAliases("floz"))
-	CubicFoot  = NewUnit(
+	Quart      = newUnit("quart", "qt", Volume, BI)
+	Pint       = newUnit("pint", "pt", Volume, BI)
+	Gallon     = newUnit("gallon", "gal", Volume, BI)
+	FluidOunce = newUnit("fluid ounce", "fl oz", Volume, BI, UnitOptionAliases("floz"))
+	CubicFoot  = newUnit(
 		"cubic foot", "ft³", Volume, BI, UnitOptionAliases("cu ft", "cuft", "cft", "ft^3", "ft**3", "ft3"),
 	)
-	CubicYard = NewUnit(
+	CubicYard = newUnit(
 		"cubic yard", "yd³", Volume, BI, UnitOptionAliases("cu yd", "cuyd", "cyd", "yd^3", "yd**3", "yd3"),
 	)
-	CubicInch = NewUnit(
+	CubicInch = newUnit(
 		"cubic inch", "in³", Volume, BI, UnitOptionAliases("cu in", "cuin", "cin", "in^3", "in**3", "in3"),
 	)
-	CubicMile = NewUnit(
+	CubicMile = newUnit(
 		"cubic mile", "mi³", Volume, BI, UnitOptionAliases("cu mi", "cumi", "cubmi", "mi^3", "mi**3", "mi3"),
 	)
-	AcreFoot = NewUnit("acre foot", "ac ft", Volume, BI, UnitOptionAliases("acre-ft", "acreft", "ac-ft", "acft"))
+	AcreFoot = newUnit("acre foot", "ac ft", Volume, BI, UnitOptionAliases("acre-ft", "acreft", "ac-ft", "acft"))
 
 	// US
-	FluidQuart          = NewUnit("fluid quart", "fl qt", Volume, US)
-	FluidPint           = NewUnit("fluid pint", "fl pt", Volume, US)
-	FluidGallon         = NewUnit("fluid gallon", "", Volume, US)
-	CustomaryFluidOunce = NewUnit("customary fluid ounce", "", Volume, US)
+	FluidQuart          = newUnit("fluid quart", "fl qt", Volume, US)
+	FluidPint           = newUnit("fluid pint", "fl pt", Volume, US)
+	FluidGallon         = newUnit("fluid gallon", "", Volume, US)
+	CustomaryFluidOunce = newUnit("customary fluid ounce", "", Volume, US)
 )
 
 func init() {

@@ -4,7 +4,7 @@ var (
 	Length = UnitOptionQuantity("length")
 
 	// metric
-	Meter      = NewUnit("meter", "m", Length, SI, UnitOptionAliases("metre"))
+	Meter      = newUnit("meter", "m", Length, SI)
 	ExaMeter   = Exa(Meter)
 	PetaMeter  = Peta(Meter)
 	TeraMeter  = Tera(Meter)
@@ -22,13 +22,13 @@ var (
 	FemtoMeter = Femto(Meter)
 	AttoMeter  = Atto(Meter)
 
-	Angstrom = NewUnit("angstrom", "Å", Length, BI, UnitOptionPlural("angstroms"))
-	Inch     = NewUnit("inch", "in", Length, BI, UnitOptionPlural("inches"), UnitOptionAliases("″", "in."))
-	Foot     = NewUnit("foot", "ft", Length, BI, UnitOptionPlural("feet"), UnitOptionAliases("′", "ft."))
-	Yard     = NewUnit("yard", "yd", Length, BI)
-	Mile     = NewUnit("mile", "mi", Length, BI, UnitOptionAliases("mi."))
-	League   = NewUnit("league", "lea", Length, BI)
-	Furlong  = NewUnit("furlong", "fur", Length, BI)
+	Angstrom = newUnit("angstrom", "Å", Length, BI)
+	Inch     = newUnit("inch", "in", Length, BI, UnitOptionPlural("inches"))
+	Foot     = newUnit("foot", "ft", Length, BI, UnitOptionPlural("feet"))
+	Yard     = newUnit("yard", "yd", Length, BI)
+	Mile     = newUnit("mile", "mi", Length, BI)
+	League   = newUnit("league", "lea", Length, BI)
+	Furlong  = newUnit("furlong", "fur", Length, BI)
 )
 
 func init() {
@@ -39,4 +39,11 @@ func init() {
 	NewRatioConversion(Mile, Meter, 1609.344)
 	NewRatioConversion(League, Meter, 4828.032)
 	NewRatioConversion(Furlong, Meter, 201.168)
+
+	Meter.AddAliases("metre")
+	Angstrom.AddAliases("ångström", "angstroms", "ångströms")
+	Inch.AddAliases("in.", "″", "\"")
+	Foot.AddAliases("ft.", "′")
+	Yard.AddAliases("yd.")
+	Mile.AddAliases("mi.")
 }

@@ -4,7 +4,7 @@ var (
 	Energy = UnitOptionQuantity("energy")
 
 	// metric
-	Joule      = NewUnit("joule", "J", Energy)
+	Joule      = newUnit("joule", "J", Energy)
 	KiloJoule  = Kilo(Joule)
 	MegaJoule  = Mega(Joule)
 	GigaJoule  = Giga(Joule)
@@ -20,7 +20,7 @@ var (
 	FemtoJoule = Femto(Joule)
 	AttoJoule  = Atto(Joule)
 
-	WattHour     = NewUnit("watt-hour", "Wh", Energy)
+	WattHour     = newUnit("watt-hour", "Wh", Energy)
 	KiloWattHour = Kilo(WattHour)
 	GigaWattHour = Giga(WattHour)
 	MegaWattHour = Mega(WattHour)
@@ -28,8 +28,8 @@ var (
 	PetaWattHour = Peta(WattHour)
 
 	// other
-	ElectronVolt = NewUnit("electronvolt", "eV", Energy)
-	Calorie      = NewUnit("calorie", "cal", Energy)
+	ElectronVolt = newUnit("electronvolt", "eV", Energy)
+	Calorie      = newUnit("calorie", "cal", Energy)
 )
 
 func init() {

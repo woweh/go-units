@@ -65,7 +65,7 @@ unit, err := u.Find("metre")
 
 ### Custom Units
 
-`go-units` comes with 260 unit names and symbols builtin; however, new units and conversions can be easily added:
+`go-units` comes with many unit names and symbols builtin; however, new units and conversions can be easily added:
 
 ```go
 // register custom unit names
@@ -83,6 +83,18 @@ fmt.Printf("%s = %s\n", val, val.MustConvert(Dong)) // "25 dings = 2500 dongs"
 KiloDong := u.Kilo(Dong)
 fmt.Println(u.MustConvertFloat(1000.0, Dong, KiloDong)) // "1 kilodong"
 ```
+You can also add aliases to existing units:
+```go
+SquareInch.AddAliases(
+    "square inches", "square in", "square in.", "square ins", "square ins.", "in2", "in^2", "in**2",
+    "sq in", "sq in.", "sq ins", "sq ins.", "sqin", "sqin.", "sqins", "□″", "sq inches", "sq inch", "inches/-2",
+    "inch/-2", "in/-2", "inches2", "inch2", "\"2", "″2",
+)
+```
+
+**NOTE:**   
+Using unicode symbols (e.g., `㎡`, `㎢`) as aliases is not supported!
+
 
 ### References / Further Reading
 Furey, Edward "Conversion Calculators" at https://www.calculatorsoup.com/calculators/conversions/ from CalculatorSoup, https://www.calculatorsoup.com - Online Calculators
