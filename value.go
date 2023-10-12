@@ -39,7 +39,7 @@ func (v Value) Fmt(opts FmtOptions) string {
 		label = v.unit.Symbol
 	} else {
 		label = v.unit.Name
-		// make label plural if needed
+		// make label customPlural if needed
 		if v.val > 1.0 {
 			label = v.unit.PluralName()
 		}

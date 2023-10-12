@@ -13,8 +13,8 @@ func aggrNames() (a []string) {
 }
 
 // aggregate units by quantity
-func aggrByQuantity() map[string][]*Unit {
-	m := make(map[string][]*Unit)
+func aggrByQuantity() map[UnitQuantity][]*Unit {
+	m := make(map[UnitQuantity][]*Unit)
 
 	for _, u := range All() {
 		if _, ok := m[u.Quantity]; !ok {
@@ -55,8 +55,7 @@ func TestUnitNameOverlap(t *testing.T) {
 	t.Logf("tested %d unit names, %d overlaps", total, failed)
 }
 
-// ensure all units within the same quantity resolve
-// a conversion path
+// ensure all units within the same quantity resolve a conversion path
 func TestPathResolve(t *testing.T) {
 	for qname, qunits := range aggrByQuantity() {
 		t.Logf("testing conversion paths for quantity: %s", qname)

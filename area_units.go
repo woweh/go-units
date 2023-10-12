@@ -31,14 +31,27 @@ func init() {
 	NewRatioConversion(SquareDecaMeter, SquareMeter, 100.0)
 	NewRatioConversion(SquareHectoMeter, SquareMeter, 10000.0)
 	NewRatioConversion(SquareKiloMeter, SquareMeter, 1000000.0)
-	// NOTE: unicode characters are not supported in aliases!
-	SquareMilliMeter.AddAliases("square millimetre", "mm2", "mm^2", "mm**2")
-	SquareCentiMeter.AddAliases("square centimetre", "cm2", "cm^2", "cm**2")
-	SquareDeciMeter.AddAliases("square decimetre", "dm2", "dm^2", "dm**2")
-	SquareMeter.AddAliases("square metre", "m2", "m^2", "m**2")
-	SquareDecaMeter.AddAliases("square decametre", "dam2", "dam^2", "dam**2", "are")
-	SquareHectoMeter.AddAliases("square hectometre", "hm2", "hm^2", "hm**2", "hectare", "ha")
-	SquareKiloMeter.AddAliases("square kilometre", "km2", "km^2", "km**2")
+
+	SquareMilliMeter.AddAliases("square millimetre")
+	SquareMilliMeter.AddSymbols("mm2", "mm^2", "mm**2")
+
+	SquareCentiMeter.AddAliases("square centimetre")
+	SquareCentiMeter.AddSymbols("cm2", "cm^2", "cm**2")
+
+	SquareDeciMeter.AddAliases("square decimetre")
+	SquareDeciMeter.AddSymbols("dm2", "dm^2", "dm**2")
+
+	SquareMeter.AddAliases("square metre")
+	SquareMeter.AddSymbols("m2", "m^2", "m**2")
+
+	SquareDecaMeter.AddAliases("square decametre")
+	SquareDecaMeter.AddSymbols("dam2", "dam^2", "dam**2", "are")
+
+	SquareHectoMeter.AddAliases("square hectometre", "hectare")
+	SquareHectoMeter.AddSymbols("hm2", "hm^2", "hm**2", "ha")
+
+	SquareKiloMeter.AddAliases("square kilometre")
+	SquareKiloMeter.AddSymbols("km2", "km^2", "km**2")
 
 	// imperial
 	NewRatioConversion(SquareInch, SquareMeter, 0.00064516)
@@ -46,22 +59,26 @@ func init() {
 	NewRatioConversion(SquareYard, SquareMeter, 0.83612736)
 	NewRatioConversion(SquareMile, SquareMeter, 2589988.110336)
 	NewRatioConversion(Acre, SquareMeter, 4046.8564224)
+
 	SquareInch.AddAliases(
-		"square inches", "square in", "square in.", "square ins", "square ins.", "in2", "in^2", "in**2",
-		"sq in", "sq in.", "sq ins", "sq ins.", "sqin", "sqin.", "sqins", "□″", "sq inches", "sq inch", "inches/-2",
-		"inch/-2", "in/-2", "inches2", "inch2", "\"2", "″2",
+		"square inches", "square in", "square in.", "square ins", "square ins.", "sq inches", "sq inch",
+		"inches/-2", "inch/-2", "inches2", "inch2",
 	)
-	SquareFoot.AddAliases(
-		"square feet", "square ft", "square ft.", "square feet.", "ft2", "FT2", "ft^2", "ft**2", "sq ft",
-		"sq ft.", "sqft", "sqft.", "sqft", "'2",
+	SquareInch.AddSymbols(
+		"in2", "in^2", "in**2", "in/-2", "sq in", "sq in.", "sq ins", "sq ins.", "sqin", "sqin.", "sqins",
+		"□″", "\"2", "″2",
 	)
-	SquareYard.AddAliases(
-		"square yds", "square yd", "sq yards", "sq yard", "sq yds", "sq yd", "sq.yd.", "yards/-2", "yard/-2",
-		"yds/-2", "yd/-2", "yards^2", "yard^2", "yds^2", "yd^2", "yd2", "yards²", "yard²", "yds²", "yd²",
+
+	SquareFoot.AddAliases("square feet", "square ft", "square ft.", "square feet.")
+	SquareFoot.AddSymbols("ft2", "ft^2", "ft**2", "sq ft", "sq ft.", "sqft", "sqft.", "sqft", "'2")
+
+	SquareYard.AddAliases("square yds", "square yd", "sq yards", "sq yard", "yards/-2", "yard/-2", "yards^2", "yard^2")
+	SquareYard.AddSymbols(
+		"yds^2", "yd^2", "yd2", "yards²", "yard²", "yds²", "yds/-2", "yd/-2", "sq yds", "sq yd", "sq.yd.",
 	)
-	SquareMile.AddAliases(
-		"sqmi", "sqmi.", "sq mi", "sq mi.", "mi2", "mi^2", "mi**2", "sqmi", "sqmi.", "sq mi", "sq mi.",
-		"square mi", "square mi.", "sq mile", "sq. mile",
-	)
+
+	SquareMile.AddAliases("square mi", "square mi.", "sq mile", "sq. mile")
+	SquareMile.AddSymbols("mi2", "mi^2", "mi**2", "sqmi", "sqmi.", "sq mi", "sq mi.", "sq.mi.", "sq.mi")
+
 	Acre.AddAliases("acres")
 }

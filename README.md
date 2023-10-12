@@ -2,7 +2,17 @@
 
 # go-units
 
-Go library for manipulating and converting between various units of measurement
+Go library for manipulating and converting between various units of measurement.
+
+This is a fork of [bcicen's go-units](https://github.com/bcicen/go-units) package, with significant breaking changes.  
+You find a [list of breaking changes](#breaking-changes-compared-to-bcicens-version) at the bottom of this page.
+
+
+## Principles
+- Name and Aliases are case-<u>**in**</u>sensitive
+- Symbols are case-_sensitive_
+- Names, symbols and aliases must be unique 
+
 
 ## Usage
 
@@ -13,7 +23,7 @@ package main
 
 import (
 	"fmt"
-	u "github.com/bcicen/go-units"
+	u "github.com/woweh/go-units"
 )
 
 func main() {
@@ -28,6 +38,7 @@ func main() {
 	fmt.Println(val.MustConvert(u.Kelvin))     // "298.65 kelvin"
 }
 ```
+
 
 ### Formatting
 
@@ -51,6 +62,7 @@ fmt.Println(val.Fmt(opts)) // "15.457 km"
 fmt.Println(val.Float())   // "15.456932"
 ```
 
+
 ### Lookup
 
 The package-level `Find()` method may be used to search for a unit by name, symbol, or alternate spelling:
@@ -62,6 +74,7 @@ unit, err := u.Find("meter")
 // alternate spelling
 unit, err := u.Find("metre")
 ```
+
 
 ### Custom Units
 
@@ -93,7 +106,7 @@ SquareInch.AddAliases(
 ```
 
 **NOTE:**   
-Using unicode symbols (e.g., `㎡`, `㎢`) as aliases is not supported!
+Using unicode symbols (e.g., `㎡`, `㎢`) is not supported!
 
 
 ### References / Further Reading
@@ -102,8 +115,23 @@ Furey, Edward "Conversion Calculators" at https://www.calculatorsoup.com/calcula
 The National Institute of Standards and Technology (NIST) - The NIST Guide for the use of the International System of Units -
 Appendix B, subsections B.8 Factors for Units Listed Alphabetically and B.9 Factors for units listed by kind of quantity or field of science.
 - https://physics.nist.gov/cuu/pdf/sp811.pdf
+- https://www.nist.gov/pml/special-publication-811
+- https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-6-rules-and-style-conventions-printing-and-using
 - https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8
 - https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9
 
 Wikipedia contributors. "Conversion of units" Wikipedia, The Free Encyclopedia. Wikipedia, The Free Encyclopedia.
 - https://en.wikipedia.org/wiki/Conversion_of_units
+
+https://qudt.org/  
+The QUDT, or 'Quantity, Unit, Dimension and Type' collection of ontologies define the base classes properties, and restrictions used for modeling physical quantities, units of measure, and their dimensions in various measurement systems. QUDT provides a unified model of measurable quantities, units for measuring different kinds of quantities, the numerical values of quantities in different units of measure and the data structures and data types used to store and manipulate these objects in software. This OWL schema is a foundation for a basic treatment of units. Originally developed by TopQuadrant for the NASA Exploration Initiatives Ontology Models (NExIOM) project, they now form the basis of the NASA QUDT Handbook. QUDT aims to improve interoperability of data and the specification of information structures through industry standards for Units of Measure, Quantity Kinds, Dimensions and Data Types.
+
+
+### Breaking Changes compared to bcicen's version
+- Use unit pointers in the unitMap, units have a shared state.
+- Change the signature of `NewUnit`, return `(*Unit, error)` instead of `Unit`.
+- Don't panic! Either remove functions that panic, or refactor to return error.
+- Extend the Unit struct to support alternative symbols.
+- Symbols are case-sensitive.
+- Names, symbols and aliases must be unique!  
+  Before, only names had to be unique.

@@ -43,27 +43,31 @@ func ConvertFloat(x float64, from, to *Unit) (Value, error) {
 // Find a Unit matching the given name, symbol or alias
 func Find(s string) (*Unit, error) {
 
-	allUnits := All()
+	// first try case-sensitive match on name
+	u, ok := unitMap[s]
+	if ok {
+		return u, nil
+	}
 
-	// first try case-sensitive match
-	for _, u := range allUnits {
-		if matchUnit(s, u, true) {
+	// the try case-sensitive match on symbol
+	// symbols are case-sensitive!
+	u, ok = symbolMap[s]
+	if ok {
+		return u, nil
+	}
+
+	// then case-insensitive match on name
+	for _, u := range unitMap {
+		if matchesNameOrAlias(s, u, false) {
 			return u, nil
 		}
 	}
 
-	// then case-insensitive
-	for _, u := range allUnits {
-		if matchUnit(s, u, false) {
-			return u, nil
-		}
-	}
-
-	// finally, try stripping plural suffix
+	// finally, try stripping customPlural suffix
 	if strings.HasSuffix(s, "s") || strings.HasSuffix(s, "S") {
 		s = s[:len(s)-1]
-		for _, u := range allUnits {
-			if matchUnit(s, u, false) {
+		for _, u := range unitMap {
+			if matchesNameOrAlias(s, u, false) {
 				return u, nil
 			}
 		}
@@ -72,8 +76,8 @@ func Find(s string) (*Unit, error) {
 	return nil, errors.New("unit \"" + s + "\" not found")
 }
 
-// matchUnit returns true if the provided string matches the provided Unit's name, symbol, or aliases
-func matchUnit(s string, u *Unit, matchCase bool) bool {
+// matchesNameOrAlias returns true if the provided string matches the provided Unit's name or aliases
+func matchesNameOrAlias(s string, u *Unit, matchCase bool) bool {
 	for _, name := range u.Names() {
 		if matchCase {
 			if name == s {
@@ -86,5 +90,16 @@ func matchUnit(s string, u *Unit, matchCase bool) bool {
 		}
 	}
 
+	return false
+}
+
+// matchesSymbol returns true if the provided string matches the provided Unit's symbol
+func matchesSymbol(s string, u *Unit) bool {
+	// symbols are case-sensitive!
+	for _, sym := range u.Symbols() {
+		if sym == s {
+			return true
+		}
+	}
 	return false
 }

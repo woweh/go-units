@@ -72,12 +72,6 @@ func (mag magnitude) makeUnit(base *Unit, addOpts ...UnitOption) *Unit {
 	// set system to metric by default
 	opts := []UnitOption{SI}
 
-	// create prefixed aliases if needed
-	for _, alias := range base.aliases {
-		magAlias := mag.Prefix + alias
-		opts = append(opts, UnitOptionAliases(magAlias))
-	}
-
 	// append any supplemental options
 	opts = append(opts, addOpts...)
 

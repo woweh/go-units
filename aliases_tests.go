@@ -22,7 +22,7 @@ func (a *aliasTest) string() string {
 }
 
 func (a *aliasTest) validate() error {
-	if a.expect != nil && !a.expect.HasAlias(a.alias) {
+	if a.expect != nil && !a.expect.HasName(a.alias) {
 		return fmt.Errorf("expected %q to have alias %q", a.expect.Name, a.alias)
 	}
 	got, err := Find(a.alias)

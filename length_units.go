@@ -23,8 +23,8 @@ var (
 	AttoMeter  = Atto(Meter)
 
 	Angstrom = newUnit("angstrom", "Å", Length, BI)
-	Inch     = newUnit("inch", "in", Length, BI, UnitOptionPlural("inches"))
-	Foot     = newUnit("foot", "ft", Length, BI, UnitOptionPlural("feet"))
+	Inch     = newUnit("inch", "in", Length, BI, UnitOptionPlural(Custom, "inches"))
+	Foot     = newUnit("foot", "ft", Length, BI, UnitOptionPlural(Custom, "feet"))
 	Yard     = newUnit("yard", "yd", Length, BI)
 	Mile     = newUnit("mile", "mi", Length, BI)
 	League   = newUnit("league", "lea", Length, BI)
@@ -42,8 +42,8 @@ func init() {
 
 	Meter.AddAliases("metre")
 	Angstrom.AddAliases("ångström", "angstroms", "ångströms")
-	Inch.AddAliases("in.", "″", "\"")
-	Foot.AddAliases("ft.", "′")
-	Yard.AddAliases("yd.")
-	Mile.AddAliases("mi.")
+	Inch.AddSymbols("in.", "″", "\"")
+	Foot.AddSymbols("ft.", "′")
+	Yard.AddSymbols("yd.")
+	Mile.AddSymbols("mi.")
 }
