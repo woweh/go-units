@@ -256,7 +256,7 @@ func (u *Unit) PluralName() string {
 
 // HasName returns true if the provided string matches the provided Unit's Name or Aliases
 func (u *Unit) HasName(alias string) bool {
-	return matchesNameOrAlias(alias, u, false)
+	return matchesNameOrAlias(alias, u, false) || matchesNameOrAlias(alias, u, true)
 }
 
 // HasSymbol returns true if the provided string matches the provided Unit's Symbol or Symbols

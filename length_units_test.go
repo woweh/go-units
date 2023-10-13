@@ -3,8 +3,8 @@ package units
 import "testing"
 
 func Test_LengthAliases(t *testing.T) {
-	
-	tests := []aliasTest{
+
+	tests := []lookUpTestUnit{
 		{Meter, "metre"},
 		{Angstrom, "ångström"},
 		{Angstrom, "angstroms"},
@@ -20,5 +20,5 @@ func Test_LengthAliases(t *testing.T) {
 		{Mile, "mi."},
 	}
 
-	testAliases(t, tests)
+	testNamesAndSymbols(t, tests)
 }

@@ -7,26 +7,29 @@ import (
 )
 
 func Test_AreaSystems(t *testing.T) {
-	SI := "metric"
-	assert.Equal(t, SI, SquareMilliMeter.System())
-	assert.Equal(t, SI, SquareCentiMeter.System())
-	assert.Equal(t, SI, SquareDeciMeter.System())
-	assert.Equal(t, SI, SquareDecaMeter.System())
-	assert.Equal(t, SI, SquareHectoMeter.System())
-	assert.Equal(t, SI, SquareKiloMeter.System())
+	si := UnitSystem("metric")
+	assert.Equal(t, si, SquareMilliMeter.System())
+	assert.Equal(t, si, SquareCentiMeter.System())
+	assert.Equal(t, si, SquareDeciMeter.System())
+	assert.Equal(t, si, SquareDecaMeter.System())
+	assert.Equal(t, si, SquareHectoMeter.System())
+	assert.Equal(t, si, SquareKiloMeter.System())
 
-	BI := "imperial"
-	assert.Equal(t, BI, SquareMile.System())
-	assert.Equal(t, BI, Acre.System())
-	assert.Equal(t, BI, SquareInch.System())
-	assert.Equal(t, BI, SquareFoot.System())
-	assert.Equal(t, BI, SquareYard.System())
+	bi := UnitSystem("imperial")
+	assert.Equal(t, bi, SquareMile.System())
+	assert.Equal(t, bi, Acre.System())
+	assert.Equal(t, bi, SquareInch.System())
+	assert.Equal(t, bi, SquareFoot.System())
+	assert.Equal(t, bi, SquareYard.System())
 }
 
-func Test_AreaAliases(t *testing.T) {
+func Test_AreaNamesAndSymbols(t *testing.T) {
 
-	tests := []aliasTest{
-		{nil, "some unit alias that does not exist"},
+	tests := []lookUpTestUnit{
+		{nil, "some unit key that does not exist"},
+		{nil, "MM2"}, // symbols are case-sensitive
+		{nil, "dAm^2"},
+		{SquareMilliMeter, "mm²"},
 		{SquareMilliMeter, "mm2"},
 		{SquareMilliMeter, "mm^2"},
 		{SquareCentiMeter, "cm2"},
@@ -62,5 +65,5 @@ func Test_AreaAliases(t *testing.T) {
 		{Acre, "acres"},
 	}
 
-	testAliases(t, tests)
+	testNamesAndSymbols(t, tests)
 }

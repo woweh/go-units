@@ -58,6 +58,10 @@ func TestUnitNameOverlap(t *testing.T) {
 // ensure all units within the same quantity resolve a conversion path
 func TestPathResolve(t *testing.T) {
 	for qname, qunits := range aggrByQuantity() {
+		if qname == quantityForUnitTests {
+			// skip temporary units created by unit tests
+			continue
+		}
 		t.Logf("testing conversion paths for quantity: %s", qname)
 		for _, u1 := range qunits {
 			v1 := NewValue(1.0, *u1)

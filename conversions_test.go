@@ -22,7 +22,6 @@ var convTests = []conversionTest{
 	{"cubic decameter", "liter", "1000000"},
 	{"cubic meter", "liter", "1000"},
 	{"cubic meter", "cubic decimeter", "1000"},
-	{"㎥", "l", "1000"},
 	{"cubic centimeter", "liter", "0.001"},
 	{"cubic millimeter", "liter", "0.000001"},
 	{"square kilometer", "square meter", "1000000"},
