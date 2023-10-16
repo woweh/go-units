@@ -18,8 +18,14 @@ const (
 // UnitSystem is a system of units
 type UnitSystem string
 
+// Systems of units
+func (s UnitSystem) String() string { return string(s) }
+
 // UnitQuantity is a quantity label for which a unit belongs
 type UnitQuantity string
+
+// Quantity labels for which units may belong
+func (q UnitQuantity) String() string { return string(q) }
 
 var (
 	// Shorthands for pre-defined unit systems:
@@ -264,6 +270,21 @@ func (u *Unit) HasSymbol(symbol string) bool {
 	return matchesSymbol(symbol, u)
 }
 
+// csvLine returns a CSV line for this unit
+func (u *Unit) csvLine() string {
+	line := fmt.Sprintf("%s,%s,%s,%s,%s,", u.Name, u.Symbol, u.PluralName(), u.Quantity, u.System())
+	if len(u.aliases) > 0 {
+		line += strings.Join(u.aliases, ",")
+	}
+	if len(u.symbols) > 0 {
+		if len(u.aliases) > 0 {
+			line += ","
+		}
+		line += strings.Join(u.symbols, ",")
+	}
+	return line
+}
+
 // UnitOption defines an option that may be passed to newUnit
 type UnitOption func(*Unit) *Unit
 
@@ -311,8 +332,15 @@ func (a UnitList) Swap(i, j int) {
 
 // Less returns whether the Unit at index i is less than the Unit at index j
 func (a UnitList) Less(i, j int) bool {
+	// sorting rules:
+	// 1. sort by quantity
+	// 2. sort by system
+	// 3. sort by name
 	if a[i].Quantity != a[j].Quantity {
 		return a[i].Quantity < a[j].Quantity
+	}
+	if a[i].system != a[j].system {
+		return a[i].system < a[j].system
 	}
 	return a[i].Name < a[j].Name
 }

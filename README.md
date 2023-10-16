@@ -112,8 +112,7 @@ Using unicode symbols (e.g., `㎡`, `㎢`) is not supported!
 ### References / Further Reading
 Furey, Edward "Conversion Calculators" at https://www.calculatorsoup.com/calculators/conversions/ from CalculatorSoup, https://www.calculatorsoup.com - Online Calculators
 
-The National Institute of Standards and Technology (NIST) - The NIST Guide for the use of the International System of Units -
-Appendix B, subsections B.8 Factors for Units Listed Alphabetically and B.9 Factors for units listed by kind of quantity or field of science.
+The National Institute of Standards and Technology (NIST) - The NIST Guide for the use of the International System of Units - Appendix B, subsections B.8 Factors for Units Listed Alphabetically and B.9 Factors for units listed by kind of quantity or field of science.
 - https://physics.nist.gov/cuu/pdf/sp811.pdf
 - https://www.nist.gov/pml/special-publication-811
 - https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-6-rules-and-style-conventions-printing-and-using
@@ -137,3 +136,8 @@ The QUDT, or 'Quantity, Unit, Dimension and Type' collection of ontologies defin
   Before, only names had to be unique.
 - Add methods to add aliases and symbols to units
 - Add methods to check if a unit has an alias or unit
+- Add types for UnitSystem and UnitQuantity
+
+### Ideas
+- support more units
+- rework to be fully [QUDT](https://qudt.org/) compliant, inspiration: https://github.com/qudtlib/qudtlib-java

@@ -1,6 +1,8 @@
 package units
 
 import (
+	"os"
+	"strings"
 	"testing"
 )
 
@@ -76,4 +78,39 @@ func TestPathResolve(t *testing.T) {
 			}
 		}
 	}
+}
+
+func Test_ListUnitsAsCsv(t *testing.T) {
+	f, err := ListUnitsAsCsv()
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	t.Log("created file: " + f)
+}
+
+func ListUnitsAsCsv() (fileName string, err error) {
+
+	fileName = "units.csv"
+
+	// unitMap contains 'duplicate' units, because they are registered multiple times with different names/aliases
+	uniqueUnits := make(map[string]*Unit)
+	for _, u := range unitMap {
+		uniqueUnits[u.Name] = u
+	}
+
+	csvLines := make([]string, 0, len(uniqueUnits)+1)
+	csvLines = append(csvLines, "Name,Symbol,PluralName,Quantity,System,Aliases & Symbols")
+	for _, u := range uniqueUnits {
+		csvLines = append(csvLines, u.csvLine())
+	}
+
+	// Add UTF-8 BOM at the beginning
+	bom := []byte{0xEF, 0xBB, 0xBF}
+	windowsNewLine := "\r\n"
+	content := append(bom, []byte(strings.Join(csvLines, windowsNewLine))...)
+
+	err = os.WriteFile(fileName, content, 0644)
+
+	return fileName, nil
 }
