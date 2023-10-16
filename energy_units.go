@@ -4,7 +4,7 @@ var (
 	Energy = UnitOptionQuantity("energy")
 
 	// metric
-	Joule      = newUnit("joule", "J", Energy)
+	Joule      = newUnit("joule", "J", Energy, SI)
 	KiloJoule  = Kilo(Joule)
 	MegaJoule  = Mega(Joule)
 	GigaJoule  = Giga(Joule)

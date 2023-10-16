@@ -3,7 +3,7 @@ package units
 var (
 	Time = UnitOptionQuantity("time")
 
-	Second      = newUnit("second", "s", Time)
+	Second      = newUnit("second", "s", Time, SI)
 	ExaSecond   = Exa(Second)
 	PetaSecond  = Peta(Second)
 	TeraSecond  = Tera(Second)
