@@ -135,3 +135,5 @@ The QUDT, or 'Quantity, Unit, Dimension and Type' collection of ontologies defin
 - Symbols are case-sensitive.
 - Names, symbols and aliases must be unique!  
   Before, only names had to be unique.
+- Add methods to add aliases and symbols to units
+- Add methods to check if a unit has an alias or unit
