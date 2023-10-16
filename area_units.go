@@ -65,8 +65,7 @@ func init() {
 		"inches/-2", "inch/-2", "inches2", "inch2",
 	)
 	SquareInch.AddSymbols(
-		"in2", "in^2", "in**2", "in/-2", "sq in", "sq in.", "sq ins", "sq ins.", "sqin", "sqin.", "sqins",
-		"□″", "\"2", "″2",
+		"in2", "in^2", "in**2", "in/-2", "sq in", "sq in.", "sq ins", "sq ins.", "sqin", "sqin.", "sqins", "□″", "″2",
 	)
 
 	SquareFoot.AddAliases("square feet", "square ft", "square ft.", "square feet.")

@@ -42,7 +42,7 @@ func init() {
 
 	Meter.AddAliases("metre")
 	Angstrom.AddAliases("ångström", "angstroms", "ångströms")
-	Inch.AddSymbols("in.", "″", "\"")
+	Inch.AddSymbols("in.", "″")
 	Foot.AddSymbols("ft.", "′")
 	Yard.AddSymbols("yd.")
 	Mile.AddSymbols("mi.")
