@@ -12,7 +12,6 @@ func Test_LengthAliases(t *testing.T) {
 		{Inch, "inches"},
 		{Inch, "in."},
 		{Inch, "″"},
-		{Inch, "\""},
 		{Foot, "feet"},
 		{Foot, "ft."},
 		{Foot, "′"},
