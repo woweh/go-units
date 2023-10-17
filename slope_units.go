@@ -38,11 +38,9 @@ func init() {
 	NewConversionFromFn(SlopeValue, SlopeDegree, slopeValueToDegree, "math.Atan(x) * 180 / math.Pi")
 	NewConversionFromFn(SlopeDegree, SlopeValue, slopeDegreeToValue, "math.Tan(x * math.Pi / 180)")
 
-	NewConversionFromFn(SlopeValue, SlopePercent, valueToPercent, "x * 100")
-	NewConversionFromFn(SlopePercent, SlopeValue, percentToValue, "x / 100")
-
-	NewConversionFromFn(SlopeValue, SlopePermille, valueToPermille, "x * 1000")
-	NewConversionFromFn(SlopePermille, SlopeValue, permilleToValue, "x / 1000")
+	NewRatioConversion(SlopeValue, SlopePercent, 100)
+	
+	NewRatioConversion(SlopeValue, SlopePermille, 1000)
 }
 
 // slopeValueToRatio converts a slope value (m) to a slope ratio (1:n).
@@ -91,36 +89,4 @@ func slopeValueToDegree(x float64) float64 {
 // slopeDegreeToValue converts a slope degree to a slope value.
 func slopeDegreeToValue(x float64) float64 {
 	return math.Tan(x * math.Pi / 180)
-}
-
-// valueToPercent converts a decimal value to percent.
-func valueToPercent(x float64) float64 {
-	if math.IsInf(x, 0) {
-		return x
-	}
-	return x * 100
-}
-
-// percentToValue converts percent to decimal value.
-func percentToValue(x float64) float64 {
-	if math.IsInf(x, 0) {
-		return x
-	}
-	return x / 100
-}
-
-// valueToPermille converts a decimal value to permille.
-func valueToPermille(x float64) float64 {
-	if math.IsInf(x, 0) {
-		return x
-	}
-	return x * 1000
-}
-
-// permilleToValue converts permille to a decimal value.
-func permilleToValue(x float64) float64 {
-	if math.IsInf(x, 0) {
-		return x
-	}
-	return x / 1000
 }
