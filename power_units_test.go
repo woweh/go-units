@@ -15,6 +15,6 @@ var powerConvTests = []conversionTest{
 	{from: "watt", to: "yottawatt", val: "0.000000000000000000000001"},
 }
 
-func TestPower(t *testing.T) {
+func Test_PowerConversions(t *testing.T) {
 	testConversions(t, powerConvTests)
 }
