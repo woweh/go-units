@@ -32,7 +32,7 @@ func (c Conversion) To() string { return c.to.Name }
 // From returns the name of the unit to convert from
 func (c Conversion) From() string { return c.from.Name }
 
-// NewRatioConversion registers a conversion formula and the inverse, given a ratio of
+// NewRatioConversion registers a conversion formula and the _inverse_, given a ratio of
 // from Unit in to Unit
 func NewRatioConversion(from, to *Unit, ratio float64) {
 	ratioStr := fmt.Sprintf("%.62f", ratio)
@@ -48,7 +48,15 @@ func NewRatioConversion(from, to *Unit, ratio float64) {
 	)
 }
 
-// NewConversionFromFn registers a new conversion formula from one Unit to another
+// NewConversionFromFn registers a new conversion formula from one Unit to another.
+//
+// NOTE:
+//   - When using `NewConversionFromFn` directly, you must define conversions in both directions!
+//
+// Example:
+//
+//	NewConversionFromFn(SlopeValue, SlopeDegree, slopeValueToDegree, "math.Atan(x) * 180 / math.Pi")
+//	NewConversionFromFn(SlopeDegree, SlopeValue, slopeDegreeToValue, "math.Tan(x * math.Pi / 180)")
 func NewConversionFromFn(from, to *Unit, f ConversionFn, formula string) {
 	c := Conversion{from, to, f, fmtFormula(formula)}
 	conversions = append(conversions, c)
