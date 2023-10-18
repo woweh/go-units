@@ -21,6 +21,21 @@ type UnitSystem string
 // Systems of units
 func (s UnitSystem) String() string { return string(s) }
 
+const (
+	// SiSystem provides the internal name for International System of Units
+	SiSystem UnitSystem = "metric"
+	// BiSystem provides the internal name the British Imperial system of units
+	BiSystem UnitSystem = "imperial"
+	// UsSystem provides the internal name the United States customary system of units
+	UsSystem UnitSystem = "us"
+	// IecSystem provides the internal name the International Electrotechnical Commission system of units
+	IecSystem UnitSystem = "iec"
+	// CgsSystem provides the internal name the centimeter-gram-second system of units
+	CgsSystem UnitSystem = "cgs"
+	// MKpSSystem provides the internal name the MKpS system of units (from French mètre–kilogramme-poids–seconde)
+	MKpSSystem UnitSystem = "MKpS"
+)
+
 // UnitQuantity is a quantity label for which a unit belongs
 type UnitQuantity string
 
@@ -31,14 +46,18 @@ var (
 	// Shorthands for pre-defined unit systems:
 	//----------------------------------------------------------------------------------------------
 
-	// BI is the British Imperial system of units
-	BI = UnitOptionSystem("imperial")
 	// SI is the International System of Units
-	SI = UnitOptionSystem("metric")
+	SI = UnitOptionSystem(SiSystem)
+	// BI is the British Imperial system of units
+	BI = UnitOptionSystem(BiSystem)
 	// US is the United States customary system of units
-	US = UnitOptionSystem("us")
+	US = UnitOptionSystem(UsSystem)
 	// IEC is the International Electrotechnical Commission system of units
-	IEC = UnitOptionSystem("iec")
+	IEC = UnitOptionSystem(IecSystem)
+	// CGS is the centimeter-gram-second system of units
+	CGS = UnitOptionSystem(CgsSystem)
+	// MKpS is the MKpS system of units (from French mètre–kilogramme-poids–seconde)
+	MKpS = UnitOptionSystem(MKpSSystem)
 	//----------------------------------------------------------------------------------------------
 
 	// unitMap is a map of all registered units.
