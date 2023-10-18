@@ -28,11 +28,18 @@ func MustConvertFloat(x float64, from, to *Unit) Value {
 
 // ConvertFloat converts a provided float from one Unit to another
 func ConvertFloat(x float64, from, to *Unit) (Value, error) {
+	// allow converting to same unit
+	if from == to {
+		return Value{x, *to}, nil
+	}
+
+	// find conversion path
 	path, err := ResolveConversion(from, to)
 	if err != nil {
 		return Value{}, err
 	}
 
+	//convert value, applying each conversion function in the path
 	for _, c := range path {
 		x = c.Fn(x)
 	}
