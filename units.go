@@ -1,4 +1,5 @@
-// Package units is a library for manipulating and converting between various units of measurement
+// Package units is a library for looking up units,
+// and for manipulating and converting between various units of measurement.
 package units
 
 import (
@@ -7,7 +8,8 @@ import (
 	"strings"
 )
 
-// CsvHeader is the header row for the CSV output
+// CsvHeader is the header row for the CSV output (> see func GetCsv).
+// It matches the format of the Unit.CsvLine method.
 const CsvHeader = "Name,Symbol,PluralName,Quantity,System,Aliases & Symbols"
 
 // All returns all registered Units, sorted by name and quantity
@@ -114,7 +116,7 @@ func matchesSymbol(s string, u *Unit) bool {
 	return false
 }
 
-// GetCsv returns a CSV representation of all registered Units
+// GetCsv returns a CSV representation of all registered Units.
 func GetCsv() []string {
 
 	// unitMap contains 'duplicate' units, because they are registered multiple times with different names/aliases

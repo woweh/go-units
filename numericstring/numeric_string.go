@@ -1,9 +1,12 @@
 // Package numericstring provides constants with numeric strings for conversion tests
 package numericstring
 
-// There are multiple strings for each number. You can use the string that is most
-// appropriate for the test, provides the best readability, or is most descriptive,
-// depending on the context.
+// There are multiple strings for each number, allowing you to use the string
+// that is most appropriate and descriptive in the context of the test.
+//
+// Abbreviations:
+// - Txp = Ten to the power of / Ten Exponent
+// - Tmn = Ten to the power of negative / Ten Exponent Negative
 
 const (
 	// One = 10 ^ 0, the base value
