@@ -104,6 +104,10 @@ const (
 	Hundred = "100"
 	// Thousand = 10 ^ 3 = Kilo, inverse of Milli
 	Thousand = "1000"
+	// TenThousand = 10 ^ 4
+	TenThousand = "10000"
+	// HundredThousand = 10 ^ 5
+	HundredThousand = "100000"
 	// Million = 10 ^ 6 = Mega, inverse of Micro
 	Million = "1000000"
 	// Billion = 10 ^ 9 = Giga, inverse of Nano
