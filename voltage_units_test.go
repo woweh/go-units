@@ -1,26 +1,53 @@
 package units
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	ns "github.com/woweh/go-units/numericstring"
+)
 
 var voltageConvTests = []conversionTest{
-	{from: "volt", to: "yottavolt", val: "0.000000000000000000000001"},
-	{from: "volt", to: "zettavolt", val: "0.000000000000000000001"},
-	{from: "volt", to: "exavolt", val: "0.000000000000000001"},
-	{from: "volt", to: "petavolt", val: "0.000000000000001"},
-	{from: "volt", to: "teravolt", val: "0.000000000001"},
-	{from: "volt", to: "gigavolt", val: "0.000000001"},
-	{from: "volt", to: "megavolt", val: "0.000001"},
-	{from: "volt", to: "kilovolt", val: "0.001"},
-	{from: "volt", to: "hectovolt", val: "0.01"},
-	{from: "volt", to: "decavolt", val: "0.1"},
-	{from: "volt", to: "decivolt", val: "10"},
-	{from: "volt", to: "centivolt", val: "100"},
-	{from: "volt", to: "millivolt", val: "1000"},
-	{from: "volt", to: "microvolt", val: "1000000"},
-	{from: "volt", to: "nanovolt", val: "1000000000"},
-	{from: "volt", to: "picovolt", val: "1000000000000"},
+	{from: "volt", to: "volt", val: ns.One},
+	{from: "volt", to: "yottavolt", val: ns.Septillionth},
+	{from: "volt", to: "zettavolt", val: ns.Sextillionth},
+	{from: "volt", to: "exavolt", val: ns.Quintillionth},
+	{from: "volt", to: "petavolt", val: ns.Quadrillionth},
+	{from: "volt", to: "teravolt", val: ns.Trillionth},
+	{from: "volt", to: "gigavolt", val: ns.Billionth},
+	{from: "volt", to: "megavolt", val: ns.Millionth},
+	{from: "volt", to: "kilovolt", val: ns.Thousandth},
+	{from: "volt", to: "hectovolt", val: ns.Hundredth},
+	{from: "volt", to: "decavolt", val: ns.Tenth},
+	{from: "volt", to: "decivolt", val: ns.Ten},
+	{from: "volt", to: "centivolt", val: ns.Hundred},
+	{from: "volt", to: "millivolt", val: ns.Thousand},
+	{from: "volt", to: "microvolt", val: ns.Million},
+	{from: "volt", to: "nanovolt", val: ns.Billion},
+	{from: "volt", to: "picovolt", val: ns.Trillion},
 }
 
 func Test_VoltageConversions(t *testing.T) {
 	testConversions(t, voltageConvTests)
+}
+
+func Test_VoltageSystems(t *testing.T) {
+	si := SiSystem
+	assert.Equal(t, si, Volt.System())
+	assert.Equal(t, si, YottaVolt.System())
+	assert.Equal(t, si, ZettaVolt.System())
+	assert.Equal(t, si, ExaVolt.System())
+	assert.Equal(t, si, PetaVolt.System())
+	assert.Equal(t, si, TeraVolt.System())
+	assert.Equal(t, si, GigaVolt.System())
+	assert.Equal(t, si, MegaVolt.System())
+	assert.Equal(t, si, KiloVolt.System())
+	assert.Equal(t, si, HectoVolt.System())
+	assert.Equal(t, si, DecaVolt.System())
+	assert.Equal(t, si, DeciVolt.System())
+	assert.Equal(t, si, CentiVolt.System())
+	assert.Equal(t, si, MilliVolt.System())
+	assert.Equal(t, si, MicroVolt.System())
+	assert.Equal(t, si, NanoVolt.System())
+	assert.Equal(t, si, PicoVolt.System())
 }

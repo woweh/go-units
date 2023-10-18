@@ -35,17 +35,19 @@ var (
 	MH2O     = newUnit(
 		"meter of Water Column", "mmH2O", Pressure, BI, UnitOptionPlural(Custom, "meters of Water Column"),
 	)
-	MmH2O  = Milli(MH2O)
-	CmH2O  = Centi(MH2O)
-	MHg    = newUnit("meter of Mercury", "mmHg", Pressure, BI, UnitOptionPlural(Custom, "meters of Mercury"))
-	MmHg   = Milli(MHg)
-	CmHg   = Centi(MHg)
-	Newton = newUnit("newton per square meter", "N/m²", Pressure, BI)
-	Psi    = newUnit("pound-force per square inch", "psi", Pressure, BI)
-	Torr   = newUnit("torr", "Torr", Pressure, BI)
+	MmH2O      = Milli(MH2O)
+	CmH2O      = Centi(MH2O)
+	MHg        = newUnit("meter of Mercury", "mmHg", Pressure, BI, UnitOptionPlural(Custom, "meters of Mercury"))
+	MmHg       = Milli(MHg)
+	CmHg       = Centi(MHg)
+	NewtonPSQM = newUnit("newton per square meter", "N/m²", Pressure, BI)
+	Psi        = newUnit("pound-force per square inch", "psi", Pressure, BI)
+	Torr       = newUnit("torr", "Torr", Pressure, BI)
 )
 
 func init() {
+	// TODO: Review these conversions
+	// ATM a lot of pressure conversions fail.
 	NewRatioConversion(At, Pascal, 98066.5)
 	NewRatioConversion(Atm, Pascal, 101325.2738)
 	NewRatioConversion(Bar, Pascal, 100000)
@@ -54,7 +56,7 @@ func init() {
 	NewRatioConversion(InHg, Pascal, 3386.38815789)
 	NewRatioConversion(MH2O, Pascal, 9806.65)
 	NewRatioConversion(MHg, Pascal, 133.322368421)
-	NewRatioConversion(Newton, Pascal, 1)
+	NewRatioConversion(NewtonPSQM, Pascal, 1)
 	NewRatioConversion(Psi, Pascal, 6894.757)
 	NewRatioConversion(Torr, Pascal, 133.322368421)
 }

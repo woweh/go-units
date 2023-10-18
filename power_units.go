@@ -5,6 +5,18 @@ var (
 
 	// metric
 	Watt      = newUnit("watt", "W", Power, SI)
+	DeciWatt  = Deci(Watt)
+	CentiWatt = Centi(Watt)
+	MilliWatt = Milli(Watt)
+	MicroWatt = Micro(Watt)
+	NanoWatt  = Nano(Watt)
+	PicoWatt  = Pico(Watt)
+	FemtoWatt = Femto(Watt)
+	AttoWatt  = Atto(Watt)
+	ZeptoWatt = Zepto(Watt)
+	YoctoWatt = Yocto(Watt)
+	DecaWatt  = Deca(Watt)
+	HectoWatt = Hecto(Watt)
 	KiloWatt  = Kilo(Watt)
 	MegaWatt  = Mega(Watt)
 	GigaWatt  = Giga(Watt)
