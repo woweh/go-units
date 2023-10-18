@@ -93,17 +93,7 @@ func ListUnitsAsCsv() (fileName string, err error) {
 
 	fileName = "units.csv"
 
-	// unitMap contains 'duplicate' units, because they are registered multiple times with different names/aliases
-	uniqueUnits := make(map[string]*Unit)
-	for _, u := range unitMap {
-		uniqueUnits[u.Name] = u
-	}
-
-	csvLines := make([]string, 0, len(uniqueUnits)+1)
-	csvLines = append(csvLines, "Name,Symbol,PluralName,Quantity,System,Aliases & Symbols")
-	for _, u := range uniqueUnits {
-		csvLines = append(csvLines, u.CsvLine())
-	}
+	csvLines := GetCsv()
 
 	// Add UTF-8 BOM at the beginning
 	bom := []byte{0xEF, 0xBB, 0xBF}

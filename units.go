@@ -7,6 +7,9 @@ import (
 	"strings"
 )
 
+// CsvHeader is the header row for the CSV output
+const CsvHeader = "Name,Symbol,PluralName,Quantity,System,Aliases & Symbols"
+
 // All returns all registered Units, sorted by name and quantity
 func All() []*Unit {
 	units := make(UnitList, 0, len(unitMap))
@@ -109,4 +112,22 @@ func matchesSymbol(s string, u *Unit) bool {
 		}
 	}
 	return false
+}
+
+// GetCsv returns a CSV representation of all registered Units
+func GetCsv() []string {
+
+	// unitMap contains 'duplicate' units, because they are registered multiple times with different names/aliases
+	uniqueUnits := make(map[string]*Unit)
+	for _, u := range unitMap {
+		uniqueUnits[u.Name] = u
+	}
+
+	csvLines := make([]string, 0, len(uniqueUnits)+1)
+	csvLines = append(csvLines, CsvHeader)
+	for _, u := range uniqueUnits {
+		csvLines = append(csvLines, u.CsvLine())
+	}
+
+	return csvLines
 }
