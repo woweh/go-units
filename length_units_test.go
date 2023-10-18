@@ -2,7 +2,7 @@ package units
 
 import "testing"
 
-func Test_LengthAliases(t *testing.T) {
+func Test_Lookup_Length_Names_and_Symbols(t *testing.T) {
 
 	tests := []lookUpTestUnit{
 		{Meter, "metre"},
@@ -19,5 +19,5 @@ func Test_LengthAliases(t *testing.T) {
 		{Mile, "mi."},
 	}
 
-	testNamesAndSymbols(t, tests)
+	testLookupNamesAndSymbols(t, tests)
 }

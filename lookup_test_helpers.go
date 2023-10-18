@@ -62,8 +62,8 @@ func (u *lookUpTestUnit) verifyHasNameOrSymbol() error {
 	return nil
 }
 
-// testNamesAndSymbols tests that names, aliases or symbols are correctly mapped to their units.
-func testNamesAndSymbols(t *testing.T, tests lookUpTests) {
+// testLookupNamesAndSymbols tests that names, aliases or symbols are correctly mapped to their units.
+func testLookupNamesAndSymbols(t *testing.T, tests lookUpTests) {
 	for _, tt := range tests {
 		t.Run(
 			tt.string(), func(t *testing.T) {

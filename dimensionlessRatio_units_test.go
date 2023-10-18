@@ -1,13 +1,17 @@
 package units
 
-import "testing"
+import (
+	"testing"
+
+	ns "github.com/woweh/go-units/numericstring"
+)
 
 var ratioConvTests = []conversionTest{
-	{from: "fraction", to: "percent", val: "100"},
-	{from: "fraction", to: "permille", val: "1000"},
-	{from: "fraction", to: "partsPerMillion", val: "1000000"},
-	{from: "fraction", to: "partsPerBillion", val: "1000000000"},
-	{from: "fraction", to: "partsPerTrillion", val: "1000000000000"},
+	{from: "fraction", to: "percent", val: ns.Hundred},
+	{from: "fraction", to: "permille", val: ns.Thousand},
+	{from: "fraction", to: "partsPerMillion", val: ns.Million},
+	{from: "fraction", to: "partsPerBillion", val: ns.Billion},
+	{from: "fraction", to: "partsPerTrillion", val: ns.Trillion},
 }
 
 func Test_RatioConversions(t *testing.T) {

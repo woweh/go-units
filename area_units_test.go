@@ -7,7 +7,7 @@ import (
 )
 
 func Test_AreaSystems(t *testing.T) {
-	si := UnitSystem("metric")
+	si := SiSystem
 	assert.Equal(t, si, SquareMilliMeter.System())
 	assert.Equal(t, si, SquareCentiMeter.System())
 	assert.Equal(t, si, SquareDeciMeter.System())
@@ -15,7 +15,7 @@ func Test_AreaSystems(t *testing.T) {
 	assert.Equal(t, si, SquareHectoMeter.System())
 	assert.Equal(t, si, SquareKiloMeter.System())
 
-	bi := UnitSystem("imperial")
+	bi := BiSystem
 	assert.Equal(t, bi, SquareMile.System())
 	assert.Equal(t, bi, Acre.System())
 	assert.Equal(t, bi, SquareInch.System())
@@ -23,7 +23,7 @@ func Test_AreaSystems(t *testing.T) {
 	assert.Equal(t, bi, SquareYard.System())
 }
 
-func Test_AreaNamesAndSymbols(t *testing.T) {
+func Test_Lookup_Area_Names_and_Symbols(t *testing.T) {
 
 	tests := []lookUpTestUnit{
 		{nil, "some unit key that does not exist"},
@@ -51,19 +51,31 @@ func Test_AreaNamesAndSymbols(t *testing.T) {
 		{SquareInch, "in2"},
 		{SquareInch, "in^2"},
 		{SquareInch, "in**2"},
+		{SquareInch, "in/-2"},
+		{SquareInch, "sq inch"},
+		{SquareInch, "square inches"},
+		{SquareInch, "square ins"},
+		{SquareInch, "sq inches"},
+		{SquareFoot, "square feet"},
+		{SquareFoot, "square ft"},
 		{SquareFoot, "ft2"},
 		{SquareFoot, "ft^2"},
 		{SquareFoot, "ft**2"},
+		{SquareFoot, "sqft"},
 		{SquareYard, "yd2"},
 		{SquareYard, "yd^2"},
 		{SquareYard, "sq yd"},
 		{SquareYard, "yd/-2"},
+		{SquareYard, "square yds"},
+		{SquareYard, "sq yards"},
 		{SquareMile, "mi2"},
 		{SquareMile, "mi^2"},
 		{SquareMile, "mi**2"},
 		{SquareMile, "sq mi"},
+		{SquareMile, "square mi"},
+		{SquareMile, "sq. mile"},
 		{Acre, "acres"},
 	}
 
-	testNamesAndSymbols(t, tests)
+	testLookupNamesAndSymbols(t, tests)
 }
