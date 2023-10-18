@@ -102,7 +102,7 @@ func ListUnitsAsCsv() (fileName string, err error) {
 	csvLines := make([]string, 0, len(uniqueUnits)+1)
 	csvLines = append(csvLines, "Name,Symbol,PluralName,Quantity,System,Aliases & Symbols")
 	for _, u := range uniqueUnits {
-		csvLines = append(csvLines, u.csvLine())
+		csvLines = append(csvLines, u.CsvLine())
 	}
 
 	// Add UTF-8 BOM at the beginning

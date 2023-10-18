@@ -289,8 +289,10 @@ func (u *Unit) HasSymbol(symbol string) bool {
 	return matchesSymbol(symbol, u)
 }
 
-// csvLine returns a CSV line for this unit
-func (u *Unit) csvLine() string {
+// CsvLine returns a CSV line for this unit
+// The line contains the following fields:
+// Name, Symbol, PluralName, Quantity, System, Aliases, Symbols
+func (u *Unit) CsvLine() string {
 	line := fmt.Sprintf("%s,%s,%s,%s,%s,", u.Name, u.Symbol, u.PluralName(), u.Quantity, u.System())
 	if len(u.aliases) > 0 {
 		line += strings.Join(u.aliases, ",")
