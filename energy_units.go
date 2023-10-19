@@ -33,22 +33,6 @@ var (
 )
 
 func init() {
-	// Metric to Metric conversions
-	NewRatioConversion(KiloJoule, Joule, 1000.0)
-	NewRatioConversion(MegaJoule, Joule, 1e6)
-	NewRatioConversion(GigaJoule, Joule, 1e9)
-	NewRatioConversion(TeraJoule, Joule, 1e12)
-	NewRatioConversion(PetaJoule, Joule, 1e15)
-	NewRatioConversion(ExaJoule, Joule, 1e18)
-	NewRatioConversion(ZettaJoule, Joule, 1e21)
-	NewRatioConversion(YottaJoule, Joule, 1e24)
-	NewRatioConversion(MilliJoule, Joule, 0.001)
-	NewRatioConversion(MicroJoule, Joule, 1e-6)
-	NewRatioConversion(NanoJoule, Joule, 1e-9)
-	NewRatioConversion(PicoJoule, Joule, 1e-12)
-	NewRatioConversion(FemtoJoule, Joule, 1e-15)
-	NewRatioConversion(AttoJoule, Joule, 1e-18)
-
 	// Non-metric to Metric conversions
 	NewRatioConversion(ElectronVolt, Joule, 1.60218e-19)
 	NewRatioConversion(Calorie, Joule, 4.184)
