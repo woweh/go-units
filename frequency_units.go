@@ -1,0 +1,27 @@
+package units
+
+var (
+	Frequency = UnitOptionQuantity("frequency")
+
+	Hertz      = newUnit("hertz", "Hz", Frequency, SI)
+	DecaHertz  = Deca(Hertz)
+	HectoHertz = Hecto(Hertz)
+	KiloHertz  = Kilo(Hertz)
+	MegaHertz  = Mega(Hertz)
+	GigaHertz  = Giga(Hertz)
+	TeraHertz  = Tera(Hertz)
+	PetaHertz  = Peta(Hertz)
+	ExaHertz   = Exa(Hertz)
+	ZettaHertz = Zetta(Hertz)
+	YottaHertz = Yotta(Hertz)
+	DeciHertz  = Deci(Hertz)
+	CentiHertz = Centi(Hertz)
+	MilliHertz = Milli(Hertz)
+	MicroHertz = Micro(Hertz)
+	NanoHertz  = Nano(Hertz)
+	PicoHertz  = Pico(Hertz)
+	FemtoHertz = Femto(Hertz)
+	AttoHertz  = Atto(Hertz)
+	ZeptoHertz = Zepto(Hertz)
+	YoctoHertz = Yocto(Hertz)
+)
