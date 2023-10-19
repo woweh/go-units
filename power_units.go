@@ -25,4 +25,12 @@ var (
 	ExaWatt   = Exa(Watt)
 	ZettaWatt = Zetta(Watt)
 	YottaWatt = Yotta(Watt)
+
+	VoltAmpere     = newUnit("volt-ampere", "VA", Power, SI)
+	KiloVoltAmpere = Kilo(VoltAmpere)
+	MegaVoltAmpere = Mega(VoltAmpere)
 )
+
+func init() {
+	VoltAmpere.AddSymbols("V⋅A", "V*A", "V.A", "V A")
+}

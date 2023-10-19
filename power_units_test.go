@@ -8,27 +8,30 @@ import (
 )
 
 var powerConvTests = []conversionTest{
-	{from: "watt", to: "watt", val: "1"},
-	{from: "watt", to: "deciwatt", val: ns.Txp1},
-	{from: "watt", to: "centiwatt", val: ns.Txp2},
-	{from: "watt", to: "milliwatt", val: ns.Txp3},
-	{from: "watt", to: "microwatt", val: ns.Txp6},
-	{from: "watt", to: "nanowatt", val: ns.Txp9},
-	{from: "watt", to: "picowatt", val: ns.Txp12},
+	{"watt", "watt", "1"},
+	{"watt", "deciwatt", ns.Txp1},
+	{"watt", "centiwatt", ns.Txp2},
+	{"watt", "milliwatt", ns.Txp3},
+	{"watt", "microwatt", ns.Txp6},
+	{"watt", "nanowatt", ns.Txp9},
+	{"watt", "picowatt", ns.Txp12},
 	// the following produce rounding errors
-	//{from: "watt", to: "femtowatt", val: ns.Txp15},
-	//{from: "watt", to: "attowatt", val: ns.Txp18},
-	//{from: "watt", to: "zeptowatt", val: ns.Txp21},
-	//{from: "watt", to: "yoctowatt", val: ns.Txp24},
-	{from: "watt", to: "decaWatt", val: ns.Tmn1},
-	{from: "watt", to: "kilowatt", val: ns.Tmn3},
-	{from: "watt", to: "megawatt", val: ns.Tmn6},
-	{from: "watt", to: "gigawatt", val: ns.Tmn9},
-	{from: "watt", to: "terawatt", val: ns.Tmn12},
-	{from: "watt", to: "petawatt", val: ns.Tmn15},
-	{from: "watt", to: "exawatt", val: ns.Tmn18},
-	{from: "watt", to: "zettawatt", val: ns.Tmn21},
-	{from: "watt", to: "yottawatt", val: ns.Tmn24},
+	//{ "watt",  "femtowatt",  ns.Txp15},
+	//{ "watt",  "attowatt",  ns.Txp18},
+	//{ "watt",  "zeptowatt",  ns.Txp21},
+	//{ "watt",  "yoctowatt",  ns.Txp24},
+	{"watt", "decaWatt", ns.Tmn1},
+	{"watt", "kilowatt", ns.Tmn3},
+	{"watt", "megawatt", ns.Tmn6},
+	{"watt", "gigawatt", ns.Tmn9},
+	{"watt", "terawatt", ns.Tmn12},
+	{"watt", "petawatt", ns.Tmn15},
+	{"watt", "exawatt", ns.Tmn18},
+	{"watt", "zettawatt", ns.Tmn21},
+	{"watt", "yottawatt", ns.Tmn24},
+	{"volt-ampere", "volt-ampere", "1"},
+	{"volt-ampere", "kilovolt-ampere", ns.Tmn3},
+	{"volt-ampere", "megavolt-ampere", ns.Tmn6},
 }
 
 func Test_PowerConversions(t *testing.T) {
@@ -58,4 +61,8 @@ func Test_PowerSystems(t *testing.T) {
 	assert.Equal(t, si, ExaWatt.System())
 	assert.Equal(t, si, ZettaWatt.System())
 	assert.Equal(t, si, YottaWatt.System())
+
+	assert.Equal(t, si, VoltAmpere.System())
+	assert.Equal(t, si, KiloVoltAmpere.System())
+	assert.Equal(t, si, MegaVoltAmpere.System())
 }
