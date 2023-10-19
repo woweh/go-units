@@ -9,6 +9,7 @@ var (
 
 	Radian      = newUnit("radian", "rad", Angle, SI)
 	MilliRadian = Milli(Radian)
+	MicroRadian = Micro(Radian)
 
 	// Degree (= decimal degree) is a unit of angle equal to 1/360 of a circle.
 	Degree = newUnit("degree", "°", Angle)
