@@ -26,11 +26,22 @@ var (
 	ZettaWatt = Zetta(Watt)
 	YottaWatt = Yotta(Watt)
 
-	VoltAmpere     = newUnit("volt-ampere", "VA", Power, SI)
+	VoltAmpere     = newUnit("volt-ampere", "V⋅A", Power, SI)
 	KiloVoltAmpere = Kilo(VoltAmpere)
 	MegaVoltAmpere = Mega(VoltAmpere)
+
+	VoltAmpereReactive     = newUnit("volt-ampere reactive", "var", Power, SI)
+	KiloVoltAmpereReactive = Kilo(VoltAmpereReactive)
+	MegaVoltAmpereReactive = Mega(VoltAmpereReactive)
 )
 
 func init() {
-	VoltAmpere.AddSymbols("V⋅A", "V*A", "V.A", "V A")
+	NewRatioConversion(Watt, VoltAmpere, 1)
+	NewRatioConversion(Watt, VoltAmpereReactive, 1)
+
+	VoltAmpere.AddAliases("volt ampere")
+	VoltAmpere.AddSymbols("VA", "V*A", "V.A", "V A")
+
+	VoltAmpereReactive.AddAliases("volt ampere reactive")
+	VoltAmpereReactive.AddSymbols("VAR", "VAr", "V⋅Ar", "V.A.r", "V A r", "V.A.r")
 }

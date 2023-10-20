@@ -29,9 +29,14 @@ var powerConvTests = []conversionTest{
 	{"watt", "exawatt", ns.Tmn18},
 	{"watt", "zettawatt", ns.Tmn21},
 	{"watt", "yottawatt", ns.Tmn24},
+	{"watt", "volt-ampere", "1"},
+	{"watt", "volt-ampere reactive", "1"},
 	{"volt-ampere", "volt-ampere", "1"},
 	{"volt-ampere", "kilovolt-ampere", ns.Tmn3},
 	{"volt-ampere", "megavolt-ampere", ns.Tmn6},
+	{"volt-ampere reactive", "volt-ampere reactive", "1"},
+	{"volt-ampere reactive", "kilovolt-ampere reactive", ns.Tmn3},
+	{"volt-ampere reactive", "megavolt-ampere reactive", ns.Tmn6},
 }
 
 func Test_PowerConversions(t *testing.T) {
@@ -65,4 +70,8 @@ func Test_PowerSystems(t *testing.T) {
 	assert.Equal(t, si, VoltAmpere.System())
 	assert.Equal(t, si, KiloVoltAmpere.System())
 	assert.Equal(t, si, MegaVoltAmpere.System())
+
+	assert.Equal(t, si, VoltAmpereReactive.System())
+	assert.Equal(t, si, KiloVoltAmpereReactive.System())
+	assert.Equal(t, si, MegaVoltAmpereReactive.System())
 }
