@@ -3,10 +3,10 @@ package units
 var (
 	Temperature = UnitOptionQuantity("temperature")
 
-	Celsius    = newUnit("celsius", "C", Temperature, UnitOptionPlural(None, ""), SI)
-	Fahrenheit = newUnit("fahrenheit", "F", Temperature, UnitOptionPlural(None, ""), US)
-	Kelvin     = newUnit("kelvin", "K", Temperature, UnitOptionPlural(None, ""), SI)
-	Rankine    = newUnit("rankine", "R", Temperature, UnitOptionPlural(None, ""), US)
+	Celsius    = newUnit("celsius", "°C", Temperature, UnitOptionPlural(None, ""), SI)
+	Fahrenheit = newUnit("fahrenheit", "°F", Temperature, UnitOptionPlural(None, ""), US)
+	Kelvin     = newUnit("kelvin", "°K", Temperature, UnitOptionPlural(None, ""), SI)
+	Rankine    = newUnit("rankine", "°R", Temperature, UnitOptionPlural(None, ""), US)
 )
 
 func init() {
@@ -37,13 +37,11 @@ func init() {
 	NewRatioConversion(Kelvin, Rankine, 1.8)
 
 	Celsius.AddAliases("centigrade", "centigrades")
-	Celsius.AddSymbols("°C")
 
 	Fahrenheit.AddAliases("degree Fahrenheit")
-	Fahrenheit.AddSymbols("°F")
 
 	Kelvin.AddAliases("degree Kelvin")
 
 	Rankine.AddAliases("degree Rankine")
-	Rankine.AddSymbols("°R", "°Ra")
+	Rankine.AddSymbols("°Ra")
 }
