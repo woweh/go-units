@@ -110,7 +110,17 @@ Using unicode symbols (e.g., `㎡`, `㎢`) is not supported!
 
 
 ### References / Further Reading
-Furey, Edward "Conversion Calculators" at https://www.calculatorsoup.com/calculators/conversions/ from CalculatorSoup, https://www.calculatorsoup.com - Online Calculators
+There are many online calculators and converters.
+Many of them provide explanations, formulae,
+- https://www.engineeringtoolbox.com/
+- https://www.inchcalculator.com/
+- https://www.calculatorsoup.com/
+- https://citizenmaths.com/
+- https://www.translatorscafe.com/unit-converter/en-US/
+- https://www.unitmeasurement.com/
+- https://www.theunitconverter.com/
+- https://www.justintools.com/
+
 
 The National Institute of Standards and Technology (NIST) - The NIST Guide for the use of the International System of Units - Appendix B, subsections B.8 Factors for Units Listed Alphabetically and B.9 Factors for units listed by kind of quantity or field of science.
 - https://physics.nist.gov/cuu/pdf/sp811.pdf
@@ -122,10 +132,10 @@ The National Institute of Standards and Technology (NIST) - The NIST Guide for t
 Wikipedia contributors. "Conversion of units" Wikipedia, The Free Encyclopedia. Wikipedia, The Free Encyclopedia.
 - https://en.wikipedia.org/wiki/Conversion_of_units
 
-[The Engineering ToolBox](https://www.engineeringtoolbox.com/)
-
 https://qudt.org/  
 The QUDT, or 'Quantity, Unit, Dimension and Type' collection of ontologies define the base classes properties, and restrictions used for modeling physical quantities, units of measure, and their dimensions in various measurement systems. QUDT provides a unified model of measurable quantities, units for measuring different kinds of quantities, the numerical values of quantities in different units of measure and the data structures and data types used to store and manipulate these objects in software. This OWL schema is a foundation for a basic treatment of units. Originally developed by TopQuadrant for the NASA Exploration Initiatives Ontology Models (NExIOM) project, they now form the basis of the NASA QUDT Handbook. QUDT aims to improve interoperability of data and the specification of information structures through industry standards for Units of Measure, Quantity Kinds, Dimensions and Data Types.
+
+Furey, Edward "Conversion Calculators" at https://www.calculatorsoup.com/calculators/conversions/ from CalculatorSoup, https://www.calculatorsoup.com - Online Calculators
 
 ### Breaking Changes compared to bcicen's version
 - Use unit pointers in the unitMap, units have a shared state.
