@@ -27,7 +27,7 @@ var magNames = []string{
 
 type magFn func(*Unit, ...UnitOption) *Unit
 
-func TestMagnitudes(t *testing.T) {
+func Test_Magnitudes(t *testing.T) {
 	u := newUnit("dong", "₫")
 	for i, mfn := range []magFn{
 		Exa, Peta, Tera, Giga, Mega, Kilo, Hecto, Deca, Deci, Centi, Milli, Micro, Nano, Pico, Femto, Atto,

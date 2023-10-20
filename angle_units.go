@@ -45,5 +45,6 @@ func init() {
 	Degree.AddAliases("degrees", "degree of arc", "degrees of arc", "arc degree", "arcdegree")
 	Degree.AddSymbols("deg")
 
+	Turn.AddAliases("revolution", "revolutions", "revs", "cycle", "cycles")
 	Turn.AddSymbols("pla", "rev", "cyc")
 }

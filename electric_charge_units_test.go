@@ -6,21 +6,24 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var electricChargeUnitConvTests = []conversionTest{
-	{"coulomb", "C", "1"},
-	{"ampere-hour", "coulomb", "3600"},
-	{"ampere-minute", "coulomb", "60"},
-	{"coulomb", "ampere-second", "1"},
-	{"kiloampere-hour", "kilocoulomb", "3600"},
-	{"kiloampere-minute", "kilocoulomb", "60"},
-	{"kiloampere-second", "kilocoulomb", "1"},
+func Test_ElectricCharge_Conversions(t *testing.T) {
+	var conversionTests = []conversionTest{
+		{"coulomb", "C", "1"},
+		{"ampere-hour", "coulomb", "3600"},
+		{"ampere-minute", "coulomb", "60"},
+		{"coulomb", "ampere-second", "1"},
+		{"kiloampere-hour", "kilocoulomb", "3600"},
+		{"kiloampere-minute", "kilocoulomb", "60"},
+		{"kiloampere-second", "kilocoulomb", "1"},
+		{"milliampere-hour", "millicoulomb", "3600"},
+		{"milliampere-minute", "millicoulomb", "60"},
+		{"milliampere-second", "millicoulomb", "1"},
+	}
+
+	testConversions(t, conversionTests)
 }
 
-func Test_ElectricChargeUnitConversions(t *testing.T) {
-	testConversions(t, electricChargeUnitConvTests)
-}
-
-func Test_ElectricChargeSymbols(t *testing.T) {
+func Test_ElectricCharge_Symbols(t *testing.T) {
 	si := SiSystem
 
 	assert.Equal(t, si, Coulomb.System())

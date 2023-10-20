@@ -28,7 +28,7 @@ func aggrByQuantity() map[UnitQuantity][]*Unit {
 	return m
 }
 
-func TestUnitLookup(t *testing.T) {
+func Test_UnitLookup(t *testing.T) {
 	for _, name := range aggrNames() {
 		u, err := Find(name)
 		if err != nil {
@@ -39,7 +39,7 @@ func TestUnitLookup(t *testing.T) {
 	}
 }
 
-func TestUnitNameOverlap(t *testing.T) {
+func Test_UnitNameOverlap(t *testing.T) {
 	nameMap := make(map[string]Unit)
 
 	var total, failed int
@@ -58,7 +58,7 @@ func TestUnitNameOverlap(t *testing.T) {
 }
 
 // ensure all units within the same quantity resolve a conversion path
-func TestPathResolve(t *testing.T) {
+func Test_PathResolve(t *testing.T) {
 	for qname, qunits := range aggrByQuantity() {
 		if qname == quantityForUnitTests {
 			// skip temporary units created by unit tests

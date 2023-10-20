@@ -7,43 +7,43 @@ import (
 	ns "github.com/woweh/go-units/numericstring"
 )
 
-var powerConvTests = []conversionTest{
-	{"watt", "watt", "1"},
-	{"watt", "deciwatt", ns.Txp1},
-	{"watt", "centiwatt", ns.Txp2},
-	{"watt", "milliwatt", ns.Txp3},
-	{"watt", "microwatt", ns.Txp6},
-	{"watt", "nanowatt", ns.Txp9},
-	{"watt", "picowatt", ns.Txp12},
-	// the following produce rounding errors
-	//{ "watt",  "femtowatt",  ns.Txp15},
-	//{ "watt",  "attowatt",  ns.Txp18},
-	//{ "watt",  "zeptowatt",  ns.Txp21},
-	//{ "watt",  "yoctowatt",  ns.Txp24},
-	{"watt", "decaWatt", ns.Tmn1},
-	{"watt", "kilowatt", ns.Tmn3},
-	{"watt", "megawatt", ns.Tmn6},
-	{"watt", "gigawatt", ns.Tmn9},
-	{"watt", "terawatt", ns.Tmn12},
-	{"watt", "petawatt", ns.Tmn15},
-	{"watt", "exawatt", ns.Tmn18},
-	{"watt", "zettawatt", ns.Tmn21},
-	{"watt", "yottawatt", ns.Tmn24},
-	{"watt", "volt-ampere", "1"},
-	{"watt", "volt-ampere reactive", "1"},
-	{"volt-ampere", "volt-ampere", "1"},
-	{"volt-ampere", "kilovolt-ampere", ns.Tmn3},
-	{"volt-ampere", "megavolt-ampere", ns.Tmn6},
-	{"volt-ampere reactive", "volt-ampere reactive", "1"},
-	{"volt-ampere reactive", "kilovolt-ampere reactive", ns.Tmn3},
-	{"volt-ampere reactive", "megavolt-ampere reactive", ns.Tmn6},
+func Test_Power_Conversions(t *testing.T) {
+	var conversionTests = []conversionTest{
+		{"watt", "watt", "1"},
+		{"watt", "deciwatt", ns.Txp1},
+		{"watt", "centiwatt", ns.Txp2},
+		{"watt", "milliwatt", ns.Txp3},
+		{"watt", "microwatt", ns.Txp6},
+		{"watt", "nanowatt", ns.Txp9},
+		{"watt", "picowatt", ns.Txp12},
+		// the following produce rounding errors
+		//{ "watt",  "femtowatt",  ns.Txp15},
+		//{ "watt",  "attowatt",  ns.Txp18},
+		//{ "watt",  "zeptowatt",  ns.Txp21},
+		//{ "watt",  "yoctowatt",  ns.Txp24},
+		{"watt", "decaWatt", ns.Tmn1},
+		{"watt", "kilowatt", ns.Tmn3},
+		{"watt", "megawatt", ns.Tmn6},
+		{"watt", "gigawatt", ns.Tmn9},
+		{"watt", "terawatt", ns.Tmn12},
+		{"watt", "petawatt", ns.Tmn15},
+		{"watt", "exawatt", ns.Tmn18},
+		{"watt", "zettawatt", ns.Tmn21},
+		{"watt", "yottawatt", ns.Tmn24},
+		{"watt", "volt-ampere", "1"},
+		{"watt", "volt-ampere reactive", "1"},
+		{"volt-ampere", "volt-ampere", "1"},
+		{"volt-ampere", "kilovolt-ampere", ns.Tmn3},
+		{"volt-ampere", "megavolt-ampere", ns.Tmn6},
+		{"volt-ampere reactive", "volt-ampere reactive", "1"},
+		{"volt-ampere reactive", "kilovolt-ampere reactive", ns.Tmn3},
+		{"volt-ampere reactive", "megavolt-ampere reactive", ns.Tmn6},
+	}
+
+	testConversions(t, conversionTests)
 }
 
-func Test_PowerConversions(t *testing.T) {
-	testConversions(t, powerConvTests)
-}
-
-func Test_PowerSystems(t *testing.T) {
+func Test_Power_Systems(t *testing.T) {
 	si := SiSystem
 	assert.Equal(t, si, Watt.System())
 	assert.Equal(t, si, DeciWatt.System())

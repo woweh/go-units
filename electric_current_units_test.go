@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_ElectricCurrentSystems(t *testing.T) {
+func Test_ElectricCurrent_Systems(t *testing.T) {
 	si := SiSystem
 	assert.Equal(t, si, Ampere.System())
 	assert.Equal(t, si, MilliAmpere.System())

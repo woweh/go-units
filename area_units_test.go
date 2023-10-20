@@ -6,7 +6,39 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_AreaSystems(t *testing.T) {
+func Test_Area_Conversions(t *testing.T) {
+	var conversionTests = []conversionTest{
+		{"square kilometer", "square meter", "1000000"},
+		{"square hectometer", "square meter", "10000"},
+		{"square decameter", "square meter", "100"},
+		{"square meter", "square decimeter", "100"},
+		{"square meter", "square centimeter", "10000"},
+		{"square meter", "square millimeter", "1000000"},
+		{"m2", "mm2", "1000000"},
+		{"square decimeter", "square centimeter", "100"},
+		{"square decimeter", "square millimeter", "10000"},
+		{"square centimeter", "square millimeter", "100"},
+		{"square mile", "square kilometer", "2.589988"},
+		{"acre", "square kilometer", "0.00404686"},
+		{"square yard", "square meter", "0.836127"},
+		{"square foot", "square meter", "0.092903"},
+		{"square inch", "square meter", "0.00064516"},
+		{"square inch", "square foot", "0.00694444"},
+		{"square yard", "square foot", "9"},
+		{"square mile", "acre", "640"},
+		{"square yard", "square inch", "1296"},
+		{"square mile", "square yard", "3097600"},
+		{"square mile", "square foot", "27878400"},
+		{"square mile", "square inch", "4014489600"},
+		{"square foot", "square inch", "144"},
+		{"square yard", "square inch", "1296"},
+		{"square mile", "square inch", "4014489600"},
+	}
+
+	testConversions(t, conversionTests)
+}
+
+func Test_Area_Systems(t *testing.T) {
 	si := SiSystem
 	assert.Equal(t, si, SquareMilliMeter.System())
 	assert.Equal(t, si, SquareCentiMeter.System())

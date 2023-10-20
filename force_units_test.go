@@ -7,24 +7,24 @@ import (
 	ns "github.com/woweh/go-units/numericstring"
 )
 
-var forceUnitTests = []conversionTest{
-	{"newton", "kilonewton", ns.Thousandth},
-	{"newton", "newton", ns.One},
-	{"newton", "millinewton", ns.Thousand},
-	{"newton", "micronewton", ns.Million},
-	{"newton", "nanonewton", ns.Billion},
-	{"newton", "dyne", ns.HundredThousand},
-	{"newton", "pound force", "0.2248089"},
-	{"newton", "poundal", "7.233014"},
-	{"newton", "kilogram-force", "0.1019716"},
-	{"newton", "tonne-force", "0.0001019716"},
+func Test_Force_Conversions(t *testing.T) {
+	var conversionTests = []conversionTest{
+		{"newton", "kilonewton", ns.Thousandth},
+		{"newton", "newton", ns.One},
+		{"newton", "millinewton", ns.Thousand},
+		{"newton", "micronewton", ns.Million},
+		{"newton", "nanonewton", ns.Billion},
+		{"newton", "dyne", ns.HundredThousand},
+		{"newton", "pound force", "0.2248089"},
+		{"newton", "poundal", "7.233014"},
+		{"newton", "kilogram-force", "0.1019716"},
+		{"newton", "tonne-force", "0.0001019716"},
+	}
+
+	testConversions(t, conversionTests)
 }
 
-func Test_Force(t *testing.T) {
-	testConversions(t, forceUnitTests)
-}
-
-func Test_ForceSystems(t *testing.T) {
+func Test_Force_Systems(t *testing.T) {
 	si := SiSystem
 	assert.EqualValues(t, si, Newton.System())
 	assert.Equal(t, si, CentiNewton.System())

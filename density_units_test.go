@@ -6,30 +6,30 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var densityConvTests = []conversionTest{
-	{"g/cm³", "kg/cm³", "0.001"},
-	{"kg/cm³", "kg/m³", "1000000"},
-	{"g/m³", "kg/m³", "0.001"},
-	{"g/mL", "kg/m³", "1000"},
-	{"g/L", "kg/m³", "1"},
-	{"kg/L", "kg/m³", "1000"},
-	{"oz/in³", "kg/m³", "1729.994"},
-	{"oz/ft³", "kg/m³", "1.001153"},
-	{"oz/gal", "kg/m³", "6.236023"},
-	{"lb/in³", "kg/m³", "27679.90471"},
-	{"lb/ft³", "kg/m³", "16.018463"},
-	{"lb/gal", "kg/m³", "99.776372"},
-	{"slug/ft³", "kg/m³", "515.378818"},
-	{"l ton/yd³", "kg/m³", "1328.939"},
-	{"oz/in³", "l ton/yd³", "1.301786"},
-	{"oz/in³", "slug/ft³", "3.356743"},
+func Test_Density_Conversions(t *testing.T) {
+	var conversionTests = []conversionTest{
+		{"g/cm³", "kg/cm³", "0.001"},
+		{"kg/cm³", "kg/m³", "1000000"},
+		{"g/m³", "kg/m³", "0.001"},
+		{"g/mL", "kg/m³", "1000"},
+		{"g/L", "kg/m³", "1"},
+		{"kg/L", "kg/m³", "1000"},
+		{"oz/in³", "kg/m³", "1729.994"},
+		{"oz/ft³", "kg/m³", "1.001153"},
+		{"oz/gal", "kg/m³", "6.236023"},
+		{"lb/in³", "kg/m³", "27679.90471"},
+		{"lb/ft³", "kg/m³", "16.018463"},
+		{"lb/gal", "kg/m³", "99.776372"},
+		{"slug/ft³", "kg/m³", "515.378818"},
+		{"l ton/yd³", "kg/m³", "1328.939"},
+		{"oz/in³", "l ton/yd³", "1.301786"},
+		{"oz/in³", "slug/ft³", "3.356743"},
+	}
+
+	testConversions(t, conversionTests)
 }
 
-func Test_DensityConversions(t *testing.T) {
-	testConversions(t, densityConvTests)
-}
-
-func Test_DensitySystem(t *testing.T) {
+func Test_Density_System(t *testing.T) {
 	si := SiSystem
 	assert.Equal(t, si, GramPerCubicCentimeter.System())
 	assert.Equal(t, si, KilogramPerCubicCentimeter.System())
