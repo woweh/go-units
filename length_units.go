@@ -1,7 +1,7 @@
 package units
 
 var (
-	Length = UnitOptionQuantity("length")
+	Length = Quantity("length")
 
 	// metric
 	Meter      = newUnit("meter", "m", Length, SI)
@@ -23,8 +23,8 @@ var (
 	AttoMeter  = Atto(Meter)
 
 	Angstrom = newUnit("angstrom", "Å", Length, BI)
-	Inch     = newUnit("inch", "in", Length, BI, UnitOptionPlural(Custom, "inches"))
-	Foot     = newUnit("foot", "ft", Length, BI, UnitOptionPlural(Custom, "feet"))
+	Inch     = newUnit("inch", "in", Length, BI, Plural("inches"))
+	Foot     = newUnit("foot", "ft", Length, BI, Plural("feet"))
 	Yard     = newUnit("yard", "yd", Length, BI)
 	Mile     = newUnit("mile", "mi", Length, BI)
 	League   = newUnit("league", "lea", Length, BI)

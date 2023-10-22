@@ -1,7 +1,7 @@
 package units
 
 var (
-	Area = UnitOptionQuantity("area")
+	Area = Quantity("area")
 
 	// metric
 	SquareMilliMeter = newUnit("square millimeter", "mm²", Area, SI)

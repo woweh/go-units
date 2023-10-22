@@ -1,7 +1,7 @@
 package units
 
 var (
-	Pressure = UnitOptionQuantity("pressure")
+	Pressure = Quantity("pressure")
 
 	// SI unit metric
 	Pascal      = newUnit("pascal", "Pa", Pressure, SI)
@@ -31,18 +31,18 @@ var (
 	MicroBar = Micro(Bar, BI)
 	Barye    = newUnit("barye", "Ba", Pressure, BI)
 	InH2O    = newUnit(
-		"inch of Water Column", "inH2O", Pressure, BI, UnitOptionPlural(Custom, "inches of Water Column"),
+		"inch of Water Column", "inH2O", Pressure, BI, Plural("inches of Water Column"),
 	)
-	InHg = newUnit("inch of Mercury", "inHg", Pressure, BI, UnitOptionPlural(Custom, "inches of Mercury"))
+	InHg = newUnit("inch of Mercury", "inHg", Pressure, BI, Plural("inches of Mercury"))
 	MH2O = newUnit(
 		"meter of Water Column", "mmH2O", Pressure, BI,
-		UnitOptionPlural(Custom, "meters of Water Column"),
+		Plural("meters of Water Column"),
 	)
-	MilliMH2O     = Milli(MH2O, BI, UnitOptionPlural(Custom, "millimeters of Water Column"))
-	CentiMH2O     = Centi(MH2O, BI, UnitOptionPlural(Custom, "centimeters of Water Column"))
-	MHg           = newUnit("meter of Mercury", "mmHg", Pressure, BI, UnitOptionPlural(Custom, "meters of Mercury"))
-	MilliMHg      = Milli(MHg, BI, UnitOptionPlural(Custom, "millimeters of Mercury"))
-	CentiMHg      = Centi(MHg, BI, UnitOptionPlural(Custom, "centimeters of Mercury"))
+	MilliMH2O     = Milli(MH2O, BI, Plural("millimeters of Water Column"))
+	CentiMH2O     = Centi(MH2O, BI, Plural("centimeters of Water Column"))
+	MHg           = newUnit("meter of Mercury", "mmHg", Pressure, BI, Plural("meters of Mercury"))
+	MilliMHg      = Milli(MHg, BI, Plural("millimeters of Mercury"))
+	CentiMHg      = Centi(MHg, BI, Plural("centimeters of Mercury"))
 	NewtonSqm     = newUnit("newton per square meter", "N/m²", Pressure, BI)
 	KiloNewtonSqm = Kilo(NewtonSqm)
 	Psi           = newUnit("pound-force per square inch", "psi", Pressure, BI)

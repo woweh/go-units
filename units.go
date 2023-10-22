@@ -3,7 +3,7 @@
 package units
 
 import (
-	"errors"
+	"fmt"
 	"sort"
 	"strings"
 )
@@ -75,7 +75,7 @@ func Find(s string) (*Unit, error) {
 		}
 	}
 
-	// finally, try stripping customPlural suffix
+	// finally, try stripping plural suffix
 	if strings.HasSuffix(s, "s") || strings.HasSuffix(s, "S") {
 		s = s[:len(s)-1]
 		for _, u := range unitMap {
@@ -85,7 +85,7 @@ func Find(s string) (*Unit, error) {
 		}
 	}
 
-	return nil, errors.New("unit \"" + s + "\" not found")
+	return nil, fmt.Errorf("unit '%s' not found", s)
 }
 
 // matchesNameOrAlias returns true if the provided string matches the provided Unit's name or aliases

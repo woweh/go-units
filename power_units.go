@@ -1,7 +1,7 @@
 package units
 
 var (
-	Power = UnitOptionQuantity("power")
+	Power = Quantity("power")
 
 	// metric
 	Watt      = newUnit("watt", "W", Power, SI)

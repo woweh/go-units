@@ -1,7 +1,7 @@
 package units
 
 var (
-	Mass = UnitOptionQuantity("mass")
+	Mass = Quantity("mass")
 
 	// metric
 	Gram      = newUnit("gram", "g", Mass, SI)

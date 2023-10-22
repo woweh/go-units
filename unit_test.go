@@ -49,7 +49,7 @@ func Test_NewUnit(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(
 			tt.name, func(t *testing.T) {
-				u, err := NewUnit(tt.unitName, tt.unitSymbol, UnitOptionQuantity(quantityForUnitTests))
+				u, err := NewUnit(tt.unitName, tt.unitSymbol, Quantity(quantityForUnitTests))
 				if (err != nil) != tt.wantErr {
 					t.Errorf("NewUnit() error = %v, wantErr %v", err, tt.wantErr)
 					return

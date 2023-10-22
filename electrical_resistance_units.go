@@ -1,9 +1,9 @@
 package units
 
 var (
-	ElectricalResistance = UnitOptionQuantity("electrical resistance")
+	ElectricalResistance = Quantity("electrical resistance")
 
-	Ohm      = newUnit("ohm", "Ω", ElectricalResistance, SI)
+	Ohm      = newUnit("ohm", "Ω", ElectricalResistance, SI, Symbols("Ω"))
 	DecaOhm  = Deca(Ohm)
 	HectoOhm = Hecto(Ohm)
 	KiloOhm  = Kilo(Ohm)
@@ -25,27 +25,3 @@ var (
 	ZeptoOhm = Zepto(Ohm)
 	YoctoOhm = Yocto(Ohm)
 )
-
-func init() {
-	Ohm.AddSymbols("Ω")
-	DecaOhm.AddSymbols("daΩ")
-	HectoOhm.AddSymbols("hΩ")
-	KiloOhm.AddSymbols("kΩ")
-	MegaOhm.AddSymbols("MΩ")
-	GigaOhm.AddSymbols("GΩ")
-	TeraOhm.AddSymbols("TΩ")
-	PetaOhm.AddSymbols("PΩ")
-	ExaOhm.AddSymbols("EΩ")
-	ZettaOhm.AddSymbols("ZΩ")
-	YottaOhm.AddSymbols("YΩ")
-	DeciOhm.AddSymbols("dΩ")
-	CentiOhm.AddSymbols("cΩ")
-	MilliOhm.AddSymbols("mΩ")
-	MicroOhm.AddSymbols("µΩ")
-	NanoOhm.AddSymbols("nΩ")
-	PicoOhm.AddSymbols("pΩ")
-	FemtoOhm.AddSymbols("fΩ")
-	AttoOhm.AddSymbols("aΩ")
-	ZeptoOhm.AddSymbols("zΩ")
-	YoctoOhm.AddSymbols("yΩ")
-}

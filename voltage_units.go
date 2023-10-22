@@ -1,7 +1,7 @@
 package units
 
 var (
-	Voltage = UnitOptionQuantity("voltage")
+	Voltage = Quantity("voltage")
 
 	// metric
 	Volt      = newUnit("volt", "V", Voltage, SI)

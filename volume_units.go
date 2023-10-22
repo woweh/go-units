@@ -1,11 +1,11 @@
 package units
 
 var (
-	Volume = UnitOptionQuantity("volume")
+	Volume = Quantity("volume")
 
 	// metric
 
-	Liter      = newUnit("liter", "l", Volume, SI)
+	Liter      = newUnit("liter", "l", Volume, SI, Aliases("litre"))
 	ExaLiter   = Exa(Liter)
 	PetaLiter  = Peta(Liter)
 	TeraLiter  = Tera(Liter)
@@ -22,6 +22,14 @@ var (
 	PicoLiter  = Pico(Liter)
 	FemtoLiter = Femto(Liter)
 	AttoLiter  = Atto(Liter)
+
+	CubicMeter      = newUnit("cubic meter", "m³", Volume, SI)
+	CubicKiloMeter  = newUnit("cubic kilometer", "km³", Volume, SI)
+	CubicHectoMeter = newUnit("cubic hectometer", "hm³", Volume, SI)
+	CubicDecaMeter  = newUnit("cubic decameter", "dam³", Volume, SI)
+	CubicDeciMeter  = newUnit("cubic decimeter", "dm³", Volume, SI)
+	CubicCentiMeter = newUnit("cubic centimeter", "cm³", Volume, SI)
+	CubicMilliMeter = newUnit("cubic millimeter", "mm³", Volume, SI)
 
 	// imperial
 	Quart      = newUnit("quart", "qt", Volume, BI)
@@ -42,33 +50,13 @@ var (
 )
 
 func init() {
-	Liter.AddAliases("litre", "cubic decimeter", "cubic decimetre")
-	Liter.AddSymbols("dm³", "dm3", "dm^3", "dm**3")
-
-	TeraLiter.AddAliases("cubic kilometer", "cubic kilometre")
-	TeraLiter.AddSymbols("km³", "km3", "km^3", "km**3")
-
-	GigaLiter.AddAliases("cubic hectometer", "cubic hectometre")
-	GigaLiter.AddSymbols("hm³", "hm3", "hm^3", "hm**3", "mcm")
-
-	MegaLiter.AddAliases("cubic decameter", "cubic decametre")
-	MegaLiter.AddSymbols("dam³", "dam3", "dam^3", "dam**3")
-
-	KiloLiter.AddAliases("cubic meter", "cubic metre")
-	KiloLiter.AddSymbols("cum", "cbm", "m³", "m3", "m^3", "m**3")
-
-	MilliLiter.AddAliases("cubic centimeter", "cubic centimetre")
-	MilliLiter.AddSymbols("cc", "ccm", "cm³", "cm3", "cm^3", "cm**3")
-
-	MicroLiter.AddAliases("cubic millimeter", "cubic millimetre")
-	MicroLiter.AddSymbols("mm³", "mm3", "mm^3", "mm**3")
-
-	FluidOunce.AddSymbols("floz", "fl. oz", "fl.oz", "oz. fl", "oz fl", "ozfl", "ozfl.")
-	CubicFoot.AddSymbols("cuft", "cu ft", "cft", "ft^3", "ft**3", "ft3")
-	CubicYard.AddSymbols("cuyd", "cu yd", "cyd", "yd^3", "yd**3", "yd3")
-	CubicInch.AddSymbols("cuin", "cu in", "cin", "in^3", "in**3", "in3")
-	CubicMile.AddSymbols("cumi", "cubmi", "mi^3", "mi**3", "mi3")
-	AcreFoot.AddSymbols("acft", "acreft", "acre-ft", "acre ft", "ac-ft")
+	NewRatioConversion(CubicKiloMeter, TeraLiter, 1)
+	NewRatioConversion(CubicHectoMeter, GigaLiter, 1)
+	NewRatioConversion(CubicDecaMeter, MegaLiter, 1)
+	NewRatioConversion(CubicMeter, KiloLiter, 1)
+	NewRatioConversion(CubicDeciMeter, Liter, 1)
+	NewRatioConversion(CubicCentiMeter, MilliLiter, 1)
+	NewRatioConversion(CubicMilliMeter, MicroLiter, 1)
 
 	NewRatioConversion(Quart, Liter, 1.1365225)
 	NewRatioConversion(Pint, Liter, 0.56826125)
@@ -85,4 +73,32 @@ func init() {
 	NewRatioConversion(FluidPint, Liter, 0.473176473)
 	NewRatioConversion(FluidGallon, Liter, 3.785411784)
 	NewRatioConversion(CustomaryFluidOunce, MilliLiter, 29.5735295625)
+
+	CubicMeter.AddAliases("cubic metre")
+	CubicMeter.AddSymbols("m3", "m^3", "m**3", "cum", "cbm", "CBM", "M3")
+
+	CubicDeciMeter.AddAliases("decimetre")
+	CubicDeciMeter.AddSymbols("dm3", "dm^3", "dm**3")
+
+	CubicKiloMeter.AddAliases("cubic kilometre")
+	CubicKiloMeter.AddSymbols("km3", "km^3", "km**3")
+
+	CubicHectoMeter.AddAliases("cubic hectometre")
+	CubicHectoMeter.AddSymbols("hm3", "hm^3", "hm**3", "mcm")
+
+	CubicDecaMeter.AddAliases("cubic decametre")
+	CubicDecaMeter.AddSymbols("dam3", "dam^3", "dam**3")
+
+	CubicCentiMeter.AddAliases("cubic centimetre")
+	CubicCentiMeter.AddSymbols("cc", "ccm", "cm3", "cm^3", "cm**3")
+
+	CubicMilliMeter.AddAliases("cubic millimetre")
+	CubicMilliMeter.AddSymbols("mm3", "mm^3", "mm**3")
+
+	FluidOunce.AddSymbols("floz", "fl. oz", "fl.oz", "oz. fl", "oz fl", "ozfl", "ozfl.")
+	CubicFoot.AddSymbols("cuft", "cu ft", "cft", "ft^3", "ft**3", "ft3")
+	CubicYard.AddSymbols("cuyd", "cu yd", "cyd", "yd^3", "yd**3", "yd3")
+	CubicInch.AddSymbols("cuin", "cu in", "cin", "in^3", "in**3", "in3")
+	CubicMile.AddSymbols("cumi", "cubmi", "mi^3", "mi**3", "mi3")
+	AcreFoot.AddSymbols("acft", "acreft", "acre-ft", "acre ft", "ac-ft")
 }

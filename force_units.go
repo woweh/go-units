@@ -1,7 +1,7 @@
 package units
 
 var (
-	Force = UnitOptionQuantity("force")
+	Force = Quantity("force")
 
 	Newton      = newUnit("newton", "N", Force, SI)
 	CentiNewton = Centi(Newton)
@@ -25,7 +25,7 @@ var (
 	ZettaNewton = Zetta(Newton)
 	YottaNewton = Yotta(Newton)
 
-	PoundForce = newUnit("pound force", "lbf", Force, BI, UnitOptionPlural(None, ""))
+	PoundForce = newUnit("pound force", "lbf", Force, BI, Plural(PluralNone))
 
 	Dyne = newUnit("dyne", "dyn", Force, CGS)
 
@@ -44,7 +44,6 @@ func init() {
 
 	// https://en.wikipedia.org/w/index.php?title=Poundal&oldid=1168735176
 	NewRatioConversion(Poundal, Newton, 0.138254954376)
-	Poundal.AddSymbols("lbf")
 
 	// https://en.wikipedia.org/w/index.php?title=Kilogram-force&oldid=1159132202
 	NewRatioConversion(KilogramForce, Newton, 9.80665)

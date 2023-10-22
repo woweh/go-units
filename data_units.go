@@ -14,8 +14,8 @@ const (
 )
 
 var (
-	Bi   = UnitOptionQuantity("bits")
-	Data = UnitOptionQuantity("bytes")
+	Bi   = Quantity("bits")
+	Data = Quantity("bytes")
 
 	Byte      = newUnit("byte", "B", Data)
 	KiloByte  = newUnit("kilobyte", "KB", Data)

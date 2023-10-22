@@ -1,0 +1,56 @@
+package units
+
+import "testing"
+
+func Test_VolumeFlowRate_Conversions(t *testing.T) {
+	conversionTests := []conversionTest{
+		{"cubic meter per second", "cubic meter per minute", "60"},
+		{"cubic meter per second", "cubic meter per hour", "3600"},
+		{"cubic meter per second", "cubic meter per day", "86400"},
+		{"cubic meter per second", "cubic decimeter per second", "1000"},
+		{"cubic meter per second", "cubic decimeter per minute", "60000"},
+		{"cubic meter per second", "cubic decimeter per hour", "3600000"},
+		{"cubic meter per second", "cubic decimeter per day", "86400000"},
+		{"cubic meter per second", "cubic centimeter per second", "1000000"},
+		{"cubic meter per second", "cubic centimeter per minute", "60000000"},
+		{"cubic meter per second", "cubic centimeter per hour", "3600000000"},
+		{"cubic meter per second", "cubic centimeter per day", "86400000000"},
+		{"cubic meter per second", "cubic inch per second", "61023.744095"},
+		{"cubic meter per second", "cubic inch per minute", "3661424.645684"},
+		{"cubic meter per second", "cubic inch per hour", "219685478.741036"},
+		{"cubic meter per second", "cubic inch per day", "5272451489.784869"},
+		{"cubic meter per second", "cubic foot per second", "35.314667"},
+		{"cubic meter per second", "cubic foot per minute", "2118.880003"},
+		{"cubic meter per second", "cubic foot per hour", "127132.800197"},
+		{"cubic meter per second", "cubic foot per day", "3051187.204737"},
+		{"cubic meter per second", "cubic yard per second", "1.307951"},
+		{"cubic meter per second", "cubic yard per minute", "78.477037"},
+		{"cubic meter per second", "cubic yard per hour", "4708.62223"},
+		{"cubic meter per second", "cubic yard per day", "113006.933509"},
+		{"cubic meter per minute", "cubic meter per second", "0.01666667"},
+		{"cubic meter per minute", "cubic meter per hour", "60"},
+		{"cubic meter per minute", "cubic meter per day", "1440"},
+		{"cubic meter per minute", "cubic decimeter per second", "16.666667"},
+		{"cubic meter per minute", "cubic decimeter per minute", "1000"},
+		{"cubic meter per minute", "cubic decimeter per hour", "60000"},
+		{"cubic meter per minute", "cubic decimeter per day", "1440000"},
+		{"cubic meter per minute", "cubic centimeter per second", "16666.666667"},
+		{"cubic meter per minute", "cubic centimeter per minute", "1000000"},
+		{"cubic meter per minute", "cubic centimeter per hour", "60000000"},
+		{"cubic meter per minute", "cubic centimeter per day", "1440000000"},
+		{"cubic meter per minute", "cubic inch per second", "1017.062402"},
+		{"cubic meter per minute", "cubic inch per minute", "61023.744095"},
+		{"cubic meter per minute", "cubic inch per hour", "3661424.645684"},
+		{"cubic meter per minute", "cubic inch per day", "87874191.496414"},
+		{"cubic meter per minute", "cubic foot per second", "0.588578"},
+		{"cubic meter per minute", "cubic foot per minute", "35.314667"},
+		{"cubic meter per minute", "cubic foot per hour", "2118.880003"},
+		{"cubic meter per minute", "cubic foot per day", "50853.120079"},
+		{"cubic meter per minute", "cubic yard per second", "0.02179918"},
+		{"cubic meter per minute", "cubic yard per minute", "1.307951"},
+		{"cubic meter per minute", "cubic yard per hour", "78.477037"},
+		{"cubic meter per minute", "cubic yard per day", "1883.448892"},
+	}
+
+	testConversions(t, conversionTests)
+}

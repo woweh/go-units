@@ -1,7 +1,7 @@
 package units
 
 var (
-	ElectricCharge = UnitOptionQuantity("electric charge")
+	ElectricCharge = Quantity("electric charge")
 
 	// SI unit metric
 	Coulomb      = newUnit("coulomb", "C", ElectricCharge, SI)
@@ -22,32 +22,23 @@ var (
 	FemtoCoulomb = Femto(Coulomb)
 	AttoCoulomb  = Atto(Coulomb)
 
-	AmpereHour      = newUnit("ampere-hour", "A·h", ElectricCharge, SI)
+	AmpereHour      = newUnit("ampere-hour", "A·h", ElectricCharge, SI, Symbols("A⋅h", "A*h", "A.h", "Ah", "AHr"))
 	KiloAmpereHour  = Kilo(AmpereHour)
 	MilliAmpereHour = Milli(AmpereHour)
 
-	AmpereMinute      = newUnit("ampere-minute", "A·min", ElectricCharge, SI)
+	AmpereMinute = newUnit(
+		"ampere-minute", "A·min", ElectricCharge, SI, Symbols("A⋅min", "A*min", "A.min", "Amin"),
+	)
 	KiloAmpereMinute  = Kilo(AmpereMinute)
 	MilliAmpereMinute = Milli(AmpereMinute)
 
-	AmpereSecond      = newUnit("ampere-second", "A·s", ElectricCharge, SI)
+	AmpereSecond      = newUnit("ampere-second", "A·s", ElectricCharge, SI, Symbols("A⋅s", "A*s", "A.s", "As"))
 	KiloAmpereSecond  = Kilo(AmpereSecond)
 	MilliAmpereSecond = Milli(AmpereSecond)
 )
 
 func init() {
 	NewRatioConversion(AmpereHour, Coulomb, 3600)
-	AmpereHour.AddSymbols("A⋅h", "A*h", "A.h", "Ah", "AHr")
-	KiloAmpereHour.AddSymbols("kA⋅h", "kA*h", "kA.h", "kAh", "kAHr")
-	MilliAmpereHour.AddSymbols("mA⋅h", "mA*h", "mA.h", "mAh", "mAHr")
-
 	NewRatioConversion(AmpereMinute, Coulomb, 60)
-	AmpereMinute.AddSymbols("A⋅min", "A*min", "A.min", "Amin")
-	KiloAmpereMinute.AddSymbols("kA⋅min", "kA*min", "kA.min", "kAmin")
-	MilliAmpereMinute.AddSymbols("mA⋅min", "mA*min", "mA.min", "mAmin")
-
 	NewRatioConversion(AmpereSecond, Coulomb, 1)
-	AmpereSecond.AddSymbols("A⋅s", "A*s", "A.s", "As")
-	KiloAmpereSecond.AddSymbols("kA⋅s", "kA*s", "kA.s", "kAs")
-	MilliAmpereSecond.AddSymbols("mA⋅s", "mA*s", "mA.s", "mAs")
 }

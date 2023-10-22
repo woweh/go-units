@@ -7,22 +7,22 @@ import "math"
 
 var (
 	// Slope is a unit option for slope units, also known as gradient.
-	Slope = UnitOptionQuantity("slope")
+	Slope = Quantity("slope")
 
 	// SlopeValue m = rise (delta h) / run (distance) = y/x = tan(alpha)
 	// In the case of a vertical line, the slope is infinite.
 	// In the case of a horizontal line, the slope is zero.
-	SlopeValue = newUnit("slope value", "", Slope, UnitOptionPlural(None, ""))
+	SlopeValue = newUnit("slope value", "", Slope, Plural(PluralNone))
 	// SlopeRatio is a ratio of one part rise to so many parts run (e.g. 1:10). == SlopeInverseValue
-	SlopeRatio = newUnit("slope ratio", "", Slope, UnitOptionPlural(None, ""))
+	SlopeRatio = newUnit("slope ratio", "", Slope, Plural(PluralNone))
 	// SlopeInverseRatio is a ratio of many parts run to one part rise (e.g. 10:1).
-	SlopeInverseRatio = newUnit("inverse slope ratio", "", Slope, UnitOptionPlural(None, ""))
+	SlopeInverseRatio = newUnit("inverse slope ratio", "", Slope, Plural(PluralNone))
 	// SlopeDegree is the angle of inclination in degrees (e.g. 45°).
-	SlopeDegree = newUnit("slope degree", "", Slope, UnitOptionPlural(None, ""))
+	SlopeDegree = newUnit("slope degree", "", Slope, Plural(PluralNone))
 	// SlopePercent 100 * m = 100 * (rise/run) = 100 * tan(α)
-	SlopePercent = newUnit("slope percent", "", Slope, UnitOptionPlural(None, ""))
+	SlopePercent = newUnit("slope percent", "", Slope, Plural(PluralNone))
 	// SlopePermille 1000 * m = 1000 * (rise/run) = 1000 * tan(α)
-	SlopePermille = newUnit("slope permille", "", Slope, UnitOptionPlural(None, ""))
+	SlopePermille = newUnit("slope permille", "", Slope, Plural(PluralNone))
 )
 
 func init() {
@@ -39,7 +39,7 @@ func init() {
 	NewConversionFromFn(SlopeDegree, SlopeValue, slopeDegreeToValue, "math.Tan(x * math.Pi / 180)")
 
 	NewRatioConversion(SlopeValue, SlopePercent, 100)
-	
+
 	NewRatioConversion(SlopeValue, SlopePermille, 1000)
 }
 

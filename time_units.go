@@ -1,7 +1,7 @@
 package units
 
 var (
-	Time = UnitOptionQuantity("time")
+	Time = Quantity("time")
 
 	Second      = newUnit("second", "s", Time, SI)
 	ExaSecond   = Exa(Second)

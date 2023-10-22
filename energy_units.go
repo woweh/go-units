@@ -1,7 +1,7 @@
 package units
 
 var (
-	Energy = UnitOptionQuantity("energy")
+	Energy = Quantity("energy")
 
 	// metric
 	Joule      = newUnit("joule", "J", Energy, SI)
@@ -20,7 +20,11 @@ var (
 	FemtoJoule = Femto(Joule)
 	AttoJoule  = Atto(Joule)
 
-	WattHour     = newUnit("watt-hour", "Wh", Energy)
+	WattHour = newUnit(
+		"watt-hour", "Wh", Energy, SI,
+		Aliases("volt ampere hour", "volt ampere reactive hour", "volt ampere hour (reactive)"),
+		Symbols("VAh", "varh", "V⋅A⋅hr", "V.A.h", "V.A{reactive}.h", "V⋅A{reactive}⋅hr"),
+	)
 	KiloWattHour = Kilo(WattHour)
 	MegaWattHour = Mega(WattHour)
 	GigaWattHour = Giga(WattHour)
@@ -52,21 +56,4 @@ func init() {
 
 	// 1 watt hour = 1 Volt Ampere Hour = 1 Volt Ampere Reactive Hour = 3600 joules
 	NewRatioConversion(WattHour, Joule, 3600)
-	WattHour.AddAliases("Volt Ampere Hour", "Volt Ampere Reactive Hour")
-	WattHour.AddSymbols("VAh", "varh", "V⋅A⋅hr", "V.A.h", "V.A{reactive}.h", "V⋅A{reactive}⋅hr")
-
-	KiloWattHour.AddAliases("Kilovolt Ampere Hour", "Kilovolt Ampere Reactive Hour")
-	KiloWattHour.AddSymbols("kVAh", "kvarh", "kV⋅A⋅hr", "kV.A.h", "kV.A{reactive}.h", "kV⋅A{reactive}⋅hr")
-
-	MegaWattHour.AddAliases("Megavolt Ampere Hour", "Megavolt Ampere Reactive Hour")
-	MegaWattHour.AddSymbols("MVAh", "Mvarh", "MV⋅A⋅hr", "MV.A.h", "MV.A{reactive}.h", "MV⋅A{reactive}⋅hr")
-
-	GigaWattHour.AddAliases("Gigavolt Ampere Hour", "Gigavolt Ampere Reactive Hour")
-	GigaWattHour.AddSymbols("GVAh", "Gvarh", "GV⋅A⋅hr", "GV.A.h", "GV.A{reactive}.h", "GV⋅A{reactive}⋅hr")
-
-	TeraWattHour.AddAliases("Teravolt Ampere Hour", "Teravolt Ampere Reactive Hour")
-	TeraWattHour.AddSymbols("TVAh", "Tvarh", "TV⋅A⋅hr", "TV.A.h", "TV.A{reactive}.h", "TV⋅A{reactive}⋅hr")
-
-	PetaWattHour.AddAliases("Petavolt Ampere Hour", "Petavolt Ampere Reactive Hour")
-	PetaWattHour.AddSymbols("PVAh", "Pvarh", "PV⋅A⋅hr", "PV.A.h", "PV.A{reactive}.h", "PV⋅A{reactive}⋅hr")
 }

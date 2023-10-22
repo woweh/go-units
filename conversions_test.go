@@ -30,17 +30,19 @@ func testConversions(t *testing.T, convTests []conversionTest) {
 				if err != nil {
 					t.Fatal(err.Error())
 				}
-				res := MustConvertFloat(1.0, u1, u2)
+				converted := MustConvertFloat(1.0, u1, u2)
+				convStr := converted.Fmt(fmtOpts)
 				assert.Equal(
-					t, cTest.val, res.Fmt(fmtOpts),
+					t, cTest.val, convStr,
 					"%s -> %s conversion test failed", cTest.from, cTest.to,
 				)
+				t.Logf("%s -> %s conversion: %s", cTest.from, cTest.to, convStr)
 
 				// test inverse conversion
-				ires := MustConvertFloat(res.Float(), u2, u1)
+				inverse := MustConvertFloat(converted.Float(), u2, u1)
 				assert.Equal(
-					t, 1.0, roundFloat(ires.Float(), 12),
-					"%s <- %s conversion test failed", cTest.from, cTest.to,
+					t, 1.0, roundFloat(inverse.Float(), 12),
+					"%s <- %s inverse conversion test failed", cTest.from, cTest.to,
 				)
 			},
 		)

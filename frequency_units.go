@@ -3,7 +3,7 @@ package units
 import "math"
 
 var (
-	Frequency = UnitOptionQuantity("frequency")
+	Frequency = Quantity("frequency")
 
 	Hertz      = newUnit("hertz", "Hz", Frequency, SI)
 	DecaHertz  = Deca(Hertz)

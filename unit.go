@@ -6,13 +6,11 @@ import (
 	"strings"
 )
 
-// PluralType is the type of customPlural name for a unit
-type PluralType int
-
 const (
-	None PluralType = iota
-	Auto
-	Custom
+	// PluralNone is a keyword for a unit that has no plural
+	PluralNone = "<|_none_|>"
+	// PluralAuto is a keyword for a unit that has an auto-generated plural
+	PluralAuto = "<|_auto_|>"
 )
 
 // UnitSystem is a system of units
@@ -47,17 +45,17 @@ var (
 	//----------------------------------------------------------------------------------------------
 
 	// SI is the International System of Units
-	SI = UnitOptionSystem(SiSystem)
+	SI = System(SiSystem)
 	// BI is the British Imperial system of units
-	BI = UnitOptionSystem(BiSystem)
+	BI = System(BiSystem)
 	// US is the United States customary system of units
-	US = UnitOptionSystem(UsSystem)
+	US = System(UsSystem)
 	// IEC is the International Electrotechnical Commission system of units
-	IEC = UnitOptionSystem(IecSystem)
+	IEC = System(IecSystem)
 	// CGS is the centimeter-gram-second system of units
-	CGS = UnitOptionSystem(CgsSystem)
+	CGS = System(CgsSystem)
 	// MKpS is the MKpS system of units (from French mètre–kilogramme-poids–seconde)
-	MKpS = UnitOptionSystem(MKpSSystem)
+	MKpS = System(MKpSSystem)
 	//----------------------------------------------------------------------------------------------
 
 	// unitMap is a map of all registered units.
@@ -76,10 +74,8 @@ type Unit struct {
 	Symbol string
 	// Quantity is the quantity label for which this unit belongs, e.g. "length" or "area"
 	Quantity UnitQuantity
-	// pluralType is the type of customPlural name for this unit, either "none", "auto", or "custom"
-	pluralType PluralType
-	// customPlural is the customPlural name for this unit, either "none", "auto", or a specific customPlural name
-	customPlural string
+	// plural is the plural name for this unit, either PluralNone, PluralAuto, or a specific plural name
+	plural string
 	// aliases are additional names, translations, spellings that this unit may be referred to as,
 	// e.g., "vierkante meter" for "square meter".
 	// aliases are case-insensitive, like the Name.
@@ -109,10 +105,9 @@ func NewUnit(name, symbol string, opts ...UnitOption) (*Unit, error) {
 	}
 
 	u := &Unit{
-		Name:         name,
-		Symbol:       symbol,
-		pluralType:   Auto,
-		customPlural: "",
+		Name:   name,
+		Symbol: symbol,
+		plural: PluralAuto,
 	}
 
 	for _, opt := range opts {
@@ -143,7 +138,7 @@ func newUnit(name, symbol string, opts ...UnitOption) *Unit {
 // Names and aliases are NOT case-sensitive!
 func (u *Unit) Names() []string {
 	names := []string{u.Name}
-	if u.pluralType == Custom {
+	if u.plural != PluralNone && u.plural != PluralAuto {
 		names = append(names, u.PluralName())
 	}
 	return append(names, u.aliases...)
@@ -267,15 +262,15 @@ func (u *Unit) AddSymbols(symbols ...string) *AddResult {
 // System returns the system of units this Unit belongs to, if any
 func (u *Unit) System() UnitSystem { return u.system }
 
-// PluralName returns the customPlural name for this unit
+// PluralName returns the plural name for this unit
 func (u *Unit) PluralName() string {
-	switch u.pluralType {
-	case None:
+	switch u.plural {
+	case PluralNone:
 		return u.Name
-	case Auto:
+	case PluralAuto:
 		return u.Name + "s"
-	default: // custom customPlural name
-		return u.customPlural
+	default: // custom plural name
+		return u.plural
 	}
 }
 
@@ -306,34 +301,53 @@ func (u *Unit) CsvLine() string {
 	return line
 }
 
+// ConvertTo converts the provided value from this unit to the provided unit
+func (u *Unit) ConvertTo(value float64, to *Unit) (Value, error) {
+	return ConvertFloat(value, u, to)
+}
+
 // UnitOption defines an option that may be passed to newUnit
 type UnitOption func(*Unit) *Unit
 
-// UnitOptionPlural sets the PluralType and optional customPlural name for this unit
-func UnitOptionPlural(pt PluralType, s string) UnitOption {
+// Plural sets the plural name for this unit,
+// either PluralNone, PluralAuto, or a custom plural unit name
+//   - PluralNone - labels will use the unmodified unit name in a plural context
+//   - PluralAuto - labels for this unit will be created with a plural suffix when appropriate (default)
+func Plural(s string) UnitOption {
 	return func(u *Unit) *Unit {
-		u.pluralType = pt
-		if pt == Custom {
-			u.customPlural = s
-		} else {
-			u.customPlural = ""
-		}
+		u.plural = s
 		return u
 	}
 }
 
-// UnitOptionSystem sets the system of units for which this Unit belongs
-func UnitOptionSystem(s UnitSystem) UnitOption {
+// System sets the system of units for which this Unit belongs
+func System(s UnitSystem) UnitOption {
 	return func(u *Unit) *Unit {
 		u.system = s
 		return u
 	}
 }
 
-// UnitOptionQuantity sets a quantity label for which this Unit belongs
-func UnitOptionQuantity(s UnitQuantity) UnitOption {
+// Quantity sets a quantity label for which this Unit belongs
+func Quantity(s UnitQuantity) UnitOption {
 	return func(u *Unit) *Unit {
 		u.Quantity = s
+		return u
+	}
+}
+
+// Aliases sets the aliases for this Unit
+func Aliases(aliases ...string) UnitOption {
+	return func(u *Unit) *Unit {
+		u.AddAliases(aliases...)
+		return u
+	}
+}
+
+// Symbols sets the symbols for this Unit
+func Symbols(symbols ...string) UnitOption {
+	return func(u *Unit) *Unit {
+		u.AddSymbols(symbols...)
 		return u
 	}
 }

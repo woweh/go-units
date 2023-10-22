@@ -72,16 +72,29 @@ func (mag magnitude) makeUnit(base *Unit, addOpts ...UnitOption) *Unit {
 	// set system to metric by default
 	opts := []UnitOption{SI}
 
+	// create prefixed aliases if needed
+	for _, alias := range base.aliases {
+		magAlias := mag.Prefix + alias
+		opts = append(opts, Aliases(magAlias))
+	}
+
+	// create prefixed symbols if needed
+	for _, symbol := range base.symbols {
+		magSymbol := mag.Symbol + symbol
+		opts = append(opts, Symbols(magSymbol))
+	}
+
 	// append any supplemental options
 	opts = append(opts, addOpts...)
 
 	// append quantity name opt
-	opts = append(opts, UnitOptionQuantity(base.Quantity))
+	opts = append(opts, Quantity(base.Quantity))
 
 	u := newUnit(name, symbol, opts...)
 
 	// only create conversions to and from base unit
 	ratio := 1.0 * math.Pow(10.0, mag.Power)
+
 	NewRatioConversion(u, base, ratio)
 
 	return u

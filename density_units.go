@@ -1,7 +1,7 @@
 package units
 
 var (
-	Density = UnitOptionQuantity("density")
+	Density = Quantity("density")
 
 	// metric
 	GramPerCubicCentimeter     = newUnit("gram per cubic centimeter", "g/cm³", Density, SI)

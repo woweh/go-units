@@ -1,7 +1,7 @@
 package units
 
 var (
-	ElectricCurrent = UnitOptionQuantity("electric current")
+	ElectricCurrent = Quantity("electric current")
 
 	// metric
 	Ampere      = newUnit("ampere", "A", ElectricCurrent, SI)
