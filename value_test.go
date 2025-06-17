@@ -19,6 +19,7 @@ func TestValue_AsBaseUnit(t *testing.T) {
 		{"non metric", NewValue(1, Foot), NewValue(1, Foot)},
 		{"unequal to one", NewValue(2.5, KiloOhm), NewValue(2500, Ohm)},
 		{"base", NewValue(1000, Hertz), NewValue(1000, Hertz)},
+		{"data", NewValue(2.1, KiloByte), NewValue(2100, Byte)},
 	}
 
 	for _, tst := range tests {
@@ -44,6 +45,7 @@ func TestValue_Humanize(t *testing.T) {
 		{"unequal to one", NewValue(2500, Ohm), NewValue(2.5, KiloOhm)},
 		{"multiple steps", NewValue(50000000, DeciHertz), NewValue(5, MegaHertz)},
 		{"only in steps 3", NewValue(200, Hertz), NewValue(200, Hertz)},
+		{"data", NewValue(2048, Byte), NewValue(2.048, KiloByte)},
 	}
 
 	for _, tst := range tests {
