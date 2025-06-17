@@ -151,7 +151,7 @@ Many of them provide explanations and formulae,
   1) unit.newUnit - the private, internal factory to create new units => find duplicate names or symbols at compile time
   2) value.MustConvert
   3) units.MustConvertFloat
-- Change the signature of `NewUnit`, return `(*Unit, error)` instead of `Unit`.
+- Change the signature of `NewUnit`, return `(Unit, error)` instead of `Unit`.
 - Extend the Unit struct to support alternative symbols.
 - Symbols are case-sensitive.
 - Names, symbols and aliases must be unique!  

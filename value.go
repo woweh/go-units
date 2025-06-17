@@ -76,7 +76,7 @@ func (v Value) Convert(to Unit) (Value, error) {
 		return v, nil
 	}
 
-	return ConvertFloat(v.val, &v.unit, &to)
+	return ConvertFloat(v.val, v.unit, to)
 }
 
 // Trim trailing zeros from formatted float string
