@@ -67,6 +67,7 @@ func Test_FindMaxUnitForExp(t *testing.T) {
 		{"Simple, not existing prefix", 5, KiloHertz, Hertz},
 		{"Partially defined, over", 9, MegaVoltAmpere, VoltAmpere},
 		{"Partially defined negative", -10, VoltAmpere, VoltAmpere},
+		{"Data", 3, KiloByte, Byte},
 	}
 
 	for _, tst := range tests {
