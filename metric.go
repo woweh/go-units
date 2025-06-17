@@ -64,6 +64,49 @@ func Yocto(b Unit, o ...UnitOption) Unit  { return mags["yocto"].makeUnit(b, o..
 func Ronto(b Unit, o ...UnitOption) Unit  { return mags["ronto"].makeUnit(b, o...) }
 func Quecto(b Unit, o ...UnitOption) Unit { return mags["quecto"].makeUnit(b, o...) }
 
+// magnitudeForExp returns the magnitude for the given exponent.
+// If such a magnitude is not defined, fall back to the "base magnitude", i.e., with Power 0.
+func magnitudeForExp(exp float64) magnitude {
+	for _, mag := range mags {
+		if mag.Power == exp {
+			return mag
+		}
+	}
+
+	// if in doubt: fall back to base case
+	return magnitude{
+		Symbol: "",
+		Prefix: "",
+		Power:  0,
+	}
+}
+
+// findMaxUnitForExp returns the largest Unit that can be created from the given Unit
+// and exponent. If such a Unit is not defined, return the passed unit unchanged.
+func findMaxUnitForExp(u Unit, exp float64) Unit {
+	if exp == 0 || !u.IsMetric() {
+		return u
+	}
+	mag := magnitudeForExp(exp)
+	if mag.Power != 0 {
+		name := mag.Prefix + u.Name
+		maxU, ok := unitMap[name]
+		if ok {
+			// positive case -> found something
+			return maxU
+		}
+	}
+
+	// Unit not found -- scale back
+	if exp > 0 {
+		exp--
+	} else {
+		exp++
+	}
+	return findMaxUnitForExp(u, exp)
+
+}
+
 // makeUnit creates a magnitude unit and conversion given a base unit
 func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 	name := mag.Prefix + base.Name
@@ -91,6 +134,7 @@ func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 	opts = append(opts, Quantity(base.Quantity))
 
 	u := newUnit(name, symbol, opts...)
+	u.base = base
 
 	// only create conversions to and from base unit
 	ratio := 1.0 * math.Pow(10.0, mag.Power)

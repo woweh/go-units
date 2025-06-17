@@ -79,6 +79,41 @@ func (v Value) Convert(to Unit) (Value, error) {
 	return ConvertFloat(v.val, v.unit, to)
 }
 
+// AsBaseUnit converts this Value to its base unit (i.e., 2km to 2000m).
+func (v Value) AsBaseUnit() Value {
+	if !v.unit.IsMetric() {
+		return v
+	}
+
+	// we can use "Must" here because we know that the unit is metric
+	// and then this conversion is defined.
+	return v.MustConvert(v.unit.BaseUnit())
+}
+
+// Humanize converts this Value to a human-readable format (i.e., 2000m to 2km).
+func (v Value) Humanize() Value {
+	if !v.unit.IsMetric() || v.val == 0 {
+		return v
+	}
+
+	// Algorithm taken from go-humanize
+	baseV := v.AsBaseUnit()
+	mag := math.Abs(baseV.val)
+	exponent := math.Floor(math.Log10(mag))
+	exponent = math.Floor(exponent/3) * 3
+
+	value := mag / math.Pow(10, exponent)
+
+	// Handle special case where value is exactly 1000.0
+	// Should return 1 M instead of 1000 k
+	if value == 1000.0 {
+		exponent += 3
+	}
+
+	scaledUnit := findMaxUnitForExp(baseV.unit, exponent)
+	return baseV.MustConvert(scaledUnit)
+}
+
 // Trim trailing zeros from formatted float string
 func trimTrailing(s string) string {
 	if !strings.ContainsRune(s, '.') {
