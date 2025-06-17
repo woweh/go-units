@@ -85,6 +85,8 @@ type Unit struct {
 	symbols []string
 	// system is the system of units this Unit belongs to, if any.
 	system UnitSystem
+	// base is the base unit for metric units
+	base *Unit
 }
 
 // NewUnit registers a new Unit within the package, returning the newly created Unit.
@@ -306,6 +308,16 @@ func (u *Unit) ConvertTo(value float64, to *Unit) (Value, error) {
 	return ConvertFloat(value, u, to)
 }
 
+// IsMetric returns true if this unit is metric.
+func (u *Unit) IsMetric() bool {
+	return u.base != nil
+}
+
+// BaseUnit returns the base unit for metric units, or nil for non-metric units.
+func (u *Unit) BaseUnit() *Unit {
+	return u.base
+}
+
 // UnitOption defines an option that may be passed to newUnit
 type UnitOption func(*Unit) *Unit
 
@@ -350,6 +362,12 @@ func Symbols(symbols ...string) UnitOption {
 		u.AddSymbols(symbols...)
 		return u
 	}
+}
+
+// BaseUnit marks this unit as the base unit for metric units
+var BaseUnit UnitOption = func(u *Unit) *Unit {
+	u.base = u
+	return u
 }
 
 // UnitList is a slice of Units. UnitList implements sort.Interface
