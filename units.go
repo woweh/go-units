@@ -13,7 +13,7 @@ import (
 const CsvHeader = "Name,Symbol,PluralName,Quantity,System,Aliases & Symbols"
 
 // All returns all registered Units, sorted by name and quantity
-func All() []*Unit {
+func All() []Unit {
 	units := make(UnitList, 0, len(unitMap))
 	for _, u := range unitMap {
 		units = append(units, u)
@@ -23,7 +23,7 @@ func All() []*Unit {
 }
 
 // MustConvertFloat converts a provided float from one Unit to another, PANICKING on error
-func MustConvertFloat(x float64, from, to *Unit) Value {
+func MustConvertFloat(x float64, from, to Unit) Value {
 	val, err := ConvertFloat(x, from, to)
 	if err != nil {
 		panic(err)
@@ -32,10 +32,10 @@ func MustConvertFloat(x float64, from, to *Unit) Value {
 }
 
 // ConvertFloat converts a provided float from one Unit to another
-func ConvertFloat(x float64, from, to *Unit) (Value, error) {
+func ConvertFloat(x float64, from, to Unit) (Value, error) {
 	// allow converting to same unit
 	if from == to {
-		return Value{x, *to}, nil
+		return Value{x, to}, nil
 	}
 
 	// find conversion path
@@ -49,11 +49,11 @@ func ConvertFloat(x float64, from, to *Unit) (Value, error) {
 		x = c.Fn(x)
 	}
 
-	return Value{x, *to}, nil
+	return Value{x, to}, nil
 }
 
 // Find a Unit matching the given name, symbol or alias
-func Find(s string) (*Unit, error) {
+func Find(s string) (Unit, error) {
 
 	// first try case-sensitive match on name
 	u, ok := unitMap[s]
@@ -89,7 +89,7 @@ func Find(s string) (*Unit, error) {
 }
 
 // matchesNameOrAlias returns true if the provided string matches the provided Unit's name or aliases
-func matchesNameOrAlias(s string, u *Unit, matchCase bool) bool {
+func matchesNameOrAlias(s string, u Unit, matchCase bool) bool {
 	for _, name := range u.Names() {
 		if matchCase {
 			if name == s {
@@ -106,7 +106,7 @@ func matchesNameOrAlias(s string, u *Unit, matchCase bool) bool {
 }
 
 // matchesSymbol returns true if the provided string matches the provided Unit's symbol
-func matchesSymbol(s string, u *Unit) bool {
+func matchesSymbol(s string, u Unit) bool {
 	// symbols are case-sensitive!
 	for _, sym := range u.Symbols() {
 		if sym == s {
@@ -120,7 +120,7 @@ func matchesSymbol(s string, u *Unit) bool {
 func GetCsv() []string {
 
 	// unitMap contains 'duplicate' units, because they are registered multiple times with different names/aliases
-	uniqueUnits := make(map[string]*Unit)
+	uniqueUnits := make(map[string]Unit)
 	for _, u := range unitMap {
 		uniqueUnits[u.Name] = u
 	}
