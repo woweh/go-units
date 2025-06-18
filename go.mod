@@ -1,4 +1,4 @@
-module github.com/woweh/go-units
+module github.com/Necoro/go-units
 
 go 1.24
 

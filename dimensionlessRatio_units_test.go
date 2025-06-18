@@ -3,7 +3,7 @@ package units
 import (
 	"testing"
 
-	ns "github.com/woweh/go-units/numericstring"
+	ns "github.com/Necoro/go-units/numericstring"
 )
 
 func Test_Ratio_Conversions(t *testing.T) {

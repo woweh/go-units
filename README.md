@@ -23,7 +23,7 @@ package main
 
 import (
 	"fmt"
-	u "github.com/woweh/go-units"
+	u "github.com/Necoro/go-units"
 )
 
 func main() {

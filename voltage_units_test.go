@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	ns "github.com/woweh/go-units/numericstring"
+	ns "github.com/Necoro/go-units/numericstring"
 )
 
 func Test_Voltage_Conversions(t *testing.T) {
