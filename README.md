@@ -1,4 +1,4 @@
-[![godocs.io](https://godocs.io/github.com/Necoro/go-units?status.svg)](https://godocs.io/github.com/Necoro/go-units)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Necoro/go-units.svg)](https://pkg.go.dev/github.com/Necoro/go-units)
 
 # go-units
 
