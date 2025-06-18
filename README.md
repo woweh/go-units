@@ -1,18 +1,15 @@
-[![godocs.io](https://godocs.io/github.com/bcicen/go-units?status.svg)](https://godocs.io/github.com/bcicen/go-units)
+[![godocs.io](https://godocs.io/github.com/Necoro/go-units?status.svg)](https://godocs.io/github.com/Necoro/go-units)
 
 # go-units
 
 Go library for manipulating and converting between various units of measurement.
 
-This is a fork of [bcicen's go-units](https://github.com/bcicen/go-units) package, with significant breaking changes.  
-You find a [list of breaking changes](#breaking-changes-compared-to-bcicens-version) at the bottom of this page.
-
+This is a fork of [woweh's go-units](https://github.com/woweh/go-units), which in turn is a major fork of [bcicen's go-units](https://github.com/bcicen/go-units).
 
 ## Principles
 - Name and Aliases are case-***in***sensitive  
 - Symbols are case-*sensitive* (e.g. MegaMeter Mm <> MilliMeter mm)
 - Names, symbols and aliases must be unique! => Looking up a unit must return 1 exact match!
-
 
 ## Usage
 
@@ -113,58 +110,3 @@ For ratio conversions you don't need to specify the inverse conversions.
 
 The metric factory methods, like `u.Kilo`, will create the new unit with metric prefixes for name and symbols, and will register ratio conversions between the base unit and the derived metric unit.  
 There is no need to separately specify the ratio conversion.
-
-
-### Known Issues
-Unicode symbols (e.g., `㎡`, `㎢`) can cause panics.  
-TODO: Investigate and debug.
-
-
-### References / Further Reading
-The National Institute of Standards and Technology (NIST) - The NIST Guide for the use of the International System of Units - Appendix B, subsections B.8 Factors for Units Listed Alphabetically and B.9 Factors for units listed by kind of quantity or field of science.
-- https://physics.nist.gov/cuu/pdf/sp811.pdf
-- https://www.nist.gov/pml/special-publication-811
-- https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-6-rules-and-style-conventions-printing-and-using
-- https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8
-- https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9
-
-Wikipedia contributors. "Conversion of units" Wikipedia, The Free Encyclopedia. Wikipedia, The Free Encyclopedia.
-- https://en.wikipedia.org/wiki/Conversion_of_units
-
-https://qudt.org/  
-The QUDT, or 'Quantity, Unit, Dimension and Type' collection of ontologies define the base classes properties, and restrictions used for modeling physical quantities, units of measure, and their dimensions in various measurement systems. QUDT provides a unified model of measurable quantities, units for measuring different kinds of quantities, the numerical values of quantities in different units of measure and the data structures and data types used to store and manipulate these objects in software. This OWL schema is a foundation for a basic treatment of units. Originally developed by TopQuadrant for the NASA Exploration Initiatives Ontology Models (NExIOM) project, they now form the basis of the NASA QUDT Handbook. QUDT aims to improve interoperability of data and the specification of information structures through industry standards for Units of Measure, Quantity Kinds, Dimensions and Data Types.
-
-There are many online calculators and converters that you can use to cross-check conversions.
-Many of them provide explanations and formulae,
-- https://www.engineeringtoolbox.com/
-- https://www.inchcalculator.com/
-- https://citizenmaths.com/
-- https://www.translatorscafe.com/unit-converter/en-US/
-- https://www.unitmeasurement.com/
-- https://www.theunitconverter.com/
-- https://www.justintools.com/
-- Furey, Edward "Conversion Calculators" at https://www.calculatorsoup.com/calculators/conversions/ from CalculatorSoup, https://www.calculatorsoup.com - Online Calculators
-
-### Breaking Changes compared to bcicen's version
-- Use unit pointers in the unitMap, units have a shared state.
-- Don't panic! AT least, try not to panic. There are still three methods that do panic:
-  1) unit.newUnit - the private, internal factory to create new units => find duplicate names or symbols at compile time
-  2) value.MustConvert
-  3) units.MustConvertFloat
-- Change the signature of `NewUnit`, return `(Unit, error)` instead of `Unit`.
-- Extend the Unit struct to support alternative symbols.
-- Symbols are case-sensitive.
-- Names, symbols and aliases must be unique!  
-  Before, only names had to be unique.
-- Add types for UnitSystem and UnitQuantity
-
-### Changes and Enhancements
-- Many additional units
-- Add methods to add aliases and symbols to units
-- Add methods to check if a unit has an alias or unit
-- Add methods to get a list of all unit names, symbols and aliases as CSV (> `units.GetCsv()`)
-- Moved conversion tests into separate, per quantity, tests
-
-### Ideas
-- support more units
-- rework to be fully [QUDT](https://qudt.org/) compliant, inspiration: https://github.com/qudtlib/qudtlib-java
