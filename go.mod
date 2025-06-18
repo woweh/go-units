@@ -1,9 +1,10 @@
 module github.com/woweh/go-units
 
-go 1.21
+go 1.24
+
+toolchain go1.24.3
 
 require (
-	github.com/Knetic/govaluate v3.0.0+incompatible
 	github.com/bcicen/bfstree v1.0.0
 	github.com/stretchr/testify v1.8.4
 )
