@@ -33,16 +33,8 @@ func (v Value) String() string { return v.Fmt(DefaultFmtOptions) }
 
 // Fmt returns a string representation of this Value, using the provided FmtOptions
 func (v Value) Fmt(opts FmtOptions) string {
-	var label string
-
-	if opts.Short {
-		label = v.unit.Symbol
-	} else {
-		label = v.unit.Name
-		// make label plural if needed
-		if v.val > 1.0 {
-			label = v.unit.PluralName()
-		}
+	if v.unit == nil {
+		opts.Label = false
 	}
 
 	prec := opts.Precision
@@ -56,6 +48,18 @@ func (v Value) Fmt(opts FmtOptions) string {
 
 	if !opts.Label {
 		return vstr
+	}
+
+	var label string
+
+	if opts.Short {
+		label = v.unit.Symbol
+	} else {
+		label = v.unit.Name
+		// make label plural if needed
+		if v.val > 1.0 {
+			label = v.unit.PluralName()
+		}
 	}
 	return vstr + " " + label
 }
@@ -72,7 +76,7 @@ func (v Value) MustConvert(to Unit) Value {
 // Convert converts this Value to another Unit
 func (v Value) Convert(to Unit) (Value, error) {
 	// allow converting to same unit
-	if v.unit.Name == to.Name {
+	if v.unit == nil || v.unit.Name == to.Name {
 		return v, nil
 	}
 
@@ -81,7 +85,7 @@ func (v Value) Convert(to Unit) (Value, error) {
 
 // AsBaseUnit converts this Value to its base unit (i.e., 2km to 2000m).
 func (v Value) AsBaseUnit() Value {
-	if !v.unit.IsMetric() {
+	if v.unit == nil || !v.unit.IsMetric() {
 		return v
 	}
 
@@ -92,7 +96,7 @@ func (v Value) AsBaseUnit() Value {
 
 // Humanize converts this Value to a human-readable format (i.e., 2000m to 2km).
 func (v Value) Humanize() Value {
-	if !v.unit.IsMetric() || v.val == 0 {
+	if v.val == 0 || v.unit == nil || !v.unit.IsMetric() {
 		return v
 	}
 
