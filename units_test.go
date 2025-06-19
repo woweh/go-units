@@ -32,7 +32,7 @@ func Test_UnitLookup(t *testing.T) {
 	for _, name := range aggrNames() {
 		u, err := Find(name)
 		if err != nil {
-			t.Errorf(err.Error())
+			t.Error(err.Error())
 			continue
 		}
 		t.Logf("found unit by name: %s (%s)", name, u.Name)
