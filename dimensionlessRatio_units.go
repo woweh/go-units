@@ -4,9 +4,9 @@ var (
 	DimensionlessRatio = Quantity("dimensionless ratio")
 
 	Fraction         = newUnit("fraction", "", DimensionlessRatio, Plural(PluralNone))
-	Percent          = newUnit("percent", "", DimensionlessRatio, Plural(PluralNone))
-	Permille         = newUnit("permille", "", DimensionlessRatio, Plural(PluralNone))
-	PartsPerMillion  = newUnit("partsPerMillion", "", DimensionlessRatio, Plural(PluralNone))
+	Percent          = newUnit("percent", "%", DimensionlessRatio, Plural(PluralNone))
+	Permille         = newUnit("permille", "‰", DimensionlessRatio, Plural(PluralNone))
+	PartsPerMillion  = newUnit("partsPerMillion", "ppm", DimensionlessRatio, Plural(PluralNone))
 	PartsPerBillion  = newUnit("partsPerBillion", "", DimensionlessRatio, Plural(PluralNone))
 	PartsPerTrillion = newUnit("partsPerTrillion", "", DimensionlessRatio, Plural(PluralNone))
 )
