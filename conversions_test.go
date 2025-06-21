@@ -17,7 +17,7 @@ type conversionTest struct {
 }
 
 func testConversions(t *testing.T, convTests []conversionTest) {
-	fmtOpts := FmtOptions{false, false, 6}
+	fmtOpts := FmtOptions{false, false, 6, true}
 	for _, cTest := range convTests {
 		label := fmt.Sprintf("%s <-> %s conversion", cTest.from, cTest.to)
 		t.Run(

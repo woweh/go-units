@@ -6,12 +6,18 @@ import (
 	"strings"
 )
 
-var DefaultFmtOptions = FmtOptions{true, false, 6}
+var DefaultFmtOptions = FmtOptions{
+	Label:              true,
+	Short:              false,
+	Precision:          6,
+	TrimTrailingZeroes: true,
+}
 
 type FmtOptions struct {
-	Label     bool // if false, unit label/symbol will be omitted
-	Short     bool // if true, use unit shortname or symbol
-	Precision int  // maximum meaningful precision to truncate value
+	Label              bool // if false, unit label/symbol will be omitted
+	Short              bool // if true, use unit shortname or symbol
+	Precision          int  // maximum meaningful precision to truncate value
+	TrimTrailingZeroes bool // trim trailing zeroes
 }
 
 type Value struct {
@@ -44,7 +50,9 @@ func (v Value) Fmt(opts FmtOptions) string {
 	}
 
 	vstr := strconv.FormatFloat(v.val, 'f', prec, 64)
-	vstr = trimTrailing(vstr)
+	if opts.TrimTrailingZeroes {
+		vstr = trimTrailing(vstr)
+	}
 
 	if !opts.Label {
 		return vstr
