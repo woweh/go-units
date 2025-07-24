@@ -11,13 +11,15 @@ var DefaultFmtOptions = FmtOptions{
 	Short:              false,
 	Precision:          6,
 	TrimTrailingZeroes: true,
+	Separator:          " ",
 }
 
 type FmtOptions struct {
-	Label              bool // if false, unit label/symbol will be omitted
-	Short              bool // if true, use unit shortname or symbol
-	Precision          int  // maximum meaningful precision to truncate value
-	TrimTrailingZeroes bool // trim trailing zeroes
+	Label              bool   // if false, unit label/symbol will be omitted
+	Short              bool   // if true, use unit shortname or symbol
+	Precision          int    // maximum meaningful precision to truncate value
+	TrimTrailingZeroes bool   // trim trailing zeroes
+	Separator          string // separating value from unit
 }
 
 type Value struct {
@@ -69,7 +71,7 @@ func (v Value) Fmt(opts FmtOptions) string {
 			label = v.unit.PluralName()
 		}
 	}
-	return vstr + " " + label
+	return vstr + opts.Separator + label
 }
 
 // MustConvert converts this Value to another Unit, PANICKING on error
