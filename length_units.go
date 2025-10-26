@@ -29,6 +29,8 @@ var (
 	Mile     = newUnit("mile", "mi", Length, BI)
 	League   = newUnit("league", "lea", Length, BI)
 	Furlong  = newUnit("furlong", "fur", Length, BI)
+
+	USSurveyFoot = newUnit("US survey foot", "USft", Length, BI)
 )
 
 func init() {
@@ -39,6 +41,7 @@ func init() {
 	NewRatioConversion(Mile, Meter, 1609.344)
 	NewRatioConversion(League, Meter, 4828.032)
 	NewRatioConversion(Furlong, Meter, 201.168)
+	NewRatioConversion(USSurveyFoot, Meter, 1200.0/3937.0)
 
 	Meter.AddAliases("metre")
 	Angstrom.AddAliases("ångström", "angstroms", "ångströms")

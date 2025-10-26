@@ -30,6 +30,8 @@ var (
 	Stone  = newUnit("stone", "st", Mass, BI)
 	Ton    = newUnit("ton", "LT", Mass, BI)
 	Slug   = newUnit("slug", "", Mass, BI)
+
+	ShortTon = newUnit("short ton", "short ton", Mass, BI)
 )
 
 func init() {
@@ -48,4 +50,7 @@ func init() {
 	NewRatioConversion(Ton, Gram, 1016046.9088)
 	Ton.AddAliases("long ton", "long tons", "imperial ton", "displacement ton")
 	NewRatioConversion(Slug, Gram, 14593.90294)
+	NewRatioConversion(ShortTon, Gram, 907184.74)
+	ShortTon.AddAliases("US ton", "short tons")
+	ShortTon.AddSymbols("Tons")
 }

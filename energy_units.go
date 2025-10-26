@@ -39,6 +39,9 @@ var (
 
 	Calorie     = newUnit("calorie", "cal", Energy)
 	KiloCalorie = Kilo(Calorie)
+
+	BritishThermalUnit = newUnit("British thermal unit", "Btu", Energy)
+	Therm              = newUnit("therm", "therm", Energy)
 )
 
 func init() {
@@ -56,4 +59,7 @@ func init() {
 
 	// 1 watt hour = 1 Volt Ampere Hour = 1 Volt Ampere Reactive Hour = 3600 joules
 	NewRatioConversion(WattHour, Joule, 3600)
+
+	NewRatioConversion(BritishThermalUnit, Joule, 1055.05585262)
+	NewRatioConversion(Therm, Joule, 105505585.262)
 }

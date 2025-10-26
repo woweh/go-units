@@ -33,6 +33,9 @@ var (
 
 	KilogramForce = newUnit("kilogram-force", "kgf", Force, MKpS)
 	TonneForce    = newUnit("tonne-force", "tf", Force, MKpS)
+
+	Kip           = Kilo(PoundForce)
+	ShortTonForce = newUnit("short ton force", "Tons", Force, BI)
 )
 
 func init() {
@@ -54,4 +57,6 @@ func init() {
 	NewRatioConversion(TonneForce, Newton, 9806.65)
 	TonneForce.AddAliases("metric ton-force", "megagram-force", "megapond")
 	TonneForce.AddSymbols("Mp")
+
+	NewRatioConversion(ShortTonForce, Newton, 2000*4.448222)
 }

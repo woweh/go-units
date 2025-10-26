@@ -165,6 +165,32 @@ Many of them provide explanations and formulae,
 - Add methods to get a list of all unit names, symbols and aliases as CSV (> `units.GetCsv()`)
 - Moved conversion tests into separate, per quantity, tests
 
+## Revit Units Enhancement Project
+
+This library is being enhanced to support all 150 quantities and 782 units used by Autodesk Revit.
+
+**Status**: Analysis complete, implementation in progress
+
+### Documentation
+- **[plan.md](plan.md)** - 5-phase implementation roadmap
+- **[REVIT_ANALYSIS.md](REVIT_ANALYSIS.md)** - Complete list of 150 Revit quantities and mapping
+- **[IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)** - Code templates for developers
+- **[PROGRESS_TRACKER.md](PROGRESS_TRACKER.md)** - Weekly implementation checklist
+- **[STATUS.md](STATUS.md)** - Current progress report
+
+### Current Coverage
+- ✅ 22 of 150 quantities (~15%)
+- ✅ ~200 of 782 units (~26%)
+- 🔄 39 new quantity files to create
+- 🔄 6 existing quantity files to update
+
+### Implementation Phases
+- Phase 1: Fix existing quantities
+- Phase 2: High-priority new quantities
+- Phase 3: Thermal quantities
+- Phase 4: Remaining quantities
+- Phase 5: Testing & validation
+
 ### Ideas
 - support more units
 - rework to be fully [QUDT](https://qudt.org/) compliant, inspiration: https://github.com/qudtlib/qudtlib-java

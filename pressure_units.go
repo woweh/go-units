@@ -35,18 +35,21 @@ var (
 	)
 	InHg = newUnit("inch of Mercury", "inHg", Pressure, BI, Plural("inches of Mercury"))
 	MH2O = newUnit(
-		"meter of Water Column", "mmH2O", Pressure, BI,
+		"meter of Water Column", "mH2O", Pressure, BI,
 		Plural("meters of Water Column"),
 	)
-	MilliMH2O     = Milli(MH2O, BI, Plural("millimeters of Water Column"))
-	CentiMH2O     = Centi(MH2O, BI, Plural("centimeters of Water Column"))
-	MHg           = newUnit("meter of Mercury", "mmHg", Pressure, BI, Plural("meters of Mercury"))
-	MilliMHg      = Milli(MHg, BI, Plural("millimeters of Mercury"))
-	CentiMHg      = Centi(MHg, BI, Plural("centimeters of Mercury"))
-	NewtonSqm     = newUnit("newton per square meter", "N/m²", Pressure, BI)
-	KiloNewtonSqm = Kilo(NewtonSqm)
-	Psi           = newUnit("pound-force per square inch", "psi", Pressure, BI)
-	Torr          = newUnit("torr", "Torr", Pressure, BI)
+	MilliMH2O                    = Milli(MH2O, BI, Plural("millimeters of Water Column"))
+	CentiMH2O                    = Centi(MH2O, BI, Plural("centimeters of Water Column"))
+	MHg                          = newUnit("meter of Mercury", "mmHg", Pressure, BI, Plural("meters of Mercury"))
+	MilliMHg                     = Milli(MHg, BI, Plural("millimeters of Mercury"))
+	CentiMHg                     = Centi(MHg, BI, Plural("centimeters of Mercury"))
+	NewtonSqm                    = newUnit("newton per square meter", "N/m²", Pressure, BI)
+	KiloNewtonSqm                = Kilo(NewtonSqm)
+	Psi                          = newUnit("pound-force per square inch", "psi", Pressure, BI)
+	Torr                         = newUnit("torr", "Torr", Pressure, BI)
+	FootH2O                      = newUnit("foot of Water Column", "FT", Pressure, BI)
+	InchesOfWater                = newUnit("inches of Water Column", "in-wg", Pressure, BI)
+	PoundForcePerSquareInchGauge = newUnit("pound-force per square inch gauge", "psig", Pressure, BI)
 )
 
 func init() {
@@ -69,4 +72,8 @@ func init() {
 
 	Psi.AddAliases("pound-force per square inch")
 	Psi.AddSymbols("lbf/in²", "lbf/in^2")
+
+	NewRatioConversion(FootH2O, Pascal, 2989.06692)
+	NewRatioConversion(InchesOfWater, Pascal, 249.0889)
+	NewRatioConversion(PoundForcePerSquareInchGauge, Pascal, 6894.757)
 }

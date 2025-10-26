@@ -1,9 +1,10 @@
 package units
 
 var (
-	ElectricalResistance = Quantity("electrical resistance")
+	ElectricalResistance  = Quantity("electrical resistance")
+	ElectricalResistivity = Quantity("electrical resistivity")
 
-	Ohm      = newUnit("ohm", "Ω", ElectricalResistance, SI, Symbols("Ω"))
+	Ohm      = newUnit("ohm", "Ω", ElectricalResistance, SI, Symbols("Ω"))
 	DecaOhm  = Deca(Ohm)
 	HectoOhm = Hecto(Ohm)
 	KiloOhm  = Kilo(Ohm)
@@ -24,4 +25,7 @@ var (
 	AttoOhm  = Atto(Ohm)
 	ZeptoOhm = Zepto(Ohm)
 	YoctoOhm = Yocto(Ohm)
+
+	// Resistivity
+	OhmMeter = newUnit("ohm meter", "ohm·m", ElectricalResistivity, SI, Aliases("ohm-meter"))
 )

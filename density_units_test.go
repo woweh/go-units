@@ -8,12 +8,15 @@ import (
 
 func Test_Density_Conversions(t *testing.T) {
 	var conversionTests = []conversionTest{
+		// Metric conversions
 		{"g/cm³", "kg/cm³", "0.001"},
 		{"kg/cm³", "kg/m³", "1000000"},
 		{"g/m³", "kg/m³", "0.001"},
 		{"g/mL", "kg/m³", "1000"},
 		{"g/L", "kg/m³", "1"},
 		{"kg/L", "kg/m³", "1000"},
+
+		// Imperial conversions
 		{"oz/in³", "kg/m³", "1729.994"},
 		{"oz/ft³", "kg/m³", "1.001153"},
 		{"oz/gal", "kg/m³", "6.236023"},
@@ -22,6 +25,8 @@ func Test_Density_Conversions(t *testing.T) {
 		{"lb/gal", "kg/m³", "99.776372"},
 		{"slug/ft³", "kg/m³", "515.378818"},
 		{"l ton/yd³", "kg/m³", "1328.939"},
+
+		// Additional conversions
 		{"oz/in³", "l ton/yd³", "1.301786"},
 		{"oz/in³", "slug/ft³", "3.356743"},
 	}
