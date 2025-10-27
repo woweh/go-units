@@ -6,12 +6,12 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/bcicen/bfstree"
+	"github.com/woweh/go-units/graph"
 )
 
 var (
 	conversions []Conversion
-	tree        = bfstree.New()
+	tree        = graph.New()
 )
 
 type ConversionFn func(float64) float64
