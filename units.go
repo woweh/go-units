@@ -33,6 +33,13 @@ func MustConvertFloat(x float64, from, to Unit) Value {
 
 // ConvertFloat converts a provided float from one Unit to another
 func ConvertFloat(x float64, from, to Unit) (Value, error) {
+	if from == nil {
+		return Value{}, fmt.Errorf("No unit specified to convert from.")
+	}
+	if to == nil {
+		return Value{}, fmt.Errorf("No unit specified to convert to.")
+	}
+
 	// allow converting to same unit
 	if from == to {
 		return Value{x, to}, nil
