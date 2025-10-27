@@ -1,3 +1,5 @@
+[ARCHIVED] Consolidated into STATUS.md; kept for historical context.
+
 # ✅ COMPLETE: Time Estimates Removed & Phase 1 Implemented
 
 **Date**: October 26, 2025

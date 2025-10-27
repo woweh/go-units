@@ -1,3 +1,5 @@
+[NOTE] Authoritative tracking of scope and progress is in plan.md and STATUS.md. This guide provides code patterns only.
+
 # Quick Reference: Adding New Revit Units to go-units
 
 ## Template for New Quantity File

@@ -1,3 +1,5 @@
+[ARCHIVED] This checklist has been consolidated. For current tracking, see STATUS.md and plan.md.
+
 # Implementation Progress Tracker
 
 ## Phase 1: Fix Existing Quantities - CRITICAL

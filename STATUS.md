@@ -65,6 +65,13 @@ Successfully added 18 new units to existing quantity files:
 ### This File
 - **STATUS.md** - Current progress and next steps (you're reading it)
 
+## Conversion Analysis (RevitUnits.json)
+
+- Single-unit quantities (no conversion required): Color Temperature, Efficacy, Electrical Resistivity, Luminous Flux, Luminous Intensity, Pulsation, Wattage
+- Multi-unit with identical conversion factors: None
+- Conversion required: 139 quantities (multi-unit with differing factors)
+- Skipped for now: Cost Rate Energy, Cost Rate Power, Cost per Area, Currency
+
 ## Gap Analysis Summary
 
 ### Coverage

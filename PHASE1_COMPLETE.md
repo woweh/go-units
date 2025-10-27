@@ -1,3 +1,5 @@
+[ARCHIVED] Consolidated into STATUS.md; kept for historical context.
+
 # Phase 1 Complete ✅
 
 **Date**: October 26, 2025

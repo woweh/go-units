@@ -1,3 +1,5 @@
+[NOTE] Authoritative tracking lives in plan.md and STATUS.md. This guide remains as navigation only.
+
 # Revit Units Enhancement - Documentation Guide
 
 ## Quick Navigation

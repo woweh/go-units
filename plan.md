@@ -1,5 +1,11 @@
 # Plan to Enhance go-units Library for Revit Compatibility
 
+## Scope Update
+
+- Cost-related quantities are deferred: Cost Rate Energy, Cost Rate Power, Cost per Area, and Currency — skip for now.
+- No-conversion required categories (single-unit in Revit): Color Temperature (K), Efficacy (lm/W), Electrical Resistivity (ohm·m), Luminous Flux (lm), Luminous Intensity (cd), Pulsation (rad/s), Wattage (W). These require quantity/unit presence and symbol alignment but no ratio mappings.
+- All other multi-unit quantities require conversions based on RevitUnits.json.
+
 ## Executive Summary
 
 **Goal**: Add support for all 150 Revit quantities (782 units) to go-units library

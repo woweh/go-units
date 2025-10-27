@@ -1,5 +1,26 @@
 # Detailed Analysis: Revit Units vs go-units
 
+## Conversion Requirements Summary
+
+- No-conversion required (single-unit quantities):
+  - Color Temperature (K)
+  - Efficacy (lm/W)
+  - Electrical Resistivity (ohm·m)
+  - Luminous Flux (lm)
+  - Luminous Intensity (cd)
+  - Pulsation (rad/s)
+  - Wattage (W)
+
+- No-conversion required (multi-unit, identical factors):
+  - None found in RevitUnits.json
+
+- Skipped for now (cost-related; TBD viability):
+  - Cost Rate Energy, Cost Rate Power, Cost per Area, Currency
+
+Notes:
+- For the single-unit quantities above, implement the quantity and base unit if needed, but no ratio mappings are required beyond identity.
+- If a quantity is already covered elsewhere (e.g., Color Temperature uses Kelvin from temperature), just alias/name-map symbols as needed.
+
 ## Revit Quantities Found (150 total)
 
 ### Common/Basic Quantities (COMPLETE)
