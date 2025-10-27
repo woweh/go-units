@@ -3,19 +3,17 @@ package units
 var (
 	Illuminance = Quantity("illuminance")
 
-	// Base unit: footcandle (Revit base with CF=1.0)
-	Footcandle = newUnit("footcandle", "Ftc", Illuminance, BI)
-
-	// SI unit
+	// SI base unit: lux
 	Lux = newUnit("lux", "lx", Illuminance, SI)
+
+	// Imperial/US unit
+	Footcandle = newUnit("footcandle", "Ftc", Illuminance, BI)
 )
 
 func init() {
-	// From RevitUnits.json:
-	// Ftc (base): CF = 1.0
-	// lx: CF = 10.763910416709722
-	// This means: 1 Ftc = 10.763910416709722 lx
-	NewRatioConversion(Footcandle, Lux, 10.763910416709722)
+	// SI base unit: lux
+	// Conversion: 1 lx = 0.092903 Ftc
+	NewRatioConversion(Lux, Footcandle, 0.09290304)
 
 	Footcandle.AddAliases("footcandles", "foot-candle", "foot-candles", "fc")
 }

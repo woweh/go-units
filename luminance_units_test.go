@@ -6,17 +6,17 @@ import (
 
 func Test_Luminance_Conversions(t *testing.T) {
 	var conversionTests = []conversionTest{
-		// Base conversions (adjusted for library precision)
-		{"cd/ft²", "cd/m²", "10.76391"},
-		{"cd/ft²", "ftL", "3.141593"},
+		// Base conversions (cd/m² as SI base)
+		{"cd/m²", "cd/ft²", "0.092903"},
+		{"cd/m²", "ftL", "0.2918635"},
 		
 		// Reverse conversions
-		{"cd/m²", "cd/ft²", "0.092903"},
-		{"ftL", "cd/ft²", "0.31831"},
+		{"cd/ft²", "cd/m²", "10.76391"},
+		{"ftL", "cd/m²", "3.426259"},
 
 		// Identity
-		{"cd/ft²", "cd/ft²", "1"},
 		{"cd/m²", "cd/m²", "1"},
+		{"cd/ft²", "cd/ft²", "1"},
 		{"ftL", "ftL", "1"},
 	}
 
