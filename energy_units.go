@@ -4,7 +4,7 @@ var (
 	Energy = Quantity("energy")
 
 	// metric
-	Joule      = newUnit("joule", "J", Energy, SI, BaseUnit)
+	Joule      = newUnit("joule", "J", Energy, BaseSiUnit)
 	KiloJoule  = Kilo(Joule)
 	MegaJoule  = Mega(Joule)
 	GigaJoule  = Giga(Joule)
@@ -21,10 +21,9 @@ var (
 	AttoJoule  = Atto(Joule)
 
 	WattHour = newUnit(
-		"watt-hour", "Wh", Energy, SI,
+		"watt-hour", "Wh", Energy, BaseSiUnit,
 		Aliases("volt ampere hour", "volt ampere reactive hour", "volt ampere hour (reactive)"),
 		Symbols("VAh", "varh", "V⋅A⋅hr", "V.A.h", "V.A{reactive}.h", "V⋅A{reactive}⋅hr"),
-		BaseUnit,
 	)
 	KiloWattHour = Kilo(WattHour)
 	MegaWattHour = Mega(WattHour)
@@ -33,12 +32,12 @@ var (
 	PetaWattHour = Peta(WattHour)
 
 	// other
-	ElectronVolt     = newUnit("electronvolt", "eV", Energy, BaseUnit)
+	ElectronVolt     = newUnit("electronvolt", "eV", Energy, BaseSiUnit)
 	KiloElectronVolt = Kilo(ElectronVolt)
 	MegaElectronVolt = Mega(ElectronVolt)
 	GigaElectronVolt = Giga(ElectronVolt)
 
-	Calorie     = newUnit("calorie", "cal", Energy, BaseUnit)
+	Calorie     = newUnit("calorie", "cal", Energy, BaseSiUnit)
 	KiloCalorie = Kilo(Calorie)
 )
 

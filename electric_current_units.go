@@ -4,7 +4,7 @@ var (
 	ElectricCurrent = Quantity("electric current")
 
 	// metric
-	Ampere      = newUnit("ampere", "A", ElectricCurrent, SI, BaseUnit)
+	Ampere      = newUnit("ampere", "A", ElectricCurrent, BaseSiUnit)
 	MilliAmpere = Milli(Ampere)
 	MicroAmpere = Micro(Ampere)
 	NanoAmpere  = Nano(Ampere)

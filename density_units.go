@@ -7,7 +7,7 @@ var (
 	GramPerCubicCentimeter     = newUnit("gram per cubic centimeter", "g/cm³", Density, SI)
 	KilogramPerCubicCentimeter = newUnit("kilogram per cubic centimeter", "kg/cm³", Density, SI)
 	GramPerCubicMeter          = newUnit("gram per cubic meter", "g/m³", Density, SI)
-	KilogramPerCubicMeter      = newUnit("kilogram per cubic meter", "kg/m³", Density, SI)
+	KilogramPerCubicMeter      = newUnit("kilogram per cubic meter", "kg/m³", Density, BaseSiUnit)
 	GramPerMilliliter          = newUnit("gram per milliliter", "g/mL", Density, SI)
 	GramPerLiter               = newUnit("gram per liter", "g/L", Density, SI)
 	KilogramPerLiter           = newUnit("kilogram per liter", "kg/L", Density, SI)

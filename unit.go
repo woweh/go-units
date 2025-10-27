@@ -40,10 +40,8 @@ type UnitQuantity string
 // Quantity labels for which units may belong
 func (q UnitQuantity) String() string { return string(q) }
 
+// Shorthands for pre-defined unit systems:
 var (
-	// Shorthands for pre-defined unit systems:
-	//----------------------------------------------------------------------------------------------
-
 	// SI is the International System of Units
 	SI = System(SiSystem)
 	// BI is the British Imperial system of units
@@ -56,8 +54,9 @@ var (
 	CGS = System(CgsSystem)
 	// MKpS is the MKpS system of units (from French mètre–kilogramme-poids–seconde)
 	MKpS = System(MKpSSystem)
-	//----------------------------------------------------------------------------------------------
+)
 
+var (
 	// unitMap is a map of all registered units.
 	// The key is the unit name or alias, the value is the Unit.
 	unitMap = make(map[string]Unit)
@@ -68,7 +67,7 @@ var (
 
 // unit represents a unit of measurement -- internal representation
 type unit struct {
-	// Name is the (english) name of this unit. The name is mandatory and case-insensitive.
+	// Name is the (English) name of this unit. The name is mandatory and case-insensitive.
 	Name string
 	// Symbol is the (main) symbol for this unit, e.g. "m" for meters. The symbol is mandatory and case-sensitive.
 	Symbol string
@@ -87,6 +86,8 @@ type unit struct {
 	system UnitSystem
 	// base is the base unit for metric units
 	base *Unit
+	// isBaseUnit is true if this unit is the base unit for metric units
+	isBaseUnit bool
 }
 
 // Unit represents a unit of measurement
@@ -311,21 +312,50 @@ func (u Unit) ConvertTo(value float64, to Unit) (Value, error) {
 	return ConvertFloat(value, u, to)
 }
 
-// IsMetric returns true if this unit is metric.
-func (u *Unit) IsMetric() bool {
-	return u.base != nil
+// IsMetric returns true if the UnitSystem is metric (SiSystem)
+func (u Unit) IsMetric() bool {
+	return u.system == SiSystem
 }
 
-// BaseUnit returns the base unit for metric units, or nil for non-metric units.
-func (u *Unit) BaseUnit() *Unit {
-	return u.base
+// IsImperial returns true if the UnitSystem is British Imperial (BiSystem)
+func (u Unit) IsImperial() bool {
+	return u.system == BiSystem
+}
+
+// IsUS returns true if the UnitSystem is United States customary (UsSystem)
+func (u Unit) IsUS() bool {
+	return u.system == UsSystem
+}
+
+// IsIEC returns true if the UnitSystem is IEC (IecSystem)
+func (u Unit) IsIEC() bool {
+	return u.system == IecSystem
+}
+
+// IsCGS returns true if the UnitSystem is CGS (CgsSystem)
+func (u Unit) IsCGS() bool {
+	return u.system == CgsSystem
+}
+
+// IsMKpS returns true if the UnitSystem is MKpS (MKpSSystem)
+func (u Unit) IsMKpS() bool {
+	return u.system == MKpSSystem
+}
+
+// Base returns the base unit for metric units, or nil for non-metric units.
+func (u Unit) Base() Unit {
+	return *u.base
+}
+
+// IsBase returns true if this unit is the base unit for metric units.
+func (u Unit) IsBase() bool {
+	return u.isBaseUnit
 }
 
 // UnitOption defines an option that may be passed to newUnit
 type UnitOption func(Unit) Unit
 
-// Plural sets the plural name for this unit,
-// either PluralNone, PluralAuto, or a custom plural unit name
+// Plural sets the plural name for this unit, either PluralNone, PluralAuto, or a custom plural unit name.
 //   - PluralNone - labels will use the unmodified unit name in a plural context
 //   - PluralAuto - labels for this unit will be created with a plural suffix when appropriate (default)
 func Plural(s string) UnitOption {
@@ -368,9 +398,12 @@ func Symbols(symbols ...string) UnitOption {
 	}
 }
 
-// BaseUnit marks this unit as the base unit for metric units
-var BaseUnit UnitOption = func(u *Unit) *Unit {
-	u.base = u
+// BaseSiUnit marks this unit as the base unit for metric units (SiSystem).
+//
+// This is defined as a var to make it as easy to use as the shorthands UnitSystem's, like SI.
+var BaseSiUnit = func(u Unit) Unit {
+	u.isBaseUnit = true
+	u.system = SiSystem
 	return u
 }
 

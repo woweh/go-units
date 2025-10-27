@@ -4,7 +4,7 @@ var (
 	Mass = Quantity("mass")
 
 	// metric
-	Gram      = newUnit("gram", "g", Mass, SI, BaseUnit)
+	Gram      = newUnit("gram", "g", Mass, BaseSiUnit)
 	ExaGram   = Exa(Gram)
 	PetaGram  = Peta(Gram)
 	TeraGram  = Tera(Gram)

@@ -83,7 +83,7 @@ func magnitudeForExp(exp float64) magnitude {
 
 // findMaxUnitForExp returns the largest Unit that can be created from the given Unit
 // and exponent. If such a Unit is not defined, return the passed unit unchanged.
-func findMaxUnitForExp(u *Unit, exp float64) *Unit {
+func findMaxUnitForExp(u Unit, exp float64) Unit {
 	if exp == 0 || !u.IsMetric() {
 		return u
 	}
@@ -109,6 +109,10 @@ func findMaxUnitForExp(u *Unit, exp float64) *Unit {
 
 // makeUnit creates a magnitude unit and conversion given a base unit
 func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
+	if !base.IsMetric() {
+		return nil // or panic?
+	}
+
 	name := mag.Prefix + base.Name
 	symbol := mag.Symbol + base.Symbol
 
@@ -116,14 +120,14 @@ func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 	opts := []UnitOption{SI}
 
 	// create prefixed aliases if needed
-	for _, alias := range base.aliases {
-		magAlias := mag.Prefix + alias
+	for _, a := range base.aliases {
+		magAlias := mag.Prefix + a
 		opts = append(opts, Aliases(magAlias))
 	}
 
 	// create prefixed symbols if needed
-	for _, symbol := range base.symbols {
-		magSymbol := mag.Symbol + symbol
+	for _, s := range base.symbols {
+		magSymbol := mag.Symbol + s
 		opts = append(opts, Symbols(magSymbol))
 	}
 
@@ -134,9 +138,13 @@ func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 	opts = append(opts, Quantity(base.Quantity))
 
 	u := newUnit(name, symbol, opts...)
-	u.base = base
+	u.base = &base
+	// make sure the base unit is marked as such
+	if !base.isBaseUnit {
+		u.isBaseUnit = true
+	}
 
-	// only create conversions to and from base unit
+	// only create conversions to and from the base unit
 	ratio := 1.0 * math.Pow(10.0, mag.Power)
 
 	NewRatioConversion(u, base, ratio)

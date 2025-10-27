@@ -64,17 +64,13 @@ func init() {
 		"square inches", "square in", "square in.", "square ins", "square ins.", "sq inches", "sq inch",
 		"inches/-2", "inch/-2", "inches2", "inch2",
 	)
-	SquareInch.AddSymbols(
-		"in2", "in^2", "in**2", "in/-2", "sq in", "sq in.", "sq ins", "sq ins.", "sqin", "sqin.", "sqins", "□″", "″2",
-	)
+	SquareInch.AddSymbols("in2", "in^2", "in**2", "in/-2", "sq in", "sq in.", "sq ins", "sq ins.", "sqin", "sqin.", "sqins", "□″", "″2")
 
 	SquareFoot.AddAliases("square feet", "square ft", "square ft.", "square feet.")
 	SquareFoot.AddSymbols("ft2", "ft^2", "ft**2", "sq ft", "sq ft.", "sqft", "sqft.", "sqft", "'2")
 
 	SquareYard.AddAliases("square yds", "square yd", "sq yards", "sq yard", "yards/-2", "yard/-2", "yards^2", "yard^2")
-	SquareYard.AddSymbols(
-		"yds^2", "yd^2", "yd2", "yards²", "yard²", "yds²", "yds/-2", "yd/-2", "sq yds", "sq yd", "sq.yd.",
-	)
+	SquareYard.AddSymbols("yds^2", "yd^2", "yd2", "yards²", "yard²", "yds²", "yds/-2", "yd/-2", "sq yds", "sq yd", "sq.yd.")
 
 	SquareMile.AddAliases("square mi", "square mi.", "sq mile", "sq. mile")
 	SquareMile.AddSymbols("mi2", "mi^2", "mi**2", "sqmi", "sqmi.", "sq mi", "sq mi.", "sq.mi.", "sq.mi")

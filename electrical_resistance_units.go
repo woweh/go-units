@@ -3,7 +3,7 @@ package units
 var (
 	ElectricalResistance = Quantity("electrical resistance")
 
-	Ohm      = newUnit("ohm", "Ω", ElectricalResistance, SI, Symbols("Ω"), BaseUnit)
+	Ohm      = newUnit("ohm", "Ω", ElectricalResistance, BaseSiUnit, Symbols("Ω"))
 	DecaOhm  = Deca(Ohm)
 	HectoOhm = Hecto(Ohm)
 	KiloOhm  = Kilo(Ohm)

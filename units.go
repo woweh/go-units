@@ -68,7 +68,7 @@ func Find(s string) (Unit, error) {
 		return u, nil
 	}
 
-	// the try case-sensitive match on symbol
+	// then try case-sensitive match on symbol
 	// symbols are case-sensitive!
 	u, ok = symbolMap[s]
 	if ok {

@@ -54,8 +54,8 @@ func Test_FindMaxUnitForExp(t *testing.T) {
 	tests := []struct {
 		name   string
 		exp    float64
-		expect *Unit
-		base   *Unit
+		expect Unit
+		base   Unit
 	}{
 		{"Zero", 0, Hertz, Hertz},
 		{"Non metric", 3, Foot, Foot},

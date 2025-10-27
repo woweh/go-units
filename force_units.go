@@ -3,7 +3,7 @@ package units
 var (
 	Force = Quantity("force")
 
-	Newton      = newUnit("newton", "N", Force, SI, BaseUnit)
+	Newton      = newUnit("newton", "N", Force, BaseSiUnit)
 	CentiNewton = Centi(Newton)
 	DeciNewton  = Deci(Newton)
 	MilliNewton = Milli(Newton)

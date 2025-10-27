@@ -17,7 +17,7 @@ var (
 	Bi   = Quantity("bits")
 	Data = Quantity("bytes")
 
-	Byte      = newUnit("byte", "B", Data, BaseUnit)
+	Byte      = newUnit("byte", "B", Data, BaseSiUnit)
 	KiloByte  = Kilo(Byte, Symbols("KB"))
 	MegaByte  = Mega(Byte)
 	GigaByte  = Giga(Byte)

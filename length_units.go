@@ -4,7 +4,7 @@ var (
 	Length = Quantity("length")
 
 	// metric
-	Meter      = newUnit("meter", "m", Length, SI, BaseUnit)
+	Meter      = newUnit("meter", "m", Length, BaseSiUnit)
 	ExaMeter   = Exa(Meter)
 	PetaMeter  = Peta(Meter)
 	TeraMeter  = Tera(Meter)
