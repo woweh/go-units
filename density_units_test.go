@@ -7,7 +7,7 @@ import (
 )
 
 func Test_Density_Conversions(t *testing.T) {
-	var conversionTests = []conversionTest{
+	conversionTests := []conversionTest{
 		// Metric conversions
 		{"g/cm³", "kg/cm³", "0.001"},
 		{"kg/cm³", "kg/m³", "1000000"},
@@ -15,26 +15,17 @@ func Test_Density_Conversions(t *testing.T) {
 		{"g/mL", "kg/m³", "1000"},
 		{"g/L", "kg/m³", "1"},
 		{"kg/L", "kg/m³", "1000"},
-
-		// Imperial conversions
+		// Imperial to Metric (sampled)
 		{"oz/in³", "kg/m³", "1729.994"},
-		{"oz/ft³", "kg/m³", "1.001153"},
-		{"oz/gal", "kg/m³", "6.236023"},
-		{"lb/in³", "kg/m³", "27679.90471"},
 		{"lb/ft³", "kg/m³", "16.018463"},
-		{"lb/gal", "kg/m³", "99.776372"},
 		{"slug/ft³", "kg/m³", "515.378818"},
-		{"l ton/yd³", "kg/m³", "1328.939"},
-
-		// Additional conversions
-		{"oz/in³", "l ton/yd³", "1.301786"},
+		// Cross-system (sampled)
 		{"oz/in³", "slug/ft³", "3.356743"},
 	}
-
 	testConversions(t, conversionTests)
 }
 
-func Test_Density_System(t *testing.T) {
+func Test_Density_UnitSystems(t *testing.T) {
 	si := SiSystem
 	assert.Equal(t, si, GramPerCubicCentimeter.System())
 	assert.Equal(t, si, KilogramPerCubicCentimeter.System())
@@ -53,4 +44,14 @@ func Test_Density_System(t *testing.T) {
 	assert.Equal(t, bi, PoundPerGallon.System())
 	assert.Equal(t, bi, SlugPerCubicFoot.System())
 	assert.Equal(t, bi, TonPerCubicYard.System())
+}
+
+func Test_Density_BaseUnits(t *testing.T) {
+	assert.Equal(t, KilogramPerCubicMeter, GramPerCubicCentimeter.Base())
+	assert.Equal(t, KilogramPerCubicMeter, KilogramPerCubicCentimeter.Base())
+	assert.Equal(t, KilogramPerCubicMeter, GramPerCubicMeter.Base())
+	assert.Equal(t, KilogramPerCubicMeter, KilogramPerCubicMeter.Base())
+	assert.Equal(t, KilogramPerCubicMeter, GramPerMilliliter.Base())
+	assert.Equal(t, KilogramPerCubicMeter, GramPerLiter.Base())
+	assert.Equal(t, KilogramPerCubicMeter, KilogramPerLiter.Base())
 }

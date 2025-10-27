@@ -4,7 +4,7 @@ var (
 	Acceleration = Quantity("acceleration")
 
 	// SI base unit: meter per second squared
-	MeterPerSecondSquared     = newUnit("meter per second squared", "m/s²", Acceleration, SI)
+	MeterPerSecondSquared     = newUnit("meter per second squared", "m/s²", Acceleration, BaseSiUnit)
 	KilometerPerSecondSquared = newUnit("kilometer per second squared", "km/s²", Acceleration, SI)
 
 	// Imperial/US units

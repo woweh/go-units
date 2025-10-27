@@ -7,7 +7,7 @@ import (
 )
 
 func Test_ElectricCharge_Conversions(t *testing.T) {
-	var conversionTests = []conversionTest{
+	conversionTests := []conversionTest{
 		{"coulomb", "C", "1"},
 		{"ampere-hour", "coulomb", "3600"},
 		{"ampere-minute", "coulomb", "60"},
@@ -23,7 +23,7 @@ func Test_ElectricCharge_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_ElectricCharge_Symbols(t *testing.T) {
+func Test_ElectricCharge_UnitSystems(t *testing.T) {
 	si := SiSystem
 
 	assert.Equal(t, si, Coulomb.System())
@@ -47,4 +47,28 @@ func Test_ElectricCharge_Symbols(t *testing.T) {
 	assert.Equal(t, si, AmpereHour.System())
 	assert.Equal(t, si, KiloAmpereHour.System())
 	assert.Equal(t, si, MilliAmpereHour.System())
+}
+
+func Test_ElectricCharge_BaseUnits(t *testing.T) {
+	assert.Equal(t, Coulomb, Coulomb.Base())
+	assert.Equal(t, Coulomb, ExaCoulomb.Base())
+	assert.Equal(t, Coulomb, PetaCoulomb.Base())
+	assert.Equal(t, Coulomb, TeraCoulomb.Base())
+	assert.Equal(t, Coulomb, GigaCoulomb.Base())
+	assert.Equal(t, Coulomb, MegaCoulomb.Base())
+	assert.Equal(t, Coulomb, KiloCoulomb.Base())
+	assert.Equal(t, Coulomb, HectoCoulomb.Base())
+	assert.Equal(t, Coulomb, DecaCoulomb.Base())
+	assert.Equal(t, Coulomb, DeciCoulomb.Base())
+	assert.Equal(t, Coulomb, CentiCoulomb.Base())
+	assert.Equal(t, Coulomb, MilliCoulomb.Base())
+	assert.Equal(t, Coulomb, MicroCoulomb.Base())
+	assert.Equal(t, Coulomb, NanoCoulomb.Base())
+	assert.Equal(t, Coulomb, PicoCoulomb.Base())
+	assert.Equal(t, Coulomb, FemtoCoulomb.Base())
+	assert.Equal(t, Coulomb, AttoCoulomb.Base())
+
+	assert.Equal(t, Coulomb, AmpereHour.Base())
+	assert.Equal(t, Coulomb, KiloAmpereHour.Base())
+	assert.Equal(t, Coulomb, MilliAmpereHour.Base())
 }
