@@ -3,8 +3,8 @@ package units
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	ns "github.com/woweh/go-units/numericstring"
+	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Force_Conversions(t *testing.T) {
@@ -26,7 +26,7 @@ func Test_Force_Conversions(t *testing.T) {
 
 func Test_Force_Systems(t *testing.T) {
 	si := SiSystem
-	assert.EqualValues(t, si, Newton.System())
+	assert.Equal(t, si, Newton.System())
 	assert.Equal(t, si, CentiNewton.System())
 	assert.Equal(t, si, DeciNewton.System())
 	assert.Equal(t, si, MilliNewton.System())

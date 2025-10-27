@@ -3,7 +3,7 @@ package units
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Area_Conversions(t *testing.T) {

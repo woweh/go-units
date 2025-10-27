@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/alecthomas/assert/v2"
 )
 
 // conversionTest struct defines test data for a conversion, where a value of 1.0 in
