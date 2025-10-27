@@ -7,14 +7,14 @@ var (
 
 	Turn = newUnit("turn", "tr", Angle)
 
-	Radian      = newUnit("radian", "rad", Angle, SI)
+	Radian      = newUnit("radian", "rad", Angle, BaseSiUnit)
 	MilliRadian = Milli(Radian)
 	MicroRadian = Micro(Radian)
 
 	// Degree (= decimal degree) is a unit of angle equal to 1/360 of a circle.
 	Degree = newUnit("degree", "°", Angle)
 
-	Gon      = newUnit("gon", "gon", Angle, Symbols("grad"))
+	Gon      = newUnit("gon", "gon", Angle, BaseSiUnit, Symbols("grad"))
 	DeciGon  = Deci(Gon)
 	CentiGon = Centi(Gon)
 	MilliGon = Milli(Gon)

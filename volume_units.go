@@ -5,7 +5,7 @@ var (
 
 	// metric
 
-	Liter      = newUnit("liter", "l", Volume, SI, Aliases("litre"))
+	Liter      = newUnit("liter", "l", Volume, BaseSiUnit, Aliases("litre"))
 	ExaLiter   = Exa(Liter)
 	PetaLiter  = Peta(Liter)
 	TeraLiter  = Tera(Liter)

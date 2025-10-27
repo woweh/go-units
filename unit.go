@@ -40,10 +40,8 @@ type UnitQuantity string
 // Quantity labels for which units may belong
 func (q UnitQuantity) String() string { return string(q) }
 
+// Shorthands for pre-defined unit systems:
 var (
-	// Shorthands for pre-defined unit systems:
-	//----------------------------------------------------------------------------------------------
-
 	// SI is the International System of Units
 	SI = System(SiSystem)
 	// BI is the British Imperial system of units
@@ -56,19 +54,20 @@ var (
 	CGS = System(CgsSystem)
 	// MKpS is the MKpS system of units (from French mètre–kilogramme-poids–seconde)
 	MKpS = System(MKpSSystem)
-	//----------------------------------------------------------------------------------------------
-
-	// unitMap is a map of all registered units.
-	// The key is the unit name or alias, the value is the Unit.
-	unitMap = make(map[string]*Unit)
-	// symbolMap is a map of all registered units.
-	// The key is the unit symbol, the value is the Unit.
-	symbolMap = make(map[string]*Unit)
 )
 
-// Unit represents a unit of measurement
-type Unit struct {
-	// Name is the (english) name of this unit. The name is mandatory and case-insensitive.
+var (
+	// unitMap is a map of all registered units.
+	// The key is the unit name or alias, the value is the Unit.
+	unitMap = make(map[string]Unit)
+	// symbolMap is a map of all registered units.
+	// The key is the unit symbol, the value is the Unit.
+	symbolMap = make(map[string]Unit)
+)
+
+// unit represents a unit of measurement -- internal representation
+type unit struct {
+	// Name is the (English) name of this unit. The name is mandatory and case-insensitive.
 	Name string
 	// Symbol is the (main) symbol for this unit, e.g. "m" for meters. The symbol is mandatory and case-sensitive.
 	Symbol string
@@ -85,13 +84,20 @@ type Unit struct {
 	symbols []string
 	// system is the system of units this Unit belongs to, if any.
 	system UnitSystem
+	// base is the base unit for metric units
+	base *Unit
+	// isBaseUnit is true if this unit is the base unit for metric units
+	isBaseUnit bool
 }
+
+// Unit represents a unit of measurement
+type Unit = *unit
 
 // NewUnit registers a new Unit within the package, returning the newly created Unit.
 // Returns an error if the unit already exists.
 // The name is mandatory and must be unique.
 // The symbol is optional, but if provided, must be unique.
-func NewUnit(name, symbol string, opts ...UnitOption) (*Unit, error) {
+func NewUnit(name, symbol string, opts ...UnitOption) (Unit, error) {
 	if name == "" {
 		return nil, errors.New("unit name cannot be empty")
 	}
@@ -104,7 +110,7 @@ func NewUnit(name, symbol string, opts ...UnitOption) (*Unit, error) {
 		}
 	}
 
-	u := &Unit{
+	u := &unit{
 		Name:   name,
 		Symbol: symbol,
 		plural: PluralAuto,
@@ -125,7 +131,7 @@ func NewUnit(name, symbol string, opts ...UnitOption) (*Unit, error) {
 
 // newUnit registers a new Unit within the package, returning the newly created Unit.
 // PANICS if the unit already exists!
-func newUnit(name, symbol string, opts ...UnitOption) *Unit {
+func newUnit(name, symbol string, opts ...UnitOption) Unit {
 	u, err := NewUnit(name, symbol, opts...)
 	if err != nil {
 		panic(err)
@@ -136,7 +142,7 @@ func newUnit(name, symbol string, opts ...UnitOption) *Unit {
 // Names returns all names and aliases this unit may be referred to.
 // The main name is always the first in the list.
 // Names and aliases are NOT case-sensitive!
-func (u *Unit) Names() []string {
+func (u Unit) Names() []string {
 	names := []string{u.Name}
 	if u.plural != PluralNone && u.plural != PluralAuto {
 		names = append(names, u.PluralName())
@@ -145,26 +151,26 @@ func (u *Unit) Names() []string {
 }
 
 // Aliases returns all aliases this unit may be referred to.
-func (u *Unit) Aliases() []string {
+func (u Unit) Aliases() []string {
 	return u.aliases
 }
 
 // Symbols returns all symbols this unit may be referred to.
 // The main symbol is always the first in the list.
 // Symbols are case-sensitive!
-func (u *Unit) Symbols() []string {
+func (u Unit) Symbols() []string {
 	return append([]string{u.Symbol}, u.symbols...)
 }
 
 // String returns the name of this unit
-func (u *Unit) String() string {
+func (u Unit) String() string {
 	return u.Name
 }
 
 // AddResult is the result of adding aliases or symbols to a unit
 type AddResult struct {
 	What     string           // "Aliases" or "Symbols", depending on what was added
-	Unit     *Unit            // the unit to which the aliases or symbols were added
+	Unit     Unit             // the unit to which the aliases or symbols were added
 	Added    []string         // the aliases or symbols that were added
 	Failures map[string]error // the aliases or symbols that failed to be added, and the reason why
 	Err      error            // the overall error that occurred, if any
@@ -192,7 +198,7 @@ func (ar *AddResult) String() string {
 }
 
 // AddAliases adds aliases that this unit may be referred to
-func (u *Unit) AddAliases(aliases ...string) *AddResult {
+func (u Unit) AddAliases(aliases ...string) *AddResult {
 
 	result := &AddResult{
 		What:     "Aliases",
@@ -226,7 +232,7 @@ func (u *Unit) AddAliases(aliases ...string) *AddResult {
 }
 
 // AddSymbols adds symbols that this unit may be referred to
-func (u *Unit) AddSymbols(symbols ...string) *AddResult {
+func (u Unit) AddSymbols(symbols ...string) *AddResult {
 
 	result := &AddResult{
 		What:     "Symbols",
@@ -260,10 +266,10 @@ func (u *Unit) AddSymbols(symbols ...string) *AddResult {
 }
 
 // System returns the system of units this Unit belongs to, if any
-func (u *Unit) System() UnitSystem { return u.system }
+func (u Unit) System() UnitSystem { return u.system }
 
 // PluralName returns the plural name for this unit
-func (u *Unit) PluralName() string {
+func (u Unit) PluralName() string {
 	switch u.plural {
 	case PluralNone:
 		return u.Name
@@ -275,19 +281,19 @@ func (u *Unit) PluralName() string {
 }
 
 // HasName returns true if the provided string matches the provided Unit's Name or Aliases
-func (u *Unit) HasName(alias string) bool {
+func (u Unit) HasName(alias string) bool {
 	return matchesNameOrAlias(alias, u, false) || matchesNameOrAlias(alias, u, true)
 }
 
 // HasSymbol returns true if the provided string matches the provided Unit's Symbol or Symbols
-func (u *Unit) HasSymbol(symbol string) bool {
+func (u Unit) HasSymbol(symbol string) bool {
 	return matchesSymbol(symbol, u)
 }
 
 // CsvLine returns a CSV line for this unit
 // The line contains the following fields:
 // Name, Symbol, PluralName, Quantity, System, Aliases, Symbols
-func (u *Unit) CsvLine() string {
+func (u Unit) CsvLine() string {
 	line := fmt.Sprintf("%s,%s,%s,%s,%s,", u.Name, u.Symbol, u.PluralName(), u.Quantity, u.System())
 	if len(u.aliases) > 0 {
 		line += strings.Join(u.aliases, ",")
@@ -302,19 +308,58 @@ func (u *Unit) CsvLine() string {
 }
 
 // ConvertTo converts the provided value from this unit to the provided unit
-func (u *Unit) ConvertTo(value float64, to *Unit) (Value, error) {
+func (u Unit) ConvertTo(value float64, to Unit) (Value, error) {
 	return ConvertFloat(value, u, to)
 }
 
-// UnitOption defines an option that may be passed to newUnit
-type UnitOption func(*Unit) *Unit
+// IsMetric returns true if the UnitSystem is metric (SiSystem)
+func (u Unit) IsMetric() bool {
+	return u.system == SiSystem
+}
 
-// Plural sets the plural name for this unit,
-// either PluralNone, PluralAuto, or a custom plural unit name
+// IsImperial returns true if the UnitSystem is British Imperial (BiSystem)
+func (u Unit) IsImperial() bool {
+	return u.system == BiSystem
+}
+
+// IsUS returns true if the UnitSystem is United States customary (UsSystem)
+func (u Unit) IsUS() bool {
+	return u.system == UsSystem
+}
+
+// IsIEC returns true if the UnitSystem is IEC (IecSystem)
+func (u Unit) IsIEC() bool {
+	return u.system == IecSystem
+}
+
+// IsCGS returns true if the UnitSystem is CGS (CgsSystem)
+func (u Unit) IsCGS() bool {
+	return u.system == CgsSystem
+}
+
+// IsMKpS returns true if the UnitSystem is MKpS (MKpSSystem)
+func (u Unit) IsMKpS() bool {
+	return u.system == MKpSSystem
+}
+
+// Base returns the base unit for metric units, or nil for non-metric units.
+func (u Unit) Base() Unit {
+	return *u.base
+}
+
+// IsBase returns true if this unit is the base unit for metric units.
+func (u Unit) IsBase() bool {
+	return u.isBaseUnit
+}
+
+// UnitOption defines an option that may be passed to newUnit
+type UnitOption func(Unit) Unit
+
+// Plural sets the plural name for this unit, either PluralNone, PluralAuto, or a custom plural unit name.
 //   - PluralNone - labels will use the unmodified unit name in a plural context
 //   - PluralAuto - labels for this unit will be created with a plural suffix when appropriate (default)
 func Plural(s string) UnitOption {
-	return func(u *Unit) *Unit {
+	return func(u Unit) Unit {
 		u.plural = s
 		return u
 	}
@@ -322,7 +367,7 @@ func Plural(s string) UnitOption {
 
 // System sets the system of units for which this Unit belongs
 func System(s UnitSystem) UnitOption {
-	return func(u *Unit) *Unit {
+	return func(u Unit) Unit {
 		u.system = s
 		return u
 	}
@@ -330,7 +375,7 @@ func System(s UnitSystem) UnitOption {
 
 // Quantity sets a quantity label for which this Unit belongs
 func Quantity(s UnitQuantity) UnitOption {
-	return func(u *Unit) *Unit {
+	return func(u Unit) Unit {
 		u.Quantity = s
 		return u
 	}
@@ -338,7 +383,8 @@ func Quantity(s UnitQuantity) UnitOption {
 
 // Aliases sets the aliases for this Unit
 func Aliases(aliases ...string) UnitOption {
-	return func(u *Unit) *Unit {
+	return func(u Unit) Unit {
+		u.System()
 		u.AddAliases(aliases...)
 		return u
 	}
@@ -346,14 +392,23 @@ func Aliases(aliases ...string) UnitOption {
 
 // Symbols sets the symbols for this Unit
 func Symbols(symbols ...string) UnitOption {
-	return func(u *Unit) *Unit {
+	return func(u Unit) Unit {
 		u.AddSymbols(symbols...)
 		return u
 	}
 }
 
+// BaseSiUnit marks this unit as the base unit for metric units (SiSystem).
+//
+// This is defined as a var to make it as easy to use as the shorthands UnitSystem's, like SI.
+var BaseSiUnit = func(u Unit) Unit {
+	u.isBaseUnit = true
+	u.system = SiSystem
+	return u
+}
+
 // UnitList is a slice of Units. UnitList implements sort.Interface
-type UnitList []*Unit
+type UnitList []Unit
 
 // Len returns the length of the UnitList
 func (a UnitList) Len() int {

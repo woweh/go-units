@@ -4,7 +4,7 @@ var (
 	ElectricCharge = Quantity("electric charge")
 
 	// SI unit metric
-	Coulomb      = newUnit("coulomb", "C", ElectricCharge, SI)
+	Coulomb      = newUnit("coulomb", "C", ElectricCharge, BaseSiUnit)
 	ExaCoulomb   = Exa(Coulomb)
 	PetaCoulomb  = Peta(Coulomb)
 	TeraCoulomb  = Tera(Coulomb)
@@ -22,17 +22,17 @@ var (
 	FemtoCoulomb = Femto(Coulomb)
 	AttoCoulomb  = Atto(Coulomb)
 
-	AmpereHour      = newUnit("ampere-hour", "A·h", ElectricCharge, SI, Symbols("A⋅h", "A*h", "A.h", "Ah", "AHr"))
+	AmpereHour      = newUnit("ampere-hour", "A·h", ElectricCharge, BaseSiUnit, Symbols("A⋅h", "A*h", "A.h", "Ah", "AHr"))
 	KiloAmpereHour  = Kilo(AmpereHour)
 	MilliAmpereHour = Milli(AmpereHour)
 
 	AmpereMinute = newUnit(
-		"ampere-minute", "A·min", ElectricCharge, SI, Symbols("A⋅min", "A*min", "A.min", "Amin"),
+		"ampere-minute", "A·min", ElectricCharge, BaseSiUnit, Symbols("A⋅min", "A*min", "A.min", "Amin"),
 	)
 	KiloAmpereMinute  = Kilo(AmpereMinute)
 	MilliAmpereMinute = Milli(AmpereMinute)
 
-	AmpereSecond      = newUnit("ampere-second", "A·s", ElectricCharge, SI, Symbols("A⋅s", "A*s", "A.s", "As"))
+	AmpereSecond      = newUnit("ampere-second", "A·s", ElectricCharge, BaseSiUnit, Symbols("A⋅s", "A*s", "A.s", "As"))
 	KiloAmpereSecond  = Kilo(AmpereSecond)
 	MilliAmpereSecond = Milli(AmpereSecond)
 )

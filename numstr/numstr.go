@@ -1,5 +1,5 @@
-// Package numericstring provides constants with numeric strings for conversion tests
-package numericstring
+// Package numstr provides constants with numeric strings for conversion tests
+package numstr
 
 // There are multiple strings for each number, allowing you to use the string
 // that is most appropriate and descriptive in the context of the test.

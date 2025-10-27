@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// DefaultFmtOptions is the default formatting options for Values
 var DefaultFmtOptions = FmtOptions{
 	Label:              true,
 	Short:              false,
@@ -14,6 +15,7 @@ var DefaultFmtOptions = FmtOptions{
 	Separator:          " ",
 }
 
+// FmtOptions are formatting options for Values
 type FmtOptions struct {
 	Label              bool   // if false, unit label/symbol will be omitted
 	Short              bool   // if true, use unit shortname or symbol
@@ -22,6 +24,7 @@ type FmtOptions struct {
 	Separator          string // separating value from unit
 }
 
+// Value represents a value with a unit
 type Value struct {
 	val  float64
 	unit Unit
@@ -90,7 +93,7 @@ func (v Value) Convert(to Unit) (Value, error) {
 		return v, nil
 	}
 
-	return ConvertFloat(v.val, &v.unit, &to)
+	return ConvertFloat(v.val, v.unit, to)
 }
 
 // AsBaseUnit converts this Value to its base unit (i.e., 2km to 2000m).
@@ -101,7 +104,7 @@ func (v Value) AsBaseUnit() Value {
 
 	// we can use "Must" here because we know that the unit is metric
 	// and then this conversion is defined.
-	return v.MustConvert(v.unit.BaseUnit())
+	return v.MustConvert(v.unit.Base())
 }
 
 // Humanize converts this Value to a human-readable format (i.e., 2000m to 2km).
@@ -128,7 +131,7 @@ func (v Value) Humanize() Value {
 	return baseV.MustConvert(scaledUnit)
 }
 
-// Trim trailing zeros from formatted float string
+// Trim trailing zeros from a formatted float string
 func trimTrailing(s string) string {
 	if !strings.ContainsRune(s, '.') {
 		return s

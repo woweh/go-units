@@ -19,9 +19,11 @@ var (
 	SlopeInverseRatio = newUnit("inverse slope ratio", "", Slope, Plural(PluralNone))
 	// SlopeDegree is the angle of inclination in degrees (e.g. 45°).
 	SlopeDegree = newUnit("slope degree", "", Slope, Plural(PluralNone))
-	// SlopePercent 100 * m = 100 * (rise/run) = 100 * tan(α)
+	// SlopePercent 100 * m = 100 * (rise/run) = 100 * tan(α).
+	// Note that the symbol is already taken by the Percent unit.
 	SlopePercent = newUnit("slope percent", "", Slope, Plural(PluralNone))
-	// SlopePermille 1000 * m = 1000 * (rise/run) = 1000 * tan(α)
+	// SlopePermille 1000 * m = 1000 * (rise/run) = 1000 * tan(α).
+	// Note that the symbol is already taken by the Permille unit.
 	SlopePermille = newUnit("slope permille", "", Slope, Plural(PluralNone))
 )
 

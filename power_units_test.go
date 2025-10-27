@@ -3,8 +3,8 @@ package units
 import (
 	"testing"
 
-	ns "github.com/woweh/go-units/numericstring"
 	"github.com/alecthomas/assert/v2"
+	ns "github.com/woweh/go-units/numstr"
 )
 
 func Test_Power_Conversions(t *testing.T) {
