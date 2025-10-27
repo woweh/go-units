@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/alecthomas/assert/v2"
 )
 
 // lookUpTestUnit is a test unit for looking up names, aliases or symbols.
@@ -68,9 +68,9 @@ func testLookupNamesAndSymbols(t *testing.T, tests lookUpTests) {
 		t.Run(
 			tt.string(), func(t *testing.T) {
 				err := tt.verifyFind()
-				assert.Nil(t, err)
+				assert.True(t, err == nil)
 				err = tt.verifyHasNameOrSymbol()
-				assert.Nil(t, err)
+				assert.True(t, err == nil)
 			},
 		)
 	}
