@@ -4,7 +4,7 @@ var (
 	Power = Quantity("power")
 
 	// metric
-	Watt      = newUnit("watt", "W", Power, SI)
+	Watt      = newUnit("watt", "W", Power, SI, BaseUnit)
 	DeciWatt  = Deci(Watt)
 	CentiWatt = Centi(Watt)
 	MilliWatt = Milli(Watt)
@@ -26,11 +26,11 @@ var (
 	ZettaWatt = Zetta(Watt)
 	YottaWatt = Yotta(Watt)
 
-	VoltAmpere     = newUnit("volt-ampere", "V⋅A", Power, SI)
+	VoltAmpere     = newUnit("volt-ampere", "V⋅A", Power, SI, BaseUnit)
 	KiloVoltAmpere = Kilo(VoltAmpere)
 	MegaVoltAmpere = Mega(VoltAmpere)
 
-	VoltAmpereReactive     = newUnit("volt-ampere reactive", "var", Power, SI)
+	VoltAmpereReactive     = newUnit("volt-ampere reactive", "var", Power, SI, BaseUnit)
 	KiloVoltAmpereReactive = Kilo(VoltAmpereReactive)
 	MegaVoltAmpereReactive = Mega(VoltAmpereReactive)
 )

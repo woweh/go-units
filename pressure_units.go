@@ -4,7 +4,7 @@ var (
 	Pressure = Quantity("pressure")
 
 	// SI unit metric
-	Pascal      = newUnit("pascal", "Pa", Pressure, SI)
+	Pascal      = newUnit("pascal", "Pa", Pressure, SI, BaseUnit)
 	ExaPascal   = Exa(Pascal)
 	PetaPascal  = Peta(Pascal)
 	TeraPascal  = Tera(Pascal)
