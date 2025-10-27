@@ -35,7 +35,7 @@ func init() {
 	NewRatioConversion(NewtonMeter, KiloNewtonMeter, 0.001)
 	NewRatioConversion(NewtonMeter, MegaNewtonMeter, 0.000001)
 	
-	// From ratios: 0.09290304 / 0.06852176585679176 = 1.35582
+	// Standard conversion: 1 N-m = 0.737562 lb-ft
 	NewRatioConversion(NewtonMeter, PoundForceFoot, 0.737562)
 	
 	// 1 kip-ft = 1000 lb-ft
