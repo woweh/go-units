@@ -25,7 +25,7 @@ var magNames = []string{
 	"atto",
 }
 
-type magFn func(*Unit, ...UnitOption) *Unit
+type magFn func(Unit, ...UnitOption) Unit
 
 func Test_Magnitudes(t *testing.T) {
 	u := newUnit("dong", "₫")

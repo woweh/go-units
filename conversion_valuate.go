@@ -10,7 +10,7 @@ import (
 )
 
 // NewConversion registers a new conversion formula from one Unit to another
-func NewConversion(from, to *Unit, formula string) (err error) {
+func NewConversion(from, to Unit, formula string) (err error) {
 	expr, err := govaluate.NewEvaluableExpression(formula)
 	if err != nil {
 		return err

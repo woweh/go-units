@@ -17,8 +17,8 @@ var (
 type ConversionFn func(float64) float64
 
 type Conversion struct {
-	from    *Unit
-	to      *Unit
+	from    Unit
+	to      Unit
 	Fn      ConversionFn
 	Formula string
 }
@@ -34,7 +34,7 @@ func (c Conversion) From() string { return c.from.Name }
 
 // NewRatioConversion registers a conversion formula and the _inverse_, given a ratio of
 // from Unit in to Unit
-func NewRatioConversion(from, to *Unit, ratio float64) {
+func NewRatioConversion(from, to Unit, ratio float64) {
 	ratioStr := fmt.Sprintf("%.62f", ratio)
 	NewConversionFromFn(
 		from, to, func(x float64) float64 {
@@ -57,7 +57,7 @@ func NewRatioConversion(from, to *Unit, ratio float64) {
 //
 //	NewConversionFromFn(SlopeValue, SlopeDegree, slopeValueToDegree, "math.Atan(x) * 180 / math.Pi")
 //	NewConversionFromFn(SlopeDegree, SlopeValue, slopeDegreeToValue, "math.Tan(x * math.Pi / 180)")
-func NewConversionFromFn(from, to *Unit, f ConversionFn, formula string) {
+func NewConversionFromFn(from, to Unit, f ConversionFn, formula string) {
 	c := Conversion{from, to, f, fmtFormula(formula)}
 	conversions = append(conversions, c)
 	tree.AddEdge(c)
@@ -80,7 +80,7 @@ func fmtFormula(s string) string {
 }
 
 // ResolveConversion resolves a path of one or more Conversions between two units
-func ResolveConversion(from, to *Unit) (cpath []Conversion, err error) {
+func ResolveConversion(from, to Unit) (cpath []Conversion, err error) {
 	path, err := tree.FindPath(from.Name, to.Name)
 	if err != nil {
 		return cpath, errors.New("failed to resolve conversion: " + err.Error())

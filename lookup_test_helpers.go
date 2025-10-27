@@ -11,7 +11,7 @@ import (
 
 // lookUpTestUnit is a test unit for looking up names, aliases or symbols.
 type lookUpTestUnit struct {
-	expect *Unit  // the expected unit, or nil if an error is expected
+	expect Unit   // the expected unit, or nil if an error is expected
 	key    string // the name, alias or symbol to look up
 }
 
