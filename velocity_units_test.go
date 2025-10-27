@@ -6,20 +6,24 @@ import (
 
 func Test_Velocity_Conversions(t *testing.T) {
 	var conversionTests = []conversionTest{
-		// Base conversions (adjusted for library precision)
-		{"ft/s", "ft/min", "60"},
+		// Base conversions (m/s as SI base)
+		{"m/s", "ft/s", "3.28084"},
+		{"m/s", "ft/min", "196.850394"},
+		{"m/s", "cm/min", "6000"},
+		{"m/s", "km/h", "3.6"},
+		{"m/s", "mph", "2.236936"},
+
+		// Reverse conversions
 		{"ft/s", "m/s", "0.3048"},
-		{"ft/s", "cm/min", "1828.8"},
-		{"ft/s", "km/h", "1.09728"},
-		{"ft/s", "mph", "0.681818"},
+		{"km/h", "m/s", "0.2777778"},
+		{"mph", "m/s", "0.44704"},
 
 		// Common conversions
-		{"m/s", "km/h", "3.6"},
 		{"mph", "km/h", "1.609344"},
 
 		// Identity
-		{"ft/s", "ft/s", "1"},
 		{"m/s", "m/s", "1"},
+		{"ft/s", "ft/s", "1"},
 	}
 
 	testConversions(t, conversionTests)

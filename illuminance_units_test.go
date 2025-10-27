@@ -6,9 +6,9 @@ import (
 
 func Test_Illuminance_Conversions(t *testing.T) {
 	var conversionTests = []conversionTest{
-		// Base conversions (adjusted for library precision)
-		{"Ftc", "lx", "10.76391"},
+		// Base conversions (lux as SI base)
 		{"lx", "Ftc", "0.092903"},
+		{"Ftc", "lx", "10.76391"},
 
 		// Identity
 		{"lx", "lx", "1"},
