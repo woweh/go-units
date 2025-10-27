@@ -1,4 +1,4 @@
-[![godocs.io](https://godocs.io/github.com/bcicen/go-units?status.svg)](https://godocs.io/github.com/bcicen/go-units)
+[![Go Reference](https://pkg.go.dev/badge/github.com/woweh/go-units.svg)](https://pkg.go.dev/github.com/woweh/go-units)
 
 # go-units
 
