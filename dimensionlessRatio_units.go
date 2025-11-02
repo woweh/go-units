@@ -3,12 +3,12 @@ package units
 var (
 	DimensionlessRatio = Quantity("dimensionless ratio")
 
-	Fraction         = newUnit("fraction", "", DimensionlessRatio, Plural(PluralNone))
-	Percent          = newUnit("percent", "%", DimensionlessRatio, Plural(PluralNone))
-	Permille         = newUnit("permille", "‰", DimensionlessRatio, Plural(PluralNone))
-	PartsPerMillion  = newUnit("partsPerMillion", "ppm", DimensionlessRatio, Plural(PluralNone))
-	PartsPerBillion  = newUnit("partsPerBillion", "", DimensionlessRatio, Plural(PluralNone))
-	PartsPerTrillion = newUnit("partsPerTrillion", "", DimensionlessRatio, Plural(PluralNone))
+	Fraction         = mustCreateNewUnit("fraction", "", DimensionlessRatio, Plural(PluralNone))
+	Percent          = mustCreateNewUnit("percent", "%", DimensionlessRatio, Plural(PluralNone))
+	Permille         = mustCreateNewUnit("permille", "‰", DimensionlessRatio, Plural(PluralNone))
+	PartsPerMillion  = mustCreateNewUnit("partsPerMillion", "ppm", DimensionlessRatio, Plural(PluralNone))
+	PartsPerBillion  = mustCreateNewUnit("partsPerBillion", "", DimensionlessRatio, Plural(PluralNone))
+	PartsPerTrillion = mustCreateNewUnit("partsPerTrillion", "", DimensionlessRatio, Plural(PluralNone))
 )
 
 func init() {

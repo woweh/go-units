@@ -17,7 +17,7 @@ var (
 	Bi   = Quantity("bits")
 	Data = Quantity("bytes")
 
-	Byte      = newUnit("byte", "B", Data, BaseSiUnit)
+	Byte      = mustCreateNewUnit("byte", "B", Data, SI)
 	KiloByte  = Kilo(Byte, Symbols("KB"))
 	MegaByte  = Mega(Byte)
 	GigaByte  = Giga(Byte)
@@ -27,16 +27,16 @@ var (
 	ZettaByte = Zetta(Byte)
 	YottaByte = Yotta(Byte)
 
-	Kibibyte = newUnit("kibibyte", "KiB", Data, IEC)
-	Mebibyte = newUnit("mebibyte", "MiB", Data, IEC)
-	Gibibyte = newUnit("gibibyte", "GiB", Data, IEC)
-	Tebibyte = newUnit("tebibyte", "TiB", Data, IEC)
-	Pebibyte = newUnit("pebibyte", "PiB", Data, IEC)
-	Exbibyte = newUnit("exbibyte", "EiB", Data, IEC)
-	Zebibyte = newUnit("zebibyte", "ZiB", Data, IEC)
-	Yobibyte = newUnit("yobibyte", "YiB", Data, IEC)
+	Kibibyte = mustCreateNewUnit("kibibyte", "KiB", Data, IEC)
+	Mebibyte = mustCreateNewUnit("mebibyte", "MiB", Data, IEC)
+	Gibibyte = mustCreateNewUnit("gibibyte", "GiB", Data, IEC)
+	Tebibyte = mustCreateNewUnit("tebibyte", "TiB", Data, IEC)
+	Pebibyte = mustCreateNewUnit("pebibyte", "PiB", Data, IEC)
+	Exbibyte = mustCreateNewUnit("exbibyte", "EiB", Data, IEC)
+	Zebibyte = mustCreateNewUnit("zebibyte", "ZiB", Data, IEC)
+	Yobibyte = mustCreateNewUnit("yobibyte", "YiB", Data, IEC)
 
-	Bit     = newUnit("bit", "b", Bi)
+	Bit     = mustCreateNewUnit("bit", "b", Bi)
 	KiloBit = Kilo(Bit)
 	MegaBit = Mega(Bit)
 	GigaBit = Giga(Bit)
@@ -44,7 +44,7 @@ var (
 	PetaBit = Peta(Bit)
 	ExaBit  = Exa(Bit)
 
-	Nibble = newUnit("nibble", "", Data)
+	Nibble = mustCreateNewUnit("nibble", "", Data)
 )
 
 func init() {

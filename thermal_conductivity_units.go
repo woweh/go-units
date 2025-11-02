@@ -5,10 +5,10 @@ var (
 
 	// Base unit: watt per meter kelvin (Revit base with CF=0.3048)
 	// Using W/(m·K) as SI base
-	WattPerMeterKelvin = newUnit("watt per meter kelvin", "W/(m·K)", ThermalConductivity, SI)
+	WattPerMeterKelvin = mustCreateNewUnit("watt per meter kelvin", "W/(m·K)", ThermalConductivity, SI)
 
 	// Imperial unit
-	BritishThermalUnitPerHourFootFahrenheit = newUnit("British thermal unit per hour foot degree Fahrenheit", "BTU/(h·ft·°F)", ThermalConductivity)
+	BritishThermalUnitPerHourFootFahrenheit = mustCreateNewUnit("British thermal unit per hour foot degree Fahrenheit", "BTU/(h·ft·°F)", ThermalConductivity)
 )
 
 func init() {

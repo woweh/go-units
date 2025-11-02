@@ -5,16 +5,16 @@ import "math"
 var (
 	Angle = Quantity("angle")
 
-	Turn = newUnit("turn", "tr", Angle)
+	Turn = mustCreateNewUnit("turn", "tr", Angle)
 
-	Radian      = newUnit("radian", "rad", Angle, BaseSiUnit)
+	Radian      = mustCreateNewUnit("radian", "rad", Angle, SI)
 	MilliRadian = Milli(Radian)
 	MicroRadian = Micro(Radian)
 
 	// Degree (= decimal degree) is a unit of angle equal to 1/360 of a circle.
-	Degree = newUnit("degree", "°", Angle)
+	Degree = mustCreateNewUnit("degree", "°", Angle)
 
-	Gon      = newUnit("gon", "gon", Angle, BaseSiUnit, Symbols("grad"))
+	Gon      = mustCreateNewUnit("gon", "gon", Angle, SI, Symbols("grad"))
 	DeciGon  = Deci(Gon)
 	CentiGon = Centi(Gon)
 	MilliGon = Milli(Gon)

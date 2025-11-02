@@ -1,16 +1,19 @@
 package units
 
+// Acceleration is a unit quantity for acceleration
+const Acceleration UnitQuantity = "acceleration"
+
 var (
-	Acceleration = Quantity("acceleration")
+	_acceleration = Quantity(Acceleration)
 
 	// SI base unit: meter per second squared
-	MeterPerSecondSquared     = newUnit("meter per second squared", "m/s²", Acceleration, BaseSiUnit)
-	KilometerPerSecondSquared = newUnit("kilometer per second squared", "km/s²", Acceleration, SI)
+	MeterPerSecondSquared     = mustCreateNewUnit("meter per second squared", "m/s²", _acceleration, SI)
+	KilometerPerSecondSquared = mustCreateNewUnit("kilometer per second squared", "km/s²", _acceleration, SI)
 
 	// Imperial/US units
-	FootPerSecondSquared = newUnit("foot per second squared", "ft/s²", Acceleration, BI)
-	InchPerSecondSquared = newUnit("inch per second squared", "in/s²", Acceleration, BI)
-	MilePerSecondSquared = newUnit("mile per second squared", "mi/s²", Acceleration, BI)
+	FootPerSecondSquared = mustCreateNewUnit("foot per second squared", "ft/s²", _acceleration, BI)
+	InchPerSecondSquared = mustCreateNewUnit("inch per second squared", "in/s²", _acceleration, BI)
+	MilePerSecondSquared = mustCreateNewUnit("mile per second squared", "mi/s²", _acceleration, BI)
 )
 
 func init() {

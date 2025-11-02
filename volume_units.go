@@ -5,7 +5,7 @@ var (
 
 	// metric
 
-	Liter      = newUnit("liter", "l", Volume, BaseSiUnit, Aliases("litre"))
+	Liter      = mustCreateNewUnit("liter", "l", Volume, SI, Aliases("litre"))
 	ExaLiter   = Exa(Liter)
 	PetaLiter  = Peta(Liter)
 	TeraLiter  = Tera(Liter)
@@ -23,30 +23,30 @@ var (
 	FemtoLiter = Femto(Liter)
 	AttoLiter  = Atto(Liter)
 
-	CubicMeter      = newUnit("cubic meter", "m³", Volume, SI)
-	CubicKiloMeter  = newUnit("cubic kilometer", "km³", Volume, SI)
-	CubicHectoMeter = newUnit("cubic hectometer", "hm³", Volume, SI)
-	CubicDecaMeter  = newUnit("cubic decameter", "dam³", Volume, SI)
-	CubicDeciMeter  = newUnit("cubic decimeter", "dm³", Volume, SI)
-	CubicCentiMeter = newUnit("cubic centimeter", "cm³", Volume, SI)
-	CubicMilliMeter = newUnit("cubic millimeter", "mm³", Volume, SI)
+	CubicMeter      = mustCreateNewUnit("cubic meter", "m³", Volume, SI)
+	CubicKiloMeter  = mustCreateNewUnit("cubic kilometer", "km³", Volume, SI)
+	CubicHectoMeter = mustCreateNewUnit("cubic hectometer", "hm³", Volume, SI)
+	CubicDecaMeter  = mustCreateNewUnit("cubic decameter", "dam³", Volume, SI)
+	CubicDeciMeter  = mustCreateNewUnit("cubic decimeter", "dm³", Volume, SI)
+	CubicCentiMeter = mustCreateNewUnit("cubic centimeter", "cm³", Volume, SI)
+	CubicMilliMeter = mustCreateNewUnit("cubic millimeter", "mm³", Volume, SI)
 
 	// imperial
-	Quart      = newUnit("quart", "qt", Volume, BI)
-	Pint       = newUnit("pint", "pt", Volume, BI)
-	Gallon     = newUnit("gallon", "gal", Volume, BI)
-	FluidOunce = newUnit("fluid ounce", "fl oz", Volume, BI)
-	CubicFoot  = newUnit("cubic foot", "ft³", Volume, BI)
-	CubicYard  = newUnit("cubic yard", "yd³", Volume, BI)
-	CubicInch  = newUnit("cubic inch", "in³", Volume, BI)
-	CubicMile  = newUnit("cubic mile", "mi³", Volume, BI)
-	AcreFoot   = newUnit("acre foot", "ac ft", Volume, BI)
+	Quart      = mustCreateNewUnit("quart", "qt", Volume, BI)
+	Pint       = mustCreateNewUnit("pint", "pt", Volume, BI)
+	Gallon     = mustCreateNewUnit("gallon", "gal", Volume, BI)
+	FluidOunce = mustCreateNewUnit("fluid ounce", "fl oz", Volume, BI)
+	CubicFoot  = mustCreateNewUnit("cubic foot", "ft³", Volume, BI)
+	CubicYard  = mustCreateNewUnit("cubic yard", "yd³", Volume, BI)
+	CubicInch  = mustCreateNewUnit("cubic inch", "in³", Volume, BI)
+	CubicMile  = mustCreateNewUnit("cubic mile", "mi³", Volume, BI)
+	AcreFoot   = mustCreateNewUnit("acre foot", "ac ft", Volume, BI)
 
 	// US
-	FluidQuart          = newUnit("fluid quart", "fl qt", Volume, US)
-	FluidPint           = newUnit("fluid pint", "fl pt", Volume, US)
-	FluidGallon         = newUnit("fluid gallon", "", Volume, US)
-	CustomaryFluidOunce = newUnit("customary fluid ounce", "", Volume, US)
+	FluidQuart          = mustCreateNewUnit("fluid quart", "fl qt", Volume, US)
+	FluidPint           = mustCreateNewUnit("fluid pint", "fl pt", Volume, US)
+	FluidGallon         = mustCreateNewUnit("fluid gallon", "", Volume, US)
+	CustomaryFluidOunce = mustCreateNewUnit("customary fluid ounce", "", Volume, US)
 )
 
 func init() {

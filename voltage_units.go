@@ -4,7 +4,7 @@ var (
 	Voltage = Quantity("voltage")
 
 	// metric
-	Volt      = newUnit("volt", "V", Voltage, BaseSiUnit)
+	Volt      = mustCreateNewUnit("volt", "V", Voltage, SI)
 	YottaVolt = Yotta(Volt)
 	ZettaVolt = Zetta(Volt)
 	ExaVolt   = Exa(Volt)

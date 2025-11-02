@@ -4,11 +4,11 @@ var (
 	Luminance = Quantity("luminance")
 
 	// SI base unit: candela per square meter
-	CandelaPerSquareMeter = newUnit("candela per square meter", "cd/m²", Luminance, SI)
+	CandelaPerSquareMeter = mustCreateNewUnit("candela per square meter", "cd/m²", Luminance, SI)
 
 	// Imperial/US units
-	CandelaPerSquareFoot = newUnit("candela per square foot", "cd/ft²", Luminance, BI)
-	Footlambert          = newUnit("footlambert", "ftL", Luminance, BI)
+	CandelaPerSquareFoot = mustCreateNewUnit("candela per square foot", "cd/ft²", Luminance, BI)
+	Footlambert          = mustCreateNewUnit("footlambert", "ftL", Luminance, BI)
 )
 
 func init() {

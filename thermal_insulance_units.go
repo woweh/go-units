@@ -3,12 +3,12 @@ package units
 var (
 	ThermalInsulance = Quantity("thermal insulance")
 
-	KelvinSquareMeterPerWatt = newUnit(
+	KelvinSquareMeterPerWatt = mustCreateNewUnit(
 		"kelvin square-metre per watt", "K·m²/W", ThermalInsulance, SI,
 		Aliases("R-value"), Symbols("K*m2/W", "°C⋅m²/W", "°C*m2/W", "m2.K.W-1", "m²·K/W", "m2*K/W"),
 	)
 
-	DegreeFahrenheitHourSquareFootPerBtu = newUnit(
+	DegreeFahrenheitHourSquareFootPerBtu = mustCreateNewUnit(
 		"degree Fahrenheit hour square foot per British thermal unitIT", "°F⋅hr⋅ft²/Btu",
 		ThermalInsulance, BI,
 		Aliases(
@@ -42,7 +42,7 @@ func init() {
 
 	// https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9
 	/*
-		To convert...
+		ToUnit convert...
 			from: degree Fahrenheit hour square foot per British thermal unitIT(°F · h · ft2/BtuIT)
 			to: square meter kelvin per watt (m2 · K/W)
 			Multiply by: 1.761102 E-01

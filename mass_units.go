@@ -4,7 +4,7 @@ var (
 	Mass = Quantity("mass")
 
 	// metric
-	Gram      = newUnit("gram", "g", Mass, BaseSiUnit)
+	Gram      = mustCreateNewUnit("gram", "g", Mass, SI)
 	ExaGram   = Exa(Gram)
 	PetaGram  = Peta(Gram)
 	TeraGram  = Tera(Gram)
@@ -23,15 +23,15 @@ var (
 	AttoGram  = Atto(Gram)
 
 	// imperial
-	Grain  = newUnit("grain", "gr", Mass, BI)
-	Drachm = newUnit("drachm", "dr", Mass, BI)
-	Ounce  = newUnit("ounce", "oz", Mass, BI)
-	Pound  = newUnit("pound", "lb", Mass, BI)
-	Stone  = newUnit("stone", "st", Mass, BI)
-	Ton    = newUnit("ton", "LT", Mass, BI)
-	Slug   = newUnit("slug", "", Mass, BI)
+	Grain  = mustCreateNewUnit("grain", "gr", Mass, BI)
+	Drachm = mustCreateNewUnit("drachm", "dr", Mass, BI)
+	Ounce  = mustCreateNewUnit("ounce", "oz", Mass, BI)
+	Pound  = mustCreateNewUnit("pound", "lb", Mass, BI)
+	Stone  = mustCreateNewUnit("stone", "st", Mass, BI)
+	Ton    = mustCreateNewUnit("ton", "LT", Mass, BI)
+	Slug   = mustCreateNewUnit("slug", "", Mass, BI)
 
-	ShortTon = newUnit("short ton", "short ton", Mass, BI)
+	ShortTon = mustCreateNewUnit("short ton", "short ton", Mass, BI)
 )
 
 func init() {

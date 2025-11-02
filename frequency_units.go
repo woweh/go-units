@@ -5,7 +5,7 @@ import "math"
 var (
 	Frequency = Quantity("frequency")
 
-	Hertz      = newUnit("hertz", "Hz", Frequency, BaseSiUnit)
+	Hertz      = mustCreateNewUnit("hertz", "Hz", Frequency, SI)
 	DecaHertz  = Deca(Hertz)
 	HectoHertz = Hecto(Hertz)
 	KiloHertz  = Kilo(Hertz)
@@ -27,20 +27,20 @@ var (
 	ZeptoHertz = Zepto(Hertz)
 	YoctoHertz = Yocto(Hertz)
 
-	RadianPerSecond = newUnit("radian per second", "rad/s", Frequency, SI)
-	RadianPerMinute = newUnit("radian per minute", "rad/min", Frequency, SI)
-	RadianPerHour   = newUnit("radian per hour", "rad/h", Frequency, SI)
-	RadianPerDay    = newUnit("radian per day", "rad/d", Frequency, SI)
+	RadianPerSecond = mustCreateNewUnit("radian per second", "rad/s", Frequency, SI)
+	RadianPerMinute = mustCreateNewUnit("radian per minute", "rad/min", Frequency, SI)
+	RadianPerHour   = mustCreateNewUnit("radian per hour", "rad/h", Frequency, SI)
+	RadianPerDay    = mustCreateNewUnit("radian per day", "rad/d", Frequency, SI)
 
-	DegreePerSecond = newUnit("degree per second", "°/s", Frequency, BI)
-	DegreePerMinute = newUnit("degree per minute", "°/min", Frequency, BI)
-	DegreePerHour   = newUnit("degree per hour", "°/h", Frequency, BI)
-	DegreePerDay    = newUnit("degree per day", "°/d", Frequency, BI)
+	DegreePerSecond = mustCreateNewUnit("degree per second", "°/s", Frequency, BI)
+	DegreePerMinute = mustCreateNewUnit("degree per minute", "°/min", Frequency, BI)
+	DegreePerHour   = mustCreateNewUnit("degree per hour", "°/h", Frequency, BI)
+	DegreePerDay    = mustCreateNewUnit("degree per day", "°/d", Frequency, BI)
 
-	RevolutionPerSecond = newUnit("revolution per second", "rev/s", Frequency)
-	RevolutionPerMinute = newUnit("revolution per minute", "rev/min", Frequency)
-	RevolutionPerHour   = newUnit("revolution per hour", "rev/h", Frequency)
-	RevolutionPerDay    = newUnit("revolution per day", "rev/d", Frequency)
+	RevolutionPerSecond = mustCreateNewUnit("revolution per second", "rev/s", Frequency)
+	RevolutionPerMinute = mustCreateNewUnit("revolution per minute", "rev/min", Frequency)
+	RevolutionPerHour   = mustCreateNewUnit("revolution per hour", "rev/h", Frequency)
+	RevolutionPerDay    = mustCreateNewUnit("revolution per day", "rev/d", Frequency)
 )
 
 func init() {

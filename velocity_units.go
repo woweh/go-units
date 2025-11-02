@@ -4,14 +4,14 @@ var (
 	Velocity = Quantity("velocity")
 
 	// SI base unit: meter per second
-	MeterPerSecond      = newUnit("meter per second", "m/s", Velocity, SI)
-	CentimeterPerMinute = newUnit("centimeter per minute", "cm/min", Velocity, SI)
-	KilometerPerHour    = newUnit("kilometer per hour", "km/h", Velocity, SI)
+	MeterPerSecond      = mustCreateNewUnit("meter per second", "m/s", Velocity, SI)
+	CentimeterPerMinute = mustCreateNewUnit("centimeter per minute", "cm/min", Velocity, SI)
+	KilometerPerHour    = mustCreateNewUnit("kilometer per hour", "km/h", Velocity, SI)
 
 	// Imperial/US units
-	FootPerSecond = newUnit("foot per second", "ft/s", Velocity, BI)
-	FootPerMinute = newUnit("foot per minute", "ft/min", Velocity, BI)
-	MilePerHour   = newUnit("mile per hour", "mph", Velocity, BI)
+	FootPerSecond = mustCreateNewUnit("foot per second", "ft/s", Velocity, BI)
+	FootPerMinute = mustCreateNewUnit("foot per minute", "ft/min", Velocity, BI)
+	MilePerHour   = mustCreateNewUnit("mile per hour", "mph", Velocity, BI)
 )
 
 func init() {

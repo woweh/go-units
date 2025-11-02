@@ -1,0 +1,783 @@
+﻿Quantity,Discipline,Quantity TypeId,Type Catalog String,Unit Name,Unit TypeId,Unit Symbol,Conversion Factor From Internal,Conversion Factor To Internal,Is Valid
+"Apparent Power","Electrical","autodesk.spec.aec.electrical:apparentPower-2.0.0","ELECTRICAL_APPARENT_POWER","British thermal units per hour","autodesk.unit.unit:britishThermalUnitsPerHour-1.0.1","Btu/h",0.316998330628151,3.15459074506305,True
+"Apparent Power","Electrical","autodesk.spec.aec.electrical:apparentPower-2.0.0","ELECTRICAL_APPARENT_POWER","British thermal units per second","autodesk.unit.unit:britishThermalUnitsPerSecond-1.0.1","Btu/s",8.80550918411529E-05,11356.526682227,True
+"Apparent Power","Electrical","autodesk.spec.aec.electrical:apparentPower-2.0.0","ELECTRICAL_APPARENT_POWER","Calories per second","autodesk.unit.unit:caloriesPerSecond-1.0.1","cal/s",0.0221895098882201,45.0663401326803,True
+"Apparent Power","Electrical","autodesk.spec.aec.electrical:apparentPower-2.0.0","ELECTRICAL_APPARENT_POWER","Horsepower","autodesk.unit.unit:horsepower-1.0.1","hp",0.00012458502883053,8026.6466154635,True
+"Apparent Power","Electrical","autodesk.spec.aec.electrical:apparentPower-2.0.0","ELECTRICAL_APPARENT_POWER","Kilocalories per second","autodesk.unit.unit:kilocaloriesPerSecond-1.0.1","kcal/s",2.21895098882201E-05,45066.3401326803,True
+"Apparent Power","Electrical","autodesk.spec.aec.electrical:apparentPower-2.0.0","ELECTRICAL_APPARENT_POWER","Kilovolt amperes","autodesk.unit.unit:kilovoltAmperes-1.0.1","kVA",9.290304E-05,10763.9104167097,True
+"Apparent Power","Electrical","autodesk.spec.aec.electrical:apparentPower-2.0.0","ELECTRICAL_APPARENT_POWER","Kilowatts","autodesk.unit.unit:kilowatts-1.0.1","kW",9.290304E-05,10763.9104167097,True
+"Apparent Power","Electrical","autodesk.spec.aec.electrical:apparentPower-2.0.0","ELECTRICAL_APPARENT_POWER","Volt amperes","autodesk.unit.unit:voltAmperes-1.0.1","VA",0.09290304,10.7639104167097,True
+"Apparent Power","Electrical","autodesk.spec.aec.electrical:apparentPower-2.0.0","ELECTRICAL_APPARENT_POWER","Watts","autodesk.unit.unit:watts-1.0.1","W",0.09290304,10.7639104167097,True
+"Apparent Power Density","Electrical","autodesk.spec.aec.electrical:apparentPowerDensity-1.0.0","ELECTRICAL_APPARENT_POWER_DENSITY","Volt amperes per square foot","autodesk.unit.unit:voltAmperesPerSquareFoot-1.0.0","VA/ft²",0.09290304,10.7639104167097,True
+"Apparent Power Density","Electrical","autodesk.spec.aec.electrical:apparentPowerDensity-1.0.0","ELECTRICAL_APPARENT_POWER_DENSITY","Volt amperes per square meter","autodesk.unit.unit:voltAmperesPerSquareMeter-1.0.0","VA/m²",1,1,True
+"Cable Tray Size","Electrical","autodesk.spec.aec.electrical:cableTraySize-2.0.0","CABLETRAY_SIZE","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Cable Tray Size","Electrical","autodesk.spec.aec.electrical:cableTraySize-2.0.0","CABLETRAY_SIZE","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Cable Tray Size","Electrical","autodesk.spec.aec.electrical:cableTraySize-2.0.0","CABLETRAY_SIZE","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Cable Tray Size","Electrical","autodesk.spec.aec.electrical:cableTraySize-2.0.0","CABLETRAY_SIZE","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Cable Tray Size","Electrical","autodesk.spec.aec.electrical:cableTraySize-2.0.0","CABLETRAY_SIZE","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Cable Tray Size","Electrical","autodesk.spec.aec.electrical:cableTraySize-2.0.0","CABLETRAY_SIZE","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Cable Tray Size","Electrical","autodesk.spec.aec.electrical:cableTraySize-2.0.0","CABLETRAY_SIZE","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Cable Tray Size","Electrical","autodesk.spec.aec.electrical:cableTraySize-2.0.0","CABLETRAY_SIZE","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Cable Tray Size","Electrical","autodesk.spec.aec.electrical:cableTraySize-2.0.0","CABLETRAY_SIZE","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Color Temperature","Electrical","autodesk.spec.aec.electrical:colorTemperature-2.0.0","COLOR_TEMPERATURE","Kelvin","autodesk.unit.unit:kelvin-1.0.0","K",1,1,True
+"Conduit Size","Electrical","autodesk.spec.aec.electrical:conduitSize-2.0.0","CONDUIT_SIZE","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Conduit Size","Electrical","autodesk.spec.aec.electrical:conduitSize-2.0.0","CONDUIT_SIZE","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Conduit Size","Electrical","autodesk.spec.aec.electrical:conduitSize-2.0.0","CONDUIT_SIZE","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Conduit Size","Electrical","autodesk.spec.aec.electrical:conduitSize-2.0.0","CONDUIT_SIZE","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Conduit Size","Electrical","autodesk.spec.aec.electrical:conduitSize-2.0.0","CONDUIT_SIZE","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Conduit Size","Electrical","autodesk.spec.aec.electrical:conduitSize-2.0.0","CONDUIT_SIZE","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Conduit Size","Electrical","autodesk.spec.aec.electrical:conduitSize-2.0.0","CONDUIT_SIZE","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Conduit Size","Electrical","autodesk.spec.aec.electrical:conduitSize-2.0.0","CONDUIT_SIZE","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Conduit Size","Electrical","autodesk.spec.aec.electrical:conduitSize-2.0.0","CONDUIT_SIZE","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Cost Rate Energy","Electrical","autodesk.spec.aec.electrical:costRateEnergy-2.0.0","ELECTRICAL_COST_RATE_ENERGY","Cost per British thermal unit","autodesk.unit.unit:currencyPerBritishThermalUnit-1.0.1","$/Btu",11356.526682227,8.80550918411529E-05,True
+"Cost Rate Energy","Electrical","autodesk.spec.aec.electrical:costRateEnergy-2.0.0","ELECTRICAL_COST_RATE_ENERGY","Cost per watt hour","autodesk.unit.unit:currencyPerWattHour-1.0.1","$/(W·h)",38750.077500155,2.58064E-05,True
+"Cost Rate Power","Electrical","autodesk.spec.aec.electrical:costRatePower-2.0.0","ELECTRICAL_COST_RATE_POWER","Cost per British thermal unit per hour","autodesk.unit.unit:currencyPerBritishThermalUnitPerHour-1.0.1","$·h/Btu",3.15459074506305,0.316998330628151,True
+"Cost Rate Power","Electrical","autodesk.spec.aec.electrical:costRatePower-2.0.0","ELECTRICAL_COST_RATE_POWER","Cost per watt","autodesk.unit.unit:currencyPerWatt-1.0.1","$/W",10.7639104167097,0.09290304,True
+"Current","Electrical","autodesk.spec.aec.electrical:current-2.0.0","ELECTRICAL_CURRENT","Amperes","autodesk.unit.unit:amperes-1.0.0","A",1,1,True
+"Current","Electrical","autodesk.spec.aec.electrical:current-2.0.0","ELECTRICAL_CURRENT","Kiloamperes","autodesk.unit.unit:kiloamperes-1.0.1","kA",0.001,1000,True
+"Current","Electrical","autodesk.spec.aec.electrical:current-2.0.0","ELECTRICAL_CURRENT","Milliamperes","autodesk.unit.unit:milliamperes-1.0.1","mA",1000,0.001,True
+"Demand Factor","Electrical","autodesk.spec.aec.electrical:demandFactor-2.0.0","ELECTRICAL_DEMAND_FACTOR","Fixed","autodesk.unit.unit:fixed-1.0.1","",1,1,True
+"Demand Factor","Electrical","autodesk.spec.aec.electrical:demandFactor-2.0.0","ELECTRICAL_DEMAND_FACTOR","Percentage","autodesk.unit.unit:percentage-1.0.1","%",100,0.01,True
+"Efficacy","Electrical","autodesk.spec.aec.electrical:efficacy-2.0.0","ELECTRICAL_EFFICACY","Lumens per watt","autodesk.unit.unit:lumensPerWatt-1.0.1","lm/W",10.7639104167097,0.09290304,True
+"Frequency","Electrical","autodesk.spec.aec.electrical:frequency-2.0.0","ELECTRICAL_FREQUENCY","Cubic feet per minute cubic foot","autodesk.unit.unit:cubicFeetPerMinuteCubicFoot-1.0.1","CFM/ft³",60,0.0166666666666667,True
+"Frequency","Electrical","autodesk.spec.aec.electrical:frequency-2.0.0","ELECTRICAL_FREQUENCY","Cycles per second","autodesk.unit.unit:cyclesPerSecond-1.0.1","cps",1,1,True
+"Frequency","Electrical","autodesk.spec.aec.electrical:frequency-2.0.0","ELECTRICAL_FREQUENCY","Hertz","autodesk.unit.unit:hertz-1.0.1","Hz",1,1,True
+"Frequency","Electrical","autodesk.spec.aec.electrical:frequency-2.0.0","ELECTRICAL_FREQUENCY","Liters per second cubic meter","autodesk.unit.unit:litersPerSecondCubicMeter-1.0.1","L/(s·m³)",1000,0.001,True
+"Illuminance","Electrical","autodesk.spec.aec.electrical:illuminance-2.0.0","ELECTRICAL_ILLUMINANCE","Footcandles","autodesk.unit.unit:footcandles-1.0.1","Ftc",1,1,True
+"Illuminance","Electrical","autodesk.spec.aec.electrical:illuminance-2.0.0","ELECTRICAL_ILLUMINANCE","Lux","autodesk.unit.unit:lux-1.0.1","lx",10.7639104167097,0.09290304,True
+"Luminance","Electrical","autodesk.spec.aec.electrical:luminance-2.0.0","ELECTRICAL_LUMINANCE","Candelas per square foot","autodesk.unit.unit:candelasPerSquareFoot-1.0.0","cd/ft²",1,1,True
+"Luminance","Electrical","autodesk.spec.aec.electrical:luminance-2.0.0","ELECTRICAL_LUMINANCE","Candelas per square meter","autodesk.unit.unit:candelasPerSquareMeter-1.0.1","cd/m²",10.7639104167097,0.09290304,True
+"Luminance","Electrical","autodesk.spec.aec.electrical:luminance-2.0.0","ELECTRICAL_LUMINANCE","Footlamberts","autodesk.unit.unit:footlamberts-1.0.1","ftL",3.14159265358979,0.318309886183791,True
+"Luminous Flux","Electrical","autodesk.spec.aec.electrical:luminousFlux-2.0.0","ELECTRICAL_LUMINOUS_FLUX","Lumens","autodesk.unit.unit:lumens-1.0.1","lm",1,1,True
+"Luminous Intensity","Electrical","autodesk.spec.aec.electrical:luminousIntensity-2.0.0","ELECTRICAL_LUMINOUS_INTENSITY","Candelas","autodesk.unit.unit:candelas-1.0.0","cd",1,1,True
+"Electrical Potential","Electrical","autodesk.spec.aec.electrical:potential-2.0.0","ELECTRICAL_POTENTIAL","Kilovolts","autodesk.unit.unit:kilovolts-1.0.1","kV",9.290304E-05,10763.9104167097,True
+"Electrical Potential","Electrical","autodesk.spec.aec.electrical:potential-2.0.0","ELECTRICAL_POTENTIAL","Millivolts","autodesk.unit.unit:millivolts-1.0.1","mV",92.90304,0.0107639104167097,True
+"Electrical Potential","Electrical","autodesk.spec.aec.electrical:potential-2.0.0","ELECTRICAL_POTENTIAL","Volts","autodesk.unit.unit:volts-1.0.1","V",0.09290304,10.7639104167097,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","British thermal units per hour","autodesk.unit.unit:britishThermalUnitsPerHour-1.0.1","Btu/h",0.316998330628151,3.15459074506305,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","British thermal units per second","autodesk.unit.unit:britishThermalUnitsPerSecond-1.0.1","Btu/s",8.80550918411529E-05,11356.526682227,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","Calories per second","autodesk.unit.unit:caloriesPerSecond-1.0.1","cal/s",0.0221895098882201,45.0663401326803,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","Horsepower","autodesk.unit.unit:horsepower-1.0.1","hp",0.00012458502883053,8026.6466154635,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","Kilocalories per second","autodesk.unit.unit:kilocaloriesPerSecond-1.0.1","kcal/s",2.21895098882201E-05,45066.3401326803,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","Kilovolt amperes","autodesk.unit.unit:kilovoltAmperes-1.0.1","kVA",9.290304E-05,10763.9104167097,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","Kilowatts","autodesk.unit.unit:kilowatts-1.0.1","kW",9.290304E-05,10763.9104167097,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","Thousand British thermal units per hour","autodesk.unit.unit:thousandBritishThermalUnitsPerHour-1.0.0","MBH",0.000316998330628151,3154.59074506305,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","Volt amperes","autodesk.unit.unit:voltAmperes-1.0.1","VA",0.09290304,10.7639104167097,True
+"Power","Electrical","autodesk.spec.aec.electrical:power-2.0.0","ELECTRICAL_POWER","Watts","autodesk.unit.unit:watts-1.0.1","W",0.09290304,10.7639104167097,True
+"Power Density","Electrical","autodesk.spec.aec.electrical:powerDensity-2.0.0","ELECTRICAL_POWER_DENSITY","British thermal units per hour square foot","autodesk.unit.unit:britishThermalUnitsPerHourSquareFoot-1.0.1","Btu/(h·ft²)",0.316998330628151,3.15459074506305,True
+"Power Density","Electrical","autodesk.spec.aec.electrical:powerDensity-2.0.0","ELECTRICAL_POWER_DENSITY","Watts per square foot","autodesk.unit.unit:wattsPerSquareFoot-1.0.1","W/ft²",0.09290304,10.7639104167097,True
+"Power Density","Electrical","autodesk.spec.aec.electrical:powerDensity-2.0.0","ELECTRICAL_POWER_DENSITY","Watts per square meter","autodesk.unit.unit:wattsPerSquareMeter-1.0.1","W/m²",1,1,True
+"Power per Length","Electrical","autodesk.spec.aec.electrical:powerPerLength-2.0.0","ELECTRICAL_POWER_PER_LENGTH","Watts per foot","autodesk.unit.unit:wattsPerFoot-1.0.0","W/ft",0.09290304,10.7639104167097,True
+"Power per Length","Electrical","autodesk.spec.aec.electrical:powerPerLength-2.0.0","ELECTRICAL_POWER_PER_LENGTH","Watts per meter","autodesk.unit.unit:wattsPerMeter-1.0.0","W/m",0.3048,3.28083989501312,True
+"Electrical Resistivity","Electrical","autodesk.spec.aec.electrical:resistivity-2.0.0","ELECTRICAL_RESISTIVITY","Ohm meters","autodesk.unit.unit:ohmMeters-1.0.1","ohm·m",0.028316846592,35.3146667214886,True
+"Temperature","Electrical","autodesk.spec.aec.electrical:temperature-2.0.0","ELECTRICAL_TEMPERATURE","Celsius","autodesk.unit.unit:celsius-1.0.1","°C",-272.15,274.15,True
+"Temperature","Electrical","autodesk.spec.aec.electrical:temperature-2.0.0","ELECTRICAL_TEMPERATURE","Fahrenheit","autodesk.unit.unit:fahrenheit-1.0.1","°F",-457.87,255.927777777778,True
+"Temperature","Electrical","autodesk.spec.aec.electrical:temperature-2.0.0","ELECTRICAL_TEMPERATURE","Kelvin","autodesk.unit.unit:kelvin-1.0.0","K",1,1,True
+"Temperature","Electrical","autodesk.spec.aec.electrical:temperature-2.0.0","ELECTRICAL_TEMPERATURE","Rankine","autodesk.unit.unit:rankine-1.0.1","°R",1.8,0.555555555555556,True
+"Temperature Difference","Electrical","autodesk.spec.aec.electrical:temperatureDifference-2.0.0","ELECTRICAL_TEMPERATURE_DIFFERENCE","Celsius interval","autodesk.unit.unit:celsiusInterval-1.0.1","delta°C",1,1,True
+"Temperature Difference","Electrical","autodesk.spec.aec.electrical:temperatureDifference-2.0.0","ELECTRICAL_TEMPERATURE_DIFFERENCE","Fahrenheit interval","autodesk.unit.unit:fahrenheitInterval-1.0.1","delta°F",1.8,0.555555555555556,True
+"Temperature Difference","Electrical","autodesk.spec.aec.electrical:temperatureDifference-2.0.0","ELECTRICAL_TEMPERATURE_DIFFERENCE","Kelvin interval","autodesk.unit.unit:kelvinInterval-1.0.0","K",1,1,True
+"Temperature Difference","Electrical","autodesk.spec.aec.electrical:temperatureDifference-2.0.0","ELECTRICAL_TEMPERATURE_DIFFERENCE","Rankine interval","autodesk.unit.unit:rankineInterval-1.0.1","delta°R",1.8,0.555555555555556,True
+"Wattage","Electrical","autodesk.spec.aec.electrical:wattage-2.0.0","ELECTRICAL_WATTAGE","Watts","autodesk.unit.unit:watts-1.0.1","W",0.09290304,10.7639104167097,True
+"Wire Diameter","Electrical","autodesk.spec.aec.electrical:wireDiameter-2.0.0","WIRE_SIZE","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Wire Diameter","Electrical","autodesk.spec.aec.electrical:wireDiameter-2.0.0","WIRE_SIZE","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Wire Diameter","Electrical","autodesk.spec.aec.electrical:wireDiameter-2.0.0","WIRE_SIZE","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Wire Diameter","Electrical","autodesk.spec.aec.electrical:wireDiameter-2.0.0","WIRE_SIZE","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Wire Diameter","Electrical","autodesk.spec.aec.electrical:wireDiameter-2.0.0","WIRE_SIZE","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Wire Diameter","Electrical","autodesk.spec.aec.electrical:wireDiameter-2.0.0","WIRE_SIZE","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Wire Diameter","Electrical","autodesk.spec.aec.electrical:wireDiameter-2.0.0","WIRE_SIZE","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Wire Diameter","Electrical","autodesk.spec.aec.electrical:wireDiameter-2.0.0","WIRE_SIZE","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Wire Diameter","Electrical","autodesk.spec.aec.electrical:wireDiameter-2.0.0","WIRE_SIZE","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Energy","Energy","autodesk.spec.aec.energy:energy-2.0.0","HVAC_ENERGY","British thermal units","autodesk.unit.unit:britishThermalUnits-1.0.1","Btu",8.80550918411529E-05,11356.526682227,True
+"Energy","Energy","autodesk.spec.aec.energy:energy-2.0.0","HVAC_ENERGY","Calories","autodesk.unit.unit:calories-1.0.1","cal",0.0221895098882201,45.0663401326803,True
+"Energy","Energy","autodesk.spec.aec.energy:energy-2.0.0","HVAC_ENERGY","Joules","autodesk.unit.unit:joules-1.0.1","J",0.09290304,10.7639104167097,True
+"Energy","Energy","autodesk.spec.aec.energy:energy-2.0.0","HVAC_ENERGY","Kilocalories","autodesk.unit.unit:kilocalories-1.0.1","kcal",2.21895098882201E-05,45066.3401326803,True
+"Energy","Energy","autodesk.spec.aec.energy:energy-2.0.0","HVAC_ENERGY","Kilowatt hours","autodesk.unit.unit:kilowattHours-1.0.1","kWh",2.58064E-08,38750077.500155,True
+"Energy","Energy","autodesk.spec.aec.energy:energy-2.0.0","HVAC_ENERGY","Therms","autodesk.unit.unit:therms-1.0.1","therm",8.80550918411529E-10,1135652668.2227,True
+"Heat Capacity per Area","Energy","autodesk.spec.aec.energy:heatCapacityPerArea-2.0.0","HVAC_HEAT_CAPACITY_PER_AREA","British thermal units per square foot degree Fahrenheit","autodesk.unit.unit:britishThermalUnitsPerSquareFootDegreeFahrenheit-1.0.0","BTU/(ft²·°F)",4.89194954673072E-05,20441.7480280086,True
+"Heat Capacity per Area","Energy","autodesk.spec.aec.energy:heatCapacityPerArea-2.0.0","HVAC_HEAT_CAPACITY_PER_AREA","Joules per square meter Kelvin","autodesk.unit.unit:joulesPerSquareMeterKelvin-1.0.0","J/(m²·K)",1,1,True
+"Heat Capacity per Area","Energy","autodesk.spec.aec.energy:heatCapacityPerArea-2.0.0","HVAC_HEAT_CAPACITY_PER_AREA","Kilojoules per square meter Kelvin","autodesk.unit.unit:kilojoulesPerSquareMeterKelvin-1.0.0","kJ/(m²·K)",0.001,1000,True
+"Coefficient of Heat Transfer","Energy","autodesk.spec.aec.energy:heatTransferCoefficient-2.0.0","HVAC_COEFFICIENT_OF_HEAT_TRANSFER","British thermal units per hour square foot degree Fahrenheit","autodesk.unit.unit:britishThermalUnitsPerHourSquareFootDegreeFahrenheit-1.0.1","BTU/(h·ft²·°F)",0.176110183682306,5.67826334111349,True
+"Coefficient of Heat Transfer","Energy","autodesk.spec.aec.energy:heatTransferCoefficient-2.0.0","HVAC_COEFFICIENT_OF_HEAT_TRANSFER","Watts per square meter kelvin","autodesk.unit.unit:wattsPerSquareMeterKelvin-1.0.1","W/(m²·K)",1,1,True
+"Isothermal Moisture Capacity","Energy","autodesk.spec.aec.energy:isothermalMoistureCapacity-2.0.0","HVAC_ISOTHERMAL_MOISTURE_CAPACITY","Cubic feet per pound mass","autodesk.unit.unit:cubicFeetPerPoundMass-1.0.0","ft³/lb",0.45359237,2.20462262184878,True
+"Isothermal Moisture Capacity","Energy","autodesk.spec.aec.energy:isothermalMoistureCapacity-2.0.0","HVAC_ISOTHERMAL_MOISTURE_CAPACITY","Cubic meters per kilogram","autodesk.unit.unit:cubicMetersPerKilogram-1.0.0","m³/kg",0.028316846592,35.3146667214886,True
+"Permeability","Energy","autodesk.spec.aec.energy:permeability-2.0.0","HVAC_PERMEABILITY","Grains per hour square foot inch mercury","autodesk.unit.unit:grainsPerHourSquareFootInchMercury-1.0.1","gr/(h·ft²·inHg)",57343818312.9932,1.74386713235909E-11,True
+"Permeability","Energy","autodesk.spec.aec.energy:permeability-2.0.0","HVAC_PERMEABILITY","Nanograms per pascal second square meter","autodesk.unit.unit:nanogramsPerPascalSecondSquareMeter-1.0.1","ng/(Pa·s·m²)",3280839895013.12,3.048E-13,True
+"Specific Heat","Energy","autodesk.spec.aec.energy:specificHeat-2.0.0","HVAC_SPECIFIC_HEAT","British thermal units per pound degree Fahrenheit","autodesk.unit.unit:britishThermalUnitsPerPoundDegreeFahrenheit-1.0.1","BTU/(lb·°F)",2.21895098882201E-05,45066.3401326803,True
+"Specific Heat","Energy","autodesk.spec.aec.energy:specificHeat-2.0.0","HVAC_SPECIFIC_HEAT","Joules per gram degree Celsius","autodesk.unit.unit:joulesPerGramDegreeCelsius-1.0.1","J/(g·°C)",9.290304E-05,10763.9104167097,True
+"Specific Heat","Energy","autodesk.spec.aec.energy:specificHeat-2.0.0","HVAC_SPECIFIC_HEAT","Joules per kilogram degree Celsius","autodesk.unit.unit:joulesPerKilogramDegreeCelsius-1.0.1","J/(kg·°C)",0.09290304,10.7639104167097,True
+"Specific Heat of Vaporization","Energy","autodesk.spec.aec.energy:specificHeatOfVaporization-2.0.0","HVAC_SPECIFIC_HEAT_OF_VAPORIZATION","British thermal units per pound","autodesk.unit.unit:britishThermalUnitsPerPound-1.0.1","BTU/lb",3.99411177987962E-05,25036.8556292668,True
+"Specific Heat of Vaporization","Energy","autodesk.spec.aec.energy:specificHeatOfVaporization-2.0.0","HVAC_SPECIFIC_HEAT_OF_VAPORIZATION","Joules per gram","autodesk.unit.unit:joulesPerGram-1.0.1","J/g",9.290304E-05,10763.9104167097,True
+"Thermal Conductivity","Energy","autodesk.spec.aec.energy:thermalConductivity-2.0.0","HVAC_THERMAL_CONDUCTIVITY","British thermal units per hour foot degree Fahrenheit","autodesk.unit.unit:britishThermalUnitsPerHourFootDegreeFahrenheit-1.0.1","BTU/(h·ft·°F)",0.176110183682306,5.67826334111349,True
+"Thermal Conductivity","Energy","autodesk.spec.aec.energy:thermalConductivity-2.0.0","HVAC_THERMAL_CONDUCTIVITY","Watts per meter kelvin","autodesk.unit.unit:wattsPerMeterKelvin-1.0.1","W/(m·K)",0.3048,3.28083989501312,True
+"Thermal Gradient Coefficient for Moisture Capacity","Energy","autodesk.spec.aec.energy:thermalGradientCoefficientForMoistureCapacity-2.0.0","HVAC_THERMAL_GRADIENT_COEFFICIENT_FOR_MOISTURE_CAPACITY","Kilograms per kilogram kelvin","autodesk.unit.unit:kilogramsPerKilogramKelvin-1.0.0","kg/(kg·K)",1,1,True
+"Thermal Gradient Coefficient for Moisture Capacity","Energy","autodesk.spec.aec.energy:thermalGradientCoefficientForMoistureCapacity-2.0.0","HVAC_THERMAL_GRADIENT_COEFFICIENT_FOR_MOISTURE_CAPACITY","Pounds mass per pound degree Fahrenheit","autodesk.unit.unit:poundsMassPerPoundDegreeFahrenheit-1.0.0","lb/(lb·°F)",0.555555555555556,1.8,True
+"Thermal Mass","Energy","autodesk.spec.aec.energy:thermalMass-2.0.0","HVAC_THERMAL_MASS","British thermal units per degree Fahrenheit","autodesk.unit.unit:britishThermalUnitsPerDegreeFahrenheit-1.0.1","BTU/°F",4.89194954673072E-05,20441.7480280086,True
+"Thermal Mass","Energy","autodesk.spec.aec.energy:thermalMass-2.0.0","HVAC_THERMAL_MASS","Joules per Kelvin","autodesk.unit.unit:joulesPerKelvin-1.0.1","J/K",0.09290304,10.7639104167097,True
+"Thermal Mass","Energy","autodesk.spec.aec.energy:thermalMass-2.0.0","HVAC_THERMAL_MASS","Kilojoules per Kelvin","autodesk.unit.unit:kilojoulesPerKelvin-1.0.1","kJ/K",9.290304E-05,10763.9104167097,True
+"Thermal Resistance","Energy","autodesk.spec.aec.energy:thermalResistance-2.0.0","HVAC_THERMAL_RESISTANCE","Hour square foot degrees Fahrenheit per British thermal unit","autodesk.unit.unit:hourSquareFootDegreesFahrenheitPerBritishThermalUnit-1.0.1","(h·ft²·°F)/BTU",5.67826334111349,0.176110183682306,True
+"Thermal Resistance","Energy","autodesk.spec.aec.energy:thermalResistance-2.0.0","HVAC_THERMAL_RESISTANCE","Square meter kelvins per watt","autodesk.unit.unit:squareMeterKelvinsPerWatt-1.0.1","(m²·K)/W",1,1,True
+"Air Flow","HVAC","autodesk.spec.aec.hvac:airFlow-2.0.0","HVAC_AIR_FLOW","Cubic feet per hour","autodesk.unit.unit:cubicFeetPerHour-1.0.0","ft³/h",3600,0.000277777777777778,True
+"Air Flow","HVAC","autodesk.spec.aec.hvac:airFlow-2.0.0","HVAC_AIR_FLOW","Cubic feet per minute","autodesk.unit.unit:cubicFeetPerMinute-1.0.1","ft³/min",60,0.0166666666666667,True
+"Air Flow","HVAC","autodesk.spec.aec.hvac:airFlow-2.0.0","HVAC_AIR_FLOW","Cubic meters per hour","autodesk.unit.unit:cubicMetersPerHour-1.0.1","m³/h",101.9406477312,0.00980962964485794,True
+"Air Flow","HVAC","autodesk.spec.aec.hvac:airFlow-2.0.0","HVAC_AIR_FLOW","Cubic meters per second","autodesk.unit.unit:cubicMetersPerSecond-1.0.1","m³/s",0.028316846592,35.3146667214886,True
+"Air Flow","HVAC","autodesk.spec.aec.hvac:airFlow-2.0.0","HVAC_AIR_FLOW","Liters per hour","autodesk.unit.unit:litersPerHour-1.0.1","L/h",101940.6477312,9.80962964485794E-06,True
+"Air Flow","HVAC","autodesk.spec.aec.hvac:airFlow-2.0.0","HVAC_AIR_FLOW","Liters per minute","autodesk.unit.unit:litersPerMinute-1.0.1","LPM",1699.01079552,0.000588577778691477,True
+"Air Flow","HVAC","autodesk.spec.aec.hvac:airFlow-2.0.0","HVAC_AIR_FLOW","Liters per second","autodesk.unit.unit:litersPerSecond-1.0.1","LPS",28.316846592,0.0353146667214886,True
+"Air Flow","HVAC","autodesk.spec.aec.hvac:airFlow-2.0.0","HVAC_AIR_FLOW","US gallons per hour","autodesk.unit.unit:usGallonsPerHour-1.0.1","usgph",26929.8701298701,3.7133487654321E-05,True
+"Air Flow","HVAC","autodesk.spec.aec.hvac:airFlow-2.0.0","HVAC_AIR_FLOW","US gallons per minute","autodesk.unit.unit:usGallonsPerMinute-1.0.1","usgpm",448.831143220342,0.00222800938639206,True
+"Air Flow Density","HVAC","autodesk.spec.aec.hvac:airFlowDensity-2.0.0","HVAC_AIRFLOW_DENSITY","Cubic feet per minute square foot","autodesk.unit.unit:cubicFeetPerMinuteSquareFoot-1.0.1","CFM/SF",60,0.0166666666666667,True
+"Air Flow Density","HVAC","autodesk.spec.aec.hvac:airFlowDensity-2.0.0","HVAC_AIRFLOW_DENSITY","Cubic meters per hour square meter","autodesk.unit.unit:cubicMetersPerHourSquareMeter-1.0.0","m³/(h·m²)",1097.28,0.000911344415281423,True
+"Air Flow Density","HVAC","autodesk.spec.aec.hvac:airFlowDensity-2.0.0","HVAC_AIRFLOW_DENSITY","Liters per second square meter","autodesk.unit.unit:litersPerSecondSquareMeter-1.0.1","LPS/m²",304.8,0.00328083989501312,True
+"Air Flow divided by Cooling Load","HVAC","autodesk.spec.aec.hvac:airFlowDividedByCoolingLoad-2.0.0","HVAC_AIRFLOW_DIVIDED_BY_COOLING_LOAD","Cubic feet per minute ton of refrigeration","autodesk.unit.unit:cubicFeetPerMinuteTonOfRefrigeration-1.0.1","CFM/ton",2271305.33644539,4.40275459205765E-07,True
+"Air Flow divided by Cooling Load","HVAC","autodesk.spec.aec.hvac:airFlowDividedByCoolingLoad-2.0.0","HVAC_AIRFLOW_DIVIDED_BY_COOLING_LOAD","Liters per second kilowatt","autodesk.unit.unit:litersPerSecondKilowatt-1.0.1","L/(s·kW)",304800,3.28083989501312E-06,True
+"Air Flow divided by Volume","HVAC","autodesk.spec.aec.hvac:airFlowDividedByVolume-2.0.0","HVAC_AIRFLOW_DIVIDED_BY_VOLUME","Cubic feet per minute cubic foot","autodesk.unit.unit:cubicFeetPerMinuteCubicFoot-1.0.1","CFM/ft³",60,0.0166666666666667,True
+"Air Flow divided by Volume","HVAC","autodesk.spec.aec.hvac:airFlowDividedByVolume-2.0.0","HVAC_AIRFLOW_DIVIDED_BY_VOLUME","Cubic meters per hour cubic meter","autodesk.unit.unit:cubicMetersPerHourCubicMeter-1.0.0","m³/(h·m³)",3600,0.000277777777777778,True
+"Air Flow divided by Volume","HVAC","autodesk.spec.aec.hvac:airFlowDividedByVolume-2.0.0","HVAC_AIRFLOW_DIVIDED_BY_VOLUME","Liters per second cubic meter","autodesk.unit.unit:litersPerSecondCubicMeter-1.0.1","L/(s·m³)",1000,0.001,True
+"Angular Speed","HVAC","autodesk.spec.aec.hvac:angularSpeed-2.0.0","HVAC_ANGULAR_SPEED","Revolutions per minute","autodesk.unit.unit:revolutionsPerMinute-1.0.0","RPM",9.54929658551373,0.10471975511966,True
+"Angular Speed","HVAC","autodesk.spec.aec.hvac:angularSpeed-2.0.0","HVAC_ANGULAR_SPEED","Revolutions per second","autodesk.unit.unit:revolutionsPerSecond-1.0.0","RPS",0.159154943091896,6.28318530717958,True
+"Area divided by Cooling Load","HVAC","autodesk.spec.aec.hvac:areaDividedByCoolingLoad-2.0.0","HVAC_AREA_DIVIDED_BY_COOLING_LOAD","Square feet per thousand British thermal units per hour","autodesk.unit.unit:squareFeetPer1000BritishThermalUnitsPerHour-1.0.1","SF/MBh",3154.59074506305,0.00031699833062815,True
+"Area divided by Cooling Load","HVAC","autodesk.spec.aec.hvac:areaDividedByCoolingLoad-2.0.0","HVAC_AREA_DIVIDED_BY_COOLING_LOAD","Square feet per ton of refrigeration","autodesk.unit.unit:squareFeetPerTonOfRefrigeration-1.0.1","SF/ton",37855.0889407566,2.64165275523459E-05,True
+"Area divided by Cooling Load","HVAC","autodesk.spec.aec.hvac:areaDividedByCoolingLoad-2.0.0","HVAC_AREA_DIVIDED_BY_COOLING_LOAD","Square meters per kilowatt","autodesk.unit.unit:squareMetersPerKilowatt-1.0.1","m²/kW",1000,0.001,True
+"Area divided by Heating Load","HVAC","autodesk.spec.aec.hvac:areaDividedByHeatingLoad-2.0.0","HVAC_AREA_DIVIDED_BY_HEATING_LOAD","Square feet per thousand British thermal units per hour","autodesk.unit.unit:squareFeetPer1000BritishThermalUnitsPerHour-1.0.1","SF/MBh",3154.59074506305,0.00031699833062815,True
+"Area divided by Heating Load","HVAC","autodesk.spec.aec.hvac:areaDividedByHeatingLoad-2.0.0","HVAC_AREA_DIVIDED_BY_HEATING_LOAD","Square meters per kilowatt","autodesk.unit.unit:squareMetersPerKilowatt-1.0.1","m²/kW",1000,0.001,True
+"Cooling Load","HVAC","autodesk.spec.aec.hvac:coolingLoad-2.0.0","HVAC_COOLING_LOAD","British thermal units per hour","autodesk.unit.unit:britishThermalUnitsPerHour-1.0.1","Btu/h",0.316998330628151,3.15459074506305,True
+"Cooling Load","HVAC","autodesk.spec.aec.hvac:coolingLoad-2.0.0","HVAC_COOLING_LOAD","British thermal units per second","autodesk.unit.unit:britishThermalUnitsPerSecond-1.0.1","Btu/s",8.80550918411529E-05,11356.526682227,True
+"Cooling Load","HVAC","autodesk.spec.aec.hvac:coolingLoad-2.0.0","HVAC_COOLING_LOAD","Kilowatts","autodesk.unit.unit:kilowatts-1.0.1","kW",9.290304E-05,10763.9104167097,True
+"Cooling Load","HVAC","autodesk.spec.aec.hvac:coolingLoad-2.0.0","HVAC_COOLING_LOAD","Tons of refrigeration","autodesk.unit.unit:tonsOfRefrigeration-1.0.1","ton of refrigeration",2.64165275523459E-05,37855.0889407566,True
+"Cooling Load","HVAC","autodesk.spec.aec.hvac:coolingLoad-2.0.0","HVAC_COOLING_LOAD","Watts","autodesk.unit.unit:watts-1.0.1","W",0.09290304,10.7639104167097,True
+"Cooling Load divided by Area","HVAC","autodesk.spec.aec.hvac:coolingLoadDividedByArea-2.0.0","HVAC_COOLING_LOAD_DIVIDED_BY_AREA","British thermal units per hour square foot","autodesk.unit.unit:britishThermalUnitsPerHourSquareFoot-1.0.1","Btu/(h·ft²)",0.316998330628151,3.15459074506305,True
+"Cooling Load divided by Area","HVAC","autodesk.spec.aec.hvac:coolingLoadDividedByArea-2.0.0","HVAC_COOLING_LOAD_DIVIDED_BY_AREA","Watts per square foot","autodesk.unit.unit:wattsPerSquareFoot-1.0.1","W/ft²",0.09290304,10.7639104167097,True
+"Cooling Load divided by Area","HVAC","autodesk.spec.aec.hvac:coolingLoadDividedByArea-2.0.0","HVAC_COOLING_LOAD_DIVIDED_BY_AREA","Watts per square meter","autodesk.unit.unit:wattsPerSquareMeter-1.0.1","W/m²",1,1,True
+"Cooling Load divided by Volume","HVAC","autodesk.spec.aec.hvac:coolingLoadDividedByVolume-2.0.0","HVAC_COOLING_LOAD_DIVIDED_BY_VOLUME","British thermal units per hour cubic foot","autodesk.unit.unit:britishThermalUnitsPerHourCubicFoot-1.0.1","Btu/(h·ft³)",0.316998330628151,3.15459074506305,True
+"Cooling Load divided by Volume","HVAC","autodesk.spec.aec.hvac:coolingLoadDividedByVolume-2.0.0","HVAC_COOLING_LOAD_DIVIDED_BY_VOLUME","Watts per cubic foot","autodesk.unit.unit:wattsPerCubicFoot-1.0.1","W/ft³",0.09290304,10.7639104167097,True
+"Cooling Load divided by Volume","HVAC","autodesk.spec.aec.hvac:coolingLoadDividedByVolume-2.0.0","HVAC_COOLING_LOAD_DIVIDED_BY_VOLUME","Watts per cubic meter","autodesk.unit.unit:wattsPerCubicMeter-1.0.1","W/m³",3.28083989501312,0.3048,True
+"Cross Section","HVAC","autodesk.spec.aec.hvac:crossSection-2.0.0","HVAC_CROSS_SECTION","Acres","autodesk.unit.unit:acres-1.0.1","acres",2.29568411386593E-05,43560,True
+"Cross Section","HVAC","autodesk.spec.aec.hvac:crossSection-2.0.0","HVAC_CROSS_SECTION","Hectares","autodesk.unit.unit:hectares-1.0.1","hectare",9.290304E-06,107639.104167097,True
+"Cross Section","HVAC","autodesk.spec.aec.hvac:crossSection-2.0.0","HVAC_CROSS_SECTION","Square centimeters","autodesk.unit.unit:squareCentimeters-1.0.1","cm²",929.0304,0.00107639104167097,True
+"Cross Section","HVAC","autodesk.spec.aec.hvac:crossSection-2.0.0","HVAC_CROSS_SECTION","Square feet","autodesk.unit.unit:squareFeet-1.0.1","SF",1,1,True
+"Cross Section","HVAC","autodesk.spec.aec.hvac:crossSection-2.0.0","HVAC_CROSS_SECTION","Square inches","autodesk.unit.unit:squareInches-1.0.1","in²",144,0.00694444444444444,True
+"Cross Section","HVAC","autodesk.spec.aec.hvac:crossSection-2.0.0","HVAC_CROSS_SECTION","Square meters","autodesk.unit.unit:squareMeters-1.0.1","m²",0.09290304,10.7639104167097,True
+"Cross Section","HVAC","autodesk.spec.aec.hvac:crossSection-2.0.0","HVAC_CROSS_SECTION","Square millimeters","autodesk.unit.unit:squareMillimeters-1.0.1","mm²",92903.04,1.07639104167097E-05,True
+"Density","HVAC","autodesk.spec.aec.hvac:density-2.0.0","HVAC_DENSITY","Kilograms per cubic meter","autodesk.unit.unit:kilogramsPerCubicMeter-1.0.1","kg/m³",35.3146667214886,0.028316846592,True
+"Density","HVAC","autodesk.spec.aec.hvac:density-2.0.0","HVAC_DENSITY","Pounds mass per cubic foot","autodesk.unit.unit:poundsMassPerCubicFoot-1.0.1","lbm/ft³",2.20462262184878,0.45359237,True
+"Density","HVAC","autodesk.spec.aec.hvac:density-2.0.0","HVAC_DENSITY","Pounds mass per cubic inch","autodesk.unit.unit:poundsMassPerCubicInch-1.0.1","lbm/in³",0.00127582327653286,783.80761536,True
+"Diffusivity","HVAC","autodesk.spec.aec.hvac:diffusivity-2.0.0","HVAC_DIFFUSIVITY","Square feet per second","autodesk.unit.unit:squareFeetPerSecond-1.0.0","ft²/s",1,1,True
+"Diffusivity","HVAC","autodesk.spec.aec.hvac:diffusivity-2.0.0","HVAC_DIFFUSIVITY","Square meters per second","autodesk.unit.unit:squareMetersPerSecond-1.0.0","m²/s",0.09290304,10.7639104167097,True
+"Duct Insulation Thickness","HVAC","autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0","HVAC_DUCT_INSULATION_THICKNESS","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Duct Insulation Thickness","HVAC","autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0","HVAC_DUCT_INSULATION_THICKNESS","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Duct Insulation Thickness","HVAC","autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0","HVAC_DUCT_INSULATION_THICKNESS","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Duct Insulation Thickness","HVAC","autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0","HVAC_DUCT_INSULATION_THICKNESS","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Duct Insulation Thickness","HVAC","autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0","HVAC_DUCT_INSULATION_THICKNESS","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Duct Insulation Thickness","HVAC","autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0","HVAC_DUCT_INSULATION_THICKNESS","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Duct Insulation Thickness","HVAC","autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0","HVAC_DUCT_INSULATION_THICKNESS","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Duct Insulation Thickness","HVAC","autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0","HVAC_DUCT_INSULATION_THICKNESS","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Duct Insulation Thickness","HVAC","autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0","HVAC_DUCT_INSULATION_THICKNESS","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Duct Lining Thickness","HVAC","autodesk.spec.aec.hvac:ductLiningThickness-2.0.0","HVAC_DUCT_LINING_THICKNESS","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Duct Lining Thickness","HVAC","autodesk.spec.aec.hvac:ductLiningThickness-2.0.0","HVAC_DUCT_LINING_THICKNESS","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Duct Lining Thickness","HVAC","autodesk.spec.aec.hvac:ductLiningThickness-2.0.0","HVAC_DUCT_LINING_THICKNESS","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Duct Lining Thickness","HVAC","autodesk.spec.aec.hvac:ductLiningThickness-2.0.0","HVAC_DUCT_LINING_THICKNESS","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Duct Lining Thickness","HVAC","autodesk.spec.aec.hvac:ductLiningThickness-2.0.0","HVAC_DUCT_LINING_THICKNESS","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Duct Lining Thickness","HVAC","autodesk.spec.aec.hvac:ductLiningThickness-2.0.0","HVAC_DUCT_LINING_THICKNESS","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Duct Lining Thickness","HVAC","autodesk.spec.aec.hvac:ductLiningThickness-2.0.0","HVAC_DUCT_LINING_THICKNESS","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Duct Lining Thickness","HVAC","autodesk.spec.aec.hvac:ductLiningThickness-2.0.0","HVAC_DUCT_LINING_THICKNESS","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Duct Lining Thickness","HVAC","autodesk.spec.aec.hvac:ductLiningThickness-2.0.0","HVAC_DUCT_LINING_THICKNESS","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Duct Size","HVAC","autodesk.spec.aec.hvac:ductSize-2.0.0","HVAC_DUCT_SIZE","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Duct Size","HVAC","autodesk.spec.aec.hvac:ductSize-2.0.0","HVAC_DUCT_SIZE","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Duct Size","HVAC","autodesk.spec.aec.hvac:ductSize-2.0.0","HVAC_DUCT_SIZE","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Duct Size","HVAC","autodesk.spec.aec.hvac:ductSize-2.0.0","HVAC_DUCT_SIZE","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Duct Size","HVAC","autodesk.spec.aec.hvac:ductSize-2.0.0","HVAC_DUCT_SIZE","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Duct Size","HVAC","autodesk.spec.aec.hvac:ductSize-2.0.0","HVAC_DUCT_SIZE","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Duct Size","HVAC","autodesk.spec.aec.hvac:ductSize-2.0.0","HVAC_DUCT_SIZE","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Duct Size","HVAC","autodesk.spec.aec.hvac:ductSize-2.0.0","HVAC_DUCT_SIZE","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Duct Size","HVAC","autodesk.spec.aec.hvac:ductSize-2.0.0","HVAC_DUCT_SIZE","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Factor","HVAC","autodesk.spec.aec.hvac:factor-2.0.0","HVAC_FACTOR","Fixed","autodesk.unit.unit:fixed-1.0.1","",1,1,True
+"Factor","HVAC","autodesk.spec.aec.hvac:factor-2.0.0","HVAC_FACTOR","Percentage","autodesk.unit.unit:percentage-1.0.1","%",100,0.01,True
+"Flow per Power","HVAC","autodesk.spec.aec.hvac:flowPerPower-2.0.0","HVAC_FLOW_PER_POWER","Cubic feet per minute per British thermal unit per hour","autodesk.unit.unit:cubicFeetPerMinutePerBritishThermalUnitPerHour-1.0.0","ft³·h/(min·Btu)",189.275444703783,0.00528330551046918,True
+"Flow per Power","HVAC","autodesk.spec.aec.hvac:flowPerPower-2.0.0","HVAC_FLOW_PER_POWER","Cubic meters per watt second","autodesk.unit.unit:cubicMetersPerWattSecond-1.0.0","m³/(W·s)",0.3048,3.28083989501312,True
+"Friction","HVAC","autodesk.spec.aec.hvac:friction-2.0.0","HVAC_FRICTION","Feet of water (39.2 °F) per 100 feet","autodesk.unit.unit:feetOfWater39.2DegreesFahrenheitPer100Feet-1.0.1","FT/100ft",0.109764531546318,9.11041104,True
+"Friction","HVAC","autodesk.spec.aec.hvac:friction-2.0.0","HVAC_FRICTION","Inches of water (60 °F) per 100 feet","autodesk.unit.unit:inchesOfWater60DegreesFahrenheitPer100Feet-1.0.1","in-wg/100ft",1.31845358262865,0.75846432,True
+"Friction","HVAC","autodesk.spec.aec.hvac:friction-2.0.0","HVAC_FRICTION","Meters of water column per meter","autodesk.unit.unit:metersOfWaterColumnPerMeter-1.0.0","mH2O/m",0.00109761339669609,911.067597216,True
+"Friction","HVAC","autodesk.spec.aec.hvac:friction-2.0.0","HVAC_FRICTION","Millimeters of water column per meter","autodesk.unit.unit:millimetersOfWaterColumnPerMeter-1.0.0","mmH2O/m",1.09761339669609,0.911067597216,True
+"Friction","HVAC","autodesk.spec.aec.hvac:friction-2.0.0","HVAC_FRICTION","Pascals per meter","autodesk.unit.unit:pascalsPerMeter-1.0.1","Pa/m",10.7639104167097,0.09290304,True
+"Heat Gain","HVAC","autodesk.spec.aec.hvac:heatGain-2.0.0","HVAC_HEAT_GAIN","British thermal units per hour","autodesk.unit.unit:britishThermalUnitsPerHour-1.0.1","Btu/h",0.316998330628151,3.15459074506305,True
+"Heat Gain","HVAC","autodesk.spec.aec.hvac:heatGain-2.0.0","HVAC_HEAT_GAIN","British thermal units per second","autodesk.unit.unit:britishThermalUnitsPerSecond-1.0.1","Btu/s",8.80550918411529E-05,11356.526682227,True
+"Heat Gain","HVAC","autodesk.spec.aec.hvac:heatGain-2.0.0","HVAC_HEAT_GAIN","Calories per second","autodesk.unit.unit:caloriesPerSecond-1.0.1","cal/s",0.0221895098882201,45.0663401326803,True
+"Heat Gain","HVAC","autodesk.spec.aec.hvac:heatGain-2.0.0","HVAC_HEAT_GAIN","Kilocalories per second","autodesk.unit.unit:kilocaloriesPerSecond-1.0.1","kcal/s",2.21895098882201E-05,45066.3401326803,True
+"Heat Gain","HVAC","autodesk.spec.aec.hvac:heatGain-2.0.0","HVAC_HEAT_GAIN","Kilowatts","autodesk.unit.unit:kilowatts-1.0.1","kW",9.290304E-05,10763.9104167097,True
+"Heat Gain","HVAC","autodesk.spec.aec.hvac:heatGain-2.0.0","HVAC_HEAT_GAIN","Watts","autodesk.unit.unit:watts-1.0.1","W",0.09290304,10.7639104167097,True
+"Heating Load","HVAC","autodesk.spec.aec.hvac:heatingLoad-2.0.0","HVAC_HEATING_LOAD","British thermal units per hour","autodesk.unit.unit:britishThermalUnitsPerHour-1.0.1","Btu/h",0.316998330628151,3.15459074506305,True
+"Heating Load","HVAC","autodesk.spec.aec.hvac:heatingLoad-2.0.0","HVAC_HEATING_LOAD","British thermal units per second","autodesk.unit.unit:britishThermalUnitsPerSecond-1.0.1","Btu/s",8.80550918411529E-05,11356.526682227,True
+"Heating Load","HVAC","autodesk.spec.aec.hvac:heatingLoad-2.0.0","HVAC_HEATING_LOAD","Kilowatts","autodesk.unit.unit:kilowatts-1.0.1","kW",9.290304E-05,10763.9104167097,True
+"Heating Load","HVAC","autodesk.spec.aec.hvac:heatingLoad-2.0.0","HVAC_HEATING_LOAD","Watts","autodesk.unit.unit:watts-1.0.1","W",0.09290304,10.7639104167097,True
+"Heating Load divided by Area","HVAC","autodesk.spec.aec.hvac:heatingLoadDividedByArea-2.0.0","HVAC_HEATING_LOAD_DIVIDED_BY_AREA","British thermal units per hour square foot","autodesk.unit.unit:britishThermalUnitsPerHourSquareFoot-1.0.1","Btu/(h·ft²)",0.316998330628151,3.15459074506305,True
+"Heating Load divided by Area","HVAC","autodesk.spec.aec.hvac:heatingLoadDividedByArea-2.0.0","HVAC_HEATING_LOAD_DIVIDED_BY_AREA","Watts per square foot","autodesk.unit.unit:wattsPerSquareFoot-1.0.1","W/ft²",0.09290304,10.7639104167097,True
+"Heating Load divided by Area","HVAC","autodesk.spec.aec.hvac:heatingLoadDividedByArea-2.0.0","HVAC_HEATING_LOAD_DIVIDED_BY_AREA","Watts per square meter","autodesk.unit.unit:wattsPerSquareMeter-1.0.1","W/m²",1,1,True
+"Heating Load divided by Volume","HVAC","autodesk.spec.aec.hvac:heatingLoadDividedByVolume-2.0.0","HVAC_HEATING_LOAD_DIVIDED_BY_VOLUME","British thermal units per hour cubic foot","autodesk.unit.unit:britishThermalUnitsPerHourCubicFoot-1.0.1","Btu/(h·ft³)",0.316998330628151,3.15459074506305,True
+"Heating Load divided by Volume","HVAC","autodesk.spec.aec.hvac:heatingLoadDividedByVolume-2.0.0","HVAC_HEATING_LOAD_DIVIDED_BY_VOLUME","Watts per cubic foot","autodesk.unit.unit:wattsPerCubicFoot-1.0.1","W/ft³",0.09290304,10.7639104167097,True
+"Heating Load divided by Volume","HVAC","autodesk.spec.aec.hvac:heatingLoadDividedByVolume-2.0.0","HVAC_HEATING_LOAD_DIVIDED_BY_VOLUME","Watts per cubic meter","autodesk.unit.unit:wattsPerCubicMeter-1.0.1","W/m³",3.28083989501312,0.3048,True
+"Mass per Time","HVAC","autodesk.spec.aec.hvac:massPerTime-2.0.0","HVAC_MASS_PER_TIME","Kilograms per hour","autodesk.unit.unit:kilogramsPerHour-1.0.0","kg/h",3600,0.000277777777777778,True
+"Mass per Time","HVAC","autodesk.spec.aec.hvac:massPerTime-2.0.0","HVAC_MASS_PER_TIME","Kilograms per minute","autodesk.unit.unit:kilogramsPerMinute-1.0.0","kg/min",60,0.0166666666666667,True
+"Mass per Time","HVAC","autodesk.spec.aec.hvac:massPerTime-2.0.0","HVAC_MASS_PER_TIME","Kilograms per second","autodesk.unit.unit:kilogramsPerSecond-1.0.0","kg/s",1,1,True
+"Mass per Time","HVAC","autodesk.spec.aec.hvac:massPerTime-2.0.0","HVAC_MASS_PER_TIME","Pounds mass per hour","autodesk.unit.unit:poundsMassPerHour-1.0.0","lb/h",7936.64143865559,0.000125997880555556,True
+"Mass per Time","HVAC","autodesk.spec.aec.hvac:massPerTime-2.0.0","HVAC_MASS_PER_TIME","Pounds mass per minute","autodesk.unit.unit:poundsMassPerMinute-1.0.0","lb/min",132.277357310927,0.00755987283333333,True
+"Mass per Time","HVAC","autodesk.spec.aec.hvac:massPerTime-2.0.0","HVAC_MASS_PER_TIME","Pounds mass per second","autodesk.unit.unit:poundsMassPerSecond-1.0.0","lb/s",2.20462262184878,0.45359237,True
+"Power","HVAC","autodesk.spec.aec.hvac:power-2.0.0","HVAC_POWER","British thermal units per hour","autodesk.unit.unit:britishThermalUnitsPerHour-1.0.1","Btu/h",0.316998330628151,3.15459074506305,True
+"Power","HVAC","autodesk.spec.aec.hvac:power-2.0.0","HVAC_POWER","British thermal units per second","autodesk.unit.unit:britishThermalUnitsPerSecond-1.0.1","Btu/s",8.80550918411529E-05,11356.526682227,True
+"Power","HVAC","autodesk.spec.aec.hvac:power-2.0.0","HVAC_POWER","Calories per second","autodesk.unit.unit:caloriesPerSecond-1.0.1","cal/s",0.0221895098882201,45.0663401326803,True
+"Power","HVAC","autodesk.spec.aec.hvac:power-2.0.0","HVAC_POWER","Kilocalories per second","autodesk.unit.unit:kilocaloriesPerSecond-1.0.1","kcal/s",2.21895098882201E-05,45066.3401326803,True
+"Power","HVAC","autodesk.spec.aec.hvac:power-2.0.0","HVAC_POWER","Kilowatts","autodesk.unit.unit:kilowatts-1.0.1","kW",9.290304E-05,10763.9104167097,True
+"Power","HVAC","autodesk.spec.aec.hvac:power-2.0.0","HVAC_POWER","Watts","autodesk.unit.unit:watts-1.0.1","W",0.09290304,10.7639104167097,True
+"Power Density","HVAC","autodesk.spec.aec.hvac:powerDensity-2.0.0","HVAC_POWER_DENSITY","British thermal units per hour square foot","autodesk.unit.unit:britishThermalUnitsPerHourSquareFoot-1.0.1","Btu/(h·ft²)",0.316998330628151,3.15459074506305,True
+"Power Density","HVAC","autodesk.spec.aec.hvac:powerDensity-2.0.0","HVAC_POWER_DENSITY","Watts per square foot","autodesk.unit.unit:wattsPerSquareFoot-1.0.1","W/ft²",0.09290304,10.7639104167097,True
+"Power Density","HVAC","autodesk.spec.aec.hvac:powerDensity-2.0.0","HVAC_POWER_DENSITY","Watts per square meter","autodesk.unit.unit:wattsPerSquareMeter-1.0.1","W/m²",1,1,True
+"Power per Flow","HVAC","autodesk.spec.aec.hvac:powerPerFlow-2.0.0","HVAC_POWER_PER_FLOW","Watts per cubic foot per minute","autodesk.unit.unit:wattsPerCubicFootPerMinute-1.0.0","W·min/ft³",0.001548384,645.834625002583,True
+"Power per Flow","HVAC","autodesk.spec.aec.hvac:powerPerFlow-2.0.0","HVAC_POWER_PER_FLOW","Watts per cubic meter per second","autodesk.unit.unit:wattsPerCubicMeterPerSecond-1.0.0","W·s/m³",3.28083989501312,0.3048,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Atmospheres","autodesk.unit.unit:atmospheres-1.0.1","atm",3.23793722675857E-05,30883.86,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Bars","autodesk.unit.unit:bars-1.0.1","bar",3.28083989501312E-05,30480,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Feet of water (39.2 °F)","autodesk.unit.unit:feetOfWater39.2DegreesFahrenheit-1.0.1","FT",0.00109764531546318,911.041104,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Inches of mercury (32 °F)","autodesk.unit.unit:inchesOfMercury32DegreesFahrenheit-1.0.1","inHg",0.000968831370233344,1032.1713672,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Inches of water (60 °F)","autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1","in-wg",0.0131845358262865,75.846432,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Kilopascals","autodesk.unit.unit:kilopascals-1.0.1","kPa",0.00328083989501312,304.8,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Megapascals","autodesk.unit.unit:megapascals-1.0.1","MPa",3.28083989501312E-06,304800,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Meters of water column","autodesk.unit.unit:metersOfWaterColumn-1.0.0","mH2O",0.000334552563312969,2989.06692,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Millimeters of mercury","autodesk.unit.unit:millimetersOfMercury-1.0.1","mmHg",0.0246083170946002,40.63666752,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Millimeters of water column","autodesk.unit.unit:millimetersOfWaterColumn-1.0.0","mmH2O",0.334552563312969,2.98906692,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Pascals","autodesk.unit.unit:pascals-1.0.1","Pa",3.28083989501312,0.3048,True
+"Pressure","HVAC","autodesk.spec.aec.hvac:pressure-2.0.0","HVAC_PRESSURE","Pounds force per square inch","autodesk.unit.unit:poundsForcePerSquareInch-1.0.1","psig",0.000475845596227721,2101.52202295772,True
+"Roughness","HVAC","autodesk.spec.aec.hvac:roughness-2.0.0","HVAC_ROUGHNESS","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Roughness","HVAC","autodesk.spec.aec.hvac:roughness-2.0.0","HVAC_ROUGHNESS","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Roughness","HVAC","autodesk.spec.aec.hvac:roughness-2.0.0","HVAC_ROUGHNESS","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Roughness","HVAC","autodesk.spec.aec.hvac:roughness-2.0.0","HVAC_ROUGHNESS","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Roughness","HVAC","autodesk.spec.aec.hvac:roughness-2.0.0","HVAC_ROUGHNESS","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Roughness","HVAC","autodesk.spec.aec.hvac:roughness-2.0.0","HVAC_ROUGHNESS","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Roughness","HVAC","autodesk.spec.aec.hvac:roughness-2.0.0","HVAC_ROUGHNESS","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Roughness","HVAC","autodesk.spec.aec.hvac:roughness-2.0.0","HVAC_ROUGHNESS","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Roughness","HVAC","autodesk.spec.aec.hvac:roughness-2.0.0","HVAC_ROUGHNESS","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","1 : Ratio","autodesk.unit.unit:1ToRatio-1.0.1","1:",1,1,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Per mille","autodesk.unit.unit:perMille-1.0.1","‰",1000,0.001,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Percentage","autodesk.unit.unit:percentage-1.0.1","%",100,0.01,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Ratio : 1","autodesk.unit.unit:ratioTo1-1.0.0",":1",1,1,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Ratio : 10","autodesk.unit.unit:ratioTo10-1.0.1",":10",10,0.1,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Ratio : 12","autodesk.unit.unit:ratioTo12-1.0.1",":12",12,0.0833333333333333,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Rise / 1000 millimeters","autodesk.unit.unit:riseDividedBy1000Millimeters-1.0.1","",1000,0.001,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Rise / 10 feet","autodesk.unit.unit:riseDividedBy10Feet-1.0.1","",10,0.1,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Rise / 120 inches","autodesk.unit.unit:riseDividedBy120Inches-1.0.1","",120,0.00833333333333333,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Rise / 12 inches","autodesk.unit.unit:riseDividedBy12Inches-1.0.1","",12,0.0833333333333333,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Rise / 1 foot","autodesk.unit.unit:riseDividedBy1Foot-1.0.1","",1,1,True
+"Slope","HVAC","autodesk.spec.aec.hvac:slope-2.0.0","HVAC_SLOPE","Degrees","autodesk.unit.unit:slopeDegrees-1.0.0","",45,0.0174550649282176,True
+"Temperature","HVAC","autodesk.spec.aec.hvac:temperature-2.0.0","HVAC_TEMPERATURE","Celsius","autodesk.unit.unit:celsius-1.0.1","°C",-272.15,274.15,True
+"Temperature","HVAC","autodesk.spec.aec.hvac:temperature-2.0.0","HVAC_TEMPERATURE","Fahrenheit","autodesk.unit.unit:fahrenheit-1.0.1","°F",-457.87,255.927777777778,True
+"Temperature","HVAC","autodesk.spec.aec.hvac:temperature-2.0.0","HVAC_TEMPERATURE","Kelvin","autodesk.unit.unit:kelvin-1.0.0","K",1,1,True
+"Temperature","HVAC","autodesk.spec.aec.hvac:temperature-2.0.0","HVAC_TEMPERATURE","Rankine","autodesk.unit.unit:rankine-1.0.1","°R",1.8,0.555555555555556,True
+"Temperature Difference","HVAC","autodesk.spec.aec.hvac:temperatureDifference-2.0.0","HVAC_TEMPERATURE_DIFFERENCE","Celsius interval","autodesk.unit.unit:celsiusInterval-1.0.1","delta°C",1,1,True
+"Temperature Difference","HVAC","autodesk.spec.aec.hvac:temperatureDifference-2.0.0","HVAC_TEMPERATURE_DIFFERENCE","Fahrenheit interval","autodesk.unit.unit:fahrenheitInterval-1.0.1","delta°F",1.8,0.555555555555556,True
+"Temperature Difference","HVAC","autodesk.spec.aec.hvac:temperatureDifference-2.0.0","HVAC_TEMPERATURE_DIFFERENCE","Kelvin interval","autodesk.unit.unit:kelvinInterval-1.0.0","K",1,1,True
+"Temperature Difference","HVAC","autodesk.spec.aec.hvac:temperatureDifference-2.0.0","HVAC_TEMPERATURE_DIFFERENCE","Rankine interval","autodesk.unit.unit:rankineInterval-1.0.1","delta°R",1.8,0.555555555555556,True
+"Velocity","HVAC","autodesk.spec.aec.hvac:velocity-2.0.0","HVAC_VELOCITY","Centimeters per minute","autodesk.unit.unit:centimetersPerMinute-1.0.1","cm/min",1828.8,0.000546806649168854,True
+"Velocity","HVAC","autodesk.spec.aec.hvac:velocity-2.0.0","HVAC_VELOCITY","Feet per minute","autodesk.unit.unit:feetPerMinute-1.0.1","ft/min",60,0.0166666666666667,True
+"Velocity","HVAC","autodesk.spec.aec.hvac:velocity-2.0.0","HVAC_VELOCITY","Feet per second","autodesk.unit.unit:feetPerSecond-1.0.1","ft/s",1,1,True
+"Velocity","HVAC","autodesk.spec.aec.hvac:velocity-2.0.0","HVAC_VELOCITY","Kilometers per hour","autodesk.unit.unit:kilometersPerHour-1.0.1","km/h",1.09728,0.911344415281423,True
+"Velocity","HVAC","autodesk.spec.aec.hvac:velocity-2.0.0","HVAC_VELOCITY","Meters per second","autodesk.unit.unit:metersPerSecond-1.0.1","m/s",0.3048,3.28083989501312,True
+"Velocity","HVAC","autodesk.spec.aec.hvac:velocity-2.0.0","HVAC_VELOCITY","Miles per hour","autodesk.unit.unit:milesPerHour-1.0.1","mph",0.681818181818182,1.46666666666667,True
+"Dynamic Viscosity","HVAC","autodesk.spec.aec.hvac:viscosity-2.0.0","HVAC_VISCOSITY","Centipoises","autodesk.unit.unit:centipoises-1.0.1","cP",3280.83989501312,0.0003048,True
+"Dynamic Viscosity","HVAC","autodesk.spec.aec.hvac:viscosity-2.0.0","HVAC_VISCOSITY","Kilograms per meter hour","autodesk.unit.unit:kilogramsPerMeterHour-1.0.0","kg/(m·h)",11811.0236220472,8.46666666666667E-05,True
+"Dynamic Viscosity","HVAC","autodesk.spec.aec.hvac:viscosity-2.0.0","HVAC_VISCOSITY","Kilograms per meter second","autodesk.unit.unit:kilogramsPerMeterSecond-1.0.0","kg/(m·s)",3.28083989501312,0.3048,True
+"Dynamic Viscosity","HVAC","autodesk.spec.aec.hvac:viscosity-2.0.0","HVAC_VISCOSITY","Newton seconds per square meter","autodesk.unit.unit:newtonSecondsPerSquareMeter-1.0.0","N·s/m²",3.28083989501312,0.3048,True
+"Dynamic Viscosity","HVAC","autodesk.spec.aec.hvac:viscosity-2.0.0","HVAC_VISCOSITY","Pascal seconds","autodesk.unit.unit:pascalSeconds-1.0.1","Pa-s",3.28083989501312,0.3048,True
+"Dynamic Viscosity","HVAC","autodesk.spec.aec.hvac:viscosity-2.0.0","HVAC_VISCOSITY","Pound force seconds per square foot","autodesk.unit.unit:poundForceSecondsPerSquareFoot-1.0.0","lb·s/ft²",0.0685217658567918,14.5939029372064,True
+"Dynamic Viscosity","HVAC","autodesk.spec.aec.hvac:viscosity-2.0.0","HVAC_VISCOSITY","Pounds mass per foot hour","autodesk.unit.unit:poundsMassPerFootHour-1.0.1","lbm/ft-h",7936.64143865559,0.000125997880555556,True
+"Dynamic Viscosity","HVAC","autodesk.spec.aec.hvac:viscosity-2.0.0","HVAC_VISCOSITY","Pounds mass per foot second","autodesk.unit.unit:poundsMassPerFootSecond-1.0.1","lbm/ft-s",2.20462262184878,0.45359237,True
+"Stationing","Infrastructure","autodesk.spec.aec.infrastructure:stationing-2.0.0","STATIONING","Feet","autodesk.unit.unit:stationingFeet-1.0.0","",1,1,True
+"Stationing","Infrastructure","autodesk.spec.aec.infrastructure:stationing-2.0.0","STATIONING","Meters","autodesk.unit.unit:stationingMeters-1.0.0","",0.3048,3.28083989501312,True
+"Stationing","Infrastructure","autodesk.spec.aec.infrastructure:stationing-2.0.0","STATIONING","US survey feet","autodesk.unit.unit:stationingSurveyFeet-1.0.0","",0.999998,1.000002000004,True
+"Stationing Interval","Infrastructure","autodesk.spec.aec.infrastructure:stationingInterval-2.0.0","STATIONING_INTERVAL","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Stationing Interval","Infrastructure","autodesk.spec.aec.infrastructure:stationingInterval-2.0.0","STATIONING_INTERVAL","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Stationing Interval","Infrastructure","autodesk.spec.aec.infrastructure:stationingInterval-2.0.0","STATIONING_INTERVAL","US survey feet","autodesk.unit.unit:usSurveyFeet-1.0.0","USft",0.999998,1.000002000004,True
+"Density","Piping","autodesk.spec.aec.piping:density-2.0.0","PIPING_DENSITY","Kilograms per cubic meter","autodesk.unit.unit:kilogramsPerCubicMeter-1.0.1","kg/m³",35.3146667214886,0.028316846592,True
+"Density","Piping","autodesk.spec.aec.piping:density-2.0.0","PIPING_DENSITY","Pounds mass per cubic foot","autodesk.unit.unit:poundsMassPerCubicFoot-1.0.1","lbm/ft³",2.20462262184878,0.45359237,True
+"Density","Piping","autodesk.spec.aec.piping:density-2.0.0","PIPING_DENSITY","Pounds mass per cubic inch","autodesk.unit.unit:poundsMassPerCubicInch-1.0.1","lbm/in³",0.00127582327653286,783.80761536,True
+"Flow","Piping","autodesk.spec.aec.piping:flow-2.0.0","PIPING_FLOW","Cubic feet per hour","autodesk.unit.unit:cubicFeetPerHour-1.0.0","ft³/h",3600,0.000277777777777778,True
+"Flow","Piping","autodesk.spec.aec.piping:flow-2.0.0","PIPING_FLOW","Cubic feet per minute","autodesk.unit.unit:cubicFeetPerMinute-1.0.1","ft³/min",60,0.0166666666666667,True
+"Flow","Piping","autodesk.spec.aec.piping:flow-2.0.0","PIPING_FLOW","Cubic meters per hour","autodesk.unit.unit:cubicMetersPerHour-1.0.1","m³/h",101.9406477312,0.00980962964485794,True
+"Flow","Piping","autodesk.spec.aec.piping:flow-2.0.0","PIPING_FLOW","Cubic meters per second","autodesk.unit.unit:cubicMetersPerSecond-1.0.1","m³/s",0.028316846592,35.3146667214886,True
+"Flow","Piping","autodesk.spec.aec.piping:flow-2.0.0","PIPING_FLOW","Liters per hour","autodesk.unit.unit:litersPerHour-1.0.1","L/h",101940.6477312,9.80962964485794E-06,True
+"Flow","Piping","autodesk.spec.aec.piping:flow-2.0.0","PIPING_FLOW","Liters per minute","autodesk.unit.unit:litersPerMinute-1.0.1","LPM",1699.01079552,0.000588577778691477,True
+"Flow","Piping","autodesk.spec.aec.piping:flow-2.0.0","PIPING_FLOW","Liters per second","autodesk.unit.unit:litersPerSecond-1.0.1","LPS",28.316846592,0.0353146667214886,True
+"Flow","Piping","autodesk.spec.aec.piping:flow-2.0.0","PIPING_FLOW","US gallons per hour","autodesk.unit.unit:usGallonsPerHour-1.0.1","usgph",26929.8701298701,3.7133487654321E-05,True
+"Flow","Piping","autodesk.spec.aec.piping:flow-2.0.0","PIPING_FLOW","US gallons per minute","autodesk.unit.unit:usGallonsPerMinute-1.0.1","usgpm",448.831143220342,0.00222800938639206,True
+"Friction","Piping","autodesk.spec.aec.piping:friction-2.0.0","PIPING_FRICTION","Feet of water (39.2 °F) per 100 feet","autodesk.unit.unit:feetOfWater39.2DegreesFahrenheitPer100Feet-1.0.1","FT/100ft",0.109764531546318,9.11041104,True
+"Friction","Piping","autodesk.spec.aec.piping:friction-2.0.0","PIPING_FRICTION","Inches of water (60 °F) per 100 feet","autodesk.unit.unit:inchesOfWater60DegreesFahrenheitPer100Feet-1.0.1","in-wg/100ft",1.31845358262865,0.75846432,True
+"Friction","Piping","autodesk.spec.aec.piping:friction-2.0.0","PIPING_FRICTION","Meters of water column per meter","autodesk.unit.unit:metersOfWaterColumnPerMeter-1.0.0","mH2O/m",0.00109761339669609,911.067597216,True
+"Friction","Piping","autodesk.spec.aec.piping:friction-2.0.0","PIPING_FRICTION","Millimeters of water column per meter","autodesk.unit.unit:millimetersOfWaterColumnPerMeter-1.0.0","mmH2O/m",1.09761339669609,0.911067597216,True
+"Friction","Piping","autodesk.spec.aec.piping:friction-2.0.0","PIPING_FRICTION","Pascals per meter","autodesk.unit.unit:pascalsPerMeter-1.0.1","Pa/m",10.7639104167097,0.09290304,True
+"Mass","Piping","autodesk.spec.aec.piping:mass-2.0.0","PIPE_MASS","Kilograms","autodesk.unit.unit:kilograms-1.0.0","kg",1,1,True
+"Mass","Piping","autodesk.spec.aec.piping:mass-2.0.0","PIPE_MASS","Pounds mass","autodesk.unit.unit:poundsMass-1.0.1","lb",2.20462262184878,0.45359237,True
+"Mass","Piping","autodesk.spec.aec.piping:mass-2.0.0","PIPE_MASS","Tonnes","autodesk.unit.unit:tonnes-1.0.1","t",0.001,1000,True
+"Mass","Piping","autodesk.spec.aec.piping:mass-2.0.0","PIPE_MASS","US tonnes mass","autodesk.unit.unit:usTonnesMass-1.0.1","Tons",0.00110231131092439,907.18474,True
+"Mass per Time","Piping","autodesk.spec.aec.piping:massPerTime-2.0.0","PIPING_MASS_PER_TIME","Kilograms per hour","autodesk.unit.unit:kilogramsPerHour-1.0.0","kg/h",3600,0.000277777777777778,True
+"Mass per Time","Piping","autodesk.spec.aec.piping:massPerTime-2.0.0","PIPING_MASS_PER_TIME","Kilograms per minute","autodesk.unit.unit:kilogramsPerMinute-1.0.0","kg/min",60,0.0166666666666667,True
+"Mass per Time","Piping","autodesk.spec.aec.piping:massPerTime-2.0.0","PIPING_MASS_PER_TIME","Kilograms per second","autodesk.unit.unit:kilogramsPerSecond-1.0.0","kg/s",1,1,True
+"Mass per Time","Piping","autodesk.spec.aec.piping:massPerTime-2.0.0","PIPING_MASS_PER_TIME","Pounds mass per hour","autodesk.unit.unit:poundsMassPerHour-1.0.0","lb/h",7936.64143865559,0.000125997880555556,True
+"Mass per Time","Piping","autodesk.spec.aec.piping:massPerTime-2.0.0","PIPING_MASS_PER_TIME","Pounds mass per minute","autodesk.unit.unit:poundsMassPerMinute-1.0.0","lb/min",132.277357310927,0.00755987283333333,True
+"Mass per Time","Piping","autodesk.spec.aec.piping:massPerTime-2.0.0","PIPING_MASS_PER_TIME","Pounds mass per second","autodesk.unit.unit:poundsMassPerSecond-1.0.0","lb/s",2.20462262184878,0.45359237,True
+"Pipe Dimension","Piping","autodesk.spec.aec.piping:pipeDimension-2.0.0","PIPE_DIMENSION","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Pipe Dimension","Piping","autodesk.spec.aec.piping:pipeDimension-2.0.0","PIPE_DIMENSION","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Pipe Dimension","Piping","autodesk.spec.aec.piping:pipeDimension-2.0.0","PIPE_DIMENSION","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Pipe Dimension","Piping","autodesk.spec.aec.piping:pipeDimension-2.0.0","PIPE_DIMENSION","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Pipe Insulation Thickness","Piping","autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0","PIPE_INSULATION_THICKNESS","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Pipe Insulation Thickness","Piping","autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0","PIPE_INSULATION_THICKNESS","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Pipe Insulation Thickness","Piping","autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0","PIPE_INSULATION_THICKNESS","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Pipe Insulation Thickness","Piping","autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0","PIPE_INSULATION_THICKNESS","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Pipe Insulation Thickness","Piping","autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0","PIPE_INSULATION_THICKNESS","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Pipe Insulation Thickness","Piping","autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0","PIPE_INSULATION_THICKNESS","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Pipe Insulation Thickness","Piping","autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0","PIPE_INSULATION_THICKNESS","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Pipe Insulation Thickness","Piping","autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0","PIPE_INSULATION_THICKNESS","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Pipe Insulation Thickness","Piping","autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0","PIPE_INSULATION_THICKNESS","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Mass per Unit Length","Piping","autodesk.spec.aec.piping:pipeMassPerUnitLength-2.0.0","PIPE_MASS_PER_UNIT_LENGTH","Kilograms per meter","autodesk.unit.unit:kilogramsPerMeter-1.0.1","kg/m",3.28083989501312,0.3048,True
+"Mass per Unit Length","Piping","autodesk.spec.aec.piping:pipeMassPerUnitLength-2.0.0","PIPE_MASS_PER_UNIT_LENGTH","Pounds mass per foot","autodesk.unit.unit:poundsMassPerFoot-1.0.1","lbm/ft",2.20462262184878,0.45359237,True
+"Pipe Size","Piping","autodesk.spec.aec.piping:pipeSize-2.0.0","PIPE_SIZE","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Pipe Size","Piping","autodesk.spec.aec.piping:pipeSize-2.0.0","PIPE_SIZE","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Pipe Size","Piping","autodesk.spec.aec.piping:pipeSize-2.0.0","PIPE_SIZE","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Pipe Size","Piping","autodesk.spec.aec.piping:pipeSize-2.0.0","PIPE_SIZE","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Pipe Size","Piping","autodesk.spec.aec.piping:pipeSize-2.0.0","PIPE_SIZE","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Pipe Size","Piping","autodesk.spec.aec.piping:pipeSize-2.0.0","PIPE_SIZE","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Pipe Size","Piping","autodesk.spec.aec.piping:pipeSize-2.0.0","PIPE_SIZE","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Pipe Size","Piping","autodesk.spec.aec.piping:pipeSize-2.0.0","PIPE_SIZE","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Pipe Size","Piping","autodesk.spec.aec.piping:pipeSize-2.0.0","PIPE_SIZE","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Atmospheres","autodesk.unit.unit:atmospheres-1.0.1","atm",3.23793722675857E-05,30883.86,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Bars","autodesk.unit.unit:bars-1.0.1","bar",3.28083989501312E-05,30480,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Feet of water (39.2 °F)","autodesk.unit.unit:feetOfWater39.2DegreesFahrenheit-1.0.1","FT",0.00109764531546318,911.041104,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Inches of mercury (32 °F)","autodesk.unit.unit:inchesOfMercury32DegreesFahrenheit-1.0.1","inHg",0.000968831370233344,1032.1713672,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Inches of water (60 °F)","autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1","in-wg",0.0131845358262865,75.846432,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Kilopascals","autodesk.unit.unit:kilopascals-1.0.1","kPa",0.00328083989501312,304.8,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Megapascals","autodesk.unit.unit:megapascals-1.0.1","MPa",3.28083989501312E-06,304800,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Meters of water column","autodesk.unit.unit:metersOfWaterColumn-1.0.0","mH2O",0.000334552563312969,2989.06692,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Millimeters of mercury","autodesk.unit.unit:millimetersOfMercury-1.0.1","mmHg",0.0246083170946002,40.63666752,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Millimeters of water column","autodesk.unit.unit:millimetersOfWaterColumn-1.0.0","mmH2O",0.334552563312969,2.98906692,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Pascals","autodesk.unit.unit:pascals-1.0.1","Pa",3.28083989501312,0.3048,True
+"Pressure","Piping","autodesk.spec.aec.piping:pressure-2.0.0","PIPING_PRESSURE","Pounds force per square inch","autodesk.unit.unit:poundsForcePerSquareInch-1.0.1","psig",0.000475845596227721,2101.52202295772,True
+"Roughness","Piping","autodesk.spec.aec.piping:roughness-2.0.0","PIPING_ROUGHNESS","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Roughness","Piping","autodesk.spec.aec.piping:roughness-2.0.0","PIPING_ROUGHNESS","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Roughness","Piping","autodesk.spec.aec.piping:roughness-2.0.0","PIPING_ROUGHNESS","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Roughness","Piping","autodesk.spec.aec.piping:roughness-2.0.0","PIPING_ROUGHNESS","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Roughness","Piping","autodesk.spec.aec.piping:roughness-2.0.0","PIPING_ROUGHNESS","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Roughness","Piping","autodesk.spec.aec.piping:roughness-2.0.0","PIPING_ROUGHNESS","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Roughness","Piping","autodesk.spec.aec.piping:roughness-2.0.0","PIPING_ROUGHNESS","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Roughness","Piping","autodesk.spec.aec.piping:roughness-2.0.0","PIPING_ROUGHNESS","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Roughness","Piping","autodesk.spec.aec.piping:roughness-2.0.0","PIPING_ROUGHNESS","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","1 : Ratio","autodesk.unit.unit:1ToRatio-1.0.1","1:",1,1,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Per mille","autodesk.unit.unit:perMille-1.0.1","‰",1000,0.001,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Percentage","autodesk.unit.unit:percentage-1.0.1","%",100,0.01,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Ratio : 1","autodesk.unit.unit:ratioTo1-1.0.0",":1",1,1,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Ratio : 10","autodesk.unit.unit:ratioTo10-1.0.1",":10",10,0.1,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Ratio : 12","autodesk.unit.unit:ratioTo12-1.0.1",":12",12,0.0833333333333333,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Rise / 1000 millimeters","autodesk.unit.unit:riseDividedBy1000Millimeters-1.0.1","",1000,0.001,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Rise / 10 feet","autodesk.unit.unit:riseDividedBy10Feet-1.0.1","",10,0.1,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Rise / 120 inches","autodesk.unit.unit:riseDividedBy120Inches-1.0.1","",120,0.00833333333333333,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Rise / 12 inches","autodesk.unit.unit:riseDividedBy12Inches-1.0.1","",12,0.0833333333333333,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Rise / 1 foot","autodesk.unit.unit:riseDividedBy1Foot-1.0.1","",1,1,True
+"Slope","Piping","autodesk.spec.aec.piping:slope-2.0.0","PIPING_SLOPE","Degrees","autodesk.unit.unit:slopeDegrees-1.0.0","",45,0.0174550649282176,True
+"Temperature","Piping","autodesk.spec.aec.piping:temperature-2.0.0","PIPING_TEMPERATURE","Celsius","autodesk.unit.unit:celsius-1.0.1","°C",-272.15,274.15,True
+"Temperature","Piping","autodesk.spec.aec.piping:temperature-2.0.0","PIPING_TEMPERATURE","Fahrenheit","autodesk.unit.unit:fahrenheit-1.0.1","°F",-457.87,255.927777777778,True
+"Temperature","Piping","autodesk.spec.aec.piping:temperature-2.0.0","PIPING_TEMPERATURE","Kelvin","autodesk.unit.unit:kelvin-1.0.0","K",1,1,True
+"Temperature","Piping","autodesk.spec.aec.piping:temperature-2.0.0","PIPING_TEMPERATURE","Rankine","autodesk.unit.unit:rankine-1.0.1","°R",1.8,0.555555555555556,True
+"Temperature Difference","Piping","autodesk.spec.aec.piping:temperatureDifference-2.0.0","PIPING_TEMPERATURE_DIFFERENCE","Celsius interval","autodesk.unit.unit:celsiusInterval-1.0.1","delta°C",1,1,True
+"Temperature Difference","Piping","autodesk.spec.aec.piping:temperatureDifference-2.0.0","PIPING_TEMPERATURE_DIFFERENCE","Fahrenheit interval","autodesk.unit.unit:fahrenheitInterval-1.0.1","delta°F",1.8,0.555555555555556,True
+"Temperature Difference","Piping","autodesk.spec.aec.piping:temperatureDifference-2.0.0","PIPING_TEMPERATURE_DIFFERENCE","Kelvin interval","autodesk.unit.unit:kelvinInterval-1.0.0","K",1,1,True
+"Temperature Difference","Piping","autodesk.spec.aec.piping:temperatureDifference-2.0.0","PIPING_TEMPERATURE_DIFFERENCE","Rankine interval","autodesk.unit.unit:rankineInterval-1.0.1","delta°R",1.8,0.555555555555556,True
+"Velocity","Piping","autodesk.spec.aec.piping:velocity-2.0.0","PIPING_VELOCITY","Centimeters per minute","autodesk.unit.unit:centimetersPerMinute-1.0.1","cm/min",1828.8,0.000546806649168854,True
+"Velocity","Piping","autodesk.spec.aec.piping:velocity-2.0.0","PIPING_VELOCITY","Feet per minute","autodesk.unit.unit:feetPerMinute-1.0.1","ft/min",60,0.0166666666666667,True
+"Velocity","Piping","autodesk.spec.aec.piping:velocity-2.0.0","PIPING_VELOCITY","Feet per second","autodesk.unit.unit:feetPerSecond-1.0.1","ft/s",1,1,True
+"Velocity","Piping","autodesk.spec.aec.piping:velocity-2.0.0","PIPING_VELOCITY","Kilometers per hour","autodesk.unit.unit:kilometersPerHour-1.0.1","km/h",1.09728,0.911344415281423,True
+"Velocity","Piping","autodesk.spec.aec.piping:velocity-2.0.0","PIPING_VELOCITY","Meters per second","autodesk.unit.unit:metersPerSecond-1.0.1","m/s",0.3048,3.28083989501312,True
+"Velocity","Piping","autodesk.spec.aec.piping:velocity-2.0.0","PIPING_VELOCITY","Miles per hour","autodesk.unit.unit:milesPerHour-1.0.1","mph",0.681818181818182,1.46666666666667,True
+"Dynamic Viscosity","Piping","autodesk.spec.aec.piping:viscosity-2.0.0","PIPING_VISCOSITY","Centipoises","autodesk.unit.unit:centipoises-1.0.1","cP",3280.83989501312,0.0003048,True
+"Dynamic Viscosity","Piping","autodesk.spec.aec.piping:viscosity-2.0.0","PIPING_VISCOSITY","Kilograms per meter hour","autodesk.unit.unit:kilogramsPerMeterHour-1.0.0","kg/(m·h)",11811.0236220472,8.46666666666667E-05,True
+"Dynamic Viscosity","Piping","autodesk.spec.aec.piping:viscosity-2.0.0","PIPING_VISCOSITY","Kilograms per meter second","autodesk.unit.unit:kilogramsPerMeterSecond-1.0.0","kg/(m·s)",3.28083989501312,0.3048,True
+"Dynamic Viscosity","Piping","autodesk.spec.aec.piping:viscosity-2.0.0","PIPING_VISCOSITY","Newton seconds per square meter","autodesk.unit.unit:newtonSecondsPerSquareMeter-1.0.0","N·s/m²",3.28083989501312,0.3048,True
+"Dynamic Viscosity","Piping","autodesk.spec.aec.piping:viscosity-2.0.0","PIPING_VISCOSITY","Pascal seconds","autodesk.unit.unit:pascalSeconds-1.0.1","Pa-s",3.28083989501312,0.3048,True
+"Dynamic Viscosity","Piping","autodesk.spec.aec.piping:viscosity-2.0.0","PIPING_VISCOSITY","Pound force seconds per square foot","autodesk.unit.unit:poundForceSecondsPerSquareFoot-1.0.0","lb·s/ft²",0.0685217658567918,14.5939029372064,True
+"Dynamic Viscosity","Piping","autodesk.spec.aec.piping:viscosity-2.0.0","PIPING_VISCOSITY","Pounds mass per foot hour","autodesk.unit.unit:poundsMassPerFootHour-1.0.1","lbm/ft-h",7936.64143865559,0.000125997880555556,True
+"Dynamic Viscosity","Piping","autodesk.spec.aec.piping:viscosity-2.0.0","PIPING_VISCOSITY","Pounds mass per foot second","autodesk.unit.unit:poundsMassPerFootSecond-1.0.1","lbm/ft-s",2.20462262184878,0.45359237,True
+"Volume","Piping","autodesk.spec.aec.piping:volume-2.0.0","PIPING_VOLUME","Cubic centimeters","autodesk.unit.unit:cubicCentimeters-1.0.1","cm³",28316.846592,3.53146667214886E-05,True
+"Volume","Piping","autodesk.spec.aec.piping:volume-2.0.0","PIPING_VOLUME","Cubic feet","autodesk.unit.unit:cubicFeet-1.0.1","ft³",1,1,True
+"Volume","Piping","autodesk.spec.aec.piping:volume-2.0.0","PIPING_VOLUME","Cubic inches","autodesk.unit.unit:cubicInches-1.0.1","in³",1728,0.000578703703703704,True
+"Volume","Piping","autodesk.spec.aec.piping:volume-2.0.0","PIPING_VOLUME","Cubic meters","autodesk.unit.unit:cubicMeters-1.0.1","m³",0.028316846592,35.3146667214886,True
+"Volume","Piping","autodesk.spec.aec.piping:volume-2.0.0","PIPING_VOLUME","Cubic millimeters","autodesk.unit.unit:cubicMillimeters-1.0.1","mm³",28316846.592,3.53146667214886E-08,True
+"Volume","Piping","autodesk.spec.aec.piping:volume-2.0.0","PIPING_VOLUME","Cubic yards","autodesk.unit.unit:cubicYards-1.0.1","yd³",0.037037037037037,27,True
+"Volume","Piping","autodesk.spec.aec.piping:volume-2.0.0","PIPING_VOLUME","Liters","autodesk.unit.unit:liters-1.0.1","L",28.316846592,0.0353146667214886,True
+"Volume","Piping","autodesk.spec.aec.piping:volume-2.0.0","PIPING_VOLUME","US gallons","autodesk.unit.unit:usGallons-1.0.1","gal",7.48051948051948,0.133680555555556,True
+"Acceleration","Structural","autodesk.spec.aec.structural:acceleration-2.0.0","ACCELERATION","Feet per second squared","autodesk.unit.unit:feetPerSecondSquared-1.0.1","ft/s²",1,1,True
+"Acceleration","Structural","autodesk.spec.aec.structural:acceleration-2.0.0","ACCELERATION","Inches per second squared","autodesk.unit.unit:inchesPerSecondSquared-1.0.1","in/s²",12,0.0833333333333333,True
+"Acceleration","Structural","autodesk.spec.aec.structural:acceleration-2.0.0","ACCELERATION","Kilometers per second squared","autodesk.unit.unit:kilometersPerSecondSquared-1.0.1","km/s²",0.0003048,3280.83989501312,True
+"Acceleration","Structural","autodesk.spec.aec.structural:acceleration-2.0.0","ACCELERATION","Meters per second squared","autodesk.unit.unit:metersPerSecondSquared-1.0.1","m/s²",0.3048,3.28083989501312,True
+"Acceleration","Structural","autodesk.spec.aec.structural:acceleration-2.0.0","ACCELERATION","Miles per second squared","autodesk.unit.unit:milesPerSecondSquared-1.0.1","mi/s²",0.000189393939393939,5280,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Dekanewtons per square meter","autodesk.unit.unit:dekanewtonsPerSquareMeter-1.0.1","daN/m²",0.328083989501312,3.048,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Kilograms force per square meter","autodesk.unit.unit:kilogramsForcePerSquareMeter-1.0.1","kgf/m²",0.334552563312969,2.98906692,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Kilonewtons per square meter","autodesk.unit.unit:kilonewtonsPerSquareMeter-1.0.1","kN/m²",0.00328083989501312,304.8,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Kilopascals","autodesk.unit.unit:kilopascals-1.0.1","kPa",0.00328083989501312,304.8,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Kips per square foot","autodesk.unit.unit:kipsPerSquareFoot-1.0.1","ksf",6.85217658567918E-05,14593.9029372064,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Meganewtons per square meter","autodesk.unit.unit:meganewtonsPerSquareMeter-1.0.1","MN/m²",3.28083989501312E-06,304800,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Megapascals","autodesk.unit.unit:megapascals-1.0.1","MPa",3.28083989501312E-06,304800,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Newtons per square meter","autodesk.unit.unit:newtonsPerSquareMeter-1.0.1","N/m²",3.28083989501312,0.3048,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Pascals","autodesk.unit.unit:pascals-1.0.1","Pa",3.28083989501312,0.3048,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Pounds force per square foot","autodesk.unit.unit:poundsForcePerSquareFoot-1.0.1","psf",0.0685217658567918,14.5939029372064,True
+"Area Force","Structural","autodesk.spec.aec.structural:areaForce-2.0.0","AREA_FORCE","Tonnes force per square meter","autodesk.unit.unit:tonnesForcePerSquareMeter-1.0.1","Tf/m²",0.000334552563312969,2989.06692,True
+"Area Force Scale","Structural","autodesk.spec.aec.structural:areaForceScale-2.0.0","AREA_FORCE_SCALE","Cubic feet per kip","autodesk.unit.unit:cubicFeetPerKip-1.0.1","ft³/kip",14593.9029372064,6.85217658567918E-05,True
+"Area Force Scale","Structural","autodesk.spec.aec.structural:areaForceScale-2.0.0","AREA_FORCE_SCALE","Cubic meters per kilonewton","autodesk.unit.unit:cubicMetersPerKilonewton-1.0.1","m³/kN",92.90304,0.0107639104167097,True
+"Area Spring Coefficient","Structural","autodesk.spec.aec.structural:areaSpringCoefficient-2.0.0","AREA_SPRING_COEFFICIENT","Feet of water (39.2 °F) per 100 feet","autodesk.unit.unit:feetOfWater39.2DegreesFahrenheitPer100Feet-1.0.1","FT/100ft",0.109764531546318,9.11041104,True
+"Area Spring Coefficient","Structural","autodesk.spec.aec.structural:areaSpringCoefficient-2.0.0","AREA_SPRING_COEFFICIENT","Inches of water (60 °F) per 100 feet","autodesk.unit.unit:inchesOfWater60DegreesFahrenheitPer100Feet-1.0.1","in-wg/100ft",1.31845358262865,0.75846432,True
+"Area Spring Coefficient","Structural","autodesk.spec.aec.structural:areaSpringCoefficient-2.0.0","AREA_SPRING_COEFFICIENT","Kilonewtons per cubic meter","autodesk.unit.unit:kilonewtonsPerCubicMeter-1.0.1","kN/m³",0.0107639104167097,92.90304,True
+"Area Spring Coefficient","Structural","autodesk.spec.aec.structural:areaSpringCoefficient-2.0.0","AREA_SPRING_COEFFICIENT","Kips per cubic foot","autodesk.unit.unit:kipsPerCubicFoot-1.0.1","kip/ft³",6.85217658567918E-05,14593.9029372064,True
+"Area Spring Coefficient","Structural","autodesk.spec.aec.structural:areaSpringCoefficient-2.0.0","AREA_SPRING_COEFFICIENT","Kips per cubic inch","autodesk.unit.unit:kipsPerCubicInch-1.0.1","kip/in³",3.96537996856434E-08,25218264.2754926,True
+"Area Spring Coefficient","Structural","autodesk.spec.aec.structural:areaSpringCoefficient-2.0.0","AREA_SPRING_COEFFICIENT","Pascals per meter","autodesk.unit.unit:pascalsPerMeter-1.0.1","Pa/m",10.7639104167097,0.09290304,True
+"Area Spring Coefficient","Structural","autodesk.spec.aec.structural:areaSpringCoefficient-2.0.0","AREA_SPRING_COEFFICIENT","Pounds force per cubic foot","autodesk.unit.unit:poundsForcePerCubicFoot-1.0.1","lbf/ft³",0.0685217658567918,14.5939029372064,True
+"Bar Diameter","Structural","autodesk.spec.aec.structural:barDiameter-2.0.0","BAR_DIAMETER","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Bar Diameter","Structural","autodesk.spec.aec.structural:barDiameter-2.0.0","BAR_DIAMETER","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Bar Diameter","Structural","autodesk.spec.aec.structural:barDiameter-2.0.0","BAR_DIAMETER","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Bar Diameter","Structural","autodesk.spec.aec.structural:barDiameter-2.0.0","BAR_DIAMETER","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Bar Diameter","Structural","autodesk.spec.aec.structural:barDiameter-2.0.0","BAR_DIAMETER","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Bar Diameter","Structural","autodesk.spec.aec.structural:barDiameter-2.0.0","BAR_DIAMETER","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Bar Diameter","Structural","autodesk.spec.aec.structural:barDiameter-2.0.0","BAR_DIAMETER","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Bar Diameter","Structural","autodesk.spec.aec.structural:barDiameter-2.0.0","BAR_DIAMETER","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Crack Width","Structural","autodesk.spec.aec.structural:crackWidth-2.0.0","CRACK_WIDTH","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Crack Width","Structural","autodesk.spec.aec.structural:crackWidth-2.0.0","CRACK_WIDTH","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Crack Width","Structural","autodesk.spec.aec.structural:crackWidth-2.0.0","CRACK_WIDTH","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Crack Width","Structural","autodesk.spec.aec.structural:crackWidth-2.0.0","CRACK_WIDTH","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Crack Width","Structural","autodesk.spec.aec.structural:crackWidth-2.0.0","CRACK_WIDTH","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Crack Width","Structural","autodesk.spec.aec.structural:crackWidth-2.0.0","CRACK_WIDTH","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Crack Width","Structural","autodesk.spec.aec.structural:crackWidth-2.0.0","CRACK_WIDTH","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Crack Width","Structural","autodesk.spec.aec.structural:crackWidth-2.0.0","CRACK_WIDTH","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Displacement/Deflection","Structural","autodesk.spec.aec.structural:displacement-2.0.0","DISPLACEMENT/DEFLECTION","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Displacement/Deflection","Structural","autodesk.spec.aec.structural:displacement-2.0.0","DISPLACEMENT/DEFLECTION","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Displacement/Deflection","Structural","autodesk.spec.aec.structural:displacement-2.0.0","DISPLACEMENT/DEFLECTION","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Displacement/Deflection","Structural","autodesk.spec.aec.structural:displacement-2.0.0","DISPLACEMENT/DEFLECTION","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Displacement/Deflection","Structural","autodesk.spec.aec.structural:displacement-2.0.0","DISPLACEMENT/DEFLECTION","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Displacement/Deflection","Structural","autodesk.spec.aec.structural:displacement-2.0.0","DISPLACEMENT/DEFLECTION","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Displacement/Deflection","Structural","autodesk.spec.aec.structural:displacement-2.0.0","DISPLACEMENT/DEFLECTION","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Displacement/Deflection","Structural","autodesk.spec.aec.structural:displacement-2.0.0","DISPLACEMENT/DEFLECTION","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Energy","Structural","autodesk.spec.aec.structural:energy-2.0.0","ENERGY","Joules","autodesk.unit.unit:joules-1.0.1","J",0.09290304,10.7639104167097,True
+"Energy","Structural","autodesk.spec.aec.structural:energy-2.0.0","ENERGY","Kilogram force meters","autodesk.unit.unit:kilogramForceMeters-1.0.1","kgf-m",0.0094734736122937,105.557902088026,True
+"Energy","Structural","autodesk.spec.aec.structural:energy-2.0.0","ENERGY","Kilojoules","autodesk.unit.unit:kilojoules-1.0.1","kJ",9.290304E-05,10763.9104167097,True
+"Energy","Structural","autodesk.spec.aec.structural:energy-2.0.0","ENERGY","Newton meters","autodesk.unit.unit:newtonMeters-1.0.1","N-m",0.09290304,10.7639104167097,True
+"Energy","Structural","autodesk.spec.aec.structural:energy-2.0.0","ENERGY","Pound force feet","autodesk.unit.unit:poundForceFeet-1.0.1","lb-ft",0.0685217658567918,14.5939029372064,True
+"Force","Structural","autodesk.spec.aec.structural:force-2.0.0","FORCE","Dekanewtons","autodesk.unit.unit:dekanewtons-1.0.1","daN",0.03048,32.8083989501312,True
+"Force","Structural","autodesk.spec.aec.structural:force-2.0.0","FORCE","Kilograms force","autodesk.unit.unit:kilogramsForce-1.0.1","kgf",0.0310809501715673,32.1740485564304,True
+"Force","Structural","autodesk.spec.aec.structural:force-2.0.0","FORCE","Kilonewtons","autodesk.unit.unit:kilonewtons-1.0.1","kN",0.0003048,3280.83989501312,True
+"Force","Structural","autodesk.spec.aec.structural:force-2.0.0","FORCE","Kips","autodesk.unit.unit:kips-1.0.1","kip",6.85217658567918E-05,14593.9029372064,True
+"Force","Structural","autodesk.spec.aec.structural:force-2.0.0","FORCE","Meganewtons","autodesk.unit.unit:meganewtons-1.0.1","MN",3.048E-07,3280839.89501312,True
+"Force","Structural","autodesk.spec.aec.structural:force-2.0.0","FORCE","Newtons","autodesk.unit.unit:newtons-1.0.1","N",0.3048,3.28083989501312,True
+"Force","Structural","autodesk.spec.aec.structural:force-2.0.0","FORCE","Pounds force","autodesk.unit.unit:poundsForce-1.0.1","lb",0.0685217658567918,14.5939029372064,True
+"Force","Structural","autodesk.spec.aec.structural:force-2.0.0","FORCE","Tonnes force","autodesk.unit.unit:tonnesForce-1.0.1","Tf",3.10809501715673E-05,32174.0485564304,True
+"Force","Structural","autodesk.spec.aec.structural:force-2.0.0","FORCE","US tonnes force","autodesk.unit.unit:usTonnesForce-1.0.1","Tons",3.42608829283959E-05,29187.8058744127,True
+"Force Scale","Structural","autodesk.spec.aec.structural:forceScale-2.0.0","FORCE_SCALE","Feet per kip","autodesk.unit.unit:feetPerKip-1.0.0","ft/kip",14593.9029372064,6.85217658567918E-05,True
+"Force Scale","Structural","autodesk.spec.aec.structural:forceScale-2.0.0","FORCE_SCALE","Meters per kilonewton","autodesk.unit.unit:metersPerKilonewton-1.0.0","m/kN",1000,0.001,True
+"Frequency","Structural","autodesk.spec.aec.structural:frequency-2.0.0","STRUCTURAL_FREQUENCY","Cubic feet per minute cubic foot","autodesk.unit.unit:cubicFeetPerMinuteCubicFoot-1.0.1","CFM/ft³",60,0.0166666666666667,True
+"Frequency","Structural","autodesk.spec.aec.structural:frequency-2.0.0","STRUCTURAL_FREQUENCY","Cycles per second","autodesk.unit.unit:cyclesPerSecond-1.0.1","cps",1,1,True
+"Frequency","Structural","autodesk.spec.aec.structural:frequency-2.0.0","STRUCTURAL_FREQUENCY","Hertz","autodesk.unit.unit:hertz-1.0.1","Hz",1,1,True
+"Frequency","Structural","autodesk.spec.aec.structural:frequency-2.0.0","STRUCTURAL_FREQUENCY","Liters per second cubic meter","autodesk.unit.unit:litersPerSecondCubicMeter-1.0.1","L/(s·m³)",1000,0.001,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Atmospheres","autodesk.unit.unit:atmospheres-1.0.1","atm",3.23793722675857E-05,30883.86,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Bars","autodesk.unit.unit:bars-1.0.1","bar",3.28083989501312E-05,30480,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Dekanewtons per square meter","autodesk.unit.unit:dekanewtonsPerSquareMeter-1.0.1","daN/m²",0.328083989501312,3.048,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Feet of water (39.2 °F)","autodesk.unit.unit:feetOfWater39.2DegreesFahrenheit-1.0.1","FT",0.00109764531546318,911.041104,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Inches of mercury (32 °F)","autodesk.unit.unit:inchesOfMercury32DegreesFahrenheit-1.0.1","inHg",0.000968831370233344,1032.1713672,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Inches of water (60 °F)","autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1","in-wg",0.0131845358262865,75.846432,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Kilograms force per square meter","autodesk.unit.unit:kilogramsForcePerSquareMeter-1.0.1","kgf/m²",0.334552563312969,2.98906692,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Kilonewtons per square centimeter","autodesk.unit.unit:kilonewtonsPerSquareCentimeter-1.0.1","kN/cm²",3.28083989501312E-07,3048000,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Kilonewtons per square meter","autodesk.unit.unit:kilonewtonsPerSquareMeter-1.0.1","kN/m²",0.00328083989501312,304.8,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Kilonewtons per square millimeter","autodesk.unit.unit:kilonewtonsPerSquareMillimeter-1.0.1","kN/mm²",3.28083989501312E-09,304800000,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Kilopascals","autodesk.unit.unit:kilopascals-1.0.1","kPa",0.00328083989501312,304.8,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Kips per square foot","autodesk.unit.unit:kipsPerSquareFoot-1.0.1","ksf",6.85217658567918E-05,14593.9029372064,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Kips per square inch","autodesk.unit.unit:kipsPerSquareInch-1.0.1","ksi",4.75845596227721E-07,2101522.02295772,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Meganewtons per square meter","autodesk.unit.unit:meganewtonsPerSquareMeter-1.0.1","MN/m²",3.28083989501312E-06,304800,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Megapascals","autodesk.unit.unit:megapascals-1.0.1","MPa",3.28083989501312E-06,304800,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Millimeters of mercury","autodesk.unit.unit:millimetersOfMercury-1.0.1","mmHg",0.0246083170946002,40.63666752,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Newtons per square meter","autodesk.unit.unit:newtonsPerSquareMeter-1.0.1","N/m²",3.28083989501312,0.3048,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Newtons per square millimeter","autodesk.unit.unit:newtonsPerSquareMillimeter-1.0.1","N/mm²",3.28083989501312E-06,304800,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Pascals","autodesk.unit.unit:pascals-1.0.1","Pa",3.28083989501312,0.3048,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Pounds force per square foot","autodesk.unit.unit:poundsForcePerSquareFoot-1.0.1","psf",0.0685217658567918,14.5939029372064,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Pounds force per square inch","autodesk.unit.unit:poundsForcePerSquareInch-1.0.1","psig",0.000475845596227721,2101.52202295772,True
+"Line Spring Coefficient","Structural","autodesk.spec.aec.structural:lineSpringCoefficient-2.0.0","LINEAR_SPRING_COEFFICIENT","Tonnes force per square meter","autodesk.unit.unit:tonnesForcePerSquareMeter-1.0.1","Tf/m²",0.000334552563312969,2989.06692,True
+"Linear Force","Structural","autodesk.spec.aec.structural:linearForce-2.0.0","LINEAR_FORCE","Dekanewtons per meter","autodesk.unit.unit:dekanewtonsPerMeter-1.0.1","daN/m",0.1,10,True
+"Linear Force","Structural","autodesk.spec.aec.structural:linearForce-2.0.0","LINEAR_FORCE","Kilograms force per meter","autodesk.unit.unit:kilogramsForcePerMeter-1.0.1","kgf/m",0.101971621297793,9.80665,True
+"Linear Force","Structural","autodesk.spec.aec.structural:linearForce-2.0.0","LINEAR_FORCE","Kilonewtons per meter","autodesk.unit.unit:kilonewtonsPerMeter-1.0.1","kN/m",0.001,1000,True
+"Linear Force","Structural","autodesk.spec.aec.structural:linearForce-2.0.0","LINEAR_FORCE","Kips per foot","autodesk.unit.unit:kipsPerFoot-1.0.1","kip/ft",6.85217658567918E-05,14593.9029372064,True
+"Linear Force","Structural","autodesk.spec.aec.structural:linearForce-2.0.0","LINEAR_FORCE","Kips per inch","autodesk.unit.unit:kipsPerInch-1.0.1","kip/in",5.71014715473265E-06,175126.835246476,True
+"Linear Force","Structural","autodesk.spec.aec.structural:linearForce-2.0.0","LINEAR_FORCE","Meganewtons per meter","autodesk.unit.unit:meganewtonsPerMeter-1.0.1","MN/m",1E-06,1000000,True
+"Linear Force","Structural","autodesk.spec.aec.structural:linearForce-2.0.0","LINEAR_FORCE","Newtons per meter","autodesk.unit.unit:newtonsPerMeter-1.0.1","N/m",1,1,True
+"Linear Force","Structural","autodesk.spec.aec.structural:linearForce-2.0.0","LINEAR_FORCE","Pounds force per foot","autodesk.unit.unit:poundsForcePerFoot-1.0.1","lbf/ft",0.0685217658567918,14.5939029372064,True
+"Linear Force","Structural","autodesk.spec.aec.structural:linearForce-2.0.0","LINEAR_FORCE","Tonnes force per meter","autodesk.unit.unit:tonnesForcePerMeter-1.0.1","Tf/m",0.000101971621297793,9806.65,True
+"Linear Force Scale","Structural","autodesk.spec.aec.structural:linearForceScale-2.0.0","LINEAR_FORCE_SCALE","Cubic feet per minute ton of refrigeration","autodesk.unit.unit:cubicFeetPerMinuteTonOfRefrigeration-1.0.1","CFM/ton",2271305.33644539,4.40275459205765E-07,True
+"Linear Force Scale","Structural","autodesk.spec.aec.structural:linearForceScale-2.0.0","LINEAR_FORCE_SCALE","Liters per second kilowatt","autodesk.unit.unit:litersPerSecondKilowatt-1.0.1","L/(s·kW)",304800,3.28083989501312E-06,True
+"Linear Force Scale","Structural","autodesk.spec.aec.structural:linearForceScale-2.0.0","LINEAR_FORCE_SCALE","Square feet per kip","autodesk.unit.unit:squareFeetPerKip-1.0.1","ft²/kip",14593.9029372064,6.85217658567918E-05,True
+"Linear Force Scale","Structural","autodesk.spec.aec.structural:linearForceScale-2.0.0","LINEAR_FORCE_SCALE","Square meters per kilonewton","autodesk.unit.unit:squareMetersPerKilonewton-1.0.1","m²/kN",304.8,0.00328083989501312,True
+"Linear Moment","Structural","autodesk.spec.aec.structural:linearMoment-2.0.0","LINEAR_MOMENT","Dekanewton meters per meter","autodesk.unit.unit:dekanewtonMetersPerMeter-1.0.1","daN-m/m",0.03048,32.8083989501312,True
+"Linear Moment","Structural","autodesk.spec.aec.structural:linearMoment-2.0.0","LINEAR_MOMENT","Kilogram force meters per meter","autodesk.unit.unit:kilogramForceMetersPerMeter-1.0.1","kgf-m/m",0.0310809501715673,32.1740485564304,True
+"Linear Moment","Structural","autodesk.spec.aec.structural:linearMoment-2.0.0","LINEAR_MOMENT","Kilonewton meters per meter","autodesk.unit.unit:kilonewtonMetersPerMeter-1.0.1","kN-m/m",0.0003048,3280.83989501312,True
+"Linear Moment","Structural","autodesk.spec.aec.structural:linearMoment-2.0.0","LINEAR_MOMENT","Kip feet per foot","autodesk.unit.unit:kipFeetPerFoot-1.0.1","kip-ft/ft",6.85217658567918E-05,14593.9029372064,True
+"Linear Moment","Structural","autodesk.spec.aec.structural:linearMoment-2.0.0","LINEAR_MOMENT","Meganewton meters per meter","autodesk.unit.unit:meganewtonMetersPerMeter-1.0.1","MN-m/m",3.048E-07,3280839.89501312,True
+"Linear Moment","Structural","autodesk.spec.aec.structural:linearMoment-2.0.0","LINEAR_MOMENT","Newton meters per meter","autodesk.unit.unit:newtonMetersPerMeter-1.0.1","N-m/m",0.3048,3.28083989501312,True
+"Linear Moment","Structural","autodesk.spec.aec.structural:linearMoment-2.0.0","LINEAR_MOMENT","Pound force feet per foot","autodesk.unit.unit:poundForceFeetPerFoot-1.0.1","lb-ft/ft",0.0685217658567918,14.5939029372064,True
+"Linear Moment","Structural","autodesk.spec.aec.structural:linearMoment-2.0.0","LINEAR_MOMENT","Tonne force meters per meter","autodesk.unit.unit:tonneForceMetersPerMeter-1.0.1","Tf-m/m",3.10809501715673E-05,32174.0485564304,True
+"Linear Moment Scale","Structural","autodesk.spec.aec.structural:linearMomentScale-2.0.0","LINEAR_MOMENT_SCALE","Feet per kip","autodesk.unit.unit:feetPerKip-1.0.0","ft/kip",14593.9029372064,6.85217658567918E-05,True
+"Linear Moment Scale","Structural","autodesk.spec.aec.structural:linearMomentScale-2.0.0","LINEAR_MOMENT_SCALE","Meters per kilonewton","autodesk.unit.unit:metersPerKilonewton-1.0.0","m/kN",1000,0.001,True
+"Mass","Structural","autodesk.spec.aec.structural:mass-2.0.0","MASS","Kilograms","autodesk.unit.unit:kilograms-1.0.0","kg",1,1,True
+"Mass","Structural","autodesk.spec.aec.structural:mass-2.0.0","MASS","Pounds mass","autodesk.unit.unit:poundsMass-1.0.1","lb",2.20462262184878,0.45359237,True
+"Mass","Structural","autodesk.spec.aec.structural:mass-2.0.0","MASS","Tonnes","autodesk.unit.unit:tonnes-1.0.1","t",0.001,1000,True
+"Mass","Structural","autodesk.spec.aec.structural:mass-2.0.0","MASS","US tonnes mass","autodesk.unit.unit:usTonnesMass-1.0.1","Tons",0.00110231131092439,907.18474,True
+"Mass per Unit Area","Structural","autodesk.spec.aec.structural:massPerUnitArea-2.0.0","MASS_PER_UNIT_AREA","Kilograms per square meter","autodesk.unit.unit:kilogramsPerSquareMeter-1.0.1","kg/m²",10.7639104167097,0.09290304,True
+"Mass per Unit Area","Structural","autodesk.spec.aec.structural:massPerUnitArea-2.0.0","MASS_PER_UNIT_AREA","Pounds mass per square foot","autodesk.unit.unit:poundsMassPerSquareFoot-1.0.1","lb/ft²",2.20462262184878,0.45359237,True
+"Mass per Unit Length","Structural","autodesk.spec.aec.structural:massPerUnitLength-2.0.0","MASS_PER_UNIT_LENGTH","Kilograms per meter","autodesk.unit.unit:kilogramsPerMeter-1.0.1","kg/m",3.28083989501312,0.3048,True
+"Mass per Unit Length","Structural","autodesk.spec.aec.structural:massPerUnitLength-2.0.0","MASS_PER_UNIT_LENGTH","Pounds mass per foot","autodesk.unit.unit:poundsMassPerFoot-1.0.1","lbm/ft",2.20462262184878,0.45359237,True
+"Moment","Structural","autodesk.spec.aec.structural:moment-2.0.0","MOMENT","Dekanewton meters","autodesk.unit.unit:dekanewtonMeters-1.0.1","daN-m",0.009290304,107.639104167097,True
+"Moment","Structural","autodesk.spec.aec.structural:moment-2.0.0","MOMENT","Kilogram force meters","autodesk.unit.unit:kilogramForceMeters-1.0.1","kgf-m",0.0094734736122937,105.557902088026,True
+"Moment","Structural","autodesk.spec.aec.structural:moment-2.0.0","MOMENT","Kilonewton meters","autodesk.unit.unit:kilonewtonMeters-1.0.1","kN-m",9.290304E-05,10763.9104167097,True
+"Moment","Structural","autodesk.spec.aec.structural:moment-2.0.0","MOMENT","Kip feet","autodesk.unit.unit:kipFeet-1.0.1","kip-ft",6.85217658567918E-05,14593.9029372064,True
+"Moment","Structural","autodesk.spec.aec.structural:moment-2.0.0","MOMENT","Meganewton meters","autodesk.unit.unit:meganewtonMeters-1.0.1","MN-m",9.290304E-08,10763910.4167097,True
+"Moment","Structural","autodesk.spec.aec.structural:moment-2.0.0","MOMENT","Newton meters","autodesk.unit.unit:newtonMeters-1.0.1","N-m",0.09290304,10.7639104167097,True
+"Moment","Structural","autodesk.spec.aec.structural:moment-2.0.0","MOMENT","Pound force feet","autodesk.unit.unit:poundForceFeet-1.0.1","lb-ft",0.0685217658567918,14.5939029372064,True
+"Moment","Structural","autodesk.spec.aec.structural:moment-2.0.0","MOMENT","Tonne force meters","autodesk.unit.unit:tonneForceMeters-1.0.1","Tf-m",9.4734736122937E-06,105557.902088026,True
+"Moment of Inertia","Structural","autodesk.spec.aec.structural:momentOfInertia-2.0.0","MOMENT_OF_INERTIA","Centimeters to the fourth power","autodesk.unit.unit:centimetersToTheFourthPower-1.0.1","cm⁴",863097.48412416,1.15861767458952E-06,True
+"Moment of Inertia","Structural","autodesk.spec.aec.structural:momentOfInertia-2.0.0","MOMENT_OF_INERTIA","Feet to the fourth power","autodesk.unit.unit:feetToTheFourthPower-1.0.1","ft⁴",1,1,True
+"Moment of Inertia","Structural","autodesk.spec.aec.structural:momentOfInertia-2.0.0","MOMENT_OF_INERTIA","Inches to the fourth power","autodesk.unit.unit:inchesToTheFourthPower-1.0.1","in⁴",20736,4.82253086419753E-05,True
+"Moment of Inertia","Structural","autodesk.spec.aec.structural:momentOfInertia-2.0.0","MOMENT_OF_INERTIA","Meters to the fourth power","autodesk.unit.unit:metersToTheFourthPower-1.0.1","m⁴",0.0086309748412416,115.861767458952,True
+"Moment of Inertia","Structural","autodesk.spec.aec.structural:momentOfInertia-2.0.0","MOMENT_OF_INERTIA","Millimeters to the fourth power","autodesk.unit.unit:millimetersToTheFourthPower-1.0.1","mm⁴",8630974841.2416,1.15861767458952E-10,True
+"Moment Scale","Structural","autodesk.spec.aec.structural:momentScale-2.0.0","MOMENT_SCALE","Inverse kilonewtons","autodesk.unit.unit:inverseKilonewtons-1.0.0","1/kN",3280.83989501312,0.0003048,True
+"Moment Scale","Structural","autodesk.spec.aec.structural:momentScale-2.0.0","MOMENT_SCALE","Inverse kips","autodesk.unit.unit:inverseKips-1.0.0","1/kip",14593.9029372064,6.85217658567918E-05,True
+"Period","Structural","autodesk.spec.aec.structural:period-2.0.0","PERIOD","Hours","autodesk.unit.unit:hours-1.0.1","h",0.000277777777777778,3600,True
+"Period","Structural","autodesk.spec.aec.structural:period-2.0.0","PERIOD","Milliseconds","autodesk.unit.unit:milliseconds-1.0.1","ms",1000,0.001,True
+"Period","Structural","autodesk.spec.aec.structural:period-2.0.0","PERIOD","Minutes","autodesk.unit.unit:minutes-1.0.1","min",0.0166666666666667,60,True
+"Period","Structural","autodesk.spec.aec.structural:period-2.0.0","PERIOD","Seconds","autodesk.unit.unit:seconds-1.0.0","s",1,1,True
+"Point Spring Coefficient","Structural","autodesk.spec.aec.structural:pointSpringCoefficient-2.0.0","POINT_SPRING_COEFFICIENT","Dekanewtons per meter","autodesk.unit.unit:dekanewtonsPerMeter-1.0.1","daN/m",0.1,10,True
+"Point Spring Coefficient","Structural","autodesk.spec.aec.structural:pointSpringCoefficient-2.0.0","POINT_SPRING_COEFFICIENT","Kilograms force per meter","autodesk.unit.unit:kilogramsForcePerMeter-1.0.1","kgf/m",0.101971621297793,9.80665,True
+"Point Spring Coefficient","Structural","autodesk.spec.aec.structural:pointSpringCoefficient-2.0.0","POINT_SPRING_COEFFICIENT","Kilonewtons per meter","autodesk.unit.unit:kilonewtonsPerMeter-1.0.1","kN/m",0.001,1000,True
+"Point Spring Coefficient","Structural","autodesk.spec.aec.structural:pointSpringCoefficient-2.0.0","POINT_SPRING_COEFFICIENT","Kips per foot","autodesk.unit.unit:kipsPerFoot-1.0.1","kip/ft",6.85217658567918E-05,14593.9029372064,True
+"Point Spring Coefficient","Structural","autodesk.spec.aec.structural:pointSpringCoefficient-2.0.0","POINT_SPRING_COEFFICIENT","Kips per inch","autodesk.unit.unit:kipsPerInch-1.0.1","kip/in",5.71014715473265E-06,175126.835246476,True
+"Point Spring Coefficient","Structural","autodesk.spec.aec.structural:pointSpringCoefficient-2.0.0","POINT_SPRING_COEFFICIENT","Meganewtons per meter","autodesk.unit.unit:meganewtonsPerMeter-1.0.1","MN/m",1E-06,1000000,True
+"Point Spring Coefficient","Structural","autodesk.spec.aec.structural:pointSpringCoefficient-2.0.0","POINT_SPRING_COEFFICIENT","Newtons per meter","autodesk.unit.unit:newtonsPerMeter-1.0.1","N/m",1,1,True
+"Point Spring Coefficient","Structural","autodesk.spec.aec.structural:pointSpringCoefficient-2.0.0","POINT_SPRING_COEFFICIENT","Pounds force per foot","autodesk.unit.unit:poundsForcePerFoot-1.0.1","lbf/ft",0.0685217658567918,14.5939029372064,True
+"Point Spring Coefficient","Structural","autodesk.spec.aec.structural:pointSpringCoefficient-2.0.0","POINT_SPRING_COEFFICIENT","Tonnes force per meter","autodesk.unit.unit:tonnesForcePerMeter-1.0.1","Tf/m",0.000101971621297793,9806.65,True
+"Pulsation","Structural","autodesk.spec.aec.structural:pulsation-2.0.0","PULSATION","Radians per second","autodesk.unit.unit:radiansPerSecond-1.0.1","rad/s",1,1,True
+"Reinforcement Area","Structural","autodesk.spec.aec.structural:reinforcementArea-2.0.0","REINFORCEMENT_AREA","Square centimeters","autodesk.unit.unit:squareCentimeters-1.0.1","cm²",929.0304,0.00107639104167097,True
+"Reinforcement Area","Structural","autodesk.spec.aec.structural:reinforcementArea-2.0.0","REINFORCEMENT_AREA","Square feet","autodesk.unit.unit:squareFeet-1.0.1","SF",1,1,True
+"Reinforcement Area","Structural","autodesk.spec.aec.structural:reinforcementArea-2.0.0","REINFORCEMENT_AREA","Square inches","autodesk.unit.unit:squareInches-1.0.1","in²",144,0.00694444444444444,True
+"Reinforcement Area","Structural","autodesk.spec.aec.structural:reinforcementArea-2.0.0","REINFORCEMENT_AREA","Square meters","autodesk.unit.unit:squareMeters-1.0.1","m²",0.09290304,10.7639104167097,True
+"Reinforcement Area","Structural","autodesk.spec.aec.structural:reinforcementArea-2.0.0","REINFORCEMENT_AREA","Square millimeters","autodesk.unit.unit:squareMillimeters-1.0.1","mm²",92903.04,1.07639104167097E-05,True
+"Reinforcement Area per Unit Length","Structural","autodesk.spec.aec.structural:reinforcementAreaPerUnitLength-2.0.0","REINFORCEMENT_AREA_PER_UNIT_LENGTH","Square centimeters per meter","autodesk.unit.unit:squareCentimetersPerMeter-1.0.1","cm²/m",3048,0.000328083989501312,True
+"Reinforcement Area per Unit Length","Structural","autodesk.spec.aec.structural:reinforcementAreaPerUnitLength-2.0.0","REINFORCEMENT_AREA_PER_UNIT_LENGTH","Square feet per foot","autodesk.unit.unit:squareFeetPerFoot-1.0.1","ft²/ft",1,1,True
+"Reinforcement Area per Unit Length","Structural","autodesk.spec.aec.structural:reinforcementAreaPerUnitLength-2.0.0","REINFORCEMENT_AREA_PER_UNIT_LENGTH","Square inches per foot","autodesk.unit.unit:squareInchesPerFoot-1.0.1","in²/ft",144,0.00694444444444444,True
+"Reinforcement Area per Unit Length","Structural","autodesk.spec.aec.structural:reinforcementAreaPerUnitLength-2.0.0","REINFORCEMENT_AREA_PER_UNIT_LENGTH","Square meters per meter","autodesk.unit.unit:squareMetersPerMeter-1.0.1","m²/m",0.3048,3.28083989501312,True
+"Reinforcement Area per Unit Length","Structural","autodesk.spec.aec.structural:reinforcementAreaPerUnitLength-2.0.0","REINFORCEMENT_AREA_PER_UNIT_LENGTH","Square millimeters per meter","autodesk.unit.unit:squareMillimetersPerMeter-1.0.1","mm²/m",304800,3.28083989501312E-06,True
+"Reinforcement Cover","Structural","autodesk.spec.aec.structural:reinforcementCover-2.0.0","REINFORCEMENT_COVER","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Reinforcement Cover","Structural","autodesk.spec.aec.structural:reinforcementCover-2.0.0","REINFORCEMENT_COVER","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Reinforcement Cover","Structural","autodesk.spec.aec.structural:reinforcementCover-2.0.0","REINFORCEMENT_COVER","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Reinforcement Cover","Structural","autodesk.spec.aec.structural:reinforcementCover-2.0.0","REINFORCEMENT_COVER","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Reinforcement Cover","Structural","autodesk.spec.aec.structural:reinforcementCover-2.0.0","REINFORCEMENT_COVER","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Reinforcement Cover","Structural","autodesk.spec.aec.structural:reinforcementCover-2.0.0","REINFORCEMENT_COVER","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Reinforcement Cover","Structural","autodesk.spec.aec.structural:reinforcementCover-2.0.0","REINFORCEMENT_COVER","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Reinforcement Length","Structural","autodesk.spec.aec.structural:reinforcementLength-2.0.0","REINFORCEMENT_LENGTH","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Reinforcement Length","Structural","autodesk.spec.aec.structural:reinforcementLength-2.0.0","REINFORCEMENT_LENGTH","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Reinforcement Length","Structural","autodesk.spec.aec.structural:reinforcementLength-2.0.0","REINFORCEMENT_LENGTH","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Reinforcement Length","Structural","autodesk.spec.aec.structural:reinforcementLength-2.0.0","REINFORCEMENT_LENGTH","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Reinforcement Length","Structural","autodesk.spec.aec.structural:reinforcementLength-2.0.0","REINFORCEMENT_LENGTH","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Reinforcement Length","Structural","autodesk.spec.aec.structural:reinforcementLength-2.0.0","REINFORCEMENT_LENGTH","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Reinforcement Length","Structural","autodesk.spec.aec.structural:reinforcementLength-2.0.0","REINFORCEMENT_LENGTH","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Reinforcement Length","Structural","autodesk.spec.aec.structural:reinforcementLength-2.0.0","REINFORCEMENT_LENGTH","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Reinforcement Length","Structural","autodesk.spec.aec.structural:reinforcementLength-2.0.0","REINFORCEMENT_LENGTH","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Reinforcement Spacing","Structural","autodesk.spec.aec.structural:reinforcementSpacing-2.0.0","REINFORCEMENT_SPACING","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Reinforcement Spacing","Structural","autodesk.spec.aec.structural:reinforcementSpacing-2.0.0","REINFORCEMENT_SPACING","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Reinforcement Spacing","Structural","autodesk.spec.aec.structural:reinforcementSpacing-2.0.0","REINFORCEMENT_SPACING","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Reinforcement Spacing","Structural","autodesk.spec.aec.structural:reinforcementSpacing-2.0.0","REINFORCEMENT_SPACING","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Reinforcement Spacing","Structural","autodesk.spec.aec.structural:reinforcementSpacing-2.0.0","REINFORCEMENT_SPACING","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Reinforcement Spacing","Structural","autodesk.spec.aec.structural:reinforcementSpacing-2.0.0","REINFORCEMENT_SPACING","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Reinforcement Spacing","Structural","autodesk.spec.aec.structural:reinforcementSpacing-2.0.0","REINFORCEMENT_SPACING","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Reinforcement Spacing","Structural","autodesk.spec.aec.structural:reinforcementSpacing-2.0.0","REINFORCEMENT_SPACING","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Reinforcement Spacing","Structural","autodesk.spec.aec.structural:reinforcementSpacing-2.0.0","REINFORCEMENT_SPACING","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Reinforcement Volume","Structural","autodesk.spec.aec.structural:reinforcementVolume-2.0.0","REINFORCEMENT_VOLUME","Cubic centimeters","autodesk.unit.unit:cubicCentimeters-1.0.1","cm³",28316.846592,3.53146667214886E-05,True
+"Reinforcement Volume","Structural","autodesk.spec.aec.structural:reinforcementVolume-2.0.0","REINFORCEMENT_VOLUME","Cubic feet","autodesk.unit.unit:cubicFeet-1.0.1","ft³",1,1,True
+"Reinforcement Volume","Structural","autodesk.spec.aec.structural:reinforcementVolume-2.0.0","REINFORCEMENT_VOLUME","Cubic inches","autodesk.unit.unit:cubicInches-1.0.1","in³",1728,0.000578703703703704,True
+"Reinforcement Volume","Structural","autodesk.spec.aec.structural:reinforcementVolume-2.0.0","REINFORCEMENT_VOLUME","Cubic meters","autodesk.unit.unit:cubicMeters-1.0.1","m³",0.028316846592,35.3146667214886,True
+"Reinforcement Volume","Structural","autodesk.spec.aec.structural:reinforcementVolume-2.0.0","REINFORCEMENT_VOLUME","Cubic millimeters","autodesk.unit.unit:cubicMillimeters-1.0.1","mm³",28316846.592,3.53146667214886E-08,True
+"Reinforcement Volume","Structural","autodesk.spec.aec.structural:reinforcementVolume-2.0.0","REINFORCEMENT_VOLUME","Cubic yards","autodesk.unit.unit:cubicYards-1.0.1","yd³",0.037037037037037,27,True
+"Reinforcement Volume","Structural","autodesk.spec.aec.structural:reinforcementVolume-2.0.0","REINFORCEMENT_VOLUME","Liters","autodesk.unit.unit:liters-1.0.1","L",28.316846592,0.0353146667214886,True
+"Reinforcement Volume","Structural","autodesk.spec.aec.structural:reinforcementVolume-2.0.0","REINFORCEMENT_VOLUME","US gallons","autodesk.unit.unit:usGallons-1.0.1","gal",7.48051948051948,0.133680555555556,True
+"Rotation","Structural","autodesk.spec.aec.structural:rotation-2.0.0","ROTATION","Degrees","autodesk.unit.unit:degrees-1.0.1","°",57.2957795130824,0.0174532925199433,True
+"Rotation","Structural","autodesk.spec.aec.structural:rotation-2.0.0","ROTATION","Gradians","autodesk.unit.unit:gradians-1.0.1","grad",63.6619772367582,0.0157079632679489,True
+"Rotation","Structural","autodesk.spec.aec.structural:rotation-2.0.0","ROTATION","Radians","autodesk.unit.unit:radians-1.0.0","rad",1,1,True
+"Rotation","Structural","autodesk.spec.aec.structural:rotation-2.0.0","ROTATION","Degrees minutes seconds","autodesk.unit.unit:degreesMinutes-1.0.0","",57.2957795130824,0.0174532925199433,True
+"Rotational Line Spring Coefficient","Structural","autodesk.spec.aec.structural:rotationalLineSpringCoefficient-2.0.0","ROTATIONAL_LINEAR_SPRING_COEFFICIENT","Kilonewton meters per degree per meter","autodesk.unit.unit:kilonewtonMetersPerDegreePerMeter-1.0.1","kN-m/°/m",5.31976356007871E-06,187978.279242396,True
+"Rotational Line Spring Coefficient","Structural","autodesk.spec.aec.structural:rotationalLineSpringCoefficient-2.0.0","ROTATIONAL_LINEAR_SPRING_COEFFICIENT","Kip feet per degree per foot","autodesk.unit.unit:kipFeetPerDegreePerFoot-1.0.1","kip-ft/°/ft",1.19593042348165E-06,836169.044925501,True
+"Rotational Point Spring Coefficient","Structural","autodesk.spec.aec.structural:rotationalPointSpringCoefficient-2.0.0","ROTATIONAL_POINT_SPRING_COEFFICIENT","Kilonewton meters per degree","autodesk.unit.unit:kilonewtonMetersPerDegree-1.0.1","kN-m/°",1.62146393311199E-06,616726.637934371,True
+"Rotational Point Spring Coefficient","Structural","autodesk.spec.aec.structural:rotationalPointSpringCoefficient-2.0.0","ROTATIONAL_POINT_SPRING_COEFFICIENT","Kip feet per degree","autodesk.unit.unit:kipFeetPerDegree-1.0.1","kip-ft/°",1.19593042348165E-06,836169.044925501,True
+"Section Area","Structural","autodesk.spec.aec.structural:sectionArea-2.0.0","SECTION_AREA","Square centimeters","autodesk.unit.unit:squareCentimeters-1.0.1","cm²",929.0304,0.00107639104167097,True
+"Section Area","Structural","autodesk.spec.aec.structural:sectionArea-2.0.0","SECTION_AREA","Square feet","autodesk.unit.unit:squareFeet-1.0.1","SF",1,1,True
+"Section Area","Structural","autodesk.spec.aec.structural:sectionArea-2.0.0","SECTION_AREA","Square inches","autodesk.unit.unit:squareInches-1.0.1","in²",144,0.00694444444444444,True
+"Section Area","Structural","autodesk.spec.aec.structural:sectionArea-2.0.0","SECTION_AREA","Square meters","autodesk.unit.unit:squareMeters-1.0.1","m²",0.09290304,10.7639104167097,True
+"Section Area","Structural","autodesk.spec.aec.structural:sectionArea-2.0.0","SECTION_AREA","Square millimeters","autodesk.unit.unit:squareMillimeters-1.0.1","mm²",92903.04,1.07639104167097E-05,True
+"Section Dimension","Structural","autodesk.spec.aec.structural:sectionDimension-2.0.0","SECTION_DIMENSION","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Section Dimension","Structural","autodesk.spec.aec.structural:sectionDimension-2.0.0","SECTION_DIMENSION","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Section Dimension","Structural","autodesk.spec.aec.structural:sectionDimension-2.0.0","SECTION_DIMENSION","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Section Dimension","Structural","autodesk.spec.aec.structural:sectionDimension-2.0.0","SECTION_DIMENSION","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Section Dimension","Structural","autodesk.spec.aec.structural:sectionDimension-2.0.0","SECTION_DIMENSION","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Section Dimension","Structural","autodesk.spec.aec.structural:sectionDimension-2.0.0","SECTION_DIMENSION","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Section Dimension","Structural","autodesk.spec.aec.structural:sectionDimension-2.0.0","SECTION_DIMENSION","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Section Dimension","Structural","autodesk.spec.aec.structural:sectionDimension-2.0.0","SECTION_DIMENSION","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Section Dimension","Structural","autodesk.spec.aec.structural:sectionDimension-2.0.0","SECTION_DIMENSION","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Section Modulus","Structural","autodesk.spec.aec.structural:sectionModulus-2.0.0","SECTION_MODULUS","Cubic centimeters","autodesk.unit.unit:cubicCentimeters-1.0.1","cm³",28316.846592,3.53146667214886E-05,True
+"Section Modulus","Structural","autodesk.spec.aec.structural:sectionModulus-2.0.0","SECTION_MODULUS","Cubic feet","autodesk.unit.unit:cubicFeet-1.0.1","ft³",1,1,True
+"Section Modulus","Structural","autodesk.spec.aec.structural:sectionModulus-2.0.0","SECTION_MODULUS","Cubic inches","autodesk.unit.unit:cubicInches-1.0.1","in³",1728,0.000578703703703704,True
+"Section Modulus","Structural","autodesk.spec.aec.structural:sectionModulus-2.0.0","SECTION_MODULUS","Cubic meters","autodesk.unit.unit:cubicMeters-1.0.1","m³",0.028316846592,35.3146667214886,True
+"Section Modulus","Structural","autodesk.spec.aec.structural:sectionModulus-2.0.0","SECTION_MODULUS","Cubic millimeters","autodesk.unit.unit:cubicMillimeters-1.0.1","mm³",28316846.592,3.53146667214886E-08,True
+"Section Property","Structural","autodesk.spec.aec.structural:sectionProperty-2.0.0","SECTION_PROPERTY","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Section Property","Structural","autodesk.spec.aec.structural:sectionProperty-2.0.0","SECTION_PROPERTY","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Section Property","Structural","autodesk.spec.aec.structural:sectionProperty-2.0.0","SECTION_PROPERTY","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Section Property","Structural","autodesk.spec.aec.structural:sectionProperty-2.0.0","SECTION_PROPERTY","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Section Property","Structural","autodesk.spec.aec.structural:sectionProperty-2.0.0","SECTION_PROPERTY","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Section Property","Structural","autodesk.spec.aec.structural:sectionProperty-2.0.0","SECTION_PROPERTY","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Section Property","Structural","autodesk.spec.aec.structural:sectionProperty-2.0.0","SECTION_PROPERTY","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Section Property","Structural","autodesk.spec.aec.structural:sectionProperty-2.0.0","SECTION_PROPERTY","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Section Property","Structural","autodesk.spec.aec.structural:sectionProperty-2.0.0","SECTION_PROPERTY","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Bars","autodesk.unit.unit:bars-1.0.1","bar",3.28083989501312E-05,30480,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Dekanewtons per square meter","autodesk.unit.unit:dekanewtonsPerSquareMeter-1.0.1","daN/m²",0.328083989501312,3.048,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Kilograms force per square meter","autodesk.unit.unit:kilogramsForcePerSquareMeter-1.0.1","kgf/m²",0.334552563312969,2.98906692,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Kilonewtons per square centimeter","autodesk.unit.unit:kilonewtonsPerSquareCentimeter-1.0.1","kN/cm²",3.28083989501312E-07,3048000,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Kilonewtons per square meter","autodesk.unit.unit:kilonewtonsPerSquareMeter-1.0.1","kN/m²",0.00328083989501312,304.8,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Kilonewtons per square millimeter","autodesk.unit.unit:kilonewtonsPerSquareMillimeter-1.0.1","kN/mm²",3.28083989501312E-09,304800000,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Kilopascals","autodesk.unit.unit:kilopascals-1.0.1","kPa",0.00328083989501312,304.8,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Kips per square foot","autodesk.unit.unit:kipsPerSquareFoot-1.0.1","ksf",6.85217658567918E-05,14593.9029372064,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Kips per square inch","autodesk.unit.unit:kipsPerSquareInch-1.0.1","ksi",4.75845596227721E-07,2101522.02295772,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Meganewtons per square meter","autodesk.unit.unit:meganewtonsPerSquareMeter-1.0.1","MN/m²",3.28083989501312E-06,304800,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Megapascals","autodesk.unit.unit:megapascals-1.0.1","MPa",3.28083989501312E-06,304800,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Newtons per square meter","autodesk.unit.unit:newtonsPerSquareMeter-1.0.1","N/m²",3.28083989501312,0.3048,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Newtons per square millimeter","autodesk.unit.unit:newtonsPerSquareMillimeter-1.0.1","N/mm²",3.28083989501312E-06,304800,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Pascals","autodesk.unit.unit:pascals-1.0.1","Pa",3.28083989501312,0.3048,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Pounds force per square foot","autodesk.unit.unit:poundsForcePerSquareFoot-1.0.1","psf",0.0685217658567918,14.5939029372064,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Pounds force per square inch","autodesk.unit.unit:poundsForcePerSquareInch-1.0.1","psig",0.000475845596227721,2101.52202295772,True
+"Stress","Structural","autodesk.spec.aec.structural:stress-2.0.0","STRESS","Tonnes force per square meter","autodesk.unit.unit:tonnesForcePerSquareMeter-1.0.1","Tf/m²",0.000334552563312969,2989.06692,True
+"Surface Area per Unit Length","Structural","autodesk.spec.aec.structural:surfaceAreaPerUnitLength-2.0.0","SURFACE_AREA","Square feet per foot","autodesk.unit.unit:squareFeetPerFoot-1.0.1","ft²/ft",1,1,True
+"Surface Area per Unit Length","Structural","autodesk.spec.aec.structural:surfaceAreaPerUnitLength-2.0.0","SURFACE_AREA","Square meters per meter","autodesk.unit.unit:squareMetersPerMeter-1.0.1","m²/m",0.3048,3.28083989501312,True
+"Thermal Expansion Coefficient","Structural","autodesk.spec.aec.structural:thermalExpansionCoefficient-2.0.0","THERMAL_EXPANSION_COEFFICIENT","Inverse degrees Celsius","autodesk.unit.unit:inverseDegreesCelsius-1.0.1","1/°C",1,1,True
+"Thermal Expansion Coefficient","Structural","autodesk.spec.aec.structural:thermalExpansionCoefficient-2.0.0","THERMAL_EXPANSION_COEFFICIENT","Inverse degrees Fahrenheit","autodesk.unit.unit:inverseDegreesFahrenheit-1.0.1","1/°F",0.555555555555556,1.8,True
+"Thermal Expansion Coefficient","Structural","autodesk.spec.aec.structural:thermalExpansionCoefficient-2.0.0","THERMAL_EXPANSION_COEFFICIENT","Microinches per inch degree Fahrenheit","autodesk.unit.unit:microinchesPerInchDegreeFahrenheit-1.0.1","µin/(in·°F)",555555.555555556,1.8E-06,True
+"Thermal Expansion Coefficient","Structural","autodesk.spec.aec.structural:thermalExpansionCoefficient-2.0.0","THERMAL_EXPANSION_COEFFICIENT","Micrometers per meter degree Celsius","autodesk.unit.unit:micrometersPerMeterDegreeCelsius-1.0.1","µm/(m·°C)",1000000,1E-06,True
+"Unit Weight","Structural","autodesk.spec.aec.structural:unitWeight-2.0.0","UNIT_WEIGHT","Kilonewtons per cubic meter","autodesk.unit.unit:kilonewtonsPerCubicMeter-1.0.1","kN/m³",0.0107639104167097,92.90304,True
+"Unit Weight","Structural","autodesk.spec.aec.structural:unitWeight-2.0.0","UNIT_WEIGHT","Kips per cubic inch","autodesk.unit.unit:kipsPerCubicInch-1.0.1","kip/in³",3.96537996856434E-08,25218264.2754926,True
+"Unit Weight","Structural","autodesk.spec.aec.structural:unitWeight-2.0.0","UNIT_WEIGHT","Pounds force per cubic foot","autodesk.unit.unit:poundsForcePerCubicFoot-1.0.1","lbf/ft³",0.0685217658567918,14.5939029372064,True
+"Velocity","Structural","autodesk.spec.aec.structural:velocity-2.0.0","VELOCITY","Centimeters per minute","autodesk.unit.unit:centimetersPerMinute-1.0.1","cm/min",1828.8,0.000546806649168854,True
+"Velocity","Structural","autodesk.spec.aec.structural:velocity-2.0.0","VELOCITY","Feet per minute","autodesk.unit.unit:feetPerMinute-1.0.1","ft/min",60,0.0166666666666667,True
+"Velocity","Structural","autodesk.spec.aec.structural:velocity-2.0.0","VELOCITY","Feet per second","autodesk.unit.unit:feetPerSecond-1.0.1","ft/s",1,1,True
+"Velocity","Structural","autodesk.spec.aec.structural:velocity-2.0.0","VELOCITY","Kilometers per hour","autodesk.unit.unit:kilometersPerHour-1.0.1","km/h",1.09728,0.911344415281423,True
+"Velocity","Structural","autodesk.spec.aec.structural:velocity-2.0.0","VELOCITY","Meters per second","autodesk.unit.unit:metersPerSecond-1.0.1","m/s",0.3048,3.28083989501312,True
+"Velocity","Structural","autodesk.spec.aec.structural:velocity-2.0.0","VELOCITY","Miles per hour","autodesk.unit.unit:milesPerHour-1.0.1","mph",0.681818181818182,1.46666666666667,True
+"Warping Constant","Structural","autodesk.spec.aec.structural:warpingConstant-2.0.0","WARPING_CONSTANT","Centimeters to the sixth power","autodesk.unit.unit:centimetersToTheSixthPower-1.0.1","cm⁶",801843800.914862,1.24712568564981E-09,True
+"Warping Constant","Structural","autodesk.spec.aec.structural:warpingConstant-2.0.0","WARPING_CONSTANT","Feet to the sixth power","autodesk.unit.unit:feetToTheSixthPower-1.0.1","ft⁶",1,1,True
+"Warping Constant","Structural","autodesk.spec.aec.structural:warpingConstant-2.0.0","WARPING_CONSTANT","Inches to the sixth power","autodesk.unit.unit:inchesToTheSixthPower-1.0.1","in⁶",2985984,3.34897976680384E-07,True
+"Warping Constant","Structural","autodesk.spec.aec.structural:warpingConstant-2.0.0","WARPING_CONSTANT","Meters to the sixth power","autodesk.unit.unit:metersToTheSixthPower-1.0.1","m⁶",0.000801843800914862,1247.12568564981,True
+"Warping Constant","Structural","autodesk.spec.aec.structural:warpingConstant-2.0.0","WARPING_CONSTANT","Millimeters to the sixth power","autodesk.unit.unit:millimetersToTheSixthPower-1.0.1","mm⁶",801843800914862,1.24712568564981E-15,True
+"Weight","Structural","autodesk.spec.aec.structural:weight-2.0.0","WEIGHT","Dekanewtons","autodesk.unit.unit:dekanewtons-1.0.1","daN",0.03048,32.8083989501312,True
+"Weight","Structural","autodesk.spec.aec.structural:weight-2.0.0","WEIGHT","Kilograms force","autodesk.unit.unit:kilogramsForce-1.0.1","kgf",0.0310809501715673,32.1740485564304,True
+"Weight","Structural","autodesk.spec.aec.structural:weight-2.0.0","WEIGHT","Kilonewtons","autodesk.unit.unit:kilonewtons-1.0.1","kN",0.0003048,3280.83989501312,True
+"Weight","Structural","autodesk.spec.aec.structural:weight-2.0.0","WEIGHT","Kips","autodesk.unit.unit:kips-1.0.1","kip",6.85217658567918E-05,14593.9029372064,True
+"Weight","Structural","autodesk.spec.aec.structural:weight-2.0.0","WEIGHT","Meganewtons","autodesk.unit.unit:meganewtons-1.0.1","MN",3.048E-07,3280839.89501312,True
+"Weight","Structural","autodesk.spec.aec.structural:weight-2.0.0","WEIGHT","Newtons","autodesk.unit.unit:newtons-1.0.1","N",0.3048,3.28083989501312,True
+"Weight","Structural","autodesk.spec.aec.structural:weight-2.0.0","WEIGHT","Pounds force","autodesk.unit.unit:poundsForce-1.0.1","lb",0.0685217658567918,14.5939029372064,True
+"Weight","Structural","autodesk.spec.aec.structural:weight-2.0.0","WEIGHT","Tonnes force","autodesk.unit.unit:tonnesForce-1.0.1","Tf",3.10809501715673E-05,32174.0485564304,True
+"Weight","Structural","autodesk.spec.aec.structural:weight-2.0.0","WEIGHT","US tonnes force","autodesk.unit.unit:usTonnesForce-1.0.1","Tons",3.42608829283959E-05,29187.8058744127,True
+"Weight per Unit Length","Structural","autodesk.spec.aec.structural:weightPerUnitLength-2.0.0","WEIGHT_PER_UNIT_LENGTH","Dekanewtons per meter","autodesk.unit.unit:dekanewtonsPerMeter-1.0.1","daN/m",0.1,10,True
+"Weight per Unit Length","Structural","autodesk.spec.aec.structural:weightPerUnitLength-2.0.0","WEIGHT_PER_UNIT_LENGTH","Kilograms force per meter","autodesk.unit.unit:kilogramsForcePerMeter-1.0.1","kgf/m",0.101971621297793,9.80665,True
+"Weight per Unit Length","Structural","autodesk.spec.aec.structural:weightPerUnitLength-2.0.0","WEIGHT_PER_UNIT_LENGTH","Kilonewtons per meter","autodesk.unit.unit:kilonewtonsPerMeter-1.0.1","kN/m",0.001,1000,True
+"Weight per Unit Length","Structural","autodesk.spec.aec.structural:weightPerUnitLength-2.0.0","WEIGHT_PER_UNIT_LENGTH","Kips per foot","autodesk.unit.unit:kipsPerFoot-1.0.1","kip/ft",6.85217658567918E-05,14593.9029372064,True
+"Weight per Unit Length","Structural","autodesk.spec.aec.structural:weightPerUnitLength-2.0.0","WEIGHT_PER_UNIT_LENGTH","Kips per inch","autodesk.unit.unit:kipsPerInch-1.0.1","kip/in",5.71014715473265E-06,175126.835246476,True
+"Weight per Unit Length","Structural","autodesk.spec.aec.structural:weightPerUnitLength-2.0.0","WEIGHT_PER_UNIT_LENGTH","Meganewtons per meter","autodesk.unit.unit:meganewtonsPerMeter-1.0.1","MN/m",1E-06,1000000,True
+"Weight per Unit Length","Structural","autodesk.spec.aec.structural:weightPerUnitLength-2.0.0","WEIGHT_PER_UNIT_LENGTH","Newtons per meter","autodesk.unit.unit:newtonsPerMeter-1.0.1","N/m",1,1,True
+"Weight per Unit Length","Structural","autodesk.spec.aec.structural:weightPerUnitLength-2.0.0","WEIGHT_PER_UNIT_LENGTH","Pounds force per foot","autodesk.unit.unit:poundsForcePerFoot-1.0.1","lbf/ft",0.0685217658567918,14.5939029372064,True
+"Weight per Unit Length","Structural","autodesk.spec.aec.structural:weightPerUnitLength-2.0.0","WEIGHT_PER_UNIT_LENGTH","Tonnes force per meter","autodesk.unit.unit:tonnesForcePerMeter-1.0.1","Tf/m",0.000101971621297793,9806.65,True
+"Angle","Common","autodesk.spec.aec:angle-2.0.0","ANGLE","Degrees","autodesk.unit.unit:degrees-1.0.1","°",57.2957795130824,0.0174532925199433,True
+"Angle","Common","autodesk.spec.aec:angle-2.0.0","ANGLE","Gradians","autodesk.unit.unit:gradians-1.0.1","grad",63.6619772367582,0.0157079632679489,True
+"Angle","Common","autodesk.spec.aec:angle-2.0.0","ANGLE","Radians","autodesk.unit.unit:radians-1.0.0","rad",1,1,True
+"Angle","Common","autodesk.spec.aec:angle-2.0.0","ANGLE","Degrees minutes seconds","autodesk.unit.unit:degreesMinutes-1.0.0","",57.2957795130824,0.0174532925199433,True
+"Area","Common","autodesk.spec.aec:area-2.0.0","AREA","Acres","autodesk.unit.unit:acres-1.0.1","acres",2.29568411386593E-05,43560,True
+"Area","Common","autodesk.spec.aec:area-2.0.0","AREA","Hectares","autodesk.unit.unit:hectares-1.0.1","hectare",9.290304E-06,107639.104167097,True
+"Area","Common","autodesk.spec.aec:area-2.0.0","AREA","Square centimeters","autodesk.unit.unit:squareCentimeters-1.0.1","cm²",929.0304,0.00107639104167097,True
+"Area","Common","autodesk.spec.aec:area-2.0.0","AREA","Square feet","autodesk.unit.unit:squareFeet-1.0.1","SF",1,1,True
+"Area","Common","autodesk.spec.aec:area-2.0.0","AREA","Square inches","autodesk.unit.unit:squareInches-1.0.1","in²",144,0.00694444444444444,True
+"Area","Common","autodesk.spec.aec:area-2.0.0","AREA","Square meters","autodesk.unit.unit:squareMeters-1.0.1","m²",0.09290304,10.7639104167097,True
+"Area","Common","autodesk.spec.aec:area-2.0.0","AREA","Square millimeters","autodesk.unit.unit:squareMillimeters-1.0.1","mm²",92903.04,1.07639104167097E-05,True
+"Cost per Area","Common","autodesk.spec.aec:costPerArea-2.0.0","COST_PER_AREA","Cost per square foot","autodesk.unit.unit:currencyPerSquareFoot-1.0.1","$/ft²",1,1,True
+"Cost per Area","Common","autodesk.spec.aec:costPerArea-2.0.0","COST_PER_AREA","Cost per square meter","autodesk.unit.unit:currencyPerSquareMeter-1.0.1","$/m²",10.7639104167097,0.09290304,True
+"Decimal Sheet Length","Common","autodesk.spec.aec:decimalSheetLength-2.0.0","PEN SIZE","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Decimal Sheet Length","Common","autodesk.spec.aec:decimalSheetLength-2.0.0","PEN SIZE","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Distance","Common","autodesk.spec.aec:distance-2.0.0","DISTANCE","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Distance","Common","autodesk.spec.aec:distance-2.0.0","DISTANCE","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Distance","Common","autodesk.spec.aec:distance-2.0.0","DISTANCE","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Distance","Common","autodesk.spec.aec:distance-2.0.0","DISTANCE","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Distance","Common","autodesk.spec.aec:distance-2.0.0","DISTANCE","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Distance","Common","autodesk.spec.aec:distance-2.0.0","DISTANCE","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Distance","Common","autodesk.spec.aec:distance-2.0.0","DISTANCE","US survey feet","autodesk.unit.unit:usSurveyFeet-1.0.0","USft",0.999998,1.000002000004,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","US survey feet","autodesk.unit.unit:usSurveyFeet-1.0.0","USft",0.999998,1.000002000004,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","Feet and fractional inches","autodesk.unit.unit:feetFractionalInches-1.0.0","",1,1,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Length","Common","autodesk.spec.aec:length-2.0.0","LENGTH","Meters and centimeters","autodesk.unit.unit:metersCentimeters-1.0.0","",0.3048,3.28083989501312,True
+"Mass Density","Common","autodesk.spec.aec:massDensity-2.0.0","MASS_DENSITY","Kilograms per cubic meter","autodesk.unit.unit:kilogramsPerCubicMeter-1.0.1","kg/m³",35.3146667214886,0.028316846592,True
+"Mass Density","Common","autodesk.spec.aec:massDensity-2.0.0","MASS_DENSITY","Pounds mass per cubic foot","autodesk.unit.unit:poundsMassPerCubicFoot-1.0.1","lbm/ft³",2.20462262184878,0.45359237,True
+"Number","Common","autodesk.spec.aec:number-2.0.0","NUMBER","Currency","autodesk.unit.unit:currency-1.0.0","¥",1,1,True
+"Number","Common","autodesk.spec.aec:number-2.0.0","NUMBER","Fixed","autodesk.unit.unit:fixed-1.0.1","",1,1,True
+"Number","Common","autodesk.spec.aec:number-2.0.0","NUMBER","General","autodesk.unit.unit:general-1.0.1","",1,1,True
+"Number","Common","autodesk.spec.aec:number-2.0.0","NUMBER","Percentage","autodesk.unit.unit:percentage-1.0.1","%",100,0.01,True
+"Rotation Angle","Common","autodesk.spec.aec:rotationAngle-2.0.0","ROTATION_ANGLE","Degrees","autodesk.unit.unit:degrees-1.0.1","°",57.2957795130824,0.0174532925199433,True
+"Rotation Angle","Common","autodesk.spec.aec:rotationAngle-2.0.0","ROTATION_ANGLE","Gradians","autodesk.unit.unit:gradians-1.0.1","grad",63.6619772367582,0.0157079632679489,True
+"Rotation Angle","Common","autodesk.spec.aec:rotationAngle-2.0.0","ROTATION_ANGLE","Multiples of π","autodesk.unit.unit:pi-1.0.0","π",0.318309886183791,3.14159265358979,True
+"Rotation Angle","Common","autodesk.spec.aec:rotationAngle-2.0.0","ROTATION_ANGLE","Radians","autodesk.unit.unit:radians-1.0.0","rad",1,1,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Centimeters","autodesk.unit.unit:centimeters-1.0.1","cm",30.48,0.0328083989501312,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Decimeters","autodesk.unit.unit:decimeters-1.0.1","dm",3.048,0.328083989501312,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Feet","autodesk.unit.unit:feet-1.0.1","LF",1,1,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Inches","autodesk.unit.unit:inches-1.0.1",""",12,0.0833333333333333,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Meters","autodesk.unit.unit:meters-1.0.0","m",0.3048,3.28083989501312,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Millimeters","autodesk.unit.unit:millimeters-1.0.1","mm",304.8,0.00328083989501312,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Square centimeters per meter","autodesk.unit.unit:squareCentimetersPerMeter-1.0.1","cm²/m",3048,0.000328083989501312,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Square feet per foot","autodesk.unit.unit:squareFeetPerFoot-1.0.1","ft²/ft",1,1,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Square inches per foot","autodesk.unit.unit:squareInchesPerFoot-1.0.1","in²/ft",144,0.00694444444444444,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Square meters per meter","autodesk.unit.unit:squareMetersPerMeter-1.0.1","m²/m",0.3048,3.28083989501312,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Square millimeters per meter","autodesk.unit.unit:squareMillimetersPerMeter-1.0.1","mm²/m",304800,3.28083989501312E-06,True
+"Sheet Length","Common","autodesk.spec.aec:sheetLength-2.0.0","PAPER LENGTH","Fractional inches","autodesk.unit.unit:fractionalInches-1.0.0","",12,0.0833333333333333,True
+"Site Angle","Common","autodesk.spec.aec:siteAngle-2.0.0","SITE_ANGLE","Degrees","autodesk.unit.unit:degrees-1.0.1","°",57.2957795130824,0.0174532925199433,True
+"Site Angle","Common","autodesk.spec.aec:siteAngle-2.0.0","SITE_ANGLE","Gradians","autodesk.unit.unit:gradians-1.0.1","grad",63.6619772367582,0.0157079632679489,True
+"Site Angle","Common","autodesk.spec.aec:siteAngle-2.0.0","SITE_ANGLE","Radians","autodesk.unit.unit:radians-1.0.0","rad",1,1,True
+"Site Angle","Common","autodesk.spec.aec:siteAngle-2.0.0","SITE_ANGLE","Degrees minutes seconds","autodesk.unit.unit:degreesMinutes-1.0.0","",57.2957795130824,0.0174532925199433,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","1 : Ratio","autodesk.unit.unit:1ToRatio-1.0.1","1:",1,1,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Per mille","autodesk.unit.unit:perMille-1.0.1","‰",1000,0.001,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Percentage","autodesk.unit.unit:percentage-1.0.1","%",100,0.01,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Ratio : 1","autodesk.unit.unit:ratioTo1-1.0.0",":1",1,1,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Ratio : 10","autodesk.unit.unit:ratioTo10-1.0.1",":10",10,0.1,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Ratio : 12","autodesk.unit.unit:ratioTo12-1.0.1",":12",12,0.0833333333333333,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Rise / 1000 millimeters","autodesk.unit.unit:riseDividedBy1000Millimeters-1.0.1","",1000,0.001,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Rise / 10 feet","autodesk.unit.unit:riseDividedBy10Feet-1.0.1","",10,0.1,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Rise / 120 inches","autodesk.unit.unit:riseDividedBy120Inches-1.0.1","",120,0.00833333333333333,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Rise / 12 inches","autodesk.unit.unit:riseDividedBy12Inches-1.0.1","",12,0.0833333333333333,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Rise / 1 foot","autodesk.unit.unit:riseDividedBy1Foot-1.0.1","",1,1,True
+"Slope","Common","autodesk.spec.aec:slope-2.0.0","SLOPE","Degrees","autodesk.unit.unit:slopeDegrees-1.0.0","",45,0.0174550649282176,True
+"Speed","Common","autodesk.spec.aec:speed-2.0.0","SPEED","Centimeters per minute","autodesk.unit.unit:centimetersPerMinute-1.0.1","cm/min",1828.8,0.000546806649168854,True
+"Speed","Common","autodesk.spec.aec:speed-2.0.0","SPEED","Feet per minute","autodesk.unit.unit:feetPerMinute-1.0.1","ft/min",60,0.0166666666666667,True
+"Speed","Common","autodesk.spec.aec:speed-2.0.0","SPEED","Feet per second","autodesk.unit.unit:feetPerSecond-1.0.1","ft/s",1,1,True
+"Speed","Common","autodesk.spec.aec:speed-2.0.0","SPEED","Kilometers per hour","autodesk.unit.unit:kilometersPerHour-1.0.1","km/h",1.09728,0.911344415281423,True
+"Speed","Common","autodesk.spec.aec:speed-2.0.0","SPEED","Meters per second","autodesk.unit.unit:metersPerSecond-1.0.1","m/s",0.3048,3.28083989501312,True
+"Speed","Common","autodesk.spec.aec:speed-2.0.0","SPEED","Miles per hour","autodesk.unit.unit:milesPerHour-1.0.1","mph",0.681818181818182,1.46666666666667,True
+"Time","Common","autodesk.spec.aec:time-2.0.0","TIMEINTERVAL","Hours","autodesk.unit.unit:hours-1.0.1","h",0.000277777777777778,3600,True
+"Time","Common","autodesk.spec.aec:time-2.0.0","TIMEINTERVAL","Milliseconds","autodesk.unit.unit:milliseconds-1.0.1","ms",1000,0.001,True
+"Time","Common","autodesk.spec.aec:time-2.0.0","TIMEINTERVAL","Minutes","autodesk.unit.unit:minutes-1.0.1","min",0.0166666666666667,60,True
+"Time","Common","autodesk.spec.aec:time-2.0.0","TIMEINTERVAL","Seconds","autodesk.unit.unit:seconds-1.0.0","s",1,1,True
+"Volume","Common","autodesk.spec.aec:volume-2.0.0","VOLUME","Cubic centimeters","autodesk.unit.unit:cubicCentimeters-1.0.1","cm³",28316.846592,3.53146667214886E-05,True
+"Volume","Common","autodesk.spec.aec:volume-2.0.0","VOLUME","Cubic feet","autodesk.unit.unit:cubicFeet-1.0.1","ft³",1,1,True
+"Volume","Common","autodesk.spec.aec:volume-2.0.0","VOLUME","Cubic inches","autodesk.unit.unit:cubicInches-1.0.1","in³",1728,0.000578703703703704,True
+"Volume","Common","autodesk.spec.aec:volume-2.0.0","VOLUME","Cubic meters","autodesk.unit.unit:cubicMeters-1.0.1","m³",0.028316846592,35.3146667214886,True
+"Volume","Common","autodesk.spec.aec:volume-2.0.0","VOLUME","Cubic millimeters","autodesk.unit.unit:cubicMillimeters-1.0.1","mm³",28316846.592,3.53146667214886E-08,True
+"Volume","Common","autodesk.spec.aec:volume-2.0.0","VOLUME","Cubic yards","autodesk.unit.unit:cubicYards-1.0.1","yd³",0.037037037037037,27,True
+"Volume","Common","autodesk.spec.aec:volume-2.0.0","VOLUME","Liters","autodesk.unit.unit:liters-1.0.1","L",28.316846592,0.0353146667214886,True
+"Volume","Common","autodesk.spec.aec:volume-2.0.0","VOLUME","US gallons","autodesk.unit.unit:usGallons-1.0.1","gal",7.48051948051948,0.133680555555556,True
+"Currency","Common","autodesk.spec.measurable:currency-2.0.0","CURRENCY","Currency","autodesk.unit.unit:currency-1.0.0","¥",1,1,True

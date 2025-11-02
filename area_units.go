@@ -4,20 +4,20 @@ var (
 	Area = Quantity("area")
 
 	// metric
-	SquareMilliMeter = newUnit("square millimeter", "mm²", Area, SI)
-	SquareCentiMeter = newUnit("square centimeter", "cm²", Area, SI)
-	SquareDeciMeter  = newUnit("square decimeter", "dm²", Area, SI)
-	SquareMeter      = newUnit("square meter", "m²", Area, SI)
-	SquareDecaMeter  = newUnit("square decameter", "dam²", Area, SI)
-	SquareHectoMeter = newUnit("square hectometer", "hm²", Area, SI)
-	SquareKiloMeter  = newUnit("square kilometer", "km²", Area, SI)
+	SquareMilliMeter = mustCreateNewUnit("square millimeter", "mm²", Area, SI)
+	SquareCentiMeter = mustCreateNewUnit("square centimeter", "cm²", Area, SI)
+	SquareDeciMeter  = mustCreateNewUnit("square decimeter", "dm²", Area, SI)
+	SquareMeter      = mustCreateNewUnit("square meter", "m²", Area, SI)
+	SquareDecaMeter  = mustCreateNewUnit("square decameter", "dam²", Area, SI)
+	SquareHectoMeter = mustCreateNewUnit("square hectometer", "hm²", Area, SI)
+	SquareKiloMeter  = mustCreateNewUnit("square kilometer", "km²", Area, SI)
 
 	// imperial
-	SquareMile = newUnit("square mile", "mi²", Area, BI)
-	Acre       = newUnit("acre", "ac", Area, BI)
-	SquareInch = newUnit("square inch", "in²", Area, BI)
-	SquareFoot = newUnit("square foot", "ft²", Area, BI)
-	SquareYard = newUnit("square yard", "yd²", Area, BI)
+	SquareMile = mustCreateNewUnit("square mile", "mi²", Area, BI)
+	Acre       = mustCreateNewUnit("acre", "ac", Area, BI)
+	SquareInch = mustCreateNewUnit("square inch", "in²", Area, BI)
+	SquareFoot = mustCreateNewUnit("square foot", "ft²", Area, BI)
+	SquareYard = mustCreateNewUnit("square yard", "yd²", Area, BI)
 )
 
 func init() {

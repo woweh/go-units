@@ -3,10 +3,10 @@ package units
 var (
 	Temperature = Quantity("temperature")
 
-	Celsius    = newUnit("celsius", "°C", Temperature, Plural(PluralNone), SI)
-	Fahrenheit = newUnit("fahrenheit", "°F", Temperature, Plural(PluralNone), US)
-	Kelvin     = newUnit("kelvin", "°K", Temperature, Plural(PluralNone), SI)
-	Rankine    = newUnit("rankine", "°R", Temperature, Plural(PluralNone), US)
+	Celsius    = mustCreateNewUnit("celsius", "°C", Temperature, Plural(PluralNone), SI)
+	Fahrenheit = mustCreateNewUnit("fahrenheit", "°F", Temperature, Plural(PluralNone), US)
+	Kelvin     = mustCreateNewUnit("kelvin", "°K", Temperature, Plural(PluralNone), SI)
+	Rankine    = mustCreateNewUnit("rankine", "°R", Temperature, Plural(PluralNone), US)
 )
 
 func init() {

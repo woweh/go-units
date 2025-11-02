@@ -12,10 +12,38 @@ import (
 // It matches the format of the Unit.CsvLine method.
 const CsvHeader = "Name,Symbol,PluralName,Quantity,System,Aliases & Symbols"
 
+// UnitList is a slice of Units. UnitList implements sort.Interface
+type UnitList []Unit
+
+// Len returns the length of the UnitList
+func (ul UnitList) Len() int {
+	return len(ul)
+}
+
+// Swap swaps the Units at the given indices
+func (ul UnitList) Swap(i, j int) {
+	ul[i], ul[j] = ul[j], ul[i]
+}
+
+// Less returns whether the Unit at index i is less than the Unit at index j
+func (ul UnitList) Less(i, j int) bool {
+	// sorting rules:
+	// 1. sort by quantity
+	// 2. sort by system
+	// 3. sort by name
+	if ul[i].Quantity != ul[j].Quantity {
+		return ul[i].Quantity < ul[j].Quantity
+	}
+	if ul[i].system != ul[j].system {
+		return ul[i].system < ul[j].system
+	}
+	return ul[i].Name < ul[j].Name
+}
+
 // All returns all registered Units, sorted by name and quantity
-func All() []Unit {
-	units := make(UnitList, 0, len(unitMap))
-	for _, u := range unitMap {
+func All() UnitList {
+	units := make(UnitList, 0, len(_unitMap))
+	for _, u := range _unitMap {
 		units = append(units, u)
 	}
 	sort.Sort(units)
@@ -34,10 +62,10 @@ func MustConvertFloat(x float64, from, to Unit) Value {
 // ConvertFloat converts a provided float from one Unit to another
 func ConvertFloat(x float64, from, to Unit) (Value, error) {
 	if from == nil {
-		return Value{}, fmt.Errorf("No unit specified to convert from.")
+		return Value{}, fmt.Errorf("no unit specified to convert from")
 	}
 	if to == nil {
-		return Value{}, fmt.Errorf("No unit specified to convert to.")
+		return Value{}, fmt.Errorf("no unit specified to convert to")
 	}
 
 	// allow converting to same unit
@@ -63,20 +91,20 @@ func ConvertFloat(x float64, from, to Unit) (Value, error) {
 func Find(s string) (Unit, error) {
 
 	// first try case-sensitive match on name
-	u, ok := unitMap[s]
+	u, ok := _unitMap[s]
 	if ok {
 		return u, nil
 	}
 
 	// then try case-sensitive match on symbol
 	// symbols are case-sensitive!
-	u, ok = symbolMap[s]
+	u, ok = _symbolMap[s]
 	if ok {
 		return u, nil
 	}
 
 	// then case-insensitive match on name
-	for _, u := range unitMap {
+	for _, u := range _unitMap {
 		if matchesNameOrAlias(s, u, false) {
 			return u, nil
 		}
@@ -85,7 +113,7 @@ func Find(s string) (Unit, error) {
 	// finally, try stripping plural suffix
 	if strings.HasSuffix(s, "s") || strings.HasSuffix(s, "S") {
 		s = s[:len(s)-1]
-		for _, u := range unitMap {
+		for _, u := range _unitMap {
 			if matchesNameOrAlias(s, u, false) {
 				return u, nil
 			}
@@ -126,9 +154,9 @@ func matchesSymbol(s string, u Unit) bool {
 // GetCsv returns a CSV representation of all registered Units.
 func GetCsv() []string {
 
-	// unitMap contains 'duplicate' units, because they are registered multiple times with different names/aliases
+	// _unitMap contains 'duplicate' units, because they are registered multiple times with different names/aliases
 	uniqueUnits := make(map[string]Unit)
-	for _, u := range unitMap {
+	for _, u := range _unitMap {
 		uniqueUnits[u.Name] = u
 	}
 

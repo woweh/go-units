@@ -4,7 +4,7 @@ var (
 	ElectricalResistance  = Quantity("electrical resistance")
 	ElectricalResistivity = Quantity("electrical resistivity")
 
-	Ohm      = newUnit("ohm", "Ω", ElectricalResistance, BaseSiUnit, Symbols("Ω"))
+	Ohm      = mustCreateNewUnit("ohm", "Ω", ElectricalResistance, SI, Symbols("Ω"))
 	DecaOhm  = Deca(Ohm)
 	HectoOhm = Hecto(Ohm)
 	KiloOhm  = Kilo(Ohm)
@@ -27,5 +27,5 @@ var (
 	YoctoOhm = Yocto(Ohm)
 
 	// Resistivity
-	OhmMeter = newUnit("ohm meter", "ohm·m", ElectricalResistivity, SI, Aliases("ohm-meter"))
+	OhmMeter = mustCreateNewUnit("ohm meter", "ohm·m", ElectricalResistivity, SI, Aliases("ohm-meter"))
 )

@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 var magNames = []string{
@@ -27,33 +25,100 @@ var magNames = []string{
 
 type magFn func(Unit, ...UnitOption) Unit
 
+func Test_getUnitForExponent(t *testing.T) {
+	t.Parallel()
+	u := mustCreateNewUnit("testunit_gufe", "TUGUFE")
+	Kilo(u)
+	tests := []struct {
+		name     string
+		baseName string
+		exp      int
+		wantNil  bool
+		wantName string
+	}{
+		{"Exact match", "testunit_gufe", 3, false, "kilotestunit_gufe"},
+		{"No match", "testunit_gufe", 5, true, ""},
+		{"Wrong base", "notexist", 3, true, ""},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := getUnitForExponent(tt.baseName, tt.exp)
+			if tt.wantNil {
+				if got != nil {
+					t.Fatalf("getUnitForExponent(%q, %d) = %v, want nil", tt.baseName, tt.exp, got)
+				}
+			} else {
+				if got == nil {
+					t.Fatalf("getUnitForExponent(%q, %d) = nil, want %q", tt.baseName, tt.exp, tt.wantName)
+				}
+				if got.Name != tt.wantName {
+					t.Fatalf("getUnitForExponent(%q, %d) = %q, want %q", tt.baseName, tt.exp, got.Name, tt.wantName)
+				}
+			}
+		})
+	}
+}
+
+func Test_findNextLowerUnit_and_findNextHigherUnit(t *testing.T) {
+	t.Parallel()
+	u := mustCreateNewUnit("testunit_fnlufnhu", "TUFNLU")
+	Kilo(u)
+	Mega(u)
+	Deci(u)
+	Centi(u)
+	tests := []struct {
+		name       string
+		exp        int
+		wantLower  string
+		wantHigher string
+	}{
+		{"Between kilo and mega", 5, "kilotestunit_fnlufnhu", "megatestunit_fnlufnhu"},
+		{"Below deci", -2, "", "decitestunit_fnlufnhu"},                                // No lower unit for exp -2, only higher
+		{"No lower, only higher", 2, "decitestunit_fnlufnhu", "kilotestunit_fnlufnhu"}, // Lower is deci, higher is kilo
+		{"No higher, only lower", 6, "kilotestunit_fnlufnhu", ""},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			lower, _ := findNextLowerUnit(u, tt.exp)
+			higher, _ := findNextHigherUnit(u, tt.exp)
+			if tt.wantLower == "" {
+				if lower != nil {
+					t.Fatalf("findNextLowerUnit(%d) = %v, want nil", tt.exp, lower)
+				}
+			} else {
+				if lower == nil || lower.Name != tt.wantLower {
+					t.Fatalf("findNextLowerUnit(%d) = %v, want %q", tt.exp, lower, tt.wantLower)
+				}
+			}
+			if tt.wantHigher == "" {
+				if higher != nil {
+					t.Fatalf("findNextHigherUnit(%d) = %v, want nil", tt.exp, higher)
+				}
+			} else {
+				if higher == nil || higher.Name != tt.wantHigher {
+					t.Fatalf("findNextHigherUnit(%d) = %v, want %q", tt.exp, higher, tt.wantHigher)
+				}
+			}
+		})
+	}
+}
+
 func Test_Magnitudes(t *testing.T) {
-	u := newUnit("dong", "₫")
+	u := mustCreateNewUnit("dong", "₫")
 	for i, mfn := range []magFn{
 		Exa, Peta, Tera, Giga, Mega, Kilo, Hecto, Deca, Deci, Centi, Milli, Micro, Nano, Pico, Femto, Atto,
 	} {
 		mu := mfn(u)
-		t.Logf("created mag unit: %s (%s)", mu.Name, mu.Symbol)
-		assert.Equal(t, mu.Name, magNames[i]+"dong")
+		if mu.Name != magNames[i]+"dong" {
+			t.Fatalf("created mag unit: %s, want %s", mu.Name, magNames[i]+"dong")
+		}
 	}
 }
 
-func Test_MagnitudeForExp(t *testing.T) {
-	assert.Equal(t, mags["kilo"], magnitudeForExp(3.0))
-	assert.Equal(t, mags["centi"], magnitudeForExp(-2.0))
-	assert.Equal(t, mags["atto"], magnitudeForExp(-18.0))
-	assert.Equal(t, mags["yotta"], magnitudeForExp(24.0))
-
-	// does not exist
-	assert.Zero(t, magnitudeForExp(4.0).Power)
-	assert.Zero(t, magnitudeForExp(1.2).Power)
-	assert.Zero(t, magnitudeForExp(0).Power)
-}
-
-func Test_FindMaxUnitForExp(t *testing.T) {
+func Test_findBestMatchingUnit(t *testing.T) {
 	tests := []struct {
 		name   string
-		exp    float64
+		exp    int
 		expect Unit
 		base   Unit
 	}{
@@ -72,8 +137,10 @@ func Test_FindMaxUnitForExp(t *testing.T) {
 
 	for _, tst := range tests {
 		t.Run(tst.name, func(t *testing.T) {
-			calcUnit := findMaxUnitForExp(tst.base, tst.exp)
-			assert.Equal(t, tst.expect, calcUnit)
+			calcUnit := findBestMatchingUnit(tst.base, tst.exp)
+			if calcUnit != tst.expect {
+				t.Fatalf("findBestMatchingUnit(%v, %d) = %v, want %v", tst.base, tst.exp, calcUnit, tst.expect)
+			}
 		})
 	}
 }

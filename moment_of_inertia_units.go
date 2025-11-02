@@ -4,13 +4,13 @@ var (
 	MomentOfInertia = Quantity("moment of inertia")
 
 	// SI base unit: meter to the fourth power
-	MeterToTheFourthPower      = newUnit("meter to the fourth power", "m⁴", MomentOfInertia, SI)
-	CentimeterToTheFourthPower = newUnit("centimeter to the fourth power", "cm⁴", MomentOfInertia, SI)
-	MillimeterToTheFourthPower = newUnit("millimeter to the fourth power", "mm⁴", MomentOfInertia, SI)
+	MeterToTheFourthPower      = mustCreateNewUnit("meter to the fourth power", "m⁴", MomentOfInertia, SI)
+	CentimeterToTheFourthPower = mustCreateNewUnit("centimeter to the fourth power", "cm⁴", MomentOfInertia, SI)
+	MillimeterToTheFourthPower = mustCreateNewUnit("millimeter to the fourth power", "mm⁴", MomentOfInertia, SI)
 
 	// Imperial/US units
-	FootToTheFourthPower = newUnit("foot to the fourth power", "ft⁴", MomentOfInertia, BI)
-	InchToTheFourthPower = newUnit("inch to the fourth power", "in⁴", MomentOfInertia, BI)
+	FootToTheFourthPower = mustCreateNewUnit("foot to the fourth power", "ft⁴", MomentOfInertia, BI)
+	InchToTheFourthPower = mustCreateNewUnit("inch to the fourth power", "in⁴", MomentOfInertia, BI)
 )
 
 func init() {

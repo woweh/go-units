@@ -40,32 +40,16 @@ type UnitQuantity string
 // Quantity labels for which units may belong
 func (q UnitQuantity) String() string { return string(q) }
 
-// Shorthands for pre-defined unit systems:
 var (
-	// SI is the International System of Units
-	SI = System(SiSystem)
-	// BI is the British Imperial system of units
-	BI = System(BiSystem)
-	// US is the United States customary system of units
-	US = System(UsSystem)
-	// IEC is the International Electrotechnical Commission system of units
-	IEC = System(IecSystem)
-	// CGS is the centimeter-gram-second system of units
-	CGS = System(CgsSystem)
-	// MKpS is the MKpS system of units (from French mètre–kilogramme-poids–seconde)
-	MKpS = System(MKpSSystem)
-)
-
-var (
-	// unitMap is a map of all registered units.
+	// _unitMap is a map of all registered units.
 	// The key is the unit name or alias, the value is the Unit.
-	unitMap = make(map[string]Unit)
-	// symbolMap is a map of all registered units.
+	_unitMap = make(map[string]Unit)
+	// _symbolMap is a map of all registered units.
 	// The key is the unit symbol, the value is the Unit.
-	symbolMap = make(map[string]Unit)
+	_symbolMap = make(map[string]Unit)
 )
 
-// unit represents a unit of measurement -- internal representation
+// unit is the internal representation of a unit of measurement.
 type unit struct {
 	// Name is the (English) name of this unit. The name is mandatory and case-insensitive.
 	Name string
@@ -87,10 +71,12 @@ type unit struct {
 	// base is the base unit for metric units
 	base *Unit
 	// isBaseUnit is true if this unit is the base unit for metric units
+	// NOTE:
+	// isBaseUnit must only be set from metric.go, method `makeUnit`.
 	isBaseUnit bool
 }
 
-// Unit represents a unit of measurement
+// Unit represents a unit of measurement (alias for *unit)
 type Unit = *unit
 
 // NewUnit registers a new Unit within the package, returning the newly created Unit.
@@ -101,11 +87,11 @@ func NewUnit(name, symbol string, opts ...UnitOption) (Unit, error) {
 	if name == "" {
 		return nil, errors.New("unit name cannot be empty")
 	}
-	if _, ok := unitMap[name]; ok {
+	if _, ok := _unitMap[name]; ok {
 		return nil, errors.New("duplicate unit name: " + name)
 	}
 	if symbol != "" {
-		if _, ok := symbolMap[symbol]; ok {
+		if _, ok := _symbolMap[symbol]; ok {
 			return nil, errors.New("duplicate unit symbol: " + symbol)
 		}
 	}
@@ -121,17 +107,17 @@ func NewUnit(name, symbol string, opts ...UnitOption) (Unit, error) {
 	}
 
 	// register unit:
-	unitMap[name] = u
+	_unitMap[name] = u
 	if symbol != "" {
-		symbolMap[symbol] = u
+		_symbolMap[symbol] = u
 	}
 
 	return u, nil
 }
 
-// newUnit registers a new Unit within the package, returning the newly created Unit.
+// mustCreateNewUnit registers a new Unit within the package, returning the newly created Unit.
 // PANICS if the unit already exists!
-func newUnit(name, symbol string, opts ...UnitOption) Unit {
+func mustCreateNewUnit(name, symbol string, opts ...UnitOption) Unit {
 	u, err := NewUnit(name, symbol, opts...)
 	if err != nil {
 		panic(err)
@@ -165,104 +151,6 @@ func (u Unit) Symbols() []string {
 // String returns the name of this unit
 func (u Unit) String() string {
 	return u.Name
-}
-
-// AddResult is the result of adding aliases or symbols to a unit
-type AddResult struct {
-	What     string           // "Aliases" or "Symbols", depending on what was added
-	Unit     Unit             // the unit to which the aliases or symbols were added
-	Added    []string         // the aliases or symbols that were added
-	Failures map[string]error // the aliases or symbols that failed to be added, and the reason why
-	Err      error            // the overall error that occurred, if any
-	Summary  string           // a summary of the result
-}
-
-// validate the AddResult, setting the Error and Summary fields
-func (ar *AddResult) validate() {
-	addCount := len(ar.Added)
-	failCount := len(ar.Failures)
-	inCount := addCount + failCount
-	ar.Summary = `Add %s for unit '%s':
-- processed: %d
-- added: %d
-- failed: %d`
-	ar.Summary = fmt.Sprintf(ar.Summary, ar.What, ar.Unit.Name, inCount, addCount, failCount)
-	if failCount == inCount {
-		ar.Err = fmt.Errorf("error, failed to add any %s for unit '%s'", strings.ToLower(ar.What), ar.Unit.Name)
-	}
-}
-
-// String returns a summary of the AddResult
-func (ar *AddResult) String() string {
-	return ar.Summary
-}
-
-// AddAliases adds aliases that this unit may be referred to
-func (u Unit) AddAliases(aliases ...string) *AddResult {
-
-	result := &AddResult{
-		What:     "Aliases",
-		Unit:     u,
-		Added:    []string{},
-		Failures: map[string]error{},
-		Err:      nil,
-		Summary:  "",
-	}
-
-	for _, a := range aliases {
-		if _, ok := unitMap[a]; ok {
-			result.Failures[a] = errors.New("alias " + a + " is already registered as a unit name or alias")
-			// skip aliases that are already registered as a unit name
-			continue
-		}
-		if _, ok := symbolMap[a]; ok {
-			result.Failures[a] = errors.New("alias " + a + " is already registered as a unit symbol")
-			// skip aliases that are already registered as a unit symbol
-			continue
-		}
-		// else add alias
-		u.aliases = append(u.aliases, a)
-		result.Added = append(result.Added, a)
-		unitMap[a] = u
-	}
-
-	result.validate()
-
-	return result
-}
-
-// AddSymbols adds symbols that this unit may be referred to
-func (u Unit) AddSymbols(symbols ...string) *AddResult {
-
-	result := &AddResult{
-		What:     "Symbols",
-		Unit:     u,
-		Added:    []string{},
-		Failures: map[string]error{},
-		Err:      nil,
-		Summary:  "",
-	}
-
-	for _, s := range symbols {
-		if _, ok := unitMap[s]; ok {
-			result.Failures[s] = errors.New("symbol " + s + " is already registered as a unit name or alias")
-			// skip aliases that are already registered as a unit name
-			continue
-		}
-		if _, ok := symbolMap[s]; ok {
-			result.Failures[s] = errors.New("symbol " + s + " is already registered as a unit symbol")
-			// skip aliases that are already registered as a unit symbol
-			continue
-		}
-		// else add symbol
-		u.symbols = append(u.symbols, s)
-		result.Added = append(result.Added, s)
-		symbolMap[s] = u
-	}
-
-	result.validate()
-
-	return result
 }
 
 // System returns the system of units this Unit belongs to, if any
@@ -342,6 +230,11 @@ func (u Unit) IsMKpS() bool {
 	return u.system == MKpSSystem
 }
 
+// HasBase returns true if this unit has a base unit.
+func (u Unit) HasBase() bool {
+	return u.base != nil
+}
+
 // Base returns the base unit for metric units, or nil for non-metric units.
 func (u Unit) Base() Unit {
 	return *u.base
@@ -352,7 +245,105 @@ func (u Unit) IsBase() bool {
 	return u.isBaseUnit
 }
 
-// UnitOption defines an option that may be passed to newUnit
+// AddResult is the result of adding aliases or symbols to a unit
+type AddResult struct {
+	What     string           // "Aliases" or "Symbols", depending on what was added
+	Unit     Unit             // the unit to which the aliases or symbols were added
+	Added    []string         // the aliases or symbols that were added
+	Failures map[string]error // the aliases or symbols that failed to be added, and the reason why
+	Err      error            // the overall error that occurred, if any
+	Summary  string           // a summary of the result
+}
+
+// validate the AddResult, setting the Error and Summary fields
+func (ar *AddResult) validate() {
+	addCount := len(ar.Added)
+	failCount := len(ar.Failures)
+	inCount := addCount + failCount
+	ar.Summary = `Add %s for unit '%s':
+- processed: %d
+- added: %d
+- failed: %d`
+	ar.Summary = fmt.Sprintf(ar.Summary, ar.What, ar.Unit.Name, inCount, addCount, failCount)
+	if failCount == inCount {
+		ar.Err = fmt.Errorf("failed to add any %s for unit '%s'", strings.ToLower(ar.What), ar.Unit.Name)
+	}
+}
+
+// String returns a summary of the AddResult
+func (ar *AddResult) String() string {
+	return ar.Summary
+}
+
+// AddAliases adds aliases that this unit may be referred to
+func (u Unit) AddAliases(aliases ...string) *AddResult {
+
+	result := &AddResult{
+		What:     "Aliases",
+		Unit:     u,
+		Added:    []string{},
+		Failures: map[string]error{},
+		Err:      nil,
+		Summary:  "",
+	}
+
+	for _, a := range aliases {
+		if _, ok := _unitMap[a]; ok {
+			result.Failures[a] = errors.New("alias " + a + " is already registered as a unit name or alias")
+			// skip aliases that are already registered as a unit name
+			continue
+		}
+		if _, ok := _symbolMap[a]; ok {
+			result.Failures[a] = errors.New("alias " + a + " is already registered as a unit symbol")
+			// skip aliases that are already registered as a unit symbol
+			continue
+		}
+		// else add alias
+		u.aliases = append(u.aliases, a)
+		result.Added = append(result.Added, a)
+		_unitMap[a] = u
+	}
+
+	result.validate()
+
+	return result
+}
+
+// AddSymbols adds symbols that this unit may be referred to
+func (u Unit) AddSymbols(symbols ...string) *AddResult {
+
+	result := &AddResult{
+		What:     "Symbols",
+		Unit:     u,
+		Added:    []string{},
+		Failures: map[string]error{},
+		Err:      nil,
+		Summary:  "",
+	}
+
+	for _, s := range symbols {
+		if _, ok := _unitMap[s]; ok {
+			result.Failures[s] = errors.New("symbol " + s + " is already registered as a unit name or alias")
+			// skip aliases that are already registered as a unit name
+			continue
+		}
+		if _, ok := _symbolMap[s]; ok {
+			result.Failures[s] = errors.New("symbol " + s + " is already registered as a unit symbol")
+			// skip aliases that are already registered as a unit symbol
+			continue
+		}
+		// else add symbol
+		u.symbols = append(u.symbols, s)
+		result.Added = append(result.Added, s)
+		_symbolMap[s] = u
+	}
+
+	result.validate()
+
+	return result
+}
+
+// UnitOption defines an option that may be passed to mustCreateNewUnit
 type UnitOption func(Unit) Unit
 
 // Plural sets the plural name for this unit, either PluralNone, PluralAuto, or a custom plural unit name.
@@ -372,6 +363,22 @@ func System(s UnitSystem) UnitOption {
 		return u
 	}
 }
+
+// Shorthands for pre-defined unit systems:
+var (
+	// SI is the International System of Units
+	SI = System(SiSystem)
+	// BI is the British Imperial system of units
+	BI = System(BiSystem)
+	// US is the United States customary system of units
+	US = System(UsSystem)
+	// IEC is the International Electrotechnical Commission system of units
+	IEC = System(IecSystem)
+	// CGS is the centimeter-gram-second system of units
+	CGS = System(CgsSystem)
+	// MKpS is the MKpS system of units (from French mètre–kilogramme-poids–seconde)
+	MKpS = System(MKpSSystem)
+)
 
 // Quantity sets a quantity label for which this Unit belongs
 func Quantity(s UnitQuantity) UnitOption {
@@ -396,41 +403,4 @@ func Symbols(symbols ...string) UnitOption {
 		u.AddSymbols(symbols...)
 		return u
 	}
-}
-
-// BaseSiUnit marks this unit as the base unit for metric units (SiSystem).
-//
-// This is defined as a var to make it as easy to use as the shorthands UnitSystem's, like SI.
-var BaseSiUnit = func(u Unit) Unit {
-	u.isBaseUnit = true
-	u.system = SiSystem
-	return u
-}
-
-// UnitList is a slice of Units. UnitList implements sort.Interface
-type UnitList []Unit
-
-// Len returns the length of the UnitList
-func (a UnitList) Len() int {
-	return len(a)
-}
-
-// Swap swaps the Units at the given indices
-func (a UnitList) Swap(i, j int) {
-	a[i], a[j] = a[j], a[i]
-}
-
-// Less returns whether the Unit at index i is less than the Unit at index j
-func (a UnitList) Less(i, j int) bool {
-	// sorting rules:
-	// 1. sort by quantity
-	// 2. sort by system
-	// 3. sort by name
-	if a[i].Quantity != a[j].Quantity {
-		return a[i].Quantity < a[j].Quantity
-	}
-	if a[i].system != a[j].system {
-		return a[i].system < a[j].system
-	}
-	return a[i].Name < a[j].Name
 }

@@ -4,11 +4,11 @@ var (
 	PowerDensity = Quantity("power density")
 
 	// Base unit: watt per square meter (Revit base with CF=1.0)
-	WattPerSquareMeter = newUnit("watt per square meter", "W/m²", PowerDensity, SI)
+	WattPerSquareMeter = mustCreateNewUnit("watt per square meter", "W/m²", PowerDensity, SI)
 
 	// Other units
-	WattPerSquareFoot                      = newUnit("watt per square foot", "W/ft²", PowerDensity)
-	BritishThermalUnitPerHourSquareFoot = newUnit("British thermal unit per hour square foot", "Btu/(h·ft²)", PowerDensity)
+	WattPerSquareFoot                   = mustCreateNewUnit("watt per square foot", "W/ft²", PowerDensity)
+	BritishThermalUnitPerHourSquareFoot = mustCreateNewUnit("British thermal unit per hour square foot", "Btu/(h·ft²)", PowerDensity)
 )
 
 func init() {
@@ -16,10 +16,10 @@ func init() {
 	// W/m²: CF = 1.0
 	// W/ft²: CF = 0.09290304
 	// Btu/(h·ft²): CF = 0.3169983306281505
-	
+
 	// 1 W/m² = 0.09290304 W/ft²
 	NewRatioConversion(WattPerSquareMeter, WattPerSquareFoot, 0.09290304)
-	
+
 	// From ratios: 0.3169983306281505 / 0.09290304 = 3.41214
 	// 1 W/ft² = 3.41214 Btu/(h·ft²)
 	NewRatioConversion(WattPerSquareFoot, BritishThermalUnitPerHourSquareFoot, 3.41214)

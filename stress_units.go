@@ -8,38 +8,38 @@ var (
 	Stress = Quantity("stress")
 
 	// Imperial/US units specific to stress
-	KipPerSquareFoot = newUnit("kip per square foot", "ksf", Stress, BI)
-	KipPerSquareInch = newUnit("kip per square inch", "ksi", Stress, BI)
+	KipPerSquareFoot = mustCreateNewUnit("kip per square foot", "ksf", Stress, BI)
+	KipPerSquareInch = mustCreateNewUnit("kip per square inch", "ksi", Stress, BI)
 
 	// Other metric units specific to stress
-	NewtonPerSquareMillimeter     = newUnit("newton per square millimeter", "N/mm²", Stress, SI)
-	KiloNewtonPerSquareCentimeter = newUnit("kilonewton per square centimeter", "kN/cm²", Stress, SI)
-	KiloNewtonPerSquareMillimeter = newUnit("kilonewton per square millimeter", "kN/mm²", Stress, SI)
-	MegaNewtonPerSquareMeter      = newUnit("meganewton per square meter", "MN/m²", Stress, SI)
-	DekaNewtonPerSquareMeter      = newUnit("dekanewton per square meter", "daN/m²", Stress, SI)
-	KilogramForcePerSquareMeter   = newUnit("kilogram force per square meter", "kgf/m²", Stress)
-	TonneForcePerSquareMeter      = newUnit("tonne force per square meter", "Tf/m²", Stress)
+	NewtonPerSquareMillimeter     = mustCreateNewUnit("newton per square millimeter", "N/mm²", Stress, SI)
+	KiloNewtonPerSquareCentimeter = mustCreateNewUnit("kilonewton per square centimeter", "kN/cm²", Stress, SI)
+	KiloNewtonPerSquareMillimeter = mustCreateNewUnit("kilonewton per square millimeter", "kN/mm²", Stress, SI)
+	MegaNewtonPerSquareMeter      = mustCreateNewUnit("meganewton per square meter", "MN/m²", Stress, SI)
+	DekaNewtonPerSquareMeter      = mustCreateNewUnit("dekanewton per square meter", "daN/m²", Stress, SI)
+	KilogramForcePerSquareMeter   = mustCreateNewUnit("kilogram force per square meter", "kgf/m²", Stress)
+	TonneForcePerSquareMeter      = mustCreateNewUnit("tonne force per square meter", "Tf/m²", Stress)
 )
 
 func init() {
 	// Stress-specific conversions (using Pascal from pressure_units.go as base)
-	
+
 	// 1 ksf = 1000 psf = 47880.26 Pa
 	NewRatioConversion(KipPerSquareFoot, Pascal, 47880.26)
-	
+
 	// 1 ksi = 1000 psi = 6894757.29 Pa
 	NewRatioConversion(KipPerSquareInch, Pascal, 6894757.293168)
-	
+
 	// Other metric units
 	NewRatioConversion(NewtonPerSquareMillimeter, Pascal, 1000000.0)
 	NewRatioConversion(KiloNewtonPerSquareCentimeter, Pascal, 10000000.0)
 	NewRatioConversion(KiloNewtonPerSquareMillimeter, Pascal, 1000000000.0)
 	NewRatioConversion(MegaNewtonPerSquareMeter, Pascal, 1000000.0)
 	NewRatioConversion(DekaNewtonPerSquareMeter, Pascal, 10.0)
-	
+
 	// 1 kgf/m² = 9.80665 Pa
 	NewRatioConversion(KilogramForcePerSquareMeter, Pascal, 9.80665)
-	
+
 	// 1 Tf/m² = 9806.65 Pa
 	NewRatioConversion(TonneForcePerSquareMeter, Pascal, 9806.65)
 

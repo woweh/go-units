@@ -1,10 +1,14 @@
 package units
 
+// Pressure is the UnitQuantity (string/name) for pressure units
+const Pressure UnitQuantity = "pressure"
+
 var (
-	Pressure = Quantity("pressure")
+	// _pressure is the UnitOption for pressure units, used in unit definitions
+	_pressure = Quantity(Pressure)
 
 	// SI unit metric
-	Pascal      = newUnit("pascal", "Pa", Pressure, BaseSiUnit)
+	Pascal      = mustCreateNewUnit("pascal", "Pa", _pressure, SI)
 	ExaPascal   = Exa(Pascal)
 	PetaPascal  = Peta(Pascal)
 	TeraPascal  = Tera(Pascal)
@@ -23,33 +27,30 @@ var (
 	AttoPascal  = Atto(Pascal)
 
 	// Other
-	At       = newUnit("technical atmosphere", "at", Pressure, BI)
-	Atm      = newUnit("standard atmosphere", "atm", Pressure, BI)
-	Bar      = newUnit("bar", "bar", Pressure, BI)
+	At       = mustCreateNewUnit("technical atmosphere", "at", _pressure, BI)
+	Atm      = mustCreateNewUnit("standard atmosphere", "atm", _pressure, BI)
+	Bar      = mustCreateNewUnit("bar", "bar", _pressure, BI)
 	CentiBar = Centi(Bar, BI)
 	MilliBar = Milli(Bar, BI)
 	MicroBar = Micro(Bar, BI)
-	Barye    = newUnit("barye", "Ba", Pressure, BI)
-	InH2O    = newUnit(
-		"inch of Water Column", "inH2O", Pressure, BI, Plural("inches of Water Column"),
+	Barye    = mustCreateNewUnit("barye", "Ba", _pressure, BI)
+	InH2O    = mustCreateNewUnit(
+		"inch of Water Column", "inH2O", _pressure, BI, Plural("inches of Water Column"),
 	)
-	InHg = newUnit("inch of Mercury", "inHg", Pressure, BI, Plural("inches of Mercury"))
-	MH2O = newUnit(
-		"meter of Water Column", "mH2O", Pressure, BI,
-		Plural("meters of Water Column"),
-	)
+	InHg                         = mustCreateNewUnit("inch of Mercury", "inHg", _pressure, BI, Plural("inches of Mercury"))
+	MH2O                         = mustCreateNewUnit("meter of Water Column", "mH2O", _pressure, BI, Plural("meters of Water Column"))
 	MilliMH2O                    = Milli(MH2O, BI, Plural("millimeters of Water Column"))
 	CentiMH2O                    = Centi(MH2O, BI, Plural("centimeters of Water Column"))
-	MHg                          = newUnit("meter of Mercury", "mmHg", Pressure, BI, Plural("meters of Mercury"))
+	MHg                          = mustCreateNewUnit("meter of Mercury", "mmHg", _pressure, BI, Plural("meters of Mercury"))
 	MilliMHg                     = Milli(MHg, BI, Plural("millimeters of Mercury"))
 	CentiMHg                     = Centi(MHg, BI, Plural("centimeters of Mercury"))
-	NewtonSqm                    = newUnit("newton per square meter", "N/m²", Pressure, BI)
+	NewtonSqm                    = mustCreateNewUnit("newton per square meter", "N/m²", _pressure, SI)
 	KiloNewtonSqm                = Kilo(NewtonSqm)
-	Psi                          = newUnit("pound-force per square inch", "psi", Pressure, BI)
-	Torr                         = newUnit("torr", "Torr", Pressure, BI)
-	FootH2O                      = newUnit("foot of Water Column", "FT", Pressure, BI)
-	InchesOfWater                = newUnit("inches of Water Column", "in-wg", Pressure, BI)
-	PoundForcePerSquareInchGauge = newUnit("pound-force per square inch gauge", "psig", Pressure, BI)
+	Psi                          = mustCreateNewUnit("pound-force per square inch", "psi", _pressure, BI)
+	Torr                         = mustCreateNewUnit("torr", "Torr", _pressure, BI)
+	FootH2O                      = mustCreateNewUnit("foot of Water Column", "FT", _pressure, BI)
+	InchesOfWater                = mustCreateNewUnit("inches of Water Column", "in-wg", _pressure, BI)
+	PoundForcePerSquareInchGauge = mustCreateNewUnit("pound-force per square inch gauge", "psig", _pressure, BI)
 )
 
 func init() {

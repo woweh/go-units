@@ -12,19 +12,19 @@ var (
 	// SlopeValue m = rise (delta h) / run (distance) = y/x = tan(alpha)
 	// In the case of a vertical line, the slope is infinite.
 	// In the case of a horizontal line, the slope is zero.
-	SlopeValue = newUnit("slope value", "", Slope, Plural(PluralNone))
+	SlopeValue = mustCreateNewUnit("slope value", "", Slope, Plural(PluralNone))
 	// SlopeRatio is a ratio of one part rise to so many parts run (e.g. 1:10). == SlopeInverseValue
-	SlopeRatio = newUnit("slope ratio", "", Slope, Plural(PluralNone))
+	SlopeRatio = mustCreateNewUnit("slope ratio", "", Slope, Plural(PluralNone))
 	// SlopeInverseRatio is a ratio of many parts run to one part rise (e.g. 10:1).
-	SlopeInverseRatio = newUnit("inverse slope ratio", "", Slope, Plural(PluralNone))
+	SlopeInverseRatio = mustCreateNewUnit("inverse slope ratio", "", Slope, Plural(PluralNone))
 	// SlopeDegree is the angle of inclination in degrees (e.g. 45°).
-	SlopeDegree = newUnit("slope degree", "", Slope, Plural(PluralNone))
+	SlopeDegree = mustCreateNewUnit("slope degree", "", Slope, Plural(PluralNone))
 	// SlopePercent 100 * m = 100 * (rise/run) = 100 * tan(α).
 	// Note that the symbol is already taken by the Percent unit.
-	SlopePercent = newUnit("slope percent", "", Slope, Plural(PluralNone))
+	SlopePercent = mustCreateNewUnit("slope percent", "", Slope, Plural(PluralNone))
 	// SlopePermille 1000 * m = 1000 * (rise/run) = 1000 * tan(α).
 	// Note that the symbol is already taken by the Permille unit.
-	SlopePermille = newUnit("slope permille", "", Slope, Plural(PluralNone))
+	SlopePermille = mustCreateNewUnit("slope permille", "", Slope, Plural(PluralNone))
 )
 
 func init() {

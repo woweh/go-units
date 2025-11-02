@@ -4,7 +4,7 @@ var (
 	Power = Quantity("power")
 
 	// metric
-	Watt      = newUnit("watt", "W", Power, BaseSiUnit)
+	Watt      = mustCreateNewUnit("watt", "W", Power, SI)
 	DeciWatt  = Deci(Watt)
 	CentiWatt = Centi(Watt)
 	MilliWatt = Milli(Watt)
@@ -26,20 +26,20 @@ var (
 	ZettaWatt = Zetta(Watt)
 	YottaWatt = Yotta(Watt)
 
-	VoltAmpere     = newUnit("volt-ampere", "V⋅A", Power, BaseSiUnit)
+	VoltAmpere     = mustCreateNewUnit("volt-ampere", "V⋅A", Power, SI)
 	KiloVoltAmpere = Kilo(VoltAmpere)
 	MegaVoltAmpere = Mega(VoltAmpere)
 
-	VoltAmpereReactive     = newUnit("volt-ampere reactive", "var", Power, BaseSiUnit)
+	VoltAmpereReactive     = mustCreateNewUnit("volt-ampere reactive", "var", Power, SI)
 	KiloVoltAmpereReactive = Kilo(VoltAmpereReactive)
 	MegaVoltAmpereReactive = Mega(VoltAmpereReactive)
 
-	BritishThermalUnitPerHour          = newUnit("British thermal unit per hour", "Btu/h", Power)
-	BritishThermalUnitPerSecond        = newUnit("British thermal unit per second", "Btu/s", Power)
-	CaloriePerSecond                   = newUnit("calorie per second", "cal/s", Power)
-	Horsepower                         = newUnit("horsepower", "hp", Power)
-	KiloCaloriePerSecond               = newUnit("kilocalorie per second", "kcal/s", Power)
-	ThousandBritishThermalUnitsPerHour = newUnit("thousand British thermal units per hour", "MBH", Power)
+	BritishThermalUnitPerHour          = mustCreateNewUnit("British thermal unit per hour", "Btu/h", Power)
+	BritishThermalUnitPerSecond        = mustCreateNewUnit("British thermal unit per second", "Btu/s", Power)
+	CaloriePerSecond                   = mustCreateNewUnit("calorie per second", "cal/s", Power)
+	Horsepower                         = mustCreateNewUnit("horsepower", "hp", Power)
+	KiloCaloriePerSecond               = mustCreateNewUnit("kilocalorie per second", "kcal/s", Power)
+	ThousandBritishThermalUnitsPerHour = mustCreateNewUnit("thousand British thermal units per hour", "MBH", Power)
 )
 
 func init() {

@@ -4,7 +4,7 @@ var (
 	Energy = Quantity("energy")
 
 	// metric
-	Joule      = newUnit("joule", "J", Energy, BaseSiUnit)
+	Joule      = mustCreateNewUnit("joule", "J", Energy, SI)
 	KiloJoule  = Kilo(Joule)
 	MegaJoule  = Mega(Joule)
 	GigaJoule  = Giga(Joule)
@@ -20,8 +20,8 @@ var (
 	FemtoJoule = Femto(Joule)
 	AttoJoule  = Atto(Joule)
 
-	WattHour = newUnit(
-		"watt-hour", "Wh", Energy, BaseSiUnit,
+	WattHour = mustCreateNewUnit(
+		"watt-hour", "Wh", Energy, SI,
 		Aliases("volt ampere hour", "volt ampere reactive hour", "volt ampere hour (reactive)"),
 		Symbols("VAh", "varh", "V⋅A⋅hr", "V.A.h", "V.A{reactive}.h", "V⋅A{reactive}⋅hr"),
 	)
@@ -32,16 +32,16 @@ var (
 	PetaWattHour = Peta(WattHour)
 
 	// other
-	ElectronVolt     = newUnit("electronvolt", "eV", Energy, BaseSiUnit)
+	ElectronVolt     = mustCreateNewUnit("electronvolt", "eV", Energy, SI)
 	KiloElectronVolt = Kilo(ElectronVolt)
 	MegaElectronVolt = Mega(ElectronVolt)
 	GigaElectronVolt = Giga(ElectronVolt)
 
-	Calorie     = newUnit("calorie", "cal", Energy, BaseSiUnit)
+	Calorie     = mustCreateNewUnit("calorie", "cal", Energy, SI)
 	KiloCalorie = Kilo(Calorie)
 
-	BritishThermalUnit = newUnit("British thermal unit", "Btu", Energy)
-	Therm              = newUnit("therm", "therm", Energy)
+	BritishThermalUnit = mustCreateNewUnit("British thermal unit", "Btu", Energy)
+	Therm              = mustCreateNewUnit("therm", "therm", Energy)
 )
 
 func init() {

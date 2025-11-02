@@ -4,16 +4,16 @@ var (
 	MassPerTime = Quantity("mass per time")
 
 	// Base unit: kilogram per second (Revit base with CF=1.0)
-	KilogramPerSecond = newUnit("kilogram per second", "kg/s", MassPerTime, SI)
+	KilogramPerSecond = mustCreateNewUnit("kilogram per second", "kg/s", MassPerTime, SI)
 
 	// Other SI units
-	KilogramPerMinute = newUnit("kilogram per minute", "kg/min", MassPerTime, SI)
-	KilogramPerHour   = newUnit("kilogram per hour", "kg/h", MassPerTime, SI)
+	KilogramPerMinute = mustCreateNewUnit("kilogram per minute", "kg/min", MassPerTime, SI)
+	KilogramPerHour   = mustCreateNewUnit("kilogram per hour", "kg/h", MassPerTime, SI)
 
 	// Imperial units
-	PoundPerSecond = newUnit("pound per second", "lb/s", MassPerTime, BI)
-	PoundPerMinute = newUnit("pound per minute", "lb/min", MassPerTime, BI)
-	PoundPerHour   = newUnit("pound per hour", "lb/h", MassPerTime, BI)
+	PoundPerSecond = mustCreateNewUnit("pound per second", "lb/s", MassPerTime, BI)
+	PoundPerMinute = mustCreateNewUnit("pound per minute", "lb/min", MassPerTime, BI)
+	PoundPerHour   = mustCreateNewUnit("pound per hour", "lb/h", MassPerTime, BI)
 )
 
 func init() {
@@ -24,7 +24,7 @@ func init() {
 	// lb/s: CF = 2.2046226218487757
 	// lb/min: CF = 132.27735731092656
 	// lb/h: CF = 7936.6414386555925
-	
+
 	NewRatioConversion(KilogramPerSecond, KilogramPerMinute, 60.0)
 	NewRatioConversion(KilogramPerSecond, KilogramPerHour, 3600.0)
 	NewRatioConversion(KilogramPerSecond, PoundPerSecond, 2.2046226218487757)

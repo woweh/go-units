@@ -1,8 +1,28 @@
 package units
 
 import (
+	"math"
 	"testing"
 )
+
+func Test_AllPressureUnits_Conversions(t *testing.T) {
+	var pressureUnits []Unit
+	for _, u := range _unitMap {
+		if u.Quantity == Pressure {
+			pressureUnits = append(pressureUnits, u)
+		}
+	}
+	for _, u := range pressureUnits {
+		t.Run(u.Name, func(t *testing.T) {
+			v := 1.0
+			toPascal := MustConvertFloat(v, u, Pascal)
+			fromPascal := MustConvertFloat(toPascal.Float(), Pascal, u)
+			if math.Abs(fromPascal.Float()-v) > 1e-8 {
+				t.Fatalf("round-trip conversion failed for %s: got %g, want %g", u.Name, fromPascal.Float(), v)
+			}
+		})
+	}
+}
 
 func Test_Pressure_Conversions(t *testing.T) {
 	// create conversion tests for the significant pressure units

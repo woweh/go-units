@@ -4,10 +4,10 @@ var (
 	ThermalResistance = Quantity("thermal resistance")
 
 	// Base unit: square meter kelvin per watt (Revit base with CF=1.0)
-	SquareMeterKelvinPerWatt = newUnit("square meter kelvin per watt", "(m²·K)/W", ThermalResistance, SI)
+	SquareMeterKelvinPerWatt = mustCreateNewUnit("square meter kelvin per watt", "(m²·K)/W", ThermalResistance, SI)
 
 	// Imperial unit
-	HourSquareFootFahrenheitPerBritishThermalUnit = newUnit("hour square foot degree Fahrenheit per British thermal unit", "(h·ft²·°F)/BTU", ThermalResistance)
+	HourSquareFootFahrenheitPerBritishThermalUnit = mustCreateNewUnit("hour square foot degree Fahrenheit per British thermal unit", "(h·ft²·°F)/BTU", ThermalResistance)
 )
 
 func init() {

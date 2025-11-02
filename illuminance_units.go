@@ -4,10 +4,10 @@ var (
 	Illuminance = Quantity("illuminance")
 
 	// SI base unit: lux
-	Lux = newUnit("lux", "lx", Illuminance, SI)
+	Lux = mustCreateNewUnit("lux", "lx", Illuminance, SI)
 
 	// Imperial/US unit
-	Footcandle = newUnit("footcandle", "Ftc", Illuminance, BI)
+	Footcandle = mustCreateNewUnit("footcandle", "Ftc", Illuminance, BI)
 )
 
 func init() {

@@ -4,7 +4,7 @@ var (
 	Length = Quantity("length")
 
 	// metric
-	Meter      = newUnit("meter", "m", Length, BaseSiUnit)
+	Meter      = mustCreateNewUnit("meter", "m", Length, SI)
 	ExaMeter   = Exa(Meter)
 	PetaMeter  = Peta(Meter)
 	TeraMeter  = Tera(Meter)
@@ -22,15 +22,15 @@ var (
 	FemtoMeter = Femto(Meter)
 	AttoMeter  = Atto(Meter)
 
-	Angstrom = newUnit("angstrom", "Å", Length, BI)
-	Inch     = newUnit("inch", "in", Length, BI, Plural("inches"))
-	Foot     = newUnit("foot", "ft", Length, BI, Plural("feet"))
-	Yard     = newUnit("yard", "yd", Length, BI)
-	Mile     = newUnit("mile", "mi", Length, BI)
-	League   = newUnit("league", "lea", Length, BI)
-	Furlong  = newUnit("furlong", "fur", Length, BI)
+	Angstrom = mustCreateNewUnit("angstrom", "Å", Length, BI)
+	Inch     = mustCreateNewUnit("inch", "in", Length, BI, Plural("inches"))
+	Foot     = mustCreateNewUnit("foot", "ft", Length, BI, Plural("feet"))
+	Yard     = mustCreateNewUnit("yard", "yd", Length, BI)
+	Mile     = mustCreateNewUnit("mile", "mi", Length, BI)
+	League   = mustCreateNewUnit("league", "lea", Length, BI)
+	Furlong  = mustCreateNewUnit("furlong", "fur", Length, BI)
 
-	USSurveyFoot = newUnit("US survey foot", "USft", Length, BI)
+	USSurveyFoot = mustCreateNewUnit("US survey foot", "USft", Length, BI)
 )
 
 func init() {

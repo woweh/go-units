@@ -4,10 +4,10 @@ var (
 	PowerPerLength = Quantity("power per length")
 
 	// Base unit: watt per meter (Revit base with CF=0.3048)
-	WattPerMeter = newUnit("watt per meter", "W/m", PowerPerLength, SI)
+	WattPerMeter = mustCreateNewUnit("watt per meter", "W/m", PowerPerLength, SI)
 
 	// Imperial unit
-	WattPerFoot = newUnit("watt per foot", "W/ft", PowerPerLength)
+	WattPerFoot = mustCreateNewUnit("watt per foot", "W/ft", PowerPerLength)
 )
 
 func init() {

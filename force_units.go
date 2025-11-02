@@ -3,7 +3,7 @@ package units
 var (
 	Force = Quantity("force")
 
-	Newton      = newUnit("newton", "N", Force, BaseSiUnit)
+	Newton      = mustCreateNewUnit("newton", "N", Force, SI)
 	CentiNewton = Centi(Newton)
 	DeciNewton  = Deci(Newton)
 	MilliNewton = Milli(Newton)
@@ -25,17 +25,17 @@ var (
 	ZettaNewton = Zetta(Newton)
 	YottaNewton = Yotta(Newton)
 
-	PoundForce = newUnit("pound force", "lbf", Force, BI, Plural(PluralNone))
+	PoundForce = mustCreateNewUnit("pound force", "lbf", Force, BI, Plural(PluralNone))
 
-	Dyne = newUnit("dyne", "dyn", Force, CGS)
+	Dyne = mustCreateNewUnit("dyne", "dyn", Force, CGS)
 
-	Poundal = newUnit("poundal", "pdl", Force, US)
+	Poundal = mustCreateNewUnit("poundal", "pdl", Force, US)
 
-	KilogramForce = newUnit("kilogram-force", "kgf", Force, MKpS)
-	TonneForce    = newUnit("tonne-force", "tf", Force, MKpS)
+	KilogramForce = mustCreateNewUnit("kilogram-force", "kgf", Force, MKpS)
+	TonneForce    = mustCreateNewUnit("tonne-force", "tf", Force, MKpS)
 
 	Kip           = Kilo(PoundForce)
-	ShortTonForce = newUnit("short ton force", "Tons", Force, BI)
+	ShortTonForce = mustCreateNewUnit("short ton force", "Tons", Force, BI)
 )
 
 func init() {

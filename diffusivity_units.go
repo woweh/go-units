@@ -4,10 +4,10 @@ var (
 	Diffusivity = Quantity("diffusivity")
 
 	// SI base unit: square meter per second
-	SquareMeterPerSecond = newUnit("square meter per second", "m²/s", Diffusivity, SI)
+	SquareMeterPerSecond = mustCreateNewUnit("square meter per second", "m²/s", Diffusivity, SI)
 
 	// Imperial/US unit
-	SquareFootPerSecond = newUnit("square foot per second", "ft²/s", Diffusivity, BI)
+	SquareFootPerSecond = mustCreateNewUnit("square foot per second", "ft²/s", Diffusivity, BI)
 )
 
 func init() {

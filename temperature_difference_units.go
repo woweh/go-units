@@ -5,12 +5,12 @@ var (
 
 	// Base units: Kelvin and Celsius use the same scale for differences
 	// (no offset, only ratio matters for temperature intervals)
-	KelvinInterval  = newUnit("kelvin interval", "K", TemperatureDifference, SI)
-	CelsiusInterval = newUnit("celsius interval", "delta°C", TemperatureDifference, SI)
+	KelvinInterval  = mustCreateNewUnit("kelvin interval", "K", TemperatureDifference, SI)
+	CelsiusInterval = mustCreateNewUnit("celsius interval", "delta°C", TemperatureDifference, SI)
 
 	// Imperial units
-	FahrenheitInterval = newUnit("fahrenheit interval", "delta°F", TemperatureDifference)
-	RankineInterval    = newUnit("rankine interval", "delta°R", TemperatureDifference)
+	FahrenheitInterval = mustCreateNewUnit("fahrenheit interval", "delta°F", TemperatureDifference)
+	RankineInterval    = mustCreateNewUnit("rankine interval", "delta°R", TemperatureDifference)
 )
 
 func init() {
@@ -19,10 +19,10 @@ func init() {
 	// delta°C: CF = 1.0
 	// delta°F: CF = 1.7999999999999998
 	// delta°R: CF = 1.7999999999999998
-	
+
 	// Kelvin and Celsius have the same interval scale
 	NewRatioConversion(KelvinInterval, CelsiusInterval, 1.0)
-	
+
 	// 1 K (or °C) interval = 1.8 °F (or °R) interval
 	NewRatioConversion(KelvinInterval, FahrenheitInterval, 1.8)
 	NewRatioConversion(KelvinInterval, RankineInterval, 1.8)

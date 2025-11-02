@@ -4,23 +4,23 @@ var (
 	Density = Quantity("density")
 
 	// metric
-	GramPerCubicCentimeter     = newUnit("gram per cubic centimeter", "g/cm³", Density, SI)
-	KilogramPerCubicCentimeter = newUnit("kilogram per cubic centimeter", "kg/cm³", Density, SI)
-	GramPerCubicMeter          = newUnit("gram per cubic meter", "g/m³", Density, SI)
-	KilogramPerCubicMeter      = newUnit("kilogram per cubic meter", "kg/m³", Density, BaseSiUnit)
-	GramPerMilliliter          = newUnit("gram per milliliter", "g/mL", Density, SI)
-	GramPerLiter               = newUnit("gram per liter", "g/L", Density, SI)
-	KilogramPerLiter           = newUnit("kilogram per liter", "kg/L", Density, SI)
+	GramPerCubicCentimeter     = mustCreateNewUnit("gram per cubic centimeter", "g/cm³", Density, SI)
+	KilogramPerCubicCentimeter = mustCreateNewUnit("kilogram per cubic centimeter", "kg/cm³", Density, SI)
+	GramPerCubicMeter          = mustCreateNewUnit("gram per cubic meter", "g/m³", Density, SI)
+	KilogramPerCubicMeter      = mustCreateNewUnit("kilogram per cubic meter", "kg/m³", Density, SI)
+	GramPerMilliliter          = mustCreateNewUnit("gram per milliliter", "g/mL", Density, SI)
+	GramPerLiter               = mustCreateNewUnit("gram per liter", "g/L", Density, SI)
+	KilogramPerLiter           = mustCreateNewUnit("kilogram per liter", "kg/L", Density, SI)
 
 	// imperial
-	OuncePerCubicInch = newUnit("ounce per cubic inch", "oz/in³", Density, BI)
-	OuncePerCubicFoot = newUnit("ounce per cubic foot", "oz/ft³", Density, BI)
-	OuncePerGallon    = newUnit("ounce per gallon", "oz/gal", Density, BI)
-	PoundPerCubicInch = newUnit("pound per cubic inch", "lb/in³", Density, BI)
-	PoundPerCubicFoot = newUnit("pound per cubic foot", "lb/ft³", Density, BI)
-	PoundPerGallon    = newUnit("pound per gallon", "lb/gal", Density, BI)
-	SlugPerCubicFoot  = newUnit("slug per cubic foot", "slug/ft³", Density, BI)
-	TonPerCubicYard   = newUnit("ton per cubic yard", "l ton/yd³", Density, BI)
+	OuncePerCubicInch = mustCreateNewUnit("ounce per cubic inch", "oz/in³", Density, BI)
+	OuncePerCubicFoot = mustCreateNewUnit("ounce per cubic foot", "oz/ft³", Density, BI)
+	OuncePerGallon    = mustCreateNewUnit("ounce per gallon", "oz/gal", Density, BI)
+	PoundPerCubicInch = mustCreateNewUnit("pound per cubic inch", "lb/in³", Density, BI)
+	PoundPerCubicFoot = mustCreateNewUnit("pound per cubic foot", "lb/ft³", Density, BI)
+	PoundPerGallon    = mustCreateNewUnit("pound per gallon", "lb/gal", Density, BI)
+	SlugPerCubicFoot  = mustCreateNewUnit("slug per cubic foot", "slug/ft³", Density, BI)
+	TonPerCubicYard   = mustCreateNewUnit("ton per cubic yard", "l ton/yd³", Density, BI)
 )
 
 func init() {

@@ -77,6 +77,21 @@ func (v Value) Fmt(opts FmtOptions) string {
 	return vstr + opts.Separator + label
 }
 
+// trimTrailing trims trailing zeros from a formatted float string
+func trimTrailing(s string) string {
+	if !strings.ContainsRune(s, '.') {
+		return s
+	}
+	s = strings.TrimRight(s, "0")
+	if s == "" {
+		return "0"
+	}
+	if s[len(s)-1] == '.' {
+		s = strings.TrimSuffix(s, ".")
+	}
+	return s
+}
+
 // MustConvert converts this Value to another Unit, PANICKING on error
 func (v Value) MustConvert(to Unit) Value {
 	newV, err := v.Convert(to)
@@ -89,21 +104,18 @@ func (v Value) MustConvert(to Unit) Value {
 // Convert converts this Value to another Unit
 func (v Value) Convert(to Unit) (Value, error) {
 	// allow converting to same unit
-	if v.unit == nil || v.unit.Name == to.Name {
+	if v.unit == nil || v.unit == to {
 		return v, nil
 	}
-
 	return ConvertFloat(v.val, v.unit, to)
 }
 
 // AsBaseUnit converts this Value to its base unit (i.e., 2km to 2000m).
 func (v Value) AsBaseUnit() Value {
-	if v.unit == nil || !v.unit.IsMetric() {
+	if v.unit == nil || !v.unit.HasBase() {
 		return v
 	}
-
-	// we can use "Must" here because we know that the unit is metric
-	// and then this conversion is defined.
+	// we can use "Must" here because we know that this conversion is defined.
 	return v.MustConvert(v.unit.Base())
 }
 
@@ -127,21 +139,6 @@ func (v Value) Humanize() Value {
 		exponent += 3
 	}
 
-	scaledUnit := findMaxUnitForExp(baseV.unit, exponent)
+	scaledUnit := findBestMatchingUnit(baseV.unit, int(exponent))
 	return baseV.MustConvert(scaledUnit)
-}
-
-// Trim trailing zeros from a formatted float string
-func trimTrailing(s string) string {
-	if !strings.ContainsRune(s, '.') {
-		return s
-	}
-	s = strings.TrimRight(s, "0")
-	if s == "" {
-		return "0"
-	}
-	if s[len(s)-1] == '.' {
-		s = strings.TrimSuffix(s, ".")
-	}
-	return s
 }
