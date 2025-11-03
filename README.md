@@ -148,7 +148,7 @@ Many of them provide explanations and formulae,
 ### Breaking Changes compared to bcicen's version
 - Use unit pointers in the unitMap, units have a shared state.
 - Don't panic! AT least, try not to panic. There are still three methods that do panic:
-  1) unit.newUnit - the private, internal factory to create new units => find duplicate names or symbols at compile time
+  1) unit.mustCreateNewUnit - the private, internal factory to create new units => find duplicate names or symbols at compile time
   2) value.MustConvert
   3) units.MustConvertFloat
 - Change the signature of `NewUnit`, return `(Unit, error)` instead of `Unit`.
@@ -167,29 +167,24 @@ Many of them provide explanations and formulae,
 
 ## Revit Units Enhancement Project
 
-This library is being enhanced to support all 150 quantities and 782 units used by Autodesk Revit.
+This library is being enhanced to support most units used by Autodesk Revit 2024 (150 quantities and 782 units).
 
-**Status**: Analysis complete, implementation in progress
+**Status**: Analysis and implementation in progress
 
 ### Documentation
-- **[plan.md](plan.md)** - 5-phase implementation roadmap
-- **[REVIT_ANALYSIS.md](REVIT_ANALYSIS.md)** - Complete list of 150 Revit quantities and mapping
-- **[IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)** - Code templates for developers
-- **[PROGRESS_TRACKER.md](PROGRESS_TRACKER.md)** - Weekly implementation checklist
-- **[STATUS.md](STATUS.md)** - Current progress report
+- **[REVIT_ANALYSIS.md](REVIT_ANALYSIS.md)** - Complete list of 150 Revit quantities and mapping (TODO: Update)
 
-### Current Coverage
+### Current Coverage (TODO: Update)
 - ✅ 22 of 150 quantities (~15%)
 - ✅ ~200 of 782 units (~26%)
 - 🔄 39 new quantity files to create
 - 🔄 6 existing quantity files to update
 
-### Implementation Phases
-- Phase 1: Fix existing quantities
-- Phase 2: High-priority new quantities
-- Phase 3: Thermal quantities
-- Phase 4: Remaining quantities
-- Phase 5: Testing & validation
+### Implementation Phases (TODO: Update)
+- **Phase 1**: Analysis and planning (in progress)
+- **Phase 2**: Implement new quantities and units (in progress)
+- **Phase 3**: Testing and validation
+- **Phase 4**: Documentation and examples
 
 ### Ideas
 - support more units
