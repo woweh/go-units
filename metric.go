@@ -1,7 +1,9 @@
 package units
 
 import (
+	"cmp"
 	"math"
+	"slices"
 )
 
 // magnitude defines a metric prefix with its symbol and power of ten
@@ -117,56 +119,31 @@ func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 	return u
 }
 
+// unitChoice represents a combo of unit and exponent, used by func findBestMatchingUnit
+// to find the best matching unit for a given base unit and exponent.
+type unitChoice struct {
+	unit Unit
+	exp  int
+}
+
 // findBestMatchingUnit finds the best matching unit for the given base unit and exponent.
 // If no better match is found, the base unit is returned.
 func findBestMatchingUnit(baseUnit Unit, exp int) Unit {
 	if !baseUnit.IsMetric() || exp == 0 {
 		return baseUnit
 	}
-
-	// first, see if we have an exact match
-	bestUnit := getUnitForExponent(baseUnit.Name, exp)
-	if bestUnit != nil {
-		return bestUnit
+	if exact := getUnitForExponent(baseUnit.Name, exp); exact != nil {
+		return exact
 	}
-
-	// no exact match; find the next lower and higher units
-	lowerUnit, lowerExp := findNextLowerUnit(baseUnit, exp)
-	higherUnit, higherExp := findNextHigherUnit(baseUnit, exp)
-
-	// if we have neither, return the base unit
-	if lowerUnit == nil && higherUnit == nil {
+	choices := buildUnitChoices(baseUnit.Name, baseUnit)
+	if len(choices) == 0 {
 		return baseUnit
 	}
-	// if we have only one, return it only if it's within 3 exponents, else return baseUnit
-	if lowerUnit == nil {
-		if math.Abs(float64(higherExp-exp)) < 3 {
-			return higherUnit
-		}
-		return baseUnit
+	if extreme := handleUnitExtremes(choices, exp); extreme != nil {
+		return extreme
 	}
-	if higherUnit == nil {
-		if math.Abs(float64(exp-lowerExp)) < 3 {
-			return lowerUnit
-		}
-		return baseUnit
-	}
-
-	// calculate the difference in exponents
-	lowerDiff := math.Abs(float64(exp - lowerExp))
-	if lowerDiff < 3 {
-		// example use case: prefer 200m over 0.2km (assuming no 'deka' and 'hecto' are defined)
-		// or perhaps better: prefer 200km over 0.2Mm
-		// => if the difference is less than 3, prefer the lower unit
-		return lowerUnit
-	}
-
-	// pick the closest one; in case of a tie, pick the lower one;
-	higherDiff := math.Abs(float64(higherExp - exp))
-	if lowerDiff <= higherDiff {
-		return lowerUnit
-	}
-	return higherUnit
+	lower, higher := findUnitNeighbors(choices, exp)
+	return chooseUnit(exp, lower, higher)
 }
 
 // getUnitForExponent returns the Unit for the given base name and exponent, or nil if not found
@@ -180,22 +157,65 @@ func getUnitForExponent(baseName string, exp int) Unit {
 	return nil
 }
 
-// findNextLowerUnit finds the next lower unit for the given base unit and exponent.
-func findNextLowerUnit(baseUnit Unit, exp int) (Unit, int) {
-	for e := exp - 1; e >= MinExponent; e-- {
-		if u := getUnitForExponent(baseUnit.Name, e); u != nil {
-			return u, e
+// buildUnitChoices returns a sorted slice of unitChoice for the given base name.
+func buildUnitChoices(baseName string, baseUnit Unit) []unitChoice {
+	choices := make([]unitChoice, 0, len(_mags)+1)
+	baseUnitAdded := false
+	for exp := range _mags {
+		u := getUnitForExponent(baseName, exp)
+		if u != nil {
+			choices = append(choices, unitChoice{u, exp})
+			if exp == 0 && u == baseUnit {
+				baseUnitAdded = true
+			}
 		}
 	}
-	return nil, -1
+	if !baseUnitAdded {
+		choices = append(choices, unitChoice{baseUnit, 0})
+	}
+	slices.SortStableFunc(choices, func(x, y unitChoice) int {
+		return cmp.Compare(x.exp, y.exp)
+	})
+	return choices
 }
 
-// findNextHigherUnit finds the next higher unit for the given base unit and exponent.
-func findNextHigherUnit(baseUnit Unit, exp int) (Unit, int) {
-	for e := exp + 1; e <= MaxExponent; e++ {
-		if u := getUnitForExponent(baseUnit.Name, e); u != nil {
-			return u, e
+// handleUnitExtremes returns the unit if exp is outside the choice range, else nil.
+func handleUnitExtremes(choices []unitChoice, exp int) Unit {
+	if exp < choices[0].exp {
+		return choices[0].unit
+	}
+	if exp > choices[len(choices)-1].exp {
+		return choices[len(choices)-1].unit
+	}
+	return nil
+}
+
+// findUnitNeighbors returns the closest lower and higher unitChoices for exp.
+func findUnitNeighbors(choices []unitChoice, exp int) (lower, higher *unitChoice) {
+	for i := range choices {
+		if choices[i].exp < exp {
+			lower = &choices[i]
+		}
+		if choices[i].exp > exp && higher == nil {
+			higher = &choices[i]
 		}
 	}
-	return nil, -1
+	return
+}
+
+// chooseUnit applies the decision rule to pick the best unitChoice.
+func chooseUnit(exp int, lower, higher *unitChoice) Unit {
+	switch {
+	case lower == nil:
+		return higher.unit
+	case higher == nil:
+		return lower.unit
+	default:
+		distLower := exp - lower.exp
+		distHigher := higher.exp - exp
+		if distLower <= distHigher || distLower <= 3 {
+			return lower.unit
+		}
+		return higher.unit
+	}
 }
