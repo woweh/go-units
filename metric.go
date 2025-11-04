@@ -79,9 +79,11 @@ func Ronto(b Unit, o ...UnitOption) Unit  { return _mags[-27].makeUnit(b, o...) 
 func Quecto(b Unit, o ...UnitOption) Unit { return _mags[-30].makeUnit(b, o...) }
 
 // makeUnit creates a magnitude unit and conversion given a base unit.
-// This also marks the base unit as such (> set unit.isBaseUnit = true).
+//
+// NOTE:
+// This should be the only place where base unit are marked as such (`base.isBaseUnit = true`)!
 func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
-	// make sure the base unit is marked as such
+	// mark the base unit as such
 	base.isBaseUnit = true
 
 	name := mag.Prefix + base.Name
@@ -128,8 +130,12 @@ type unitChoice struct {
 
 // findBestMatchingUnit finds the best matching unit for the given base unit and exponent.
 // If no better match is found, the base unit is returned.
+//
+// NOTE:
+// Also non-SI units ca have derived units, like MilliMH2O or MilliMHg.
+// => Do not check for `!baseUnit.IsMetric()`!
 func findBestMatchingUnit(baseUnit Unit, exp int) Unit {
-	if !baseUnit.IsMetric() || exp == 0 {
+	if !baseUnit.IsBase() || exp == 0 {
 		return baseUnit
 	}
 	if exact := getUnitForExponent(baseUnit.Name, exp); exact != nil {

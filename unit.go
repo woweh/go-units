@@ -72,7 +72,7 @@ type unit struct {
 	base *Unit
 	// isBaseUnit is true if this unit is the base unit for metric units
 	// NOTE:
-	// isBaseUnit must only be set from metric.go, method `makeUnit`.
+	// isBaseUnit must only be set from method `makeUnit` in 'metric.go'.
 	isBaseUnit bool
 }
 
@@ -240,7 +240,7 @@ func (u Unit) Base() Unit {
 	return *u.base
 }
 
-// IsBase returns true if this unit is the base unit for metric units.
+// IsBase returns true if this unit is the base unit for derived (usually metric) units.
 func (u Unit) IsBase() bool {
 	return u.isBaseUnit
 }
