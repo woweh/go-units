@@ -5,7 +5,7 @@ import "math"
 var (
 	Frequency = Quantity("frequency")
 
-	Hertz      = mustCreateNewUnit("hertz", "Hz", Frequency, SI)
+	Hertz      = mustCreateNewUnit("hertz", "Hz", Frequency, SI, Plural("hertz"))
 	DecaHertz  = Deca(Hertz)
 	HectoHertz = Hecto(Hertz)
 	KiloHertz  = Kilo(Hertz)
