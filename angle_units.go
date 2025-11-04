@@ -1,6 +1,9 @@
 package units
 
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 var (
 	Angle = Quantity("angle")
@@ -32,6 +35,9 @@ var (
 	GigaGon  = Giga(Gon)
 	TeraGon  = Tera(Gon)
 	PetaGon  = Peta(Gon)
+
+	// DMS (Degrees, Minutes, Seconds) as a unit
+	DMS = mustCreateNewUnit("degree minute second", "DMS", Angle)
 )
 
 func init() {
@@ -46,4 +52,27 @@ func init() {
 
 	Turn.AddAliases("revolution", "revolutions", "revs", "cycle", "cycles")
 	Turn.AddSymbols("pla", "rev", "cyc")
+
+	// Register DMS <-> Degree conversions
+	NewConversionFromFn(DMS, Degree, func(x float64) float64 {
+		// x is encoded as D.MMSS, e.g. 12.3045 means 12°30'45''
+		D := int(x)
+		M := int((x - float64(D)) * 100)
+		S := ((x-float64(D))*100 - float64(M)) * 100
+		return float64(D) + float64(M)/60 + S/3600
+	}, "DMS (D.MMSS) to degrees")
+
+	NewConversionFromFn(Degree, DMS, func(x float64) float64 {
+		D := int(x)
+		M := int((x - float64(D)) * 60)
+		S := ((x-float64(D))*60 - float64(M)) * 60
+		return float64(D) + float64(M)/100 + S/10000
+	}, "degrees to DMS (D.MMSS)")
+
+	DMS.AddFormatFn(func(x float64) string {
+		D := int(x)
+		M := int((x - float64(D)) * 100)
+		S := ((x-float64(D))*100 - float64(M)) * 100
+		return fmt.Sprintf("%d°%02d'%02d''", D, M, int(S))
+	})
 }

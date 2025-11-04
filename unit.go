@@ -49,6 +49,9 @@ var (
 	_symbolMap = make(map[string]Unit)
 )
 
+// FormatFn is a function that formats a float64 value into a string representation.
+type FormatFn func(float64) string
+
 // unit is the internal representation of a unit of measurement.
 type unit struct {
 	// Name is the (English) name of this unit. The name is mandatory and case-insensitive.
@@ -74,6 +77,8 @@ type unit struct {
 	// NOTE:
 	// isBaseUnit must only be set from method `makeUnit` in 'metric.go'.
 	isBaseUnit bool
+	// fmtFn is a function that formats a float64 value into a string representation.
+	fmtFn FormatFn
 }
 
 // Unit represents a unit of measurement (alias for *unit)
@@ -341,6 +346,12 @@ func (u Unit) AddSymbols(symbols ...string) *AddResult {
 	result.validate()
 
 	return result
+}
+
+// AddFormatFn adds a formatting function to the unit, which can be used to customize how values are displayed.
+func (u Unit) AddFormatFn(fn FormatFn) Unit {
+	u.fmtFn = fn
+	return u
 }
 
 // UnitOption defines an option that may be passed to mustCreateNewUnit

@@ -27,6 +27,12 @@ func Test_Angle_Conversions(t *testing.T) {
 
 		// Derived conversion
 		{"turn", "milliradian", fmt.Sprintf("%f", 2*math.Pi*1000)},
+
+		// DMS <-> degree
+		{"DMS", "degree", "12.5125"}, // 12°30'45'' = 12.5125 deg
+		{"degree", "DMS", "12.3045"}, // 12.5125 deg = 12°30'45''
+		{"DMS", "degree", "-5.3020"}, // -5°30'12'' = -5.503333... deg
+		{"degree", "DMS", "-5.3012"}, // -5.503333... deg = -5°30'12''
 	}
 	testConversions(t, conversionTests)
 }

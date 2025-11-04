@@ -42,10 +42,13 @@ func (v Value) Float() float64 { return v.val }
 // String returns a string representation of this Value
 func (v Value) String() string { return v.Fmt(DefaultFmtOptions) }
 
-// Fmt returns a string representation of this Value, using the provided FmtOptions
+// Fmt returns a string representation of this Value, using either the provided FmtOptions or the FormatFn of the Unit.
+// If the Unit has a FormatFn, the FmtOptions are ignored.
 func (v Value) Fmt(opts FmtOptions) string {
 	if v.unit == nil {
 		opts.Label = false
+	} else if v.unit.fmtFn != nil {
+		return v.unit.fmtFn(v.val)
 	}
 
 	prec := opts.Precision

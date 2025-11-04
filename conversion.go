@@ -3,7 +3,6 @@ package units
 import (
 	"errors"
 	"fmt"
-	"regexp"
 )
 
 var (
@@ -16,11 +15,6 @@ var (
 	//- Each Conversion is a directed, labeled edge from `FromUnit` to `ToUnit` (carries a function and formula).
 	//- Used as the graph structure for BFS in `findPath` to find a path from `start` to `end`.
 	_conversionMap = make(map[Unit]Conversions)
-
-	// _fmtFormulaRe matches float numbers in formula strings
-	_fmtFormulaRe = regexp.MustCompile(`-?\d+(\.\d+)?([eE][-+]?\d+)?`)
-	// _sciNotationRe matches scientific notation
-	_sciNotationRe = regexp.MustCompile(`[eE]`)
 )
 
 // ConversionFn defines a function that converts a float64 value.
