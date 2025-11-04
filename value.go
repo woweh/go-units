@@ -69,8 +69,8 @@ func (v Value) Fmt(opts FmtOptions) string {
 		label = v.unit.Symbol
 	} else {
 		label = v.unit.Name
-		// make label plural if needed
-		if v.val > 1.0 {
+		// Make label plural if needed. In English, only use the singular for "1" and "-1"
+		if vstr != "1" && vstr != "-1" {
 			label = v.unit.PluralName()
 		}
 	}
@@ -121,7 +121,7 @@ func (v Value) AsBaseUnit() Value {
 
 // Humanize converts this Value to a human-readable format (i.e., 2000m to 2km).
 func (v Value) Humanize() Value {
-	if v.val == 0 || v.unit == nil || !v.unit.IsMetric() {
+	if v.val == 0 || v.unit == nil || !(v.unit.IsBase() || v.unit.HasBase()) {
 		return v
 	}
 
