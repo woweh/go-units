@@ -45,6 +45,7 @@ func testConversions(t *testing.T, convTests []conversionTest) {
 	}
 }
 
+// roundFloat is a helper for rounding floats to a given precision.
 func roundFloat(f float64, precision uint) float64 {
 	r := math.Pow(10, float64(precision))
 	return math.Round(f*r) / r
@@ -84,5 +85,30 @@ func Test_checkConversionIntegrity(t *testing.T) {
 		t.Errorf("checkConversionIntegrity failed: %v", err)
 	} else {
 		t.Log("checkConversionIntegrity passed")
+	}
+}
+
+func Test_roundFloat(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name      string
+		input     float64
+		precision uint
+		expected  float64
+	}{
+		{"zero", 0, 2, 0},
+		{"positive", 1.23456, 2, 1.23},
+		{"negative", -1.23456, 2, -1.23},
+		{"round up", 1.235, 2, 1.24},
+		{"large precision", 1.23456789, 7, 1.2345679},
+	}
+	for _, ttc := range tests {
+		tc := ttc
+		t.Run(tc.name, func(t *testing.T) {
+			got := roundFloat(tc.input, tc.precision)
+			if got != tc.expected {
+				t.Errorf("roundFloat(%v, %d) = %v, want %v", tc.input, tc.precision, got, tc.expected)
+			}
+		})
 	}
 }
