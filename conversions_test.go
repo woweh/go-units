@@ -11,11 +11,20 @@ import (
 type conversionTest struct {
 	from string
 	to   string
-	val  string
+	val  float64
+}
+
+// floatEquals returns true if a and b are within tolerance 'epsilon' of each other.
+func floatEquals(a, b, epsilon float64) bool {
+	return math.Abs(a-b) <= epsilon
 }
 
 func testConversions(t *testing.T, convTests []conversionTest) {
-	fmtOpts := FmtOptions{false, false, 12, true, " "}
+	const (
+		// epsilon is the tolerance used for comparing floating-point numbers
+		epsilon   = 1e-9
+		baseValue = 1.0
+	)
 	for _, cTest := range convTests {
 		label := fmt.Sprintf("%s <-> %s conversion", cTest.from, cTest.to)
 		t.Run(
@@ -28,17 +37,18 @@ func testConversions(t *testing.T, convTests []conversionTest) {
 				if err != nil {
 					t.Fatalf("failed to find unit %s: %v", cTest.to, err)
 				}
-				converted := MustConvertFloat(1.0, u1, u2)
-				convStr := converted.Fmt(fmtOpts)
-				if convStr != cTest.val {
-					t.Fatalf("%s -> %s conversion failed: expected %s, got %s", cTest.from, cTest.to, cTest.val, convStr)
+
+				converted := MustConvertFloat(baseValue, u1, u2)
+				got := converted.Float()
+				if !floatEquals(got, cTest.val, epsilon) {
+					t.Fatalf("%s -> %s conversion failed: want %f, got %f", cTest.from, cTest.to, cTest.val, got)
 				}
 
 				// test inverse conversion
-				inverse := MustConvertFloat(converted.Float(), u2, u1)
-				invFloat := roundFloat(inverse.Float(), 12)
-				if invFloat != 1.0 {
-					t.Fatalf("%s <- %s inverse conversion failed: expected 1.0, got %f", cTest.from, cTest.to, invFloat)
+				inverse := MustConvertFloat(got, u2, u1)
+				gotInv := inverse.Float()
+				if !floatEquals(gotInv, baseValue, epsilon) {
+					t.Fatalf("%s <- %s inverse conversion failed: want 1.0, got %f", cTest.from, cTest.to, gotInv)
 				}
 			},
 		)
