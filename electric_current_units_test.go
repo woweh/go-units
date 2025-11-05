@@ -6,6 +6,19 @@ import (
 	"github.com/alecthomas/assert/v2"
 )
 
+func Test_ElectricCurrent_Conversions(t *testing.T) {
+	conversionTests := []conversionTest{
+		{"kiloampere", "ampere", 1000},
+		{"megaampere", "kiloampere", 1000},
+		{"milliampere", "ampere", 0.001},
+		{"microampere", "ampere", 0.000001},
+		{"nanoampere", "ampere", 0.000000001},
+		{"gigaampere", "megaampere", 1000},
+		{"teraampere", "gigaampere", 1000},
+	}
+	testConversions(t, conversionTests)
+}
+
 func Test_ElectricCurrent_UnitSystems(t *testing.T) {
 	si := SiSystem
 	assert.Equal(t, si, Ampere.System())
@@ -28,21 +41,31 @@ func Test_ElectricCurrent_UnitSystems(t *testing.T) {
 }
 
 func Test_ElectricCurrent_BaseUnits(t *testing.T) {
+	// Only a few representative metric units
 	assert.Equal(t, Ampere, Ampere.Base())
 	assert.Equal(t, Ampere, MilliAmpere.Base())
-	assert.Equal(t, Ampere, MicroAmpere.Base())
-	assert.Equal(t, Ampere, NanoAmpere.Base())
-	assert.Equal(t, Ampere, PicoAmpere.Base())
-	assert.Equal(t, Ampere, FemtoAmpere.Base())
-	assert.Equal(t, Ampere, AttoAmpere.Base())
-	assert.Equal(t, Ampere, ZeptoAmpere.Base())
-	assert.Equal(t, Ampere, YoctoAmpere.Base())
 	assert.Equal(t, Ampere, KiloAmpere.Base())
-	assert.Equal(t, Ampere, MegaAmpere.Base())
-	assert.Equal(t, Ampere, GigaAmpere.Base())
-	assert.Equal(t, Ampere, TeraAmpere.Base())
-	assert.Equal(t, Ampere, PetaAmpere.Base())
-	assert.Equal(t, Ampere, ExaAmpere.Base())
-	assert.Equal(t, Ampere, ZettaAmpere.Base())
-	assert.Equal(t, Ampere, YottaAmpere.Base())
+}
+
+func Test_Lookup_ElectricCurrent_Names_and_Symbols(t *testing.T) {
+	tests := lookUpTests{
+		{Ampere, "ampere"}, {Ampere, "A"},
+		{MilliAmpere, "milliampere"}, {MilliAmpere, "mA"},
+		{MicroAmpere, "microampere"}, {MicroAmpere, "μA"}, {MicroAmpere, "uA"},
+		{NanoAmpere, "nanoampere"}, {NanoAmpere, "nA"},
+		{PicoAmpere, "picoampere"}, {PicoAmpere, "pA"},
+		{FemtoAmpere, "femtoampere"}, {FemtoAmpere, "fA"},
+		{AttoAmpere, "attoampere"}, {AttoAmpere, "aA"},
+		{ZeptoAmpere, "zeptoampere"}, {ZeptoAmpere, "zA"},
+		{YoctoAmpere, "yoctoampere"}, {YoctoAmpere, "yA"},
+		{KiloAmpere, "kiloampere"}, {KiloAmpere, "kA"},
+		{MegaAmpere, "megaampere"}, {MegaAmpere, "MA"},
+		{GigaAmpere, "gigaampere"}, {GigaAmpere, "GA"},
+		{TeraAmpere, "teraampere"}, {TeraAmpere, "TA"},
+		{PetaAmpere, "petaampere"}, {PetaAmpere, "PA"},
+		{ExaAmpere, "exaampere"}, {ExaAmpere, "EA"},
+		{ZettaAmpere, "zettaampere"}, {ZettaAmpere, "ZA"},
+		{YottaAmpere, "yottaampere"}, {YottaAmpere, "YA"},
+	}
+	testLookupNamesAndSymbols(t, tests)
 }

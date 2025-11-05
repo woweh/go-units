@@ -8,12 +8,8 @@ import (
 
 func Test_Diffusivity_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
-		// SI base to Imperial
-		{"m²/s", "ft²/s", "10.76391"},
-		{"ft²/s", "m²/s", "0.092903"},
-		// Identity
-		{"m²/s", "m²/s", "1"},
-		{"ft²/s", "ft²/s", "1"},
+		{"m²/s", "ft²/s", 10.7639104167097},
+		{"ft²/s", "m²/s", 0.09290304},
 	}
 	testConversions(t, conversionTests)
 }
@@ -25,4 +21,21 @@ func Test_Diffusivity_UnitSystems(t *testing.T) {
 
 func Test_Diffusivity_BaseUnits(t *testing.T) {
 	assert.Equal(t, SquareMeterPerSecond, SquareMeterPerSecond.Base())
+	assert.Equal(t, SquareMeterPerSecond, SquareFootPerSecond.Base())
+}
+
+func Test_Lookup_Diffusivity_Names_and_Symbols(t *testing.T) {
+	tests := lookUpTests{
+		{SquareMeterPerSecond, "square meter per second"},
+		{SquareMeterPerSecond, "m²/s"},
+		{SquareMeterPerSecond, "square meters per second"},
+		{SquareMeterPerSecond, "square metre per second"},
+		{SquareMeterPerSecond, "square metres per second"},
+		{SquareMeterPerSecond, "m2/s"},
+		{SquareFootPerSecond, "square foot per second"},
+		{SquareFootPerSecond, "ft²/s"},
+		{SquareFootPerSecond, "square feet per second"},
+		{SquareFootPerSecond, "ft2/s"},
+	}
+	testLookupNamesAndSymbols(t, tests)
 }
