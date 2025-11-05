@@ -67,7 +67,9 @@ func ConvertFloat(x float64, from, to Unit) (Value, error) {
 	if to == nil {
 		return Value{}, fmt.Errorf("no unit specified to convert to")
 	}
-
+	if from.Quantity != to.Quantity {
+		return Value{}, fmt.Errorf("cannot convert from unit of quantity %s to %s", from.Quantity, to.Quantity)
+	}
 	// allow converting to same unit
 	if from == to {
 		return Value{x, to}, nil
