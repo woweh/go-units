@@ -1,19 +1,21 @@
 package units
 
-var (
-	MassPerTime = Quantity("mass per time")
+const MassPerTime UnitQuantity = "mass per time"
 
-	// Base unit: kilogram per second (Revit base with CF=1.0)
-	KilogramPerSecond = mustCreateNewUnit("kilogram per second", "kg/s", MassPerTime, SI)
+var (
+	_massPerTime = Quantity(MassPerTime)
+
+	// SI base unit: kilogram per second (Revit base with CF=1.0)
+	KilogramPerSecond = mustCreateNewUnit("kilogram per second", "kg/s", _massPerTime, SI)
 
 	// Other SI units
-	KilogramPerMinute = mustCreateNewUnit("kilogram per minute", "kg/min", MassPerTime, SI)
-	KilogramPerHour   = mustCreateNewUnit("kilogram per hour", "kg/h", MassPerTime, SI)
+	KilogramPerMinute = mustCreateNewUnit("kilogram per minute", "kg/min", _massPerTime, SI)
+	KilogramPerHour   = mustCreateNewUnit("kilogram per hour", "kg/h", _massPerTime, SI)
 
 	// Imperial units
-	PoundPerSecond = mustCreateNewUnit("pound per second", "lb/s", MassPerTime, BI)
-	PoundPerMinute = mustCreateNewUnit("pound per minute", "lb/min", MassPerTime, BI)
-	PoundPerHour   = mustCreateNewUnit("pound per hour", "lb/h", MassPerTime, BI)
+	PoundPerSecond = mustCreateNewUnit("pound per second", "lb/s", _massPerTime, BI)
+	PoundPerMinute = mustCreateNewUnit("pound per minute", "lb/min", _massPerTime, BI)
+	PoundPerHour   = mustCreateNewUnit("pound per hour", "lb/h", _massPerTime, BI)
 )
 
 func init() {

@@ -1,17 +1,20 @@
 package units
 
+// Velocity is a unit quantity for velocity
+const VelocityQuantity UnitQuantity = "velocity"
+
 var (
-	Velocity = Quantity("velocity")
+	_velocity = Quantity(VelocityQuantity)
 
 	// SI base unit: meter per second
-	MeterPerSecond      = mustCreateNewUnit("meter per second", "m/s", Velocity, SI)
-	CentimeterPerMinute = mustCreateNewUnit("centimeter per minute", "cm/min", Velocity, SI)
-	KilometerPerHour    = mustCreateNewUnit("kilometer per hour", "km/h", Velocity, SI)
+	MeterPerSecond      = mustCreateNewUnit("meter per second", "m/s", _velocity, SI)
+	CentimeterPerMinute = mustCreateNewUnit("centimeter per minute", "cm/min", _velocity, SI)
+	KilometerPerHour    = mustCreateNewUnit("kilometer per hour", "km/h", _velocity, SI)
 
 	// Imperial/US units
-	FootPerSecond = mustCreateNewUnit("foot per second", "ft/s", Velocity, BI)
-	FootPerMinute = mustCreateNewUnit("foot per minute", "ft/min", Velocity, BI)
-	MilePerHour   = mustCreateNewUnit("mile per hour", "mph", Velocity, BI)
+	FootPerSecond = mustCreateNewUnit("foot per second", "ft/s", _velocity, BI)
+	FootPerMinute = mustCreateNewUnit("foot per minute", "ft/min", _velocity, BI)
+	MilePerHour   = mustCreateNewUnit("mile per hour", "mph", _velocity, BI)
 )
 
 func init() {

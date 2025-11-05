@@ -1,14 +1,16 @@
 package units
 
-var (
-	DimensionlessRatio = Quantity("dimensionless ratio")
+const DimensionlessRatio UnitQuantity = "dimensionless ratio"
 
-	Fraction         = mustCreateNewUnit("fraction", "", DimensionlessRatio, Plural(PluralNone))
-	Percent          = mustCreateNewUnit("percent", "%", DimensionlessRatio, Plural(PluralNone))
-	Permille         = mustCreateNewUnit("permille", "‰", DimensionlessRatio, Plural(PluralNone))
-	PartsPerMillion  = mustCreateNewUnit("partsPerMillion", "ppm", DimensionlessRatio, Plural(PluralNone))
-	PartsPerBillion  = mustCreateNewUnit("partsPerBillion", "", DimensionlessRatio, Plural(PluralNone))
-	PartsPerTrillion = mustCreateNewUnit("partsPerTrillion", "", DimensionlessRatio, Plural(PluralNone))
+var (
+	_dimensionlessRatio = Quantity(DimensionlessRatio)
+
+	Fraction         = mustCreateNewUnit("fraction", "", _dimensionlessRatio, SI, Plural(PluralNone))
+	Percent          = mustCreateNewUnit("percent", "%", _dimensionlessRatio, SI, Plural(PluralNone))
+	Permille         = mustCreateNewUnit("permille", "‰", _dimensionlessRatio, SI, Plural(PluralNone))
+	PartsPerMillion  = mustCreateNewUnit("partsPerMillion", "ppm", _dimensionlessRatio, SI, Plural(PluralNone))
+	PartsPerBillion  = mustCreateNewUnit("partsPerBillion", "", _dimensionlessRatio, SI, Plural(PluralNone))
+	PartsPerTrillion = mustCreateNewUnit("partsPerTrillion", "", _dimensionlessRatio, SI, Plural(PluralNone))
 )
 
 func init() {

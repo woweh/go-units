@@ -1,11 +1,13 @@
 package units
 
+// Volume is a unit quantity for volume
+const VolumeQuantity UnitQuantity = "volume"
+
 var (
-	Volume = Quantity("volume")
+	_volume = Quantity(VolumeQuantity)
 
-	// metric
-
-	Liter      = mustCreateNewUnit("liter", "l", Volume, SI, Aliases("litre"))
+	// SI/metric units
+	Liter      = mustCreateNewUnit("liter", "l", _volume, SI, Aliases("litre"))
 	ExaLiter   = Exa(Liter)
 	PetaLiter  = Peta(Liter)
 	TeraLiter  = Tera(Liter)
@@ -23,30 +25,30 @@ var (
 	FemtoLiter = Femto(Liter)
 	AttoLiter  = Atto(Liter)
 
-	CubicMeter      = mustCreateNewUnit("cubic meter", "m³", Volume, SI)
-	CubicKiloMeter  = mustCreateNewUnit("cubic kilometer", "km³", Volume, SI)
-	CubicHectoMeter = mustCreateNewUnit("cubic hectometer", "hm³", Volume, SI)
-	CubicDecaMeter  = mustCreateNewUnit("cubic decameter", "dam³", Volume, SI)
-	CubicDeciMeter  = mustCreateNewUnit("cubic decimeter", "dm³", Volume, SI)
-	CubicCentiMeter = mustCreateNewUnit("cubic centimeter", "cm³", Volume, SI)
-	CubicMilliMeter = mustCreateNewUnit("cubic millimeter", "mm³", Volume, SI)
+	CubicMeter      = mustCreateNewUnit("cubic meter", "m³", _volume, SI)
+	CubicKiloMeter  = mustCreateNewUnit("cubic kilometer", "km³", _volume, SI)
+	CubicHectoMeter = mustCreateNewUnit("cubic hectometer", "hm³", _volume, SI)
+	CubicDecaMeter  = mustCreateNewUnit("cubic decameter", "dam³", _volume, SI)
+	CubicDeciMeter  = mustCreateNewUnit("cubic decimeter", "dm³", _volume, SI)
+	CubicCentiMeter = mustCreateNewUnit("cubic centimeter", "cm³", _volume, SI)
+	CubicMilliMeter = mustCreateNewUnit("cubic millimeter", "mm³", _volume, SI)
 
-	// imperial
-	Quart      = mustCreateNewUnit("quart", "qt", Volume, BI)
-	Pint       = mustCreateNewUnit("pint", "pt", Volume, BI)
-	Gallon     = mustCreateNewUnit("gallon", "gal", Volume, BI)
-	FluidOunce = mustCreateNewUnit("fluid ounce", "fl oz", Volume, BI)
-	CubicFoot  = mustCreateNewUnit("cubic foot", "ft³", Volume, BI)
-	CubicYard  = mustCreateNewUnit("cubic yard", "yd³", Volume, BI)
-	CubicInch  = mustCreateNewUnit("cubic inch", "in³", Volume, BI)
-	CubicMile  = mustCreateNewUnit("cubic mile", "mi³", Volume, BI)
-	AcreFoot   = mustCreateNewUnit("acre foot", "ac ft", Volume, BI)
+	// Imperial units
+	Quart      = mustCreateNewUnit("quart", "qt", _volume, BI)
+	Pint       = mustCreateNewUnit("pint", "pt", _volume, BI)
+	Gallon     = mustCreateNewUnit("gallon", "gal", _volume, BI)
+	FluidOunce = mustCreateNewUnit("fluid ounce", "fl oz", _volume, BI)
+	CubicFoot  = mustCreateNewUnit("cubic foot", "ft³", _volume, BI)
+	CubicYard  = mustCreateNewUnit("cubic yard", "yd³", _volume, BI)
+	CubicInch  = mustCreateNewUnit("cubic inch", "in³", _volume, BI)
+	CubicMile  = mustCreateNewUnit("cubic mile", "mi³", _volume, BI)
+	AcreFoot   = mustCreateNewUnit("acre foot", "ac ft", _volume, BI)
 
-	// US
-	FluidQuart          = mustCreateNewUnit("fluid quart", "fl qt", Volume, US)
-	FluidPint           = mustCreateNewUnit("fluid pint", "fl pt", Volume, US)
-	FluidGallon         = mustCreateNewUnit("fluid gallon", "", Volume, US)
-	CustomaryFluidOunce = mustCreateNewUnit("customary fluid ounce", "", Volume, US)
+	// US customary units
+	FluidQuart          = mustCreateNewUnit("fluid quart", "fl qt", _volume, US)
+	FluidPint           = mustCreateNewUnit("fluid pint", "fl pt", _volume, US)
+	FluidGallon         = mustCreateNewUnit("fluid gallon", "", _volume, US)
+	CustomaryFluidOunce = mustCreateNewUnit("customary fluid ounce", "", _volume, US)
 )
 
 func init() {

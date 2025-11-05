@@ -1,10 +1,12 @@
 package units
 
+const ElectricCurrent UnitQuantity = "electric current"
+
 var (
-	ElectricCurrent = Quantity("electric current")
+	_electricCurrent = Quantity(ElectricCurrent)
 
 	// metric
-	Ampere      = mustCreateNewUnit("ampere", "A", ElectricCurrent, SI)
+	Ampere      = mustCreateNewUnit("ampere", "A", _electricCurrent, SI)
 	MilliAmpere = Milli(Ampere)
 	MicroAmpere = Micro(Ampere)
 	NanoAmpere  = Nano(Ampere)

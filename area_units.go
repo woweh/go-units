@@ -1,23 +1,29 @@
 package units
 
+const Area UnitQuantity = "area"
+
 var (
-	Area = Quantity("area")
+	_area = Quantity(Area)
 
 	// metric
-	SquareMilliMeter = mustCreateNewUnit("square millimeter", "mm²", Area, SI)
-	SquareCentiMeter = mustCreateNewUnit("square centimeter", "cm²", Area, SI)
-	SquareDeciMeter  = mustCreateNewUnit("square decimeter", "dm²", Area, SI)
-	SquareMeter      = mustCreateNewUnit("square meter", "m²", Area, SI)
-	SquareDecaMeter  = mustCreateNewUnit("square decameter", "dam²", Area, SI)
-	SquareHectoMeter = mustCreateNewUnit("square hectometer", "hm²", Area, SI)
-	SquareKiloMeter  = mustCreateNewUnit("square kilometer", "km²", Area, SI)
+	SquareMilliMeter = mustCreateNewUnit("square millimeter", "mm²", _area, SI)
+	SquareCentiMeter = mustCreateNewUnit("square centimeter", "cm²", _area, SI)
+	SquareDeciMeter  = mustCreateNewUnit("square decimeter", "dm²", _area, SI)
+	SquareMeter      = mustCreateNewUnit("square meter", "m²", _area, SI)
+	SquareDecaMeter  = mustCreateNewUnit("square decameter", "dam²", _area, SI)
+	SquareHectoMeter = mustCreateNewUnit("square hectometer", "hm²", _area, SI)
+	SquareKiloMeter  = mustCreateNewUnit("square kilometer", "km²", _area, SI)
+
+	// SI aliases as distinct units
+	Are     = mustCreateNewUnit("are", "are", _area, SI)
+	Hectare = mustCreateNewUnit("hectare", "ha", _area, SI)
 
 	// imperial
-	SquareMile = mustCreateNewUnit("square mile", "mi²", Area, BI)
-	Acre       = mustCreateNewUnit("acre", "ac", Area, BI)
-	SquareInch = mustCreateNewUnit("square inch", "in²", Area, BI)
-	SquareFoot = mustCreateNewUnit("square foot", "ft²", Area, BI)
-	SquareYard = mustCreateNewUnit("square yard", "yd²", Area, BI)
+	SquareMile = mustCreateNewUnit("square mile", "mi²", _area, BI)
+	Acre       = mustCreateNewUnit("acre", "ac", _area, BI)
+	SquareInch = mustCreateNewUnit("square inch", "in²", _area, BI)
+	SquareFoot = mustCreateNewUnit("square foot", "ft²", _area, BI)
+	SquareYard = mustCreateNewUnit("square yard", "yd²", _area, BI)
 )
 
 func init() {
@@ -52,6 +58,10 @@ func init() {
 
 	SquareKiloMeter.AddAliases("square kilometre")
 	SquareKiloMeter.AddSymbols("km2", "km^2", "km**2")
+
+	// SI aliases as distinct units
+	NewRatioConversion(Are, SquareDecaMeter, 1.0)
+	NewRatioConversion(Hectare, SquareHectoMeter, 1.0)
 
 	// imperial
 	NewRatioConversion(SquareInch, SquareMeter, 0.00064516)

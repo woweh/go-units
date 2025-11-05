@@ -1,14 +1,19 @@
 package units
 
+// ThermalMass is a unit quantity for thermal mass
+const ThermalMass UnitQuantity = "thermal mass"
+
 var (
-	ThermalMass = Quantity("thermal mass")
+	_thermalMass = Quantity(ThermalMass)
 
-	// Base unit: joule per kelvin (Revit base with CF=0.09290304)
-	JoulePerKelvin = mustCreateNewUnit("joule per kelvin", "J/K", ThermalMass, SI)
+	// SI base unit: joule per kelvin
+	JoulePerKelvin = mustCreateNewUnit("joule per kelvin", "J/K", _thermalMass, SI)
 
-	// Other units
-	KiloJoulePerKelvin              = mustCreateNewUnit("kilojoule per kelvin", "kJ/K", ThermalMass, SI)
-	BritishThermalUnitPerFahrenheit = mustCreateNewUnit("British thermal unit per degree Fahrenheit", "BTU/°F", ThermalMass)
+	// Other SI unit
+	KiloJoulePerKelvin = mustCreateNewUnit("kilojoule per kelvin", "kJ/K", _thermalMass, SI)
+
+	// Imperial/US unit
+	BritishThermalUnitPerFahrenheit = mustCreateNewUnit("British thermal unit per degree Fahrenheit", "BTU/°F", _thermalMass, BI)
 )
 
 func init() {
@@ -20,9 +25,7 @@ func init() {
 	// 1 kJ/K = 1000 J/K
 	NewRatioConversion(KiloJoulePerKelvin, JoulePerKelvin, 1000.0)
 
-	// From the ratios: 0.09290304 / 4.891949546730718e-05 = 1899.1
-	// This means: 1 J/K = 0.0005267 BTU/°F
-	// Or: 1 BTU/°F = 1899.1 J/K
+	// 1 BTU/°F = 1899.1 J/K
 	NewRatioConversion(BritishThermalUnitPerFahrenheit, JoulePerKelvin, 1899.1)
 
 	JoulePerKelvin.AddAliases("joules per kelvin", "J per K")

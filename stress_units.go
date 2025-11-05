@@ -4,21 +4,24 @@ package units
 // Many stress units are already defined in pressure_units.go
 // This file adds stress-specific units and aliases for structural engineering
 
+// Stress is a unit quantity for stress
+const Stress UnitQuantity = "stress"
+
 var (
-	Stress = Quantity("stress")
+	_stress = Quantity(Stress)
 
 	// Imperial/US units specific to stress
-	KipPerSquareFoot = mustCreateNewUnit("kip per square foot", "ksf", Stress, BI)
-	KipPerSquareInch = mustCreateNewUnit("kip per square inch", "ksi", Stress, BI)
+	KipPerSquareFoot = mustCreateNewUnit("kip per square foot", "ksf", _stress, BI)
+	KipPerSquareInch = mustCreateNewUnit("kip per square inch", "ksi", _stress, BI)
 
 	// Other metric units specific to stress
-	NewtonPerSquareMillimeter     = mustCreateNewUnit("newton per square millimeter", "N/mm²", Stress, SI)
-	KiloNewtonPerSquareCentimeter = mustCreateNewUnit("kilonewton per square centimeter", "kN/cm²", Stress, SI)
-	KiloNewtonPerSquareMillimeter = mustCreateNewUnit("kilonewton per square millimeter", "kN/mm²", Stress, SI)
-	MegaNewtonPerSquareMeter      = mustCreateNewUnit("meganewton per square meter", "MN/m²", Stress, SI)
-	DekaNewtonPerSquareMeter      = mustCreateNewUnit("dekanewton per square meter", "daN/m²", Stress, SI)
-	KilogramForcePerSquareMeter   = mustCreateNewUnit("kilogram force per square meter", "kgf/m²", Stress)
-	TonneForcePerSquareMeter      = mustCreateNewUnit("tonne force per square meter", "Tf/m²", Stress)
+	NewtonPerSquareMillimeter     = mustCreateNewUnit("newton per square millimeter", "N/mm²", _stress, SI)
+	KiloNewtonPerSquareCentimeter = mustCreateNewUnit("kilonewton per square centimeter", "kN/cm²", _stress, SI)
+	KiloNewtonPerSquareMillimeter = mustCreateNewUnit("kilonewton per square millimeter", "kN/mm²", _stress, SI)
+	MegaNewtonPerSquareMeter      = mustCreateNewUnit("meganewton per square meter", "MN/m²", _stress, SI)
+	DekaNewtonPerSquareMeter      = mustCreateNewUnit("dekanewton per square meter", "daN/m²", _stress, SI)
+	KilogramForcePerSquareMeter   = mustCreateNewUnit("kilogram force per square meter", "kgf/m²", _stress, MKpS)
+	TonneForcePerSquareMeter      = mustCreateNewUnit("tonne force per square meter", "Tf/m²", _stress, MKpS)
 )
 
 func init() {

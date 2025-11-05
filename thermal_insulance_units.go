@@ -1,24 +1,34 @@
 package units
 
-var (
-	ThermalInsulance = Quantity("thermal insulance")
+// ThermalInsulance is a unit quantity for thermal insulance
+const ThermalInsulance UnitQuantity = "thermal insulance"
 
+var (
+	_thermalInsulance = Quantity(ThermalInsulance)
+
+	// SI base unit: kelvin square meter per watt (K·m²/W)
 	KelvinSquareMeterPerWatt = mustCreateNewUnit(
-		"kelvin square-metre per watt", "K·m²/W", ThermalInsulance, SI,
-		Aliases("R-value"), Symbols("K*m2/W", "°C⋅m²/W", "°C*m2/W", "m2.K.W-1", "m²·K/W", "m2*K/W"),
+		"kelvin square meter per watt", "K·m²/W", _thermalInsulance, SI,
+		Aliases("R-value", "RSI", "RSI-value"),
+		Symbols("K*m2/W", "°C⋅m²/W", "°C*m2/W", "m2.K.W-1", "m²·K/W", "m2*K/W"),
 	)
 
+	// Imperial/US unit: degree Fahrenheit hour square foot per British thermal unit
 	DegreeFahrenheitHourSquareFootPerBtu = mustCreateNewUnit(
-		"degree Fahrenheit hour square foot per British thermal unitIT", "°F⋅hr⋅ft²/Btu",
-		ThermalInsulance, BI,
+		"degree Fahrenheit hour square foot per British thermal unit", "°F⋅hr⋅ft²/Btu", _thermalInsulance, BI,
 		Aliases(
-			"degree Fahrenheit hour square foot per British thermal unit",
+			"degree Fahrenheit hour square foot per British thermal unitIT",
+			"degree Fahrenheit hour square foot per British thermal unitth",
 			"°F · h · ft2/BtuIT", "°F*hr*ft2/Btu", "°F⋅ft²⋅h/BTU", "°F⋅ft2⋅h/BTU", "°F*ft2*h/BTU",
 		),
 	)
 )
 
 func init() {
+	// SI base unit: K·m²/W
+	// 1 I-P R-value = 0.1761102 SI R-value (NIST, Revit)
+	NewRatioConversion(DegreeFahrenheitHourSquareFootPerBtu, KelvinSquareMeterPerWatt, 0.1761102)
+
 	// https://en.wikipedia.org/wiki/R-value_(insulation)#Units:_metric_(SI)_vs._inch-pound_(I-P) :
 	/*
 		Units: metric (SI) vs. inch-pound (I-P)
@@ -51,5 +61,4 @@ func init() {
 			to: square meter kelvin per watt (m2 · K/W)
 			Multiply by: 1.762280 E-01
 	*/
-	NewRatioConversion(DegreeFahrenheitHourSquareFootPerBtu, KelvinSquareMeterPerWatt, 0.1761102)
 }

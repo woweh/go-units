@@ -1,23 +1,22 @@
 package units
 
-var (
-	PowerPerLength = Quantity("power per length")
+// PowerPerLength is a unit quantity for power per length
+const PowerPerLength UnitQuantity = "power per length"
 
-	// Base unit: watt per meter (Revit base with CF=0.3048)
-	WattPerMeter = mustCreateNewUnit("watt per meter", "W/m", PowerPerLength, SI)
+var (
+	_powerPerLength = Quantity(PowerPerLength)
+
+	// SI base unit: watt per meter
+	WattPerMeter = mustCreateNewUnit("watt per meter", "W/m", _powerPerLength, SI)
 
 	// Imperial unit
-	WattPerFoot = mustCreateNewUnit("watt per foot", "W/ft", PowerPerLength)
+	WattPerFoot = mustCreateNewUnit("watt per foot", "W/ft", _powerPerLength, BI)
 )
 
 func init() {
-	// From RevitUnits.json:
-	// W/m: CF = 0.3048
-	// W/ft: CF = 0.09290304
-	// Ratio: 0.3048 / 0.09290304 = 3.28084
-	// This means: 1 W/m = 0.3048 W/ft
-	// Or: 1 W/ft = 3.28084 W/m
-	NewRatioConversion(WattPerFoot, WattPerMeter, 3.28084)
+	// SI base unit: W/m
+	// Conversion: 1 W/m = 0.3048 W/ft (1 W/ft = 3.28084 W/m)
+	NewRatioConversion(WattPerMeter, WattPerFoot, 0.3048)
 
 	WattPerMeter.AddAliases("watts per meter", "watt per metre", "watts per metre")
 	WattPerFoot.AddAliases("watts per foot")

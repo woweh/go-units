@@ -1,12 +1,15 @@
 package units
 
-var (
-	Temperature = Quantity("temperature")
+// Temperature is a unit quantity for temperature
+const Temperature UnitQuantity = "temperature"
 
-	Celsius    = mustCreateNewUnit("celsius", "°C", Temperature, Plural(PluralNone), SI)
-	Fahrenheit = mustCreateNewUnit("fahrenheit", "°F", Temperature, Plural(PluralNone), US)
-	Kelvin     = mustCreateNewUnit("kelvin", "°K", Temperature, Plural(PluralNone), SI)
-	Rankine    = mustCreateNewUnit("rankine", "°R", Temperature, Plural(PluralNone), US)
+var (
+	_temperature = Quantity(Temperature)
+
+	Celsius    = mustCreateNewUnit("celsius", "°C", _temperature, SI, Plural(PluralNone))
+	Fahrenheit = mustCreateNewUnit("fahrenheit", "°F", _temperature, US, Plural(PluralNone))
+	Kelvin     = mustCreateNewUnit("kelvin", "K", _temperature, SI, Plural(PluralNone))
+	Rankine    = mustCreateNewUnit("rankine", "°R", _temperature, US, Plural(PluralNone))
 )
 
 func init() {
@@ -37,11 +40,8 @@ func init() {
 	NewRatioConversion(Kelvin, Rankine, 1.8)
 
 	Celsius.AddAliases("centigrade", "centigrades")
-
 	Fahrenheit.AddAliases("degree Fahrenheit")
-
 	Kelvin.AddAliases("degree Kelvin")
-
 	Rankine.AddAliases("degree Rankine")
 	Rankine.AddSymbols("°Ra")
 }

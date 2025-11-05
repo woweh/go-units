@@ -1,23 +1,26 @@
 package units
 
-var (
-	Moment = Quantity("moment")
+// Moment is a unit quantity for moment (torque)
+const Moment UnitQuantity = "moment"
 
-	// Base unit: newton meter (Revit base with CF=0.09290304)
-	NewtonMeter = mustCreateNewUnit("newton meter", "N-m", Moment, SI)
+var (
+	_moment = Quantity(Moment)
+
+	// SI base unit: newton meter
+	NewtonMeter = mustCreateNewUnit("newton meter", "N-m", _moment, SI)
 
 	// SI units
-	DekaNewtonMeter = mustCreateNewUnit("dekanewton meter", "daN-m", Moment, SI)
-	KiloNewtonMeter = mustCreateNewUnit("kilonewton meter", "kN-m", Moment, SI)
-	MegaNewtonMeter = mustCreateNewUnit("meganewton meter", "MN-m", Moment, SI)
+	DekaNewtonMeter = mustCreateNewUnit("dekanewton meter", "daN-m", _moment, SI)
+	KiloNewtonMeter = mustCreateNewUnit("kilonewton meter", "kN-m", _moment, SI)
+	MegaNewtonMeter = mustCreateNewUnit("meganewton meter", "MN-m", _moment, SI)
 
 	// Imperial units
-	PoundForceFoot = mustCreateNewUnit("pound force foot", "lb-ft", Moment, BI)
-	KipFoot        = mustCreateNewUnit("kip foot", "kip-ft", Moment, BI)
+	PoundForceFoot = mustCreateNewUnit("pound force foot", "lb-ft", _moment, BI)
+	KipFoot        = mustCreateNewUnit("kip foot", "kip-ft", _moment, BI)
 
 	// Other units
-	KilogramForceMeter = mustCreateNewUnit("kilogram force meter", "kgf-m", Moment)
-	TonneForceMeter    = mustCreateNewUnit("tonne force meter", "Tf-m", Moment)
+	KilogramForceMeter = mustCreateNewUnit("kilogram force meter", "kgf-m", _moment, MKpS)
+	TonneForceMeter    = mustCreateNewUnit("tonne force meter", "Tf-m", _moment, MKpS)
 )
 
 func init() {

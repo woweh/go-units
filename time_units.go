@@ -1,9 +1,12 @@
 package units
 
-var (
-	Time = Quantity("time")
+// Time is a unit quantity for time
+const Time UnitQuantity = "time"
 
-	Second      = mustCreateNewUnit("second", "s", Time, SI)
+var (
+	_time = Quantity(Time)
+
+	Second      = mustCreateNewUnit("second", "s", _time, SI)
 	ExaSecond   = Exa(Second)
 	PetaSecond  = Peta(Second)
 	TeraSecond  = Tera(Second)
@@ -21,20 +24,20 @@ var (
 	FemtoSecond = Femto(Second)
 	AttoSecond  = Atto(Second)
 
-	Minute = mustCreateNewUnit("minute", "min", Time)
-	Hour   = mustCreateNewUnit("hour", "hr", Time)
-	Day    = mustCreateNewUnit("day", "d", Time)
-	Month  = mustCreateNewUnit("month", "", Time)
-	Year   = mustCreateNewUnit("year", "yr", Time)
+	Minute = mustCreateNewUnit("minute", "min", _time)
+	Hour   = mustCreateNewUnit("hour", "hr", _time)
+	Day    = mustCreateNewUnit("day", "d", _time)
+	Month  = mustCreateNewUnit("month", "", _time)
+	Year   = mustCreateNewUnit("year", "yr", _time)
 
-	Decade     = mustCreateNewUnit("decade", "", Time)
-	Century    = mustCreateNewUnit("century", "", Time)
-	Millennium = mustCreateNewUnit("millennium", "", Time)
+	Decade     = mustCreateNewUnit("decade", "", _time)
+	Century    = mustCreateNewUnit("century", "", _time)
+	Millennium = mustCreateNewUnit("millennium", "", _time)
 
 	// more esoteric time units
-	PlanckTime = mustCreateNewUnit("planck time", "𝑡ₚ", Time)
-	Fortnight  = mustCreateNewUnit("fortnight", "", Time)
-	Score      = mustCreateNewUnit("score", "", Time)
+	PlanckTime = mustCreateNewUnit("planck time", "𝑡ₚ", _time)
+	Fortnight  = mustCreateNewUnit("fortnight", "", _time)
+	Score      = mustCreateNewUnit("score", "", _time)
 )
 
 func init() {

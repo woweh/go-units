@@ -5,34 +5,32 @@ import "math"
 // https://en.wikipedia.org/wiki/Slope
 // https://en.wikipedia.org/wiki/Grade_(slope)
 
-var (
-	// Slope is a unit option for slope units, also known as gradient.
-	Slope = Quantity("slope")
+// Slope is a unit quantity for slope (gradient)
+const Slope UnitQuantity = "slope"
 
-	// SlopeValue m = rise (delta h) / run (distance) = y/x = tan(alpha)
-	// In the case of a vertical line, the slope is infinite.
-	// In the case of a horizontal line, the slope is zero.
-	SlopeValue = mustCreateNewUnit("slope value", "", Slope, Plural(PluralNone))
-	// SlopeRatio is a ratio of one part rise to so many parts run (e.g. 1:10). == SlopeInverseValue
-	SlopeRatio = mustCreateNewUnit("slope ratio", "", Slope, Plural(PluralNone))
-	// SlopeInverseRatio is a ratio of many parts run to one part rise (e.g. 10:1).
-	SlopeInverseRatio = mustCreateNewUnit("inverse slope ratio", "", Slope, Plural(PluralNone))
-	// SlopeDegree is the angle of inclination in degrees (e.g. 45°).
-	SlopeDegree = mustCreateNewUnit("slope degree", "", Slope, Plural(PluralNone))
-	// SlopePercent 100 * m = 100 * (rise/run) = 100 * tan(α).
-	// Note that the symbol is already taken by the Percent unit.
-	SlopePercent = mustCreateNewUnit("slope percent", "", Slope, Plural(PluralNone))
-	// SlopePermille 1000 * m = 1000 * (rise/run) = 1000 * tan(α).
-	// Note that the symbol is already taken by the Permille unit.
-	SlopePermille = mustCreateNewUnit("slope permille", "", Slope, Plural(PluralNone))
+var (
+	_slope = Quantity(Slope)
+
+	// SlopeValue is the base unit: rise/run (dimensionless, SI system)
+	SlopeValue = mustCreateNewUnit("slope value", "", _slope, SI, Plural(PluralNone))
+	// SlopeRatio is a ratio of one part rise to so many parts run (e.g. 1:10), dimensionless, SI system
+	SlopeRatio = mustCreateNewUnit("slope ratio", "", _slope, SI, Plural(PluralNone))
+	// SlopeInverseRatio is a ratio of many parts run to one part rise (e.g. 10:1), dimensionless, SI system
+	SlopeInverseRatio = mustCreateNewUnit("inverse slope ratio", "", _slope, SI, Plural(PluralNone))
+	// SlopeDegree is the angle of inclination in degrees (e.g. 45°), SI system
+	SlopeDegree = mustCreateNewUnit("slope degree", "deg", _slope, SI, Plural(PluralNone))
+	// SlopePercent 100 * m = 100 * (rise/run) = 100 * tan(α), SI system
+	SlopePercent = mustCreateNewUnit("slope percent", "%", _slope, SI, Plural(PluralNone))
+	// SlopePermille 1000 * m = 1000 * (rise/run) = 1000 * tan(α), SI system
+	SlopePermille = mustCreateNewUnit("slope permille", "‰", _slope, SI, Plural(PluralNone))
 )
 
 func init() {
 	// Use SlopeValue as base unit for all conversions.
 	// When using `NewConversionFromFn`, you must define conversions in both directions.
 
-	NewConversionFromFn(SlopeValue, SlopeRatio, slopeValueToRatio, "1 / x")
-	NewConversionFromFn(SlopeRatio, SlopeValue, slopeRatioToValue, "1 / x")
+	NewConversionFromFn(SlopeValue, SlopeRatio, slopeValueToRatio, "n = 1 / m")
+	NewConversionFromFn(SlopeRatio, SlopeValue, slopeRatioToValue, "m = 1 / n")
 
 	NewConversionFromFn(SlopeValue, SlopeInverseRatio, returnSameValue, "x")
 	NewConversionFromFn(SlopeInverseRatio, SlopeValue, returnSameValue, "x")

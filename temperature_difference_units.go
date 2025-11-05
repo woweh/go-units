@@ -1,16 +1,18 @@
 package units
 
+// TemperatureDifference is a unit quantity for temperature difference
+const TemperatureDifference UnitQuantity = "temperature difference"
+
 var (
-	TemperatureDifference = Quantity("temperature difference")
+	_temperatureDifference = Quantity(TemperatureDifference)
 
-	// Base units: Kelvin and Celsius use the same scale for differences
-	// (no offset, only ratio matters for temperature intervals)
-	KelvinInterval  = mustCreateNewUnit("kelvin interval", "K", TemperatureDifference, SI)
-	CelsiusInterval = mustCreateNewUnit("celsius interval", "delta°C", TemperatureDifference, SI)
+	// SI base units: Kelvin and Celsius intervals (identical scale for differences)
+	KelvinInterval  = mustCreateNewUnit("kelvin interval", "K", _temperatureDifference, SI)
+	CelsiusInterval = mustCreateNewUnit("celsius interval", "delta°C", _temperatureDifference, SI)
 
-	// Imperial units
-	FahrenheitInterval = mustCreateNewUnit("fahrenheit interval", "delta°F", TemperatureDifference)
-	RankineInterval    = mustCreateNewUnit("rankine interval", "delta°R", TemperatureDifference)
+	// Imperial/US units
+	FahrenheitInterval = mustCreateNewUnit("fahrenheit interval", "delta°F", _temperatureDifference, BI)
+	RankineInterval    = mustCreateNewUnit("rankine interval", "delta°R", _temperatureDifference, BI)
 )
 
 func init() {

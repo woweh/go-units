@@ -1,21 +1,24 @@
 package units
 
+// MomentOfInertia is a unit quantity for moment of inertia
+const MomentOfInertia UnitQuantity = "moment of inertia"
+
 var (
-	MomentOfInertia = Quantity("moment of inertia")
+	_momentOfInertia = Quantity(MomentOfInertia)
 
 	// SI base unit: meter to the fourth power
-	MeterToTheFourthPower      = mustCreateNewUnit("meter to the fourth power", "m⁴", MomentOfInertia, SI)
-	CentimeterToTheFourthPower = mustCreateNewUnit("centimeter to the fourth power", "cm⁴", MomentOfInertia, SI)
-	MillimeterToTheFourthPower = mustCreateNewUnit("millimeter to the fourth power", "mm⁴", MomentOfInertia, SI)
+	MeterToTheFourthPower      = mustCreateNewUnit("meter to the fourth power", "m⁴", _momentOfInertia, SI)
+	CentimeterToTheFourthPower = mustCreateNewUnit("centimeter to the fourth power", "cm⁴", _momentOfInertia, SI)
+	MillimeterToTheFourthPower = mustCreateNewUnit("millimeter to the fourth power", "mm⁴", _momentOfInertia, SI)
 
 	// Imperial/US units
-	FootToTheFourthPower = mustCreateNewUnit("foot to the fourth power", "ft⁴", MomentOfInertia, BI)
-	InchToTheFourthPower = mustCreateNewUnit("inch to the fourth power", "in⁴", MomentOfInertia, BI)
+	FootToTheFourthPower = mustCreateNewUnit("foot to the fourth power", "ft⁴", _momentOfInertia, BI)
+	InchToTheFourthPower = mustCreateNewUnit("inch to the fourth power", "in⁴", _momentOfInertia, BI)
 )
 
 func init() {
 	// SI base unit: m⁴
-	// Conversions: 1 m⁴ = 115.86 ft⁴ = 2402510 in⁴ = 100000000 cm⁴ = 1e12 mm⁴
+	// Conversions: 1 m⁴ = 115.86176745901283 ft⁴ = 2402509.6100288294 in⁴ = 100000000 cm⁴ = 1e12 mm⁴
 	NewRatioConversion(MeterToTheFourthPower, FootToTheFourthPower, 115.86176745901283)
 	NewRatioConversion(MeterToTheFourthPower, InchToTheFourthPower, 2402509.6100288294)
 	NewRatioConversion(MeterToTheFourthPower, CentimeterToTheFourthPower, 100000000.0)

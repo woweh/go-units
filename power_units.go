@@ -1,10 +1,13 @@
 package units
 
-var (
-	Power = Quantity("power")
+// Power is a unit quantity for power
+const Power UnitQuantity = "power"
 
-	// metric
-	Watt      = mustCreateNewUnit("watt", "W", Power, SI)
+var (
+	_power = Quantity(Power)
+
+	// SI base unit: watt
+	Watt      = mustCreateNewUnit("watt", "W", _power, SI)
 	DeciWatt  = Deci(Watt)
 	CentiWatt = Centi(Watt)
 	MilliWatt = Milli(Watt)
@@ -26,20 +29,21 @@ var (
 	ZettaWatt = Zetta(Watt)
 	YottaWatt = Yotta(Watt)
 
-	VoltAmpere     = mustCreateNewUnit("volt-ampere", "V⋅A", Power, SI)
+	VoltAmpere     = mustCreateNewUnit("volt-ampere", "V⋅A", _power, SI)
 	KiloVoltAmpere = Kilo(VoltAmpere)
 	MegaVoltAmpere = Mega(VoltAmpere)
 
-	VoltAmpereReactive     = mustCreateNewUnit("volt-ampere reactive", "var", Power, SI)
+	VoltAmpereReactive     = mustCreateNewUnit("volt-ampere reactive", "var", _power, SI)
 	KiloVoltAmpereReactive = Kilo(VoltAmpereReactive)
 	MegaVoltAmpereReactive = Mega(VoltAmpereReactive)
 
-	BritishThermalUnitPerHour          = mustCreateNewUnit("British thermal unit per hour", "Btu/h", Power)
-	BritishThermalUnitPerSecond        = mustCreateNewUnit("British thermal unit per second", "Btu/s", Power)
-	CaloriePerSecond                   = mustCreateNewUnit("calorie per second", "cal/s", Power)
-	Horsepower                         = mustCreateNewUnit("horsepower", "hp", Power)
-	KiloCaloriePerSecond               = mustCreateNewUnit("kilocalorie per second", "kcal/s", Power)
-	ThousandBritishThermalUnitsPerHour = mustCreateNewUnit("thousand British thermal units per hour", "MBH", Power)
+	// Imperial/US and other units
+	BritishThermalUnitPerHour          = mustCreateNewUnit("British thermal unit per hour", "Btu/h", _power, BI)
+	BritishThermalUnitPerSecond        = mustCreateNewUnit("British thermal unit per second", "Btu/s", _power, BI)
+	CaloriePerSecond                   = mustCreateNewUnit("calorie per second", "cal/s", _power, SI)
+	Horsepower                         = mustCreateNewUnit("horsepower", "hp", _power, BI)
+	KiloCaloriePerSecond               = mustCreateNewUnit("kilocalorie per second", "kcal/s", _power, SI)
+	ThousandBritishThermalUnitsPerHour = mustCreateNewUnit("thousand British thermal units per hour", "MBH", _power, BI)
 )
 
 func init() {

@@ -5,19 +5,21 @@ import (
 	"math"
 )
 
+const Angle UnitQuantity = "angle"
+
 var (
-	Angle = Quantity("angle")
+	_angle = Quantity(Angle)
 
-	Turn = mustCreateNewUnit("turn", "tr", Angle)
+	Turn = mustCreateNewUnit("turn", "tr", _angle)
 
-	Radian      = mustCreateNewUnit("radian", "rad", Angle, SI)
+	Radian      = mustCreateNewUnit("radian", "rad", _angle, SI)
 	MilliRadian = Milli(Radian)
 	MicroRadian = Micro(Radian)
 
 	// Degree (= decimal degree) is a unit of angle equal to 1/360 of a circle.
-	Degree = mustCreateNewUnit("degree", "°", Angle)
+	Degree = mustCreateNewUnit("degree", "°", _angle, SI)
 
-	Gon      = mustCreateNewUnit("gon", "gon", Angle, SI, Symbols("grad"))
+	Gon      = mustCreateNewUnit("gon", "gon", _angle, SI, Symbols("grad"))
 	DeciGon  = Deci(Gon)
 	CentiGon = Centi(Gon)
 	MilliGon = Milli(Gon)
@@ -37,7 +39,7 @@ var (
 	PetaGon  = Peta(Gon)
 
 	// DMS (Degrees, Minutes, Seconds) as a unit
-	DMS = mustCreateNewUnit("degree minute second", "DMS", Angle)
+	DMS = mustCreateNewUnit("degree minute second", "DMS", _angle)
 )
 
 func init() {
@@ -53,7 +55,7 @@ func init() {
 	Turn.AddAliases("revolution", "revolutions", "revs", "cycle", "cycles")
 	Turn.AddSymbols("pla", "rev", "cyc")
 
-	// Register DMS <-> Degree conversions
+	// DMS <-> Degree conversions
 	NewConversionFromFn(DMS, Degree, func(x float64) float64 {
 		// x is encoded as D.MMSS, e.g. 12.3045 means 12°30'45''
 		D := int(x)
@@ -62,6 +64,7 @@ func init() {
 		return float64(D) + float64(M)/60 + S/3600
 	}, "DMS (D.MMSS) to degrees")
 
+	// Degree <-> DMS conversions
 	NewConversionFromFn(Degree, DMS, func(x float64) float64 {
 		D := int(x)
 		M := int((x - float64(D)) * 60)
@@ -69,6 +72,7 @@ func init() {
 		return float64(D) + float64(M)/100 + S/10000
 	}, "degrees to DMS (D.MMSS)")
 
+	// Define DMS formatting
 	DMS.AddFormatFn(func(x float64) string {
 		D := int(x)
 		M := int((x - float64(D)) * 100)

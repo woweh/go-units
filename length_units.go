@@ -1,10 +1,12 @@
 package units
 
+const Length UnitQuantity = "length"
+
 var (
-	Length = Quantity("length")
+	_length = Quantity(Length)
 
 	// metric
-	Meter      = mustCreateNewUnit("meter", "m", Length, SI)
+	Meter      = mustCreateNewUnit("meter", "m", _length, SI)
 	ExaMeter   = Exa(Meter)
 	PetaMeter  = Peta(Meter)
 	TeraMeter  = Tera(Meter)
@@ -22,19 +24,20 @@ var (
 	FemtoMeter = Femto(Meter)
 	AttoMeter  = Atto(Meter)
 
-	Angstrom = mustCreateNewUnit("angstrom", "Å", Length, BI)
-	Inch     = mustCreateNewUnit("inch", "in", Length, BI, Plural("inches"))
-	Foot     = mustCreateNewUnit("foot", "ft", Length, BI, Plural("feet"))
-	Yard     = mustCreateNewUnit("yard", "yd", Length, BI)
-	Mile     = mustCreateNewUnit("mile", "mi", Length, BI)
-	League   = mustCreateNewUnit("league", "lea", Length, BI)
-	Furlong  = mustCreateNewUnit("furlong", "fur", Length, BI)
+	Angstrom = mustCreateNewUnit("angstrom", "Å", _length, SI)
 
-	USSurveyFoot = mustCreateNewUnit("US survey foot", "USft", Length, BI)
+	Inch    = mustCreateNewUnit("inch", "in", _length, BI, Plural("inches"))
+	Foot    = mustCreateNewUnit("foot", "ft", _length, BI, Plural("feet"))
+	Yard    = mustCreateNewUnit("yard", "yd", _length, BI)
+	Mile    = mustCreateNewUnit("mile", "mi", _length, BI)
+	League  = mustCreateNewUnit("league", "lea", _length, BI)
+	Furlong = mustCreateNewUnit("furlong", "fur", _length, BI)
+
+	USSurveyFoot = mustCreateNewUnit("US survey foot", "USft", _length, US)
 )
 
 func init() {
-	NewRatioConversion(Angstrom, Meter, 0.0000000001)
+	NewRatioConversion(Angstrom, Meter, 1e-10)
 	NewRatioConversion(Inch, Meter, 0.0254)
 	NewRatioConversion(Foot, Meter, 0.3048)
 	NewRatioConversion(Yard, Meter, 0.9144)

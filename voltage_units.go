@@ -1,10 +1,13 @@
 package units
 
-var (
-	Voltage = Quantity("voltage")
+// Voltage is a unit quantity for voltage
+const VoltageQuantity UnitQuantity = "voltage"
 
-	// metric
-	Volt      = mustCreateNewUnit("volt", "V", Voltage, SI)
+var (
+	_voltage = Quantity(VoltageQuantity)
+
+	// SI base unit: volt
+	Volt      = mustCreateNewUnit("volt", "V", _voltage, SI)
 	YottaVolt = Yotta(Volt)
 	ZettaVolt = Zetta(Volt)
 	ExaVolt   = Exa(Volt)

@@ -16,13 +16,6 @@ type magnitude struct {
 	Power int
 }
 
-const (
-	// MaxExponent defines the maximum exponent for metric prefixes
-	MaxExponent = 30
-	// MinExponent defines the minimum exponent for metric prefixes
-	MinExponent = -30
-)
-
 // _mags holds the standard SI metric prefixes with their symbols and powers, keyed by exponent
 var _mags = map[int]magnitude{
 	30:  {"Q", "quetta", 30},
@@ -53,35 +46,107 @@ var _mags = map[int]magnitude{
 
 // Magnitude prefix methods create and return a new Unit, while automatically registering
 // conversions to and from the provided base Unit
+
+// Quetta creates a new Unit with the quetta prefix applied to the base Unit (10^30)
+// This will also create a conversion and inverse conversion to the base Unit.
 func Quetta(b Unit, o ...UnitOption) Unit { return _mags[30].makeUnit(b, o...) }
-func Ronna(b Unit, o ...UnitOption) Unit  { return _mags[27].makeUnit(b, o...) }
-func Yotta(b Unit, o ...UnitOption) Unit  { return _mags[24].makeUnit(b, o...) }
-func Zetta(b Unit, o ...UnitOption) Unit  { return _mags[21].makeUnit(b, o...) }
-func Exa(b Unit, o ...UnitOption) Unit    { return _mags[18].makeUnit(b, o...) }
-func Peta(b Unit, o ...UnitOption) Unit   { return _mags[15].makeUnit(b, o...) }
-func Tera(b Unit, o ...UnitOption) Unit   { return _mags[12].makeUnit(b, o...) }
-func Giga(b Unit, o ...UnitOption) Unit   { return _mags[9].makeUnit(b, o...) }
-func Mega(b Unit, o ...UnitOption) Unit   { return _mags[6].makeUnit(b, o...) }
-func Kilo(b Unit, o ...UnitOption) Unit   { return _mags[3].makeUnit(b, o...) }
-func Hecto(b Unit, o ...UnitOption) Unit  { return _mags[2].makeUnit(b, o...) }
-func Deca(b Unit, o ...UnitOption) Unit   { return _mags[1].makeUnit(b, o...) }
-func Deci(b Unit, o ...UnitOption) Unit   { return _mags[-1].makeUnit(b, o...) }
-func Centi(b Unit, o ...UnitOption) Unit  { return _mags[-2].makeUnit(b, o...) }
-func Milli(b Unit, o ...UnitOption) Unit  { return _mags[-3].makeUnit(b, o...) }
-func Micro(b Unit, o ...UnitOption) Unit  { return _mags[-6].makeUnit(b, o...) }
-func Nano(b Unit, o ...UnitOption) Unit   { return _mags[-9].makeUnit(b, o...) }
-func Pico(b Unit, o ...UnitOption) Unit   { return _mags[-12].makeUnit(b, o...) }
-func Femto(b Unit, o ...UnitOption) Unit  { return _mags[-15].makeUnit(b, o...) }
-func Atto(b Unit, o ...UnitOption) Unit   { return _mags[-18].makeUnit(b, o...) }
-func Zepto(b Unit, o ...UnitOption) Unit  { return _mags[-21].makeUnit(b, o...) }
-func Yocto(b Unit, o ...UnitOption) Unit  { return _mags[-24].makeUnit(b, o...) }
-func Ronto(b Unit, o ...UnitOption) Unit  { return _mags[-27].makeUnit(b, o...) }
+
+// Ronna creates a new Unit with the ronna prefix applied to the base Unit (10^27)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Ronna(b Unit, o ...UnitOption) Unit { return _mags[27].makeUnit(b, o...) }
+
+// Yotta creates a new Unit with the yotta prefix applied to the base Unit (10^24)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Yotta(b Unit, o ...UnitOption) Unit { return _mags[24].makeUnit(b, o...) }
+
+// Zetta creates a new Unit with the zetta prefix applied to the base Unit (10^21)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Zetta(b Unit, o ...UnitOption) Unit { return _mags[21].makeUnit(b, o...) }
+
+// Exa creates a new Unit with the exa prefix applied to the base Unit (10^18)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Exa(b Unit, o ...UnitOption) Unit { return _mags[18].makeUnit(b, o...) }
+
+// Peta creates a new Unit with the peta prefix applied to the base Unit (10^15)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Peta(b Unit, o ...UnitOption) Unit { return _mags[15].makeUnit(b, o...) }
+
+// Tera creates a new Unit with the tera prefix applied to the base Unit (10^12)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Tera(b Unit, o ...UnitOption) Unit { return _mags[12].makeUnit(b, o...) }
+
+// Giga creates a new Unit with the giga prefix applied to the base Unit (10^9)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Giga(b Unit, o ...UnitOption) Unit { return _mags[9].makeUnit(b, o...) }
+
+// Mega creates a new Unit with the mega prefix applied to the base Unit (10^6)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Mega(b Unit, o ...UnitOption) Unit { return _mags[6].makeUnit(b, o...) }
+
+// Kilo creates a new Unit with the kilo prefix applied to the base Unit (10^3)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Kilo(b Unit, o ...UnitOption) Unit { return _mags[3].makeUnit(b, o...) }
+
+// Hecto creates a new Unit with the hecto prefix applied to the base Unit (10^2)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Hecto(b Unit, o ...UnitOption) Unit { return _mags[2].makeUnit(b, o...) }
+
+// Deca creates a new Unit with the deca prefix applied to the base Unit (10^1)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Deca(b Unit, o ...UnitOption) Unit { return _mags[1].makeUnit(b, o...) }
+
+// Deci creates a new Unit with the deci prefix applied to the base Unit (10^-1)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Deci(b Unit, o ...UnitOption) Unit { return _mags[-1].makeUnit(b, o...) }
+
+// Centi creates a new Unit with the centi prefix applied to the base Unit (10^-2)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Centi(b Unit, o ...UnitOption) Unit { return _mags[-2].makeUnit(b, o...) }
+
+// Milli creates a new Unit with the milli prefix applied to the base Unit (10^-3)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Milli(b Unit, o ...UnitOption) Unit { return _mags[-3].makeUnit(b, o...) }
+
+// Micro creates a new Unit with the micro prefix applied to the base Unit (10^-6)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Micro(b Unit, o ...UnitOption) Unit { return _mags[-6].makeUnit(b, o...) }
+
+// Nano creates a new Unit with the nano prefix applied to the base Unit (10^-9)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Nano(b Unit, o ...UnitOption) Unit { return _mags[-9].makeUnit(b, o...) }
+
+// Pico creates a new Unit with the pico prefix applied to the base Unit (10^-12)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Pico(b Unit, o ...UnitOption) Unit { return _mags[-12].makeUnit(b, o...) }
+
+// Femto creates a new Unit with the femto prefix applied to the base Unit (10^-15)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Femto(b Unit, o ...UnitOption) Unit { return _mags[-15].makeUnit(b, o...) }
+
+// Atto creates a new Unit with the atto prefix applied to the base Unit (10^-18)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Atto(b Unit, o ...UnitOption) Unit { return _mags[-18].makeUnit(b, o...) }
+
+// Zepto creates a new Unit with the zepto prefix applied to the base Unit (10^-21)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Zepto(b Unit, o ...UnitOption) Unit { return _mags[-21].makeUnit(b, o...) }
+
+// Yocto creates a new Unit with the yocto prefix applied to the base Unit (10^-24)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Yocto(b Unit, o ...UnitOption) Unit { return _mags[-24].makeUnit(b, o...) }
+
+// Ronto creates a new Unit with the ronto prefix applied to the base Unit (10^-27)
+// This will also create a conversion and inverse conversion to the base Unit.
+func Ronto(b Unit, o ...UnitOption) Unit { return _mags[-27].makeUnit(b, o...) }
+
+// Quecto creates a new Unit with the quecto prefix applied to the base Unit (10^-30)
+// This will also create a conversion and inverse conversion to the base Unit.
 func Quecto(b Unit, o ...UnitOption) Unit { return _mags[-30].makeUnit(b, o...) }
 
 // makeUnit creates a magnitude unit and conversion given a base unit.
 //
 // NOTE:
-// This should be the only place where base unit are marked as such (`base.isBaseUnit = true`)!
+// This should be the only place where base units are marked as such (`base.isBaseUnit = true`)!
 func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 	// mark the base unit as such
 	base.isBaseUnit = true
@@ -132,7 +197,7 @@ type unitChoice struct {
 // If no better match is found, the base unit is returned.
 //
 // NOTE:
-// Also non-SI units ca have derived units, like MilliMH2O or MilliMHg.
+// Also, non-SI units ca have derived units, like MilliMH2O or MilliMHg.
 // => Do not check for `!baseUnit.IsMetric()`!
 func findBestMatchingUnit(baseUnit Unit, exp int) Unit {
 	if !baseUnit.IsBase() || exp == 0 {

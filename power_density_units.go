@@ -1,26 +1,24 @@
 package units
 
+// PowerDensity is a unit quantity for power density
+const PowerDensity UnitQuantity = "power density"
+
 var (
-	PowerDensity = Quantity("power density")
+	_powerDensity = Quantity(PowerDensity)
 
-	// Base unit: watt per square meter (Revit base with CF=1.0)
-	WattPerSquareMeter = mustCreateNewUnit("watt per square meter", "W/m²", PowerDensity, SI)
+	// SI base unit: watt per square meter
+	WattPerSquareMeter = mustCreateNewUnit("watt per square meter", "W/m²", _powerDensity, SI)
 
-	// Other units
-	WattPerSquareFoot                   = mustCreateNewUnit("watt per square foot", "W/ft²", PowerDensity)
-	BritishThermalUnitPerHourSquareFoot = mustCreateNewUnit("British thermal unit per hour square foot", "Btu/(h·ft²)", PowerDensity)
+	// Imperial/US units
+	WattPerSquareFoot                   = mustCreateNewUnit("watt per square foot", "W/ft²", _powerDensity, BI)
+	BritishThermalUnitPerHourSquareFoot = mustCreateNewUnit("British thermal unit per hour square foot", "Btu/(h·ft²)", _powerDensity, BI)
 )
 
 func init() {
-	// From RevitUnits.json:
-	// W/m²: CF = 1.0
-	// W/ft²: CF = 0.09290304
-	// Btu/(h·ft²): CF = 0.3169983306281505
-
-	// 1 W/m² = 0.09290304 W/ft²
+	// SI base unit: W/m²
+	// Conversion: 1 W/m² = 0.09290304 W/ft²
 	NewRatioConversion(WattPerSquareMeter, WattPerSquareFoot, 0.09290304)
 
-	// From ratios: 0.3169983306281505 / 0.09290304 = 3.41214
 	// 1 W/ft² = 3.41214 Btu/(h·ft²)
 	NewRatioConversion(WattPerSquareFoot, BritishThermalUnitPerHourSquareFoot, 3.41214)
 

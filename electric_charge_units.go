@@ -1,10 +1,12 @@
 package units
 
+const ElectricCharge UnitQuantity = "electric charge"
+
 var (
-	ElectricCharge = Quantity("electric charge")
+	_electricCharge = Quantity(ElectricCharge)
 
 	// SI unit metric
-	Coulomb      = mustCreateNewUnit("coulomb", "C", ElectricCharge, SI)
+	Coulomb      = mustCreateNewUnit("coulomb", "C", _electricCharge, SI)
 	ExaCoulomb   = Exa(Coulomb)
 	PetaCoulomb  = Peta(Coulomb)
 	TeraCoulomb  = Tera(Coulomb)
@@ -22,17 +24,17 @@ var (
 	FemtoCoulomb = Femto(Coulomb)
 	AttoCoulomb  = Atto(Coulomb)
 
-	AmpereHour      = mustCreateNewUnit("ampere-hour", "A·h", ElectricCharge, SI, Symbols("A⋅h", "A*h", "A.h", "Ah", "AHr"))
+	AmpereHour      = mustCreateNewUnit("ampere-hour", "A·h", _electricCharge, SI, Symbols("A⋅h", "A*h", "A.h", "Ah", "AHr"))
 	KiloAmpereHour  = Kilo(AmpereHour)
 	MilliAmpereHour = Milli(AmpereHour)
 
 	AmpereMinute = mustCreateNewUnit(
-		"ampere-minute", "A·min", ElectricCharge, SI, Symbols("A⋅min", "A*min", "A.min", "Amin"),
+		"ampere-minute", "A·min", _electricCharge, SI, Symbols("A⋅min", "A*min", "A.min", "Amin"),
 	)
 	KiloAmpereMinute  = Kilo(AmpereMinute)
 	MilliAmpereMinute = Milli(AmpereMinute)
 
-	AmpereSecond      = mustCreateNewUnit("ampere-second", "A·s", ElectricCharge, SI, Symbols("A⋅s", "A*s", "A.s", "As"))
+	AmpereSecond      = mustCreateNewUnit("ampere-second", "A·s", _electricCharge, SI, Symbols("A⋅s", "A*s", "A.s", "As"))
 	KiloAmpereSecond  = Kilo(AmpereSecond)
 	MilliAmpereSecond = Milli(AmpereSecond)
 )

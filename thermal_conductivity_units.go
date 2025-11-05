@@ -1,14 +1,16 @@
 package units
 
+// ThermalConductivity is a unit quantity for thermal conductivity
+const ThermalConductivity UnitQuantity = "thermal conductivity"
+
 var (
-	ThermalConductivity = Quantity("thermal conductivity")
+	_thermalConductivity = Quantity(ThermalConductivity)
 
-	// Base unit: watt per meter kelvin (Revit base with CF=0.3048)
-	// Using W/(m·K) as SI base
-	WattPerMeterKelvin = mustCreateNewUnit("watt per meter kelvin", "W/(m·K)", ThermalConductivity, SI)
+	// SI base unit: watt per meter kelvin (W/(m·K))
+	WattPerMeterKelvin = mustCreateNewUnit("watt per meter kelvin", "W/(m·K)", _thermalConductivity, SI)
 
-	// Imperial unit
-	BritishThermalUnitPerHourFootFahrenheit = mustCreateNewUnit("British thermal unit per hour foot degree Fahrenheit", "BTU/(h·ft·°F)", ThermalConductivity)
+	// Imperial unit: BTU/(h·ft·°F)
+	BritishThermalUnitPerHourFootFahrenheit = mustCreateNewUnit("British thermal unit per hour foot degree Fahrenheit", "BTU/(h·ft·°F)", _thermalConductivity, BI)
 )
 
 func init() {

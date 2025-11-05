@@ -1,10 +1,12 @@
 package units
 
+const Mass UnitQuantity = "mass"
+
 var (
-	Mass = Quantity("mass")
+	_mass = Quantity(Mass)
 
 	// metric
-	Gram      = mustCreateNewUnit("gram", "g", Mass, SI)
+	Gram      = mustCreateNewUnit("gram", "g", _mass, SI)
 	ExaGram   = Exa(Gram)
 	PetaGram  = Peta(Gram)
 	TeraGram  = Tera(Gram)
@@ -22,21 +24,25 @@ var (
 	FemtoGram = Femto(Gram)
 	AttoGram  = Atto(Gram)
 
-	// imperial
-	Grain  = mustCreateNewUnit("grain", "gr", Mass, BI)
-	Drachm = mustCreateNewUnit("drachm", "dr", Mass, BI)
-	Ounce  = mustCreateNewUnit("ounce", "oz", Mass, BI)
-	Pound  = mustCreateNewUnit("pound", "lb", Mass, BI)
-	Stone  = mustCreateNewUnit("stone", "st", Mass, BI)
-	Ton    = mustCreateNewUnit("ton", "LT", Mass, BI)
-	Slug   = mustCreateNewUnit("slug", "", Mass, BI)
+	// metric ton (tonne) as a distinct unit
+	MetricTon = mustCreateNewUnit("metric ton", "t", _mass, SI)
 
-	ShortTon = mustCreateNewUnit("short ton", "short ton", Mass, BI)
+	// imperial
+	Grain  = mustCreateNewUnit("grain", "gr", _mass, BI)
+	Drachm = mustCreateNewUnit("drachm", "dr", _mass, BI)
+	Ounce  = mustCreateNewUnit("ounce", "oz", _mass, BI)
+	Pound  = mustCreateNewUnit("pound", "lb", _mass, BI)
+	Stone  = mustCreateNewUnit("stone", "st", _mass, BI)
+	Ton    = mustCreateNewUnit("ton", "LT", _mass, BI)
+	Slug   = mustCreateNewUnit("slug", "", _mass, BI)
+
+	ShortTon = mustCreateNewUnit("short ton", "short ton", _mass, BI)
 )
 
 func init() {
-	MegaGram.AddAliases("tonne", "tonnes", "metric ton", "metric tons")
-	MegaGram.AddAliases("t")
+	// metric ton (tonne) as a distinct unit
+	NewRatioConversion(MetricTon, Gram, 1e6) // == MegaGram
+	MetricTon.AddAliases("tonne", "tonnes", "metric tons")
 
 	NewRatioConversion(Grain, Gram, 0.06479891)
 	NewRatioConversion(Drachm, Gram, 1.7718451953125)

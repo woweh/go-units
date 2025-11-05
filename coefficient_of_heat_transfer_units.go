@@ -1,13 +1,15 @@
 package units
 
+const CoefficientOfHeatTransfer UnitQuantity = "coefficient of heat transfer"
+
 var (
-	CoefficientOfHeatTransfer = Quantity("coefficient of heat transfer")
+	_coefficientOfHeatTransfer = Quantity(CoefficientOfHeatTransfer)
 
 	// Base unit: watt per square meter kelvin (Revit base with CF=1.0)
-	WattPerSquareMeterKelvin = mustCreateNewUnit("watt per square meter kelvin", "W/(m²·K)", CoefficientOfHeatTransfer, SI)
+	WattPerSquareMeterKelvin = mustCreateNewUnit("watt per square meter kelvin", "W/(m²·K)", _coefficientOfHeatTransfer, SI)
 
 	// Imperial unit
-	BritishThermalUnitPerHourSquareFootFahrenheit = mustCreateNewUnit("British thermal unit per hour square foot degree Fahrenheit", "BTU/(h·ft²·°F)", CoefficientOfHeatTransfer)
+	BritishThermalUnitPerHourSquareFootFahrenheit = mustCreateNewUnit("British thermal unit per hour square foot degree Fahrenheit", "BTU/(h·ft²·°F)", _coefficientOfHeatTransfer, BI)
 )
 
 func init() {
