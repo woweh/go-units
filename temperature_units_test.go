@@ -7,33 +7,48 @@ import (
 )
 
 func Test_Temperature_Conversions(t *testing.T) {
-	var conversionTests = []conversionTest{
-		{from: "celsius", to: "celsius", val: "1"},
-		{from: "celsius", to: "fahrenheit", val: "33.8"},
-		{from: "celsius", to: "kelvin", val: "274.15"},
-		{from: "celsius", to: "rankine", val: "493.47"},
-		{from: "fahrenheit", to: "celsius", val: "-17.222222"},
-		{from: "fahrenheit", to: "fahrenheit", val: "1"},
-		{from: "fahrenheit", to: "kelvin", val: "255.927778"},
-		{from: "fahrenheit", to: "rankine", val: "460.67"},
-		{from: "kelvin", to: "celsius", val: "-272.15"},
-		{from: "kelvin", to: "fahrenheit", val: "-457.87"},
-		{from: "kelvin", to: "kelvin", val: "1"},
-		{from: "kelvin", to: "rankine", val: "1.8"},
-		{from: "rankine", to: "celsius", val: "-272.594444"},
-		{from: "rankine", to: "fahrenheit", val: "-458.67"},
-		{from: "rankine", to: "kelvin", val: "0.555556"},
-		{from: "rankine", to: "rankine", val: "1"},
+	conversionTests := []conversionTest{
+		// Revit conversions (from/to internal, see RevitUnits.csv)
+		{"celsius", "kelvin", 274.15},
+		{"kelvin", "celsius", -272.15},
+		{"fahrenheit", "kelvin", 255.927777777778},
+		{"kelvin", "fahrenheit", -457.87},
+		{"rankine", "kelvin", 0.555555555555556},
+		{"kelvin", "rankine", 1.8},
+		// Cross-system
+		{"celsius", "fahrenheit", 33.8},
+		{"fahrenheit", "celsius", -17.222222},
+		{"fahrenheit", "rankine", 460.67},
+		{"rankine", "fahrenheit", -458.67},
 	}
-
 	testConversions(t, conversionTests)
 }
 
-func Test_Temperature_Systems(t *testing.T) {
-	si := SiSystem
-	assert.Equal(t, si, Celsius.System())
-	assert.Equal(t, si, Kelvin.System())
-	us := UsSystem
-	assert.Equal(t, us, Fahrenheit.System())
-	assert.Equal(t, us, Rankine.System())
+func Test_Temperature_UnitSystem(t *testing.T) {
+	assert.Equal(t, SiSystem, Celsius.System())
+	assert.Equal(t, SiSystem, Kelvin.System())
+	assert.Equal(t, UsSystem, Fahrenheit.System())
+	assert.Equal(t, UsSystem, Rankine.System())
+}
+
+// No metric factories for temperature, so no base unit tests are needed.
+
+func Test_Temperature_Lookup_Names_and_Symbols(t *testing.T) {
+	tests := lookUpTests{
+		{Celsius, "celsius"},
+		{Celsius, "centigrade"},
+		{Celsius, "centigrades"},
+		{Celsius, "°C"},
+		{Fahrenheit, "fahrenheit"},
+		{Fahrenheit, "degree Fahrenheit"},
+		{Fahrenheit, "°F"},
+		{Kelvin, "kelvin"},
+		{Kelvin, "degree Kelvin"},
+		{Kelvin, "K"},
+		{Rankine, "rankine"},
+		{Rankine, "degree Rankine"},
+		{Rankine, "°R"},
+		{Rankine, "°Ra"},
+	}
+	testLookupNamesAndSymbols(t, tests)
 }

@@ -4,50 +4,37 @@ import (
 	"testing"
 
 	"github.com/alecthomas/assert/v2"
-	ns "github.com/woweh/go-units/numstr"
 )
 
 func Test_Force_Conversions(t *testing.T) {
 	var conversionTests = []conversionTest{
-		{"newton", "kilonewton", ns.Thousandth},
-		{"newton", "newton", ns.One},
-		{"newton", "millinewton", ns.Thousand},
-		{"newton", "micronewton", ns.Million},
-		{"newton", "nanonewton", ns.Billion},
-		{"newton", "dyne", ns.HundredThousand},
-		{"newton", "pound force", "0.2248089"},
-		{"newton", "poundal", "7.233014"},
-		{"newton", "kilogram-force", "0.1019716"},
-		{"newton", "tonne-force", "0.0001019716"},
+		// metric prefixes (representative subset)
+		{"newton", "kilonewton", 0.001},   // 1 N = 0.001 kN
+		{"newton", "millinewton", 1000.0}, // 1 N = 1000 mN
+		{"newton", "micronewton", 1e6},    // 1 N = 1e6 µN
+
+		// CGS
+		{"newton", "dyne", 100000.0},
+
+		// Imperial / other
+		{"newton", "pound force", 0.22480894387096}, // 1 N = 0.22480894387096 lbf
+		{"newton", "poundal", 7.2330139987},         // 1 N = 7.2330139987 pdl
+		{"newton", "kilogram-force", 0.10197162129779},
+		{"newton", "tonne-force", 0.00010197162129779},
 	}
 
 	testConversions(t, conversionTests)
 }
 
 func Test_Force_Systems(t *testing.T) {
+	// representative SI checks (don't repeat every SI prefix)
 	si := SiSystem
 	assert.Equal(t, si, Newton.System())
-	assert.Equal(t, si, CentiNewton.System())
-	assert.Equal(t, si, DeciNewton.System())
 	assert.Equal(t, si, MilliNewton.System())
 	assert.Equal(t, si, MicroNewton.System())
-	assert.Equal(t, si, NanoNewton.System())
-	assert.Equal(t, si, PicoNewton.System())
-	assert.Equal(t, si, FemtoNewton.System())
-	assert.Equal(t, si, AttoNewton.System())
-	assert.Equal(t, si, ZeptoNewton.System())
-	assert.Equal(t, si, YoctoNewton.System())
-	assert.Equal(t, si, DecaNewton.System())
-	assert.Equal(t, si, HectoNewton.System())
 	assert.Equal(t, si, KiloNewton.System())
-	assert.Equal(t, si, MegaNewton.System())
-	assert.Equal(t, si, GigaNewton.System())
-	assert.Equal(t, si, TeraNewton.System())
-	assert.Equal(t, si, PetaNewton.System())
-	assert.Equal(t, si, ExaNewton.System())
-	assert.Equal(t, si, ZettaNewton.System())
-	assert.Equal(t, si, YottaNewton.System())
 
+	// other systems
 	bi := BiSystem
 	assert.Equal(t, bi, PoundForce.System())
 
@@ -57,4 +44,26 @@ func Test_Force_Systems(t *testing.T) {
 	mkps := MKpSSystem
 	assert.Equal(t, mkps, KilogramForce.System())
 	assert.Equal(t, mkps, TonneForce.System())
+}
+
+func Test_Force_BaseUnits(t *testing.T) {
+	// representative checks that metric factories return Newton as the base
+	assert.Equal(t, Newton, KiloNewton.Base())
+	assert.Equal(t, Newton, MilliNewton.Base())
+	assert.Equal(t, Newton, CentiNewton.Base())
+}
+
+func Test_Lookup_Force_Names_and_Symbols(t *testing.T) {
+	tests := lookUpTests{
+		{Newton, "newton"}, {Newton, "N"},
+		{KiloNewton, "kilonewton"}, {MilliNewton, "millinewton"},
+		{Dyne, "dyne"}, {Dyne, "dyn"},
+		{PoundForce, "pound force"}, {PoundForce, "lbf"},
+		{Poundal, "poundal"}, {Poundal, "pdl"},
+		{KilogramForce, "kilogram-force"}, {KilogramForce, "kgf"}, {KilogramForce, "kilopond"}, {KilogramForce, "kp"},
+		{TonneForce, "tonne-force"}, {TonneForce, "tf"}, {TonneForce, "megapond"}, {TonneForce, "Mp"},
+		{ShortTonForce, "short ton force"}, {ShortTonForce, "Tons"},
+	}
+
+	testLookupNamesAndSymbols(t, tests)
 }

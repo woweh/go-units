@@ -7,7 +7,7 @@ var (
 	_temperatureDifference = Quantity(TemperatureDifference)
 
 	// SI base units: Kelvin and Celsius intervals (identical scale for differences)
-	KelvinInterval  = mustCreateNewUnit("kelvin interval", "K", _temperatureDifference, SI)
+	KelvinInterval  = mustCreateNewUnit("kelvin interval", "delta K", _temperatureDifference, SI)
 	CelsiusInterval = mustCreateNewUnit("celsius interval", "delta°C", _temperatureDifference, SI)
 
 	// Imperial/US units
@@ -29,7 +29,7 @@ func init() {
 	NewRatioConversion(KelvinInterval, FahrenheitInterval, 1.8)
 	NewRatioConversion(KelvinInterval, RankineInterval, 1.8)
 
-	KelvinInterval.AddAliases("kelvin", "K interval", "delta K")
+	KelvinInterval.AddAliases("kelvin", "K interval", "K difference", "Kelvin difference")
 	CelsiusInterval.AddAliases("celsius interval", "Celsius interval", "°C interval", "C interval", "delta C", "deltaC")
 	FahrenheitInterval.AddAliases("fahrenheit interval", "Fahrenheit interval", "°F interval", "F interval", "delta F", "deltaF")
 	RankineInterval.AddAliases("rankine interval", "Rankine interval", "°R interval", "R interval", "delta R", "deltaR")

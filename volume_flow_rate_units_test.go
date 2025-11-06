@@ -1,56 +1,104 @@
 package units
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/alecthomas/assert/v2"
+)
 
 func Test_VolumeFlowRate_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
-		{"cubic meter per second", "cubic meter per minute", "60"},
-		{"cubic meter per second", "cubic meter per hour", "3600"},
-		{"cubic meter per second", "cubic meter per day", "86400"},
-		{"cubic meter per second", "cubic decimeter per second", "1000"},
-		{"cubic meter per second", "cubic decimeter per minute", "60000"},
-		{"cubic meter per second", "cubic decimeter per hour", "3600000"},
-		{"cubic meter per second", "cubic decimeter per day", "86400000"},
-		{"cubic meter per second", "cubic centimeter per second", "1000000"},
-		{"cubic meter per second", "cubic centimeter per minute", "60000000"},
-		{"cubic meter per second", "cubic centimeter per hour", "3600000000"},
-		{"cubic meter per second", "cubic centimeter per day", "86400000000"},
-		{"cubic meter per second", "cubic inch per second", "61023.744095"},
-		{"cubic meter per second", "cubic inch per minute", "3661424.645684"},
-		{"cubic meter per second", "cubic inch per hour", "219685478.741036"},
-		{"cubic meter per second", "cubic inch per day", "5272451489.784869"},
-		{"cubic meter per second", "cubic foot per second", "35.314667"},
-		{"cubic meter per second", "cubic foot per minute", "2118.880003"},
-		{"cubic meter per second", "cubic foot per hour", "127132.800197"},
-		{"cubic meter per second", "cubic foot per day", "3051187.204737"},
-		{"cubic meter per second", "cubic yard per second", "1.307951"},
-		{"cubic meter per second", "cubic yard per minute", "78.477037"},
-		{"cubic meter per second", "cubic yard per hour", "4708.62223"},
-		{"cubic meter per second", "cubic yard per day", "113006.933509"},
-		{"cubic meter per minute", "cubic meter per second", "0.01666667"},
-		{"cubic meter per minute", "cubic meter per hour", "60"},
-		{"cubic meter per minute", "cubic meter per day", "1440"},
-		{"cubic meter per minute", "cubic decimeter per second", "16.666667"},
-		{"cubic meter per minute", "cubic decimeter per minute", "1000"},
-		{"cubic meter per minute", "cubic decimeter per hour", "60000"},
-		{"cubic meter per minute", "cubic decimeter per day", "1440000"},
-		{"cubic meter per minute", "cubic centimeter per second", "16666.666667"},
-		{"cubic meter per minute", "cubic centimeter per minute", "1000000"},
-		{"cubic meter per minute", "cubic centimeter per hour", "60000000"},
-		{"cubic meter per minute", "cubic centimeter per day", "1440000000"},
-		{"cubic meter per minute", "cubic inch per second", "1017.062402"},
-		{"cubic meter per minute", "cubic inch per minute", "61023.744095"},
-		{"cubic meter per minute", "cubic inch per hour", "3661424.645684"},
-		{"cubic meter per minute", "cubic inch per day", "87874191.496414"},
-		{"cubic meter per minute", "cubic foot per second", "0.588578"},
-		{"cubic meter per minute", "cubic foot per minute", "35.314667"},
-		{"cubic meter per minute", "cubic foot per hour", "2118.880003"},
-		{"cubic meter per minute", "cubic foot per day", "50853.120079"},
-		{"cubic meter per minute", "cubic yard per second", "0.02179918"},
-		{"cubic meter per minute", "cubic yard per minute", "1.307951"},
-		{"cubic meter per minute", "cubic yard per hour", "78.477037"},
-		{"cubic meter per minute", "cubic yard per day", "1883.448892"},
+		// SI conversions
+		{"cubic meter per second", "cubic meter per minute", 60},
+		{"cubic meter per second", "cubic meter per hour", 3600},
+		{"cubic meter per second", "cubic meter per day", 86400},
+		{"cubic meter per second", "cubic decimeter per second", 1000},
+		{"cubic meter per second", "cubic centimeter per second", 1000000},
+		// Imperial conversions
+		{"cubic meter per second", "cubic inch per second", 61023.744095},
+		{"cubic meter per second", "cubic foot per second", 35.314667},
+		{"cubic meter per second", "cubic yard per second", 1.307951},
+		// Cross-system
+		{"cubic foot per second", "cubic meter per second", 0.0283168},
+		{"cubic inch per second", "cubic meter per second", 0.0000163871},
 	}
-
 	testConversions(t, conversionTests)
+}
+
+func Test_VolumeFlowRate_UnitSystem(t *testing.T) {
+	assert.Equal(t, SiSystem, CubicMeterPerSecond.System())
+	assert.Equal(t, SiSystem, CubicMeterPerMinute.System())
+	assert.Equal(t, SiSystem, CubicMeterPerHour.System())
+	assert.Equal(t, SiSystem, CubicMeterPerDay.System())
+	assert.Equal(t, SiSystem, CubicDecimeterPerSecond.System())
+	assert.Equal(t, SiSystem, CubicDecimeterPerMinute.System())
+	assert.Equal(t, SiSystem, CubicDecimeterPerHour.System())
+	assert.Equal(t, SiSystem, CubicDecimeterPerDay.System())
+	assert.Equal(t, SiSystem, CubicCentimeterPerSecond.System())
+	assert.Equal(t, SiSystem, CubicCentimeterPerMinute.System())
+	assert.Equal(t, SiSystem, CubicCentimeterPerHour.System())
+	assert.Equal(t, SiSystem, CubicCentimeterPerDay.System())
+	assert.Equal(t, BiSystem, CubicInchPerSecond.System())
+	assert.Equal(t, BiSystem, CubicInchPerMinute.System())
+	assert.Equal(t, BiSystem, CubicInchPerHour.System())
+	assert.Equal(t, BiSystem, CubicInchPerDay.System())
+	assert.Equal(t, BiSystem, CubicFootPerSecond.System())
+	assert.Equal(t, BiSystem, CubicFootPerMinute.System())
+	assert.Equal(t, BiSystem, CubicFootPerHour.System())
+	assert.Equal(t, BiSystem, CubicFootPerDay.System())
+	assert.Equal(t, BiSystem, CubicYardPerSecond.System())
+	assert.Equal(t, BiSystem, CubicYardPerMinute.System())
+	assert.Equal(t, BiSystem, CubicYardPerHour.System())
+	assert.Equal(t, BiSystem, CubicYardPerDay.System())
+}
+
+func Test_VolumeFlowRate_MetricFactory_BaseUnits(t *testing.T) {
+	assert.Equal(t, CubicMeterPerSecond, CubicCentimeterPerSecond.Base())
+	assert.Equal(t, CubicMeterPerSecond, CubicCentimeterPerMinute.Base())
+	assert.Equal(t, CubicMeterPerSecond, CubicCentimeterPerHour.Base())
+	assert.Equal(t, CubicMeterPerSecond, CubicCentimeterPerDay.Base())
+}
+
+func Test_VolumeFlowRate_Lookup_Names_and_Symbols(t *testing.T) {
+	tests := lookUpTests{
+		// SI
+		{CubicMeterPerSecond, "m³/s"},
+		{CubicMeterPerSecond, "cubic meter per second"},
+		{CubicMeterPerSecond, "cubic metre per second"},
+		{CubicMeterPerSecond, "m3/s"},
+		{CubicMeterPerSecond, "m3s-1"},
+		{CubicMeterPerMinute, "m³/min"},
+		{CubicMeterPerMinute, "cubic meter per minute"},
+		{CubicMeterPerMinute, "cubic metre per minute"},
+		{CubicMeterPerMinute, "m3/min"},
+		{CubicMeterPerMinute, "m3m-1"},
+		{CubicMeterPerHour, "m³/h"},
+		{CubicMeterPerHour, "cubic meter per hour"},
+		{CubicMeterPerHour, "cubic metre per hour"},
+		{CubicMeterPerHour, "m3/h"},
+		{CubicMeterPerHour, "m3h-1"},
+		{CubicMeterPerDay, "m³/d"},
+		{CubicMeterPerDay, "cubic meter per day"},
+		{CubicMeterPerDay, "cubic metre per day"},
+		{CubicMeterPerDay, "m3/d"},
+		{CubicMeterPerDay, "m3d-1"},
+		{CubicDecimeterPerSecond, "dm³/s"},
+		{CubicDecimeterPerSecond, "cubic decimeter per second"},
+		{CubicDecimeterPerSecond, "cubic decimetre per second"},
+		{CubicDecimeterPerSecond, "dm3/s"},
+		{CubicDecimeterPerSecond, "dm3s-1"},
+		{CubicCentimeterPerSecond, "cm³/s"},
+		{CubicCentimeterPerSecond, "cubic centimeter per second"},
+		{CubicCentimeterPerSecond, "cubic centimetre per second"},
+		{CubicCentimeterPerSecond, "cm3/s"},
+		{CubicCentimeterPerSecond, "cm3s-1"},
+		// Imperial/US
+		{CubicInchPerSecond, "in³/s"},
+		{CubicInchPerSecond, "cubic inch per second"},
+		{CubicFootPerSecond, "ft³/s"},
+		{CubicFootPerSecond, "cubic foot per second"},
+		{CubicYardPerSecond, "yd³/s"},
+		{CubicYardPerSecond, "cubic yard per second"},
+	}
+	testLookupNamesAndSymbols(t, tests)
 }

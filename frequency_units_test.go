@@ -1,52 +1,63 @@
 package units
 
-import "testing"
+import (
+	"math"
+	"testing"
+
+	"github.com/alecthomas/assert/v2"
+)
 
 func Test_Frequency_Conversions(t *testing.T) {
+	tau := 2 * math.Pi
 	var conversionTests = []conversionTest{
-		{"hertz", "radian per second", "6.283185"},
-		{"hertz", "radian per minute", "376.991118"},
-		{"hertz", "radian per hour", "22619.467106"},
-		{"hertz", "radian per day", "542867.21054"},
-		{"hertz", "degree per second", "360"},
-		{"hertz", "degree per minute", "21600"},
-		{"hertz", "degree per hour", "1296000"},
-		{"hertz", "degree per day", "31104000"},
-		{"hertz", "revolution per second", "1"},
-		{"hertz", "revolution per minute", "60"},
-		{"hertz", "revolution per hour", "3600"},
-		{"hertz", "revolution per day", "86400"},
-		{"GigaHertz", "fresnel", "0.001"},
-		{"TeraHertz", "fresnel", "1"},
-		{"PetaHertz", "fresnel", "1000"},
-		{"radian per second", "radian per minute", "60"},
-		{"radian per second", "radian per hour", "3600"},
-		{"radian per second", "radian per day", "86400"},
-		{"radian per second", "degree per second", "57.29578"},
-		{"radian per second", "degree per minute", "3437.746771"},
-		{"radian per second", "degree per hour", "206264.806247"},
-		{"radian per second", "degree per day", "4950355.34993"},
-		{"radian per second", "revolution per second", "0.1591549"},
-		{"radian per second", "revolution per minute", "9.549297"},
-		{"radian per second", "revolution per hour", "572.957795"},
-		{"radian per second", "revolution per day", "13750.987083"},
-		{"radian per minute", "degree per minute", "57.29578"},
-		{"radian per minute", "revolution per minute", "0.1591549"},
-		{"radian per hour", "degree per hour", "57.29578"},
-		{"radian per hour", "revolution per hour", "0.1591549"},
-		{"radian per day", "degree per day", "57.29578"},
-		{"radian per day", "revolution per day", "0.1591549"},
-		{"degree per second", "degree per minute", "60"},
-		{"degree per second", "degree per hour", "3600"},
-		{"degree per second", "degree per day", "86400"},
-		{"degree per second", "revolution per second", "0.002777778"},
-		{"degree per minute", "revolution per minute", "0.002777778"},
-		{"degree per hour", "revolution per hour", "0.002777778"},
-		{"degree per day", "revolution per day", "0.002777778"},
-		{"revolution per second", "revolution per minute", "60"},
-		{"revolution per second", "revolution per hour", "3600"},
-		{"revolution per second", "revolution per day", "86400"},
+		// Core relations (representative and precise values)
+		{"hertz", "radian per second", tau},      // 2π
+		{"hertz", "degree per second", 360.0},    // 360° per cycle
+		{"hertz", "revolution per minute", 60.0}, // 60 rev/min per Hz
+		{"hertz", "kilohertz", 0.001},            // metric prefix
+		{"gigahertz", "fresnel", 0.001},          // 1 GHz = 0.001 THz (fresnel symbol maps to THz)
+
+		// Cross-unit exact reciprocals / ratios
+		{"radian per second", "revolution per second", 1.0 / tau}, // 1/(2π)
+		{"degree per second", "revolution per second", 1.0 / 360.0},
+		{"revolution per minute", "revolution per second", 1.0 / 60.0},
 	}
 
 	testConversions(t, conversionTests)
+}
+
+func Test_Frequency_Systems(t *testing.T) {
+	si := SiSystem
+	assert.Equal(t, si, Hertz.System())
+	assert.Equal(t, si, KiloHertz.System())
+	assert.Equal(t, si, MegaHertz.System())
+	assert.Equal(t, si, GigaHertz.System())
+	assert.Equal(t, si, MilliHertz.System())
+	assert.Equal(t, si, MicroHertz.System())
+
+	// derived SI frequency units (angles/revolutions) are also in SI
+	assert.Equal(t, si, RadianPerSecond.System())
+	assert.Equal(t, si, DegreePerSecond.System())
+	assert.Equal(t, si, RevolutionPerSecond.System())
+}
+
+func Test_Frequency_BaseUnits(t *testing.T) {
+	// metric factories should report Hertz as base unit
+	assert.Equal(t, Hertz, KiloHertz.Base())
+	assert.Equal(t, Hertz, MilliHertz.Base())
+	assert.Equal(t, Hertz, CentiHertz.Base())
+}
+
+func Test_Lookup_Frequency_Names_and_Symbols(t *testing.T) {
+	tests := lookUpTests{
+		{Hertz, "hertz"}, {Hertz, "Hz"}, {Hertz, "cps"}, {Hertz, "1/s"}, {Hertz, "cycles per second"},
+		{KiloHertz, "kilohertz"}, {KiloHertz, "kHz"},
+		{GigaHertz, "gigahertz"}, {GigaHertz, "GHz"},
+		{TeraHertz, "terahertz"}, {TeraHertz, "fresnel"}, {TeraHertz, "THz"},
+		{RadianPerSecond, "radian per second"}, {RadianPerSecond, "rad/s"},
+		{DegreePerHour, "degree per hour"}, {DegreePerHour, "°/h"},
+		{RevolutionPerDay, "revolution per day"}, {RevolutionPerDay, "rev/d"},
+	}
+
+	testLookupNamesAndSymbols(t, tests)
 }

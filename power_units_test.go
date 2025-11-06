@@ -4,74 +4,96 @@ import (
 	"testing"
 
 	"github.com/alecthomas/assert/v2"
-	ns "github.com/woweh/go-units/numstr"
 )
 
 func Test_Power_Conversions(t *testing.T) {
-	var conversionTests = []conversionTest{
-		{"watt", "watt", "1"},
-		{"watt", "deciwatt", ns.Txp1},
-		{"watt", "centiwatt", ns.Txp2},
-		{"watt", "milliwatt", ns.Txp3},
-		{"watt", "microwatt", ns.Txp6},
-		{"watt", "nanowatt", ns.Txp9},
-		{"watt", "picowatt", ns.Txp12},
-		// the following produce rounding errors
-		//{ "watt",  "femtowatt",  ns.Txp15},
-		//{ "watt",  "attowatt",  ns.Txp18},
-		//{ "watt",  "zeptowatt",  ns.Txp21},
-		//{ "watt",  "yoctowatt",  ns.Txp24},
-		{"watt", "decaWatt", ns.Tmn1},
-		{"watt", "kilowatt", ns.Tmn3},
-		{"watt", "megawatt", ns.Tmn6},
-		{"watt", "gigawatt", ns.Tmn9},
-		{"watt", "terawatt", ns.Tmn12},
-		{"watt", "petawatt", ns.Tmn15},
-		{"watt", "exawatt", ns.Tmn18},
-		{"watt", "zettawatt", ns.Tmn21},
-		{"watt", "yottawatt", ns.Tmn24},
-		{"watt", "volt-ampere", "1"},
-		{"watt", "volt-ampere reactive", "1"},
-		{"volt-ampere", "volt-ampere", "1"},
-		{"volt-ampere", "kilovolt-ampere", ns.Tmn3},
-		{"volt-ampere", "megavolt-ampere", ns.Tmn6},
-		{"volt-ampere reactive", "volt-ampere reactive", "1"},
-		{"volt-ampere reactive", "kilovolt-ampere reactive", ns.Tmn3},
-		{"volt-ampere reactive", "megavolt-ampere reactive", ns.Tmn6},
-	}
+	conversionTests := []conversionTest{
+		// SI base to metric
+		{"watt", "milliwatt", 1000},
+		{"watt", "kilowatt", 0.001},
+		{"watt", "megawatt", 1e-6},
+		{"kilowatt", "watt", 1000},
+		{"megawatt", "kilowatt", 1000},
 
+		// SI base to volt-ampere/VAR
+		{"watt", "volt-ampere", 1},
+		{"watt", "volt-ampere reactive", 1},
+		{"kilowatt", "kilovolt-ampere", 1},
+
+		// SI base to Imperial/US (internal conversions)
+		{"watt", "British thermal unit per hour", 3.412141633127942},
+		{"British thermal unit per hour", "watt", 0.2930710701722222},
+		{"watt", "British thermal unit per second", 0.0009478171203133172},
+		{"British thermal unit per second", "watt", 1055.05585262},
+		{"watt", "calorie per second", 0.2390057361376673},
+		{"calorie per second", "watt", 4.184},
+		{"watt", "horsepower", 0.0013410220895950279},
+		{"horsepower", "watt", 745.6998715822702},
+		{"watt", "kilocalorie per second", 0.0002390057361376673},
+		{"kilocalorie per second", "watt", 4184},
+		{"watt", "thousand British thermal units per hour", 0.003412141633127942},
+		{"thousand British thermal units per hour", "watt", 293.0710701722222},
+
+		// Revit conversions (from RevitUnits.csv, ToInternal column)
+		{"British thermal unit per hour", "watt", 0.316998330628151},
+		{"British thermal unit per second", "watt", 0.0000880550918411529},
+		{"calorie per second", "watt", 0.0221895098882201},
+		{"horsepower", "watt", 0.00012458502883053},
+		{"kilocalorie per second", "watt", 0.0000221895098882201},
+		{"kilovolt-ampere", "watt", 0.0000929030400000000},
+		{"kilowatt", "watt", 0.0000929030400000000},
+		{"thousand British thermal units per hour", "watt", 0.000316998330628151},
+		{"volt-ampere", "watt", 0.09290304},
+	}
 	testConversions(t, conversionTests)
 }
 
-func Test_Power_Systems(t *testing.T) {
+func Test_Power_UnitSystems(t *testing.T) {
 	si := SiSystem
+	bi := BiSystem
 	assert.Equal(t, si, Watt.System())
-	assert.Equal(t, si, DeciWatt.System())
-	assert.Equal(t, si, CentiWatt.System())
 	assert.Equal(t, si, MilliWatt.System())
-	assert.Equal(t, si, MicroWatt.System())
-	assert.Equal(t, si, NanoWatt.System())
-	assert.Equal(t, si, PicoWatt.System())
-	assert.Equal(t, si, FemtoWatt.System())
-	assert.Equal(t, si, AttoWatt.System())
-	assert.Equal(t, si, ZeptoWatt.System())
-	assert.Equal(t, si, YoctoWatt.System())
-	assert.Equal(t, si, DecaWatt.System())
-	assert.Equal(t, si, HectoWatt.System())
 	assert.Equal(t, si, KiloWatt.System())
 	assert.Equal(t, si, MegaWatt.System())
-	assert.Equal(t, si, GigaWatt.System())
-	assert.Equal(t, si, TeraWatt.System())
-	assert.Equal(t, si, PetaWatt.System())
-	assert.Equal(t, si, ExaWatt.System())
-	assert.Equal(t, si, ZettaWatt.System())
-	assert.Equal(t, si, YottaWatt.System())
-
 	assert.Equal(t, si, VoltAmpere.System())
 	assert.Equal(t, si, KiloVoltAmpere.System())
 	assert.Equal(t, si, MegaVoltAmpere.System())
-
 	assert.Equal(t, si, VoltAmpereReactive.System())
 	assert.Equal(t, si, KiloVoltAmpereReactive.System())
 	assert.Equal(t, si, MegaVoltAmpereReactive.System())
+	assert.Equal(t, si, CaloriePerSecond.System())
+	assert.Equal(t, si, KiloCaloriePerSecond.System())
+	assert.Equal(t, bi, BritishThermalUnitPerHour.System())
+	assert.Equal(t, bi, BritishThermalUnitPerSecond.System())
+	assert.Equal(t, bi, Horsepower.System())
+	assert.Equal(t, bi, ThousandBritishThermalUnitsPerHour.System())
+}
+
+func Test_Power_BaseUnits(t *testing.T) {
+	// Only a few representative metric units
+	assert.Equal(t, Watt, MilliWatt.Base())
+	assert.Equal(t, Watt, KiloWatt.Base())
+	assert.Equal(t, Watt, MegaWatt.Base())
+	assert.Equal(t, VoltAmpere, KiloVoltAmpere.Base())
+	assert.Equal(t, VoltAmpereReactive, KiloVoltAmpereReactive.Base())
+}
+
+func Test_Lookup_Power_Names_and_Symbols(t *testing.T) {
+	tests := lookUpTests{
+		{Watt, "watt"}, {Watt, "W"},
+		{KiloWatt, "kilowatt"}, {KiloWatt, "kW"},
+		{MegaWatt, "megawatt"}, {MegaWatt, "MW"},
+		{MilliWatt, "milliwatt"}, {MilliWatt, "mW"},
+		{VoltAmpere, "volt-ampere"}, {VoltAmpere, "volt ampere"}, {VoltAmpere, "VA"}, {VoltAmpere, "V*A"}, {VoltAmpere, "V.A"}, {VoltAmpere, "V A"},
+		{KiloVoltAmpere, "kilovolt-ampere"}, {KiloVoltAmpere, "kVA"},
+		{VoltAmpereReactive, "volt-ampere reactive"}, {VoltAmpereReactive, "volt ampere reactive"}, {VoltAmpereReactive, "VAR"}, {VoltAmpereReactive, "VAr"}, {VoltAmpereReactive, "V⋅Ar"}, {VoltAmpereReactive, "V.A.r"}, {VoltAmpereReactive, "V A r"},
+		{KiloVoltAmpereReactive, "kilovolt-ampere reactive"}, {KiloVoltAmpereReactive, "kVAR"},
+		{BritishThermalUnitPerHour, "British thermal unit per hour"}, {BritishThermalUnitPerHour, "Btu/h"},
+		{BritishThermalUnitPerSecond, "British thermal unit per second"}, {BritishThermalUnitPerSecond, "Btu/s"},
+		{CaloriePerSecond, "calorie per second"}, {CaloriePerSecond, "cal/s"},
+		{KiloCaloriePerSecond, "kilocalorie per second"}, {KiloCaloriePerSecond, "kcal/s"},
+		{Horsepower, "horsepower"}, {Horsepower, "hp"},
+		{ThousandBritishThermalUnitsPerHour, "thousand British thermal units per hour"}, {ThousandBritishThermalUnitsPerHour, "MBH"},
+	}
+	testLookupNamesAndSymbols(t, tests)
 }

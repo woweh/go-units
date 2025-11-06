@@ -19,10 +19,10 @@ var (
 	SlopeInverseRatio = mustCreateNewUnit("inverse slope ratio", "", _slope, SI, Plural(PluralNone))
 	// SlopeDegree is the angle of inclination in degrees (e.g. 45°), SI system
 	SlopeDegree = mustCreateNewUnit("slope degree", "deg", _slope, SI, Plural(PluralNone))
-	// SlopePercent 100 * m = 100 * (rise/run) = 100 * tan(α), SI system
-	SlopePercent = mustCreateNewUnit("slope percent", "%", _slope, SI, Plural(PluralNone))
-	// SlopePermille 1000 * m = 1000 * (rise/run) = 1000 * tan(α), SI system
-	SlopePermille = mustCreateNewUnit("slope permille", "‰", _slope, SI, Plural(PluralNone))
+	// SlopePercent 100 * m = 100 * (rise/run) = 100 * tan(α), SI system - note that the % symbol is already used by Percent
+	SlopePercent = mustCreateNewUnit("slope percent", "", _slope, SI, Plural(PluralNone))
+	// SlopePermille 1000 * m = 1000 * (rise/run) = 1000 * tan(α), SI system - note that the ‰ symbol is already used by Permille
+	SlopePermille = mustCreateNewUnit("slope permille", "", _slope, SI, Plural(PluralNone))
 )
 
 func init() {

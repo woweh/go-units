@@ -1,22 +1,57 @@
 package units
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/alecthomas/assert/v2"
+)
 
 func Test_Slope_Conversions(t *testing.T) {
-	var conversionTests = []conversionTest{
-		{from: "slope value", to: "slope ratio", val: "1"},
-		{from: "slope value", to: "inverse slope ratio", val: "1"},
-		{from: "slope value", to: "slope degree", val: "45"},
-		{from: "slope value", to: "slope percent", val: "100"},
-		{from: "slope value", to: "slope permille", val: "1000"},
-		{from: "slope percent", to: "slope degree", val: "0.572939"},
-		{from: "slope percent", to: "slope permille", val: "10"},
-		{from: "slope permille", to: "slope degree", val: "0.0572958"},
-		{from: "slope degree", to: "slope percent", val: "1.745506"},
-		{from: "slope degree", to: "slope permille", val: "17.455065"},
-		{from: "slope degree", to: "slope value", val: "0.01745506"},
-		{from: "slope degree", to: "slope ratio", val: "57.289962"},
-	}
+	conversionTests := []conversionTest{
+		// Revit conversions (from internal and to internal, see RevitUnits.csv)
+		{"slope value", "slope percent", 100},
+		{"slope percent", "slope value", 0.01},
+		{"slope value", "slope permille", 1000},
+		{"slope permille", "slope value", 0.001},
+		{"slope value", "slope ratio", 1},
+		{"slope ratio", "slope value", 1},
+		{"slope value", "slope degree", 45},
+		{"slope degree", "slope value", 1},
 
+		// Core conversions (no identity, no redundant metric)
+		{"slope value", "inverse slope ratio", 1},
+		{"slope percent", "slope degree", 0.572939},
+		{"slope percent", "slope permille", 10},
+		{"slope permille", "slope degree", 0.0572958},
+		{"slope degree", "slope percent", 1.745506},
+		{"slope degree", "slope permille", 17.455065},
+		{"slope degree", "slope ratio", 57.289962},
+	}
 	testConversions(t, conversionTests)
+}
+
+func Test_Slope_UnitSystem(t *testing.T) {
+	assert.Equal(t, SiSystem, SlopeValue.System())
+	assert.Equal(t, SiSystem, SlopeRatio.System())
+	assert.Equal(t, SiSystem, SlopeInverseRatio.System())
+	assert.Equal(t, SiSystem, SlopeDegree.System())
+	assert.Equal(t, SiSystem, SlopePercent.System())
+	assert.Equal(t, SiSystem, SlopePermille.System())
+}
+
+// Slope does not have derived metric units or metric factories, so no base unit tests are needed.
+
+func Test_Slope_Lookup_Names_and_Symbols(t *testing.T) {
+	tests := lookUpTests{
+		{SlopeDegree, "deg"},
+		{SlopePercent, "%"},
+		{SlopePermille, "‰"},
+		{SlopeDegree, "slope degree"},
+		{SlopePercent, "slope percent"},
+		{SlopePermille, "slope permille"},
+		{SlopeValue, "slope value"},
+		{SlopeRatio, "slope ratio"},
+		{SlopeInverseRatio, "inverse slope ratio"},
+	}
+	testLookupNamesAndSymbols(t, tests)
 }

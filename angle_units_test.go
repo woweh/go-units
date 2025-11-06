@@ -16,7 +16,7 @@ func Test_Angle_Conversions(t *testing.T) {
 		{"radian", "gon", 63.6619772367582},
 		{"gon", "radian", 0.0157079632679489},
 
-		{"radian", "DMS", 57.2957795130824},
+		{"radian", "DMS", 57.174481},
 		{"DMS", "radian", 0.0174532925199433},
 
 		// Internal implementation conversions
