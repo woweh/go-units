@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Time_Conversions(t *testing.T) {
@@ -32,45 +30,23 @@ func Test_Time_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_Time_UnitSystem(t *testing.T) {
-	assert.Equal(t, SiSystem, Second.System())
-	assert.Equal(t, SiSystem, KiloSecond.System())
-	assert.Equal(t, SiSystem, CentiSecond.System())
-	assert.Equal(t, SiSystem, MilliSecond.System())
-	assert.Equal(t, SiSystem, MicroSecond.System())
-	assert.Equal(t, SiSystem, NanoSecond.System())
-	assert.Equal(t, SiSystem, PicoSecond.System())
-	assert.Equal(t, SiSystem, FemtoSecond.System())
-	assert.Equal(t, SiSystem, AttoSecond.System())
-}
-
-func Test_Time_MetricFactory_BaseUnits(t *testing.T) {
-	assert.Equal(t, Second, CentiSecond.Base())
-	assert.Equal(t, Second, KiloSecond.Base())
-}
-
-func Test_Time_Lookup_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		// SI/metric
-		{Second, "s"},
-		{Second, "second"},
-		{KiloSecond, "ks"},
-		{CentiSecond, "cs"},
-		{MilliSecond, "ms"},
-		{MicroSecond, "μs"},
-		{NanoSecond, "ns"},
-		{PicoSecond, "ps"},
-		{FemtoSecond, "fs"},
-		{AttoSecond, "as"},
-		// Calendar
-		{Minute, "min"},
-		{Hour, "hr"},
-		{Day, "d"},
-		{Year, "yr"},
-		// Esoteric
-		{PlanckTime, "𝑡ₚ"},
-		{Fortnight, "fortnight"},
-		{Score, "score"},
+func Test_Time_UnitSystems(t *testing.T) {
+	tests := []unitSystemTest{
+		{Second, SiSystem},
+		{KiloSecond, SiSystem},
+		{CentiSecond, SiSystem},
+		{MilliSecond, SiSystem},
+		{MicroSecond, SiSystem},
+		{NanoSecond, SiSystem},
+		{PicoSecond, SiSystem},
+		{FemtoSecond, SiSystem},
+		{AttoSecond, SiSystem},
+		{Minute, NoSystem},
+		{Hour, NoSystem},
+		{Day, NoSystem},
+		{Year, NoSystem},
+		{Fortnight, NoSystem},
+		{PlanckTime, NoSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

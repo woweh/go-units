@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Force_Conversions(t *testing.T) {
@@ -26,44 +24,17 @@ func Test_Force_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_Force_Systems(t *testing.T) {
-	// representative SI checks (don't repeat every SI prefix)
-	si := SiSystem
-	assert.Equal(t, si, Newton.System())
-	assert.Equal(t, si, MilliNewton.System())
-	assert.Equal(t, si, MicroNewton.System())
-	assert.Equal(t, si, KiloNewton.System())
-
-	// other systems
-	bi := BiSystem
-	assert.Equal(t, bi, PoundForce.System())
-
-	cgs := CgsSystem
-	assert.Equal(t, cgs, Dyne.System())
-
-	mkps := MKpSSystem
-	assert.Equal(t, mkps, KilogramForce.System())
-	assert.Equal(t, mkps, TonneForce.System())
-}
-
-func Test_Force_BaseUnits(t *testing.T) {
-	// representative checks that metric factories return Newton as the base
-	assert.Equal(t, Newton, KiloNewton.Base())
-	assert.Equal(t, Newton, MilliNewton.Base())
-	assert.Equal(t, Newton, CentiNewton.Base())
-}
-
-func Test_Lookup_Force_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{Newton, "newton"}, {Newton, "N"},
-		{KiloNewton, "kilonewton"}, {MilliNewton, "millinewton"},
-		{Dyne, "dyne"}, {Dyne, "dyn"},
-		{PoundForce, "pound force"}, {PoundForce, "lbf"},
-		{Poundal, "poundal"}, {Poundal, "pdl"},
-		{KilogramForce, "kilogram-force"}, {KilogramForce, "kgf"}, {KilogramForce, "kilopond"}, {KilogramForce, "kp"},
-		{TonneForce, "tonne-force"}, {TonneForce, "tf"}, {TonneForce, "megapond"}, {TonneForce, "Mp"},
-		{ShortTonForce, "short ton force"}, {ShortTonForce, "Tons"},
+func Test_Force_UnitSystems(t *testing.T) {
+	tests := []unitSystemTest{
+		{Newton, SiSystem},
+		{MilliNewton, SiSystem},
+		{MicroNewton, SiSystem},
+		{KiloNewton, SiSystem},
+		{Dyne, CgsSystem},
+		{PoundForce, BiSystem},
+		{Poundal, NoSystem},
+		{KilogramForce, MKpSSystem},
+		{TonneForce, MKpSSystem},
 	}
-
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

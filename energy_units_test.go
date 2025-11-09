@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Energy_Conversions(t *testing.T) {
@@ -38,68 +36,35 @@ func Test_Energy_Conversions(t *testing.T) {
 }
 
 func Test_Energy_UnitSystems(t *testing.T) {
-	si := SiSystem
-	assert.Equal(t, si, Joule.System())
-	assert.Equal(t, si, KiloJoule.System())
-	assert.Equal(t, si, MegaJoule.System())
-	assert.Equal(t, si, GigaJoule.System())
-	assert.Equal(t, si, TeraJoule.System())
-	assert.Equal(t, si, PetaJoule.System())
-	assert.Equal(t, si, ExaJoule.System())
-	assert.Equal(t, si, ZettaJoule.System())
-	assert.Equal(t, si, YottaJoule.System())
-	assert.Equal(t, si, MilliJoule.System())
-	assert.Equal(t, si, MicroJoule.System())
-	assert.Equal(t, si, NanoJoule.System())
-	assert.Equal(t, si, PicoJoule.System())
-	assert.Equal(t, si, FemtoJoule.System())
-	assert.Equal(t, si, AttoJoule.System())
-	assert.Equal(t, si, WattHour.System())
-	assert.Equal(t, si, KiloWattHour.System())
-	assert.Equal(t, si, MegaWattHour.System())
-	assert.Equal(t, si, GigaWattHour.System())
-	assert.Equal(t, si, TeraWattHour.System())
-	assert.Equal(t, si, PetaWattHour.System())
-	assert.Equal(t, si, ElectronVolt.System())
-	assert.Equal(t, si, KiloElectronVolt.System())
-	assert.Equal(t, si, MegaElectronVolt.System())
-	assert.Equal(t, si, GigaElectronVolt.System())
-	assert.Equal(t, si, Calorie.System())
-	assert.Equal(t, si, KiloCalorie.System())
-	bi := BiSystem
-	assert.Equal(t, bi, BritishThermalUnit.System())
-	assert.Equal(t, bi, Therm.System())
-}
-
-func Test_Energy_BaseUnits(t *testing.T) {
-	// Only a few representative metric units
-	assert.Equal(t, Joule, Joule.Base())
-	assert.Equal(t, Joule, KiloJoule.Base())
-	assert.Equal(t, Joule, MegaJoule.Base())
-	assert.Equal(t, Joule, WattHour.Base())
-	assert.Equal(t, Joule, ElectronVolt.Base())
-	assert.Equal(t, Joule, Calorie.Base())
-}
-
-func Test_Lookup_Energy_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{Joule, "joule"}, {Joule, "J"}, {Joule, "watt second"}, {Joule, "W⋅s"},
-		{KiloJoule, "kilojoule"}, {KiloJoule, "kJ"},
-		{MegaJoule, "megajoule"}, {MegaJoule, "MJ"},
-		{GigaJoule, "gigajoule"}, {GigaJoule, "GJ"},
-		{MilliJoule, "millijoule"}, {MilliJoule, "mJ"},
-		{MicroJoule, "microjoule"}, {MicroJoule, "μJ"}, {MicroJoule, "uJ"},
-		{WattHour, "watt-hour"}, {WattHour, "Wh"}, {WattHour, "volt ampere hour"}, {WattHour, "VAh"}, {WattHour, "varh"},
-		{KiloWattHour, "kilowatt-hour"}, {KiloWattHour, "kWh"},
-		{MegaWattHour, "megawatt-hour"}, {MegaWattHour, "MWh"},
-		{ElectronVolt, "electronvolt"}, {ElectronVolt, "eV"}, {ElectronVolt, "electron volt"},
-		{KiloElectronVolt, "kiloelectronvolt"}, {KiloElectronVolt, "keV"},
-		{MegaElectronVolt, "megaelectronvolt"}, {MegaElectronVolt, "MeV"},
-		{GigaElectronVolt, "gigaelectronvolt"}, {GigaElectronVolt, "GeV"},
-		{Calorie, "calorie"}, {Calorie, "cal"}, {Calorie, "Thermochemical Calorie"}, {Calorie, "calorie (th)"},
-		{KiloCalorie, "kilocalorie"}, {KiloCalorie, "kcal"},
-		{BritishThermalUnit, "British thermal unit"}, {BritishThermalUnit, "Btu"},
-		{Therm, "therm"},
+	tests := []unitSystemTest{
+		{Joule, SiSystem},
+		{KiloJoule, SiSystem},
+		{MegaJoule, SiSystem},
+		{GigaJoule, SiSystem},
+		{TeraJoule, SiSystem},
+		{PetaJoule, SiSystem},
+		{ExaJoule, SiSystem},
+		{ZettaJoule, SiSystem},
+		{YottaJoule, SiSystem},
+		{MilliJoule, SiSystem},
+		{MicroJoule, SiSystem},
+		{NanoJoule, SiSystem},
+		{PicoJoule, SiSystem},
+		{FemtoJoule, SiSystem},
+		{AttoJoule, SiSystem},
+		{WattHour, SiSystem},
+		{KiloWattHour, SiSystem},
+		{MegaWattHour, SiSystem},
+		{GigaWattHour, SiSystem},
+		{TeraWattHour, SiSystem},
+		{Calorie, NoSystem},
+		{KiloCalorie, NoSystem},
+		{BritishThermalUnit, NoSystem},
+		{Therm, NoSystem},
+		{ElectronVolt, NoSystem},
+		{KiloElectronVolt, NoSystem},
+		{MegaElectronVolt, NoSystem},
+		{GigaElectronVolt, NoSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

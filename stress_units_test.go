@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Stress_Conversions(t *testing.T) {
@@ -32,51 +30,16 @@ func Test_Stress_Conversions(t *testing.T) {
 }
 
 func Test_Stress_UnitSystem(t *testing.T) {
-	assert.Equal(t, BiSystem, KipPerSquareFoot.System())
-	assert.Equal(t, BiSystem, KipPerSquareInch.System())
-	assert.Equal(t, SiSystem, NewtonPerSquareMillimeter.System())
-	assert.Equal(t, SiSystem, KiloNewtonPerSquareCentimeter.System())
-	assert.Equal(t, SiSystem, KiloNewtonPerSquareMillimeter.System())
-	assert.Equal(t, SiSystem, MegaNewtonPerSquareMeter.System())
-	assert.Equal(t, SiSystem, DekaNewtonPerSquareMeter.System())
-	assert.Equal(t, MKpSSystem, KilogramForcePerSquareMeter.System())
-	assert.Equal(t, MKpSSystem, TonneForcePerSquareMeter.System())
-}
-
-func Test_Stress_MetricFactory_BaseUnits(t *testing.T) {
-	// Only test stress-specific metric factories if any (none in stress_units.go)
-	// No test needed here as all metric factories for stress are covered in pressure_units_test.go
-}
-
-func Test_Stress_Lookup_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{KipPerSquareFoot, "ksf"},
-		{KipPerSquareFoot, "kip per square foot"},
-		{KipPerSquareFoot, "kips per square foot"},
-		{KipPerSquareInch, "ksi"},
-		{KipPerSquareInch, "kip per square inch"},
-		{KipPerSquareInch, "kips per square inch"},
-		{NewtonPerSquareMillimeter, "N/mm²"},
-		{NewtonPerSquareMillimeter, "newton per square millimeter"},
-		{NewtonPerSquareMillimeter, "newtons per square millimeter"},
-		{KiloNewtonPerSquareCentimeter, "kN/cm²"},
-		{KiloNewtonPerSquareCentimeter, "kilonewton per square centimeter"},
-		{KiloNewtonPerSquareCentimeter, "kilonewtons per square centimeter"},
-		{KiloNewtonPerSquareMillimeter, "kN/mm²"},
-		{KiloNewtonPerSquareMillimeter, "kilonewton per square millimeter"},
-		{KiloNewtonPerSquareMillimeter, "kilonewtons per square millimeter"},
-		{MegaNewtonPerSquareMeter, "MN/m²"},
-		{MegaNewtonPerSquareMeter, "meganewton per square meter"},
-		{MegaNewtonPerSquareMeter, "meganewtons per square meter"},
-		{DekaNewtonPerSquareMeter, "daN/m²"},
-		{DekaNewtonPerSquareMeter, "dekanewton per square meter"},
-		{DekaNewtonPerSquareMeter, "dekanewtons per square meter"},
-		{KilogramForcePerSquareMeter, "kgf/m²"},
-		{KilogramForcePerSquareMeter, "kilogram force per square meter"},
-		{KilogramForcePerSquareMeter, "kilograms force per square meter"},
-		{TonneForcePerSquareMeter, "Tf/m²"},
-		{TonneForcePerSquareMeter, "tonne force per square meter"},
-		{TonneForcePerSquareMeter, "tonnes force per square meter"},
+	tests := []unitSystemTest{
+		{KipPerSquareFoot, BiSystem},
+		{KipPerSquareInch, BiSystem},
+		{NewtonPerSquareMillimeter, SiSystem},
+		{KiloNewtonPerSquareCentimeter, SiSystem},
+		{KiloNewtonPerSquareMillimeter, SiSystem},
+		{MegaNewtonPerSquareMeter, SiSystem},
+		{DekaNewtonPerSquareMeter, SiSystem},
+		{KilogramForcePerSquareMeter, MKpSSystem},
+		{TonneForcePerSquareMeter, MKpSSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

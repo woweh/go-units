@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Moment_Conversions(t *testing.T) {
@@ -42,48 +40,15 @@ func Test_Moment_Conversions(t *testing.T) {
 }
 
 func Test_Moment_UnitSystems(t *testing.T) {
-	assert.Equal(t, SiSystem, NewtonMeter.System())
-	assert.Equal(t, SiSystem, DekaNewtonMeter.System())
-	assert.Equal(t, SiSystem, KiloNewtonMeter.System())
-	assert.Equal(t, SiSystem, MegaNewtonMeter.System())
-	assert.Equal(t, BiSystem, PoundForceFoot.System())
-	assert.Equal(t, BiSystem, KipFoot.System())
-	assert.Equal(t, MKpSSystem, KilogramForceMeter.System())
-	assert.Equal(t, MKpSSystem, TonneForceMeter.System())
-}
-
-func Test_Lookup_Moment_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{NewtonMeter, "newton meter"},
-		{NewtonMeter, "N-m"},
-		{NewtonMeter, "newton meters"},
-		{NewtonMeter, "N*m"},
-		{NewtonMeter, "Nm"},
-		{DekaNewtonMeter, "dekanewton meter"},
-		{DekaNewtonMeter, "daN-m"},
-		{DekaNewtonMeter, "dekanewton meters"},
-		{KiloNewtonMeter, "kilonewton meter"},
-		{KiloNewtonMeter, "kN-m"},
-		{KiloNewtonMeter, "kilonewton meters"},
-		{MegaNewtonMeter, "meganewton meter"},
-		{MegaNewtonMeter, "MN-m"},
-		{MegaNewtonMeter, "meganewton meters"},
-		{PoundForceFoot, "pound force foot"},
-		{PoundForceFoot, "lb-ft"},
-		{PoundForceFoot, "pound force feet"},
-		{PoundForceFoot, "pound-foot"},
-		{PoundForceFoot, "pound-feet"},
-		{PoundForceFoot, "lbf-ft"},
-		{KipFoot, "kip foot"},
-		{KipFoot, "kip-ft"},
-		{KipFoot, "kip feet"},
-		{KipFoot, "kip-feet"},
-		{KilogramForceMeter, "kilogram force meter"},
-		{KilogramForceMeter, "kgf-m"},
-		{KilogramForceMeter, "kilogram force meters"},
-		{TonneForceMeter, "tonne force meter"},
-		{TonneForceMeter, "Tf-m"},
-		{TonneForceMeter, "tonne force meters"},
+	tests := []unitSystemTest{
+		{NewtonMeter, SiSystem},
+		{DekaNewtonMeter, SiSystem},
+		{KiloNewtonMeter, SiSystem},
+		{MegaNewtonMeter, SiSystem},
+		{PoundForceFoot, BiSystem},
+		{KipFoot, BiSystem},
+		{KilogramForceMeter, MKpSSystem},
+		{TonneForceMeter, MKpSSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

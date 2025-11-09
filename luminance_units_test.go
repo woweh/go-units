@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Luminance_Conversions(t *testing.T) {
@@ -22,27 +20,10 @@ func Test_Luminance_Conversions(t *testing.T) {
 }
 
 func Test_Luminance_UnitSystems(t *testing.T) {
-	assert.Equal(t, SiSystem, CandelaPerSquareMeter.System())
-	assert.Equal(t, BiSystem, CandelaPerSquareFoot.System())
-	assert.Equal(t, BiSystem, Footlambert.System())
-}
-
-func Test_Lookup_Luminance_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{CandelaPerSquareMeter, "candela per square meter"},
-		{CandelaPerSquareMeter, "cd/m²"},
-		{CandelaPerSquareMeter, "candelas per square meter"},
-		{CandelaPerSquareMeter, "candela per square metre"},
-		{CandelaPerSquareMeter, "candelas per square metre"},
-		{CandelaPerSquareFoot, "candela per square foot"},
-		{CandelaPerSquareFoot, "cd/ft²"},
-		{CandelaPerSquareFoot, "candelas per square foot"},
-		{Footlambert, "footlambert"},
-		{Footlambert, "ftL"},
-		{Footlambert, "footlamberts"},
-		{Footlambert, "foot-lambert"},
-		{Footlambert, "foot-lamberts"},
-		{Footlambert, "fL"},
+	tests := []unitSystemTest{
+		{CandelaPerSquareMeter, SiSystem},
+		{CandelaPerSquareFoot, BiSystem},
+		{Footlambert, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

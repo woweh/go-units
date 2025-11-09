@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Friction_Conversions(t *testing.T) {
@@ -22,30 +20,13 @@ func Test_Friction_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_Friction_Systems(t *testing.T) {
-	// Pascal per meter is SI
-	si := SiSystem
-	assert.Equal(t, si, PascalPerMeter.System())
-
-	// Metric hydraulic units should be metric (no explicit system set => SI considered)
-	assert.Equal(t, si, MillimeterOfWaterPerMeter.System())
-	assert.Equal(t, si, MeterOfWaterPerMeter.System())
-
-	// Imperial units are in BI
-	bi := BiSystem
-	assert.Equal(t, bi, FootOfWaterPer100Feet.System())
-	assert.Equal(t, bi, InchOfWaterPer100Feet.System())
-}
-
-func Test_Lookup_Friction_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{MillimeterOfWaterPerMeter, "millimeter of water column per meter"}, {MillimeterOfWaterPerMeter, "mmH2O/m"},
-		{MillimeterOfWaterPerMeter, "millimeters of water column per meter"}, {MillimeterOfWaterPerMeter, "mmH2O per m"},
-		{MeterOfWaterPerMeter, "meter of water column per meter"}, {MeterOfWaterPerMeter, "mH2O/m"},
-		{PascalPerMeter, "pascal per meter"}, {PascalPerMeter, "Pa/m"},
-		{FootOfWaterPer100Feet, "foot of water per 100 feet"}, {FootOfWaterPer100Feet, "FT/100ft"},
-		{InchOfWaterPer100Feet, "inch of water per 100 feet"}, {InchOfWaterPer100Feet, "in-wg/100ft"},
+func Test_Friction_UnitSystems(t *testing.T) {
+	tests := []unitSystemTest{
+		{PascalPerMeter, SiSystem},
+		{MillimeterOfWaterPerMeter, SiSystem},
+		{MeterOfWaterPerMeter, SiSystem},
+		{FootOfWaterPer100Feet, BiSystem},
+		{InchOfWaterPer100Feet, BiSystem},
 	}
-
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

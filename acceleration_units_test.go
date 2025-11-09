@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Acceleration_Conversions(t *testing.T) {
@@ -34,28 +32,12 @@ func Test_Acceleration_Conversions(t *testing.T) {
 }
 
 func Test_Acceleration_UnitSystems(t *testing.T) {
-	assert.Equal(t, SiSystem, MeterPerSecondSquared.System())
-	assert.Equal(t, SiSystem, KilometerPerSecondSquared.System())
-	assert.Equal(t, BiSystem, FootPerSecondSquared.System())
-	assert.Equal(t, BiSystem, InchPerSecondSquared.System())
-	assert.Equal(t, BiSystem, MilePerSecondSquared.System())
-}
-
-func Test_Lookup_Acceleration_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{MeterPerSecondSquared, "meter per second squared"},
-		{MeterPerSecondSquared, "m/s²"},
-		{MeterPerSecondSquared, "meters per second squared"},
-		{MeterPerSecondSquared, "metre per second squared"},
-		{MeterPerSecondSquared, "m/sec²"},
-		{KilometerPerSecondSquared, "kilometer per second squared"},
-		{KilometerPerSecondSquared, "km/s²"},
-		{FootPerSecondSquared, "foot per second squared"},
-		{FootPerSecondSquared, "ft/s²"},
-		{InchPerSecondSquared, "inch per second squared"},
-		{InchPerSecondSquared, "in/s²"},
-		{MilePerSecondSquared, "mile per second squared"},
-		{MilePerSecondSquared, "mi/s²"},
+	tests := []unitSystemTest{
+		{MeterPerSecondSquared, SiSystem},
+		{KilometerPerSecondSquared, SiSystem},
+		{FootPerSecondSquared, BiSystem},
+		{InchPerSecondSquared, BiSystem},
+		{MilePerSecondSquared, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

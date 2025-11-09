@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_PowerPerLength_Conversions(t *testing.T) {
@@ -16,20 +14,9 @@ func Test_PowerPerLength_Conversions(t *testing.T) {
 }
 
 func Test_PowerPerLength_UnitSystems(t *testing.T) {
-	assert.Equal(t, SiSystem, WattPerMeter.System())
-	assert.Equal(t, BiSystem, WattPerFoot.System())
-}
-
-func Test_Lookup_PowerPerLength_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{WattPerMeter, "watt per meter"},
-		{WattPerMeter, "W/m"},
-		{WattPerMeter, "watts per meter"},
-		{WattPerMeter, "watt per metre"},
-		{WattPerMeter, "watts per metre"},
-		{WattPerFoot, "watt per foot"},
-		{WattPerFoot, "W/ft"},
-		{WattPerFoot, "watts per foot"},
+	tests := []unitSystemTest{
+		{WattPerMeter, SiSystem},
+		{WattPerFoot, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

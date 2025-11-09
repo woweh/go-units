@@ -176,7 +176,7 @@ func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 	opts = append(opts, Quantity(base.Quantity))
 
 	u := mustCreateNewUnit(name, symbol, opts...)
-	u.base = &base
+	u.base = base
 
 	// create conversions to and from the base unit
 	ratio := 1.0 * math.Pow(10.0, float64(mag.Power))
@@ -203,16 +203,20 @@ func findBestMatchingUnit(baseUnit Unit, exp int) Unit {
 	if !baseUnit.IsBase() || exp == 0 {
 		return baseUnit
 	}
+
 	if exact := getUnitForExponent(baseUnit.Name, exp); exact != nil {
 		return exact
 	}
+
 	choices := buildUnitChoices(baseUnit.Name, baseUnit)
 	if len(choices) == 0 {
 		return baseUnit
 	}
+
 	if extreme := handleUnitExtremes(choices, exp); extreme != nil {
 		return extreme
 	}
+	
 	lower, higher := findUnitNeighbors(choices, exp)
 	return chooseUnit(exp, lower, higher)
 }

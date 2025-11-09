@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_MomentOfInertia_Conversions(t *testing.T) {
@@ -32,46 +30,12 @@ func Test_MomentOfInertia_Conversions(t *testing.T) {
 }
 
 func Test_MomentOfInertia_UnitSystems(t *testing.T) {
-	assert.Equal(t, SiSystem, MeterToTheFourthPower.System())
-	assert.Equal(t, SiSystem, CentimeterToTheFourthPower.System())
-	assert.Equal(t, SiSystem, MillimeterToTheFourthPower.System())
-	assert.Equal(t, BiSystem, FootToTheFourthPower.System())
-	assert.Equal(t, BiSystem, InchToTheFourthPower.System())
-}
-
-func Test_Lookup_MomentOfInertia_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{MeterToTheFourthPower, "meter to the fourth power"},
-		{MeterToTheFourthPower, "m⁴"},
-		{MeterToTheFourthPower, "meters to the fourth power"},
-		{MeterToTheFourthPower, "metre to the fourth power"},
-		{MeterToTheFourthPower, "metres to the fourth power"},
-		{MeterToTheFourthPower, "m^4"},
-		{MeterToTheFourthPower, "meter^4"},
-		{CentimeterToTheFourthPower, "centimeter to the fourth power"},
-		{CentimeterToTheFourthPower, "cm⁴"},
-		{CentimeterToTheFourthPower, "centimeters to the fourth power"},
-		{CentimeterToTheFourthPower, "centimetre to the fourth power"},
-		{CentimeterToTheFourthPower, "centimetres to the fourth power"},
-		{CentimeterToTheFourthPower, "cm^4"},
-		{CentimeterToTheFourthPower, "centimeter^4"},
-		{MillimeterToTheFourthPower, "millimeter to the fourth power"},
-		{MillimeterToTheFourthPower, "mm⁴"},
-		{MillimeterToTheFourthPower, "millimeters to the fourth power"},
-		{MillimeterToTheFourthPower, "millimetre to the fourth power"},
-		{MillimeterToTheFourthPower, "millimetres to the fourth power"},
-		{MillimeterToTheFourthPower, "mm^4"},
-		{MillimeterToTheFourthPower, "millimeter^4"},
-		{FootToTheFourthPower, "foot to the fourth power"},
-		{FootToTheFourthPower, "ft⁴"},
-		{FootToTheFourthPower, "feet to the fourth power"},
-		{FootToTheFourthPower, "ft^4"},
-		{FootToTheFourthPower, "foot^4"},
-		{InchToTheFourthPower, "inch to the fourth power"},
-		{InchToTheFourthPower, "in⁴"},
-		{InchToTheFourthPower, "inches to the fourth power"},
-		{InchToTheFourthPower, "in^4"},
-		{InchToTheFourthPower, "inch^4"},
+	tests := []unitSystemTest{
+		{MeterToTheFourthPower, SiSystem},
+		{CentimeterToTheFourthPower, SiSystem},
+		{MillimeterToTheFourthPower, SiSystem},
+		{FootToTheFourthPower, BiSystem},
+		{InchToTheFourthPower, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

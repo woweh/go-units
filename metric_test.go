@@ -26,7 +26,6 @@ var magNames = []string{
 type magFn func(Unit, ...UnitOption) Unit
 
 func Test_getUnitForExponent(t *testing.T) {
-	t.Parallel()
 	u := mustCreateNewUnit("testunit_gufe", "TUGUFE")
 	Kilo(u)
 	tests := []struct {
@@ -45,14 +44,14 @@ func Test_getUnitForExponent(t *testing.T) {
 			got := getUnitForExponent(tt.baseName, tt.exp)
 			if tt.wantNil {
 				if got != nil {
-					t.Fatalf("getUnitForExponent(%q, %d) = %v, want nil", tt.baseName, tt.exp, got)
+					t.Errorf("getUnitForExponent(%q, %d) = %v, want nil", tt.baseName, tt.exp, got)
 				}
 			} else {
 				if got == nil {
-					t.Fatalf("getUnitForExponent(%q, %d) = nil, want %q", tt.baseName, tt.exp, tt.wantName)
+					t.Errorf("getUnitForExponent(%q, %d) = nil, want %q", tt.baseName, tt.exp, tt.wantName)
 				}
 				if got.Name != tt.wantName {
-					t.Fatalf("getUnitForExponent(%q, %d) = %q, want %q", tt.baseName, tt.exp, got.Name, tt.wantName)
+					t.Errorf("getUnitForExponent(%q, %d) = %q, want %q", tt.baseName, tt.exp, got.Name, tt.wantName)
 				}
 			}
 		})
@@ -66,13 +65,12 @@ func Test_Magnitudes(t *testing.T) {
 	} {
 		mu := mfn(u)
 		if mu.Name != magNames[i]+"dong" {
-			t.Fatalf("created mag unit: %s, want %s", mu.Name, magNames[i]+"dong")
+			t.Errorf("created mag unit: %s, want %s", mu.Name, magNames[i]+"dong")
 		}
 	}
 }
 
 func Test_findBestMatchingUnit(t *testing.T) {
-	t.Parallel()
 	tests := []struct {
 		name string
 		base Unit
@@ -134,7 +132,7 @@ func Test_findBestMatchingUnit(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := findBestMatchingUnit(tt.base, tt.exp)
 			if got != tt.want {
-				t.Fatalf("findBestMatchingUnit(%v, %d) = %v, want %v", tt.base, tt.exp, got, tt.want)
+				t.Errorf("findBestMatchingUnit(%v, %d) = %v, want %v", tt.base, tt.exp, got, tt.want)
 			}
 		})
 	}

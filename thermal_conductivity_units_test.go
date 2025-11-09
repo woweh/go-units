@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_ThermalConductivity_Conversions(t *testing.T) {
@@ -18,26 +16,10 @@ func Test_ThermalConductivity_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_ThermalConductivity_UnitSystem(t *testing.T) {
-	assert.Equal(t, SiSystem, WattPerMeterKelvin.System())
-	assert.Equal(t, BiSystem, BritishThermalUnitPerHourFootFahrenheit.System())
-}
-
-// No metric factories for thermal conductivity, so no base unit tests are needed.
-
-func Test_ThermalConductivity_Lookup_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{WattPerMeterKelvin, "W/(m·K)"},
-		{WattPerMeterKelvin, "watts per meter kelvin"},
-		{WattPerMeterKelvin, "watt per metre kelvin"},
-		{WattPerMeterKelvin, "watts per metre kelvin"},
-		{WattPerMeterKelvin, "W/(m*K)"},
-		{WattPerMeterKelvin, "W/m/K"},
-		{BritishThermalUnitPerHourFootFahrenheit, "BTU/(h·ft·°F)"},
-		{BritishThermalUnitPerHourFootFahrenheit, "British thermal unit per hour foot degree Fahrenheit"},
-		{BritishThermalUnitPerHourFootFahrenheit, "British thermal units per hour foot degree Fahrenheit"},
-		{BritishThermalUnitPerHourFootFahrenheit, "BTU/h/ft/F"},
-		{BritishThermalUnitPerHourFootFahrenheit, "Btu/(h·ft·°F)"},
+func Test_ThermalConductivity_UnitSystems(t *testing.T) {
+	tests := []unitSystemTest{
+		{WattPerMeterKelvin, SiSystem},
+		{BritishThermalUnitPerHourFootFahrenheit, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

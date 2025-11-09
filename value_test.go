@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func TestValue_AsBaseUnit(t *testing.T) {
@@ -31,7 +29,9 @@ func TestValue_AsBaseUnit(t *testing.T) {
 	for _, tst := range tests {
 		t.Run(tst.name, func(t *testing.T) {
 			baseV := tst.v.AsBaseUnit()
-			assert.Equal(t, tst.baseV, baseV)
+			if baseV != tst.baseV {
+				t.Errorf("AsBaseUnit: got %v, want %v", baseV, tst.baseV)
+			}
 		})
 	}
 }
@@ -63,13 +63,14 @@ func TestValue_Humanize(t *testing.T) {
 	for _, tst := range tests {
 		t.Run(tst.name, func(t *testing.T) {
 			humV := tst.v.Humanize()
-			assert.Equal(t, tst.humV, humV)
+			if humV != tst.humV {
+				t.Errorf("Humanize: got %v, want %v", humV, tst.humV)
+			}
 		})
 	}
 }
 
 func TestValue_NewValue_Unit_Float(t *testing.T) {
-	t.Parallel()
 	tests := []struct {
 		name string
 		val  float64
@@ -81,17 +82,19 @@ func TestValue_NewValue_Unit_Float(t *testing.T) {
 		{"nil unit", 1.23, nil},
 	}
 	for _, tc := range tests {
-		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			v := NewValue(tc.val, tc.unit)
-			assert.Equal(t, tc.val, v.Float())
-			assert.Equal(t, tc.unit, v.Unit())
+			if v.Float() != tc.val {
+				t.Errorf("Float: got %v, want %v", v.Float(), tc.val)
+			}
+			if v.Unit() != tc.unit {
+				t.Errorf("Unit: got %v, want %v", v.Unit(), tc.unit)
+			}
 		})
 	}
 }
 
 func TestValue_String_Fmt(t *testing.T) {
-	t.Parallel()
 	v := NewValue(1234.5678, Hertz)
 	cases := []struct {
 		name string
@@ -115,16 +118,16 @@ func TestValue_String_Fmt(t *testing.T) {
 		{"DMS", NewValue(12.3045, DMS), DefaultFmtOptions, "12°30'45''"},
 	}
 	for _, tc := range cases {
-		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			got := tc.val.Fmt(tc.opt)
-			assert.Equal(t, tc.exp, got)
+			if got != tc.exp {
+				t.Errorf("Fmt: got %q, want %q", got, tc.exp)
+			}
 		})
 	}
 }
 
 func Test_trimTrailing(t *testing.T) {
-	t.Parallel()
 	cases := []struct {
 		in  string
 		out string
@@ -138,26 +141,32 @@ func Test_trimTrailing(t *testing.T) {
 		{"", ""},
 	}
 	for _, tc := range cases {
-		tc := tc
 		t.Run(tc.in, func(t *testing.T) {
 			got := trimTrailing(tc.in)
-			assert.Equal(t, tc.out, got)
+			if got != tc.out {
+				t.Errorf("trimTrailing: got %q, want %q", got, tc.out)
+			}
 		})
 	}
 }
 
 func TestValue_MustConvert_Convert(t *testing.T) {
-	t.Parallel()
 	v := NewValue(1, KiloHertz)
 	// Success
 	v2 := v.MustConvert(Hertz)
-	assert.Equal(t, NewValue(1000, Hertz), v2)
+	if v2 != NewValue(1000, Hertz) {
+		t.Errorf("MustConvert: got %v, want %v", v2, NewValue(1000, Hertz))
+	}
 	// Same unit
 	v3 := v.MustConvert(KiloHertz)
-	assert.Equal(t, v, v3)
+	if v3 != v {
+		t.Errorf("MustConvert: got %v, want %v", v3, v)
+	}
 	// Nil unit
 	v4 := NewValue(1, nil)
-	assert.Equal(t, v4, v4.MustConvert(nil))
+	if v4.MustConvert(nil) != v4 {
+		t.Errorf("MustConvert: got %v, want %v", v4.MustConvert(nil), v4)
+	}
 	// Error case (simulate by passing an incompatible unit)
 	defer func() {
 		if r := recover(); r == nil {

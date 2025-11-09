@@ -31,24 +31,24 @@ func testConversions(t *testing.T, convTests []conversionTest) {
 			label, func(t *testing.T) {
 				u1, err := Find(cTest.from)
 				if err != nil {
-					t.Fatalf("failed to find unit %s: %v", cTest.from, err)
+					t.Errorf("failed to find unit %s: %v", cTest.from, err)
 				}
 				u2, err := Find(cTest.to)
 				if err != nil {
-					t.Fatalf("failed to find unit %s: %v", cTest.to, err)
+					t.Errorf("failed to find unit %s: %v", cTest.to, err)
 				}
 
 				converted := MustConvertFloat(baseValue, u1, u2)
 				got := converted.Float()
 				if !floatEquals(got, cTest.val, epsilon) {
-					t.Fatalf("%s -> %s conversion failed: want %f, got %f", cTest.from, cTest.to, cTest.val, got)
+					t.Errorf("%s -> %s conversion failed: want %f, got %f", cTest.from, cTest.to, cTest.val, got)
 				}
 
 				// test inverse conversion
 				inverse := MustConvertFloat(got, u2, u1)
 				gotInv := inverse.Float()
 				if !floatEquals(gotInv, baseValue, epsilon) {
-					t.Fatalf("%s <- %s inverse conversion failed: want 1.0, got %f", cTest.from, cTest.to, gotInv)
+					t.Errorf("%s <- %s inverse conversion failed: want 1.0, got %f", cTest.from, cTest.to, gotInv)
 				}
 			},
 		)
@@ -64,18 +64,18 @@ func roundFloat(f float64, precision uint) float64 {
 func Test_ResolveConversion(t *testing.T) {
 	from, err := Find("meter")
 	if err != nil {
-		t.Fatalf("failed to find unit meter: %v", err)
+		t.Errorf("failed to find unit meter: %v", err)
 	}
 	to, err := Find("foot")
 	if err != nil {
-		t.Fatalf("failed to find unit foot: %v", err)
+		t.Errorf("failed to find unit foot: %v", err)
 	}
 	path, err := ResolveConversion(from, to)
 	if err != nil {
-		t.Fatalf("ResolveConversion failed: %v", err)
+		t.Errorf("ResolveConversion failed: %v", err)
 	}
 	if len(path) == 0 {
-		t.Fatal("expected non-empty conversion path")
+		t.Error("expected non-empty conversion path")
 	}
 	// Verify the path by applying conversions
 	val := 1.0
@@ -84,7 +84,7 @@ func Test_ResolveConversion(t *testing.T) {
 	}
 	expected := 3.280839895013123 // approximate 1 meter in feet
 	if math.Abs(val-expected) > 1e-6 {
-		t.Fatalf("conversion path incorrect: got %f, expected %f", val, expected)
+		t.Errorf("conversion path incorrect: got %f, expected %f", val, expected)
 	}
 }
 
@@ -99,7 +99,6 @@ func Test_checkConversionIntegrity(t *testing.T) {
 }
 
 func Test_roundFloat(t *testing.T) {
-	t.Parallel()
 	tests := []struct {
 		name      string
 		input     float64

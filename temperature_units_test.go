@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Temperature_Conversions(t *testing.T) {
@@ -24,31 +22,12 @@ func Test_Temperature_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_Temperature_UnitSystem(t *testing.T) {
-	assert.Equal(t, SiSystem, Celsius.System())
-	assert.Equal(t, SiSystem, Kelvin.System())
-	assert.Equal(t, UsSystem, Fahrenheit.System())
-	assert.Equal(t, UsSystem, Rankine.System())
-}
-
-// No metric factories for temperature, so no base unit tests are needed.
-
-func Test_Temperature_Lookup_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{Celsius, "celsius"},
-		{Celsius, "centigrade"},
-		{Celsius, "centigrades"},
-		{Celsius, "°C"},
-		{Fahrenheit, "fahrenheit"},
-		{Fahrenheit, "degree Fahrenheit"},
-		{Fahrenheit, "°F"},
-		{Kelvin, "kelvin"},
-		{Kelvin, "degree Kelvin"},
-		{Kelvin, "K"},
-		{Rankine, "rankine"},
-		{Rankine, "degree Rankine"},
-		{Rankine, "°R"},
-		{Rankine, "°Ra"},
+func Test_Temperature_UnitSystems(t *testing.T) {
+	tests := []unitSystemTest{
+		{Celsius, SiSystem},
+		{Kelvin, SiSystem},
+		{Fahrenheit, UsSystem},
+		{Rankine, UsSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

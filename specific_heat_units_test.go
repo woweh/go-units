@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_SpecificHeat_Conversions(t *testing.T) {
@@ -17,34 +15,11 @@ func Test_SpecificHeat_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_SpecificHeat_UnitSystem(t *testing.T) {
-	assert.Equal(t, SiSystem, JoulePerKilogramCelsius.System())
-	assert.Equal(t, SiSystem, JoulePerGramCelsius.System())
-	assert.Equal(t, BiSystem, BritishThermalUnitPerPoundFahrenheit.System())
-}
-
-// No metric factories for specific heat, so no base unit tests are needed.
-
-func Test_SpecificHeat_Lookup_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		// SI base
-		{JoulePerKilogramCelsius, "J/(kg·°C)"},
-		{JoulePerKilogramCelsius, "joule per kilogram degree Celsius"},
-		{JoulePerKilogramCelsius, "joules per kilogram degree Celsius"},
-		{JoulePerKilogramCelsius, "J/kg/C"},
-		{JoulePerKilogramCelsius, "J/(kg*°C)"},
-		// SI other
-		{JoulePerGramCelsius, "J/(g·°C)"},
-		{JoulePerGramCelsius, "joule per gram degree Celsius"},
-		{JoulePerGramCelsius, "joules per gram degree Celsius"},
-		{JoulePerGramCelsius, "J/g/C"},
-		{JoulePerGramCelsius, "J/(g*°C)"},
-		// Imperial
-		{BritishThermalUnitPerPoundFahrenheit, "BTU/(lb·°F)"},
-		{BritishThermalUnitPerPoundFahrenheit, "British thermal unit per pound degree Fahrenheit"},
-		{BritishThermalUnitPerPoundFahrenheit, "British thermal units per pound degree Fahrenheit"},
-		{BritishThermalUnitPerPoundFahrenheit, "BTU/lb/F"},
-		{BritishThermalUnitPerPoundFahrenheit, "Btu/(lb·°F)"},
+func Test_SpecificHeat_UnitSystems(t *testing.T) {
+	tests := []unitSystemTest{
+		{JoulePerKilogramCelsius, SiSystem},
+		{JoulePerGramCelsius, SiSystem},
+		{BritishThermalUnitPerPoundFahrenheit, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

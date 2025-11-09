@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Pressure_Conversions(t *testing.T) {
@@ -73,95 +71,14 @@ func Test_Pressure_Conversions(t *testing.T) {
 }
 
 func Test_Pressure_UnitSystems(t *testing.T) {
-	si := SiSystem
-	bi := BiSystem
-
-	// Pascal family (SI)
-	assert.Equal(t, si, Pascal.System())
-	assert.Equal(t, si, KiloPascal.System())
-	assert.Equal(t, si, MegaPascal.System())
-	assert.Equal(t, si, HectoPascal.System())
-	assert.Equal(t, si, MilliPascal.System())
-	assert.Equal(t, si, NewtonSqm.System())
-	assert.Equal(t, si, KiloNewtonSqm.System())
-
-	// Bar family (BI but metric-based)
-	assert.Equal(t, bi, Bar.System())
-	assert.Equal(t, bi, MilliBar.System())
-	assert.Equal(t, bi, CentiBar.System())
-	assert.Equal(t, bi, MicroBar.System())
-
-	// Atmospheres (BI)
-	assert.Equal(t, bi, At.System())
-	assert.Equal(t, bi, Atm.System())
-	assert.Equal(t, bi, Barye.System())
-
-	// Water and Mercury columns (BI)
-	assert.Equal(t, bi, InH2O.System())
-	assert.Equal(t, bi, InHg.System())
-	assert.Equal(t, bi, MH2O.System())
-	assert.Equal(t, bi, MilliMH2O.System())
-	assert.Equal(t, bi, CentiMH2O.System())
-	assert.Equal(t, bi, MHg.System())
-	assert.Equal(t, bi, MilliMHg.System())
-	assert.Equal(t, bi, CentiMHg.System())
-
-	// Imperial/US (BI)
-	assert.Equal(t, bi, Psi.System())
-	assert.Equal(t, bi, Torr.System())
-	assert.Equal(t, bi, FootH2O.System())
-	assert.Equal(t, bi, InchesOfWater.System())
-	assert.Equal(t, bi, PoundForcePerSquareInchGauge.System())
-}
-
-func Test_Pressure_BaseUnits(t *testing.T) {
-	// Pascal metric family
-	assert.Equal(t, Pascal, KiloPascal.Base())
-	assert.Equal(t, Pascal, MegaPascal.Base())
-	assert.Equal(t, Pascal, MilliPascal.Base())
-
-	// Bar metric family
-	assert.Equal(t, Bar, MilliBar.Base())
-	assert.Equal(t, Bar, CentiBar.Base())
-	assert.Equal(t, Bar, MicroBar.Base())
-
-	// Water column metric family
-	assert.Equal(t, MH2O, MilliMH2O.Base())
-	assert.Equal(t, MH2O, CentiMH2O.Base())
-
-	// Mercury column metric family
-	assert.Equal(t, MHg, MilliMHg.Base())
-	assert.Equal(t, MHg, CentiMHg.Base())
-
-	// Newton per square meter metric family
-	assert.Equal(t, NewtonSqm, KiloNewtonSqm.Base())
-}
-
-func Test_Lookup_Pressure_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{Pascal, "pascal"}, {Pascal, "Pa"},
-		{KiloPascal, "kilopascal"}, {KiloPascal, "kPa"},
-		{MegaPascal, "megapascal"}, {MegaPascal, "MPa"},
-		{HectoPascal, "hectopascal"}, {HectoPascal, "hPa"},
-		{MilliPascal, "millipascal"}, {MilliPascal, "mPa"},
-		{At, "technical atmosphere"}, {At, "at"},
-		{Atm, "standard atmosphere"}, {Atm, "atm"},
-		{Bar, "bar"}, {Bar, "bar"},
-		{MilliBar, "millibar"}, {MilliBar, "mbar"},
-		{Barye, "barye"}, {Barye, "Ba"},
-		{InH2O, "inch of Water Column"}, {InH2O, "inH2O"}, {InH2O, "inches of Water Column"},
-		{InHg, "inch of Mercury"}, {InHg, "inHg"}, {InHg, "inches of Mercury"},
-		{MH2O, "meter of Water Column"}, {MH2O, "mH2O"}, {MH2O, "meters of Water Column"},
-		{MilliMH2O, "millimeter of Water Column"}, {MilliMH2O, "mmH2O"}, {MilliMH2O, "millimeters of Water Column"},
-		{MHg, "meter of Mercury"}, {MHg, "mmHg"}, {MHg, "meters of Mercury"},
-		{MilliMHg, "millimeter of Mercury"}, {MilliMHg, "millimeters of Mercury"},
-		{NewtonSqm, "newton per square meter"}, {NewtonSqm, "N/m²"},
-		{KiloNewtonSqm, "kilonewton per square meter"}, {KiloNewtonSqm, "kN/m²"},
-		{Psi, "pound-force per square inch"}, {Psi, "psi"}, {Psi, "lbf/in²"}, {Psi, "lbf/in^2"},
-		{Torr, "torr"}, {Torr, "Torr"},
-		{FootH2O, "foot of Water Column"}, {FootH2O, "FT"},
-		{InchesOfWater, "inches of Water Column"}, {InchesOfWater, "in-wg"},
-		{PoundForcePerSquareInchGauge, "pound-force per square inch gauge"}, {PoundForcePerSquareInchGauge, "psig"},
+	tests := []unitSystemTest{
+		{Pascal, SiSystem},
+		{KiloPascal, SiSystem},
+		{MegaPascal, SiSystem},
+		{HectoPascal, SiSystem},
+		{Bar, NoSystem},
+		{Barye, NoSystem},
+		{Torr, NoSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

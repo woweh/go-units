@@ -32,6 +32,8 @@ const (
 	CgsSystem UnitSystem = "cgs"
 	// MKpSSystem provides the internal name the MKpS system of units (from French mètre–kilogramme-poids–seconde)
 	MKpSSystem UnitSystem = "MKpS"
+	// NoSystem provides the internal name for no system of units
+	NoSystem UnitSystem = ""
 )
 
 // UnitQuantity is a quantity label for which a unit belongs
@@ -72,7 +74,7 @@ type unit struct {
 	// system is the system of units this Unit belongs to, if any.
 	system UnitSystem
 	// base is the base unit for metric units
-	base *Unit
+	base *unit
 	// isBaseUnit is true if this unit is the base unit for metric units
 	// NOTE:
 	// isBaseUnit must only be set from method `makeUnit` in 'metric.go'.
@@ -81,7 +83,7 @@ type unit struct {
 	fmtFn FormatFn
 }
 
-// Unit represents a unit of measurement (alias for *unit)
+// Unit represents a unit of measurement.
 type Unit = *unit
 
 // NewUnit registers a new Unit within the package, returning the newly created Unit.
@@ -242,7 +244,7 @@ func (u Unit) HasBase() bool {
 
 // Base returns the base unit for metric units, or nil for non-metric units.
 func (u Unit) Base() Unit {
-	return *u.base
+	return u.base
 }
 
 // IsBase returns true if this unit is the base unit for derived (usually metric) units.

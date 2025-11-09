@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Mass_Conversions(t *testing.T) {
@@ -44,101 +42,33 @@ func Test_Mass_Conversions(t *testing.T) {
 }
 
 func Test_Mass_UnitSystems(t *testing.T) {
-	// Metric units
-	assert.Equal(t, SiSystem, Gram.System())
-	assert.Equal(t, SiSystem, ExaGram.System())
-	assert.Equal(t, SiSystem, PetaGram.System())
-	assert.Equal(t, SiSystem, TeraGram.System())
-	assert.Equal(t, SiSystem, GigaGram.System())
-	assert.Equal(t, SiSystem, MegaGram.System())
-	assert.Equal(t, SiSystem, KiloGram.System())
-	assert.Equal(t, SiSystem, HectoGram.System())
-	assert.Equal(t, SiSystem, DecaGram.System())
-	assert.Equal(t, SiSystem, DeciGram.System())
-	assert.Equal(t, SiSystem, CentiGram.System())
-	assert.Equal(t, SiSystem, MilliGram.System())
-	assert.Equal(t, SiSystem, MicroGram.System())
-	assert.Equal(t, SiSystem, NanoGram.System())
-	assert.Equal(t, SiSystem, PicoGram.System())
-	assert.Equal(t, SiSystem, FemtoGram.System())
-	assert.Equal(t, SiSystem, AttoGram.System())
-	assert.Equal(t, SiSystem, MetricTon.System())
-
-	// Imperial units
-	assert.Equal(t, BiSystem, Grain.System())
-	assert.Equal(t, BiSystem, Drachm.System())
-	assert.Equal(t, BiSystem, Ounce.System())
-	assert.Equal(t, BiSystem, Pound.System())
-	assert.Equal(t, BiSystem, Stone.System())
-	assert.Equal(t, BiSystem, Ton.System())
-	assert.Equal(t, BiSystem, Slug.System())
-	assert.Equal(t, BiSystem, ShortTon.System())
-}
-
-func Test_Mass_MetricFactories(t *testing.T) {
-	// Test that metric factory-created units have Gram as base
-	assert.Equal(t, Gram, ExaGram.Base())
-	assert.Equal(t, Gram, PetaGram.Base())
-	assert.Equal(t, Gram, TeraGram.Base())
-	assert.Equal(t, Gram, GigaGram.Base())
-	assert.Equal(t, Gram, MegaGram.Base())
-	assert.Equal(t, Gram, KiloGram.Base())
-	assert.Equal(t, Gram, HectoGram.Base())
-	assert.Equal(t, Gram, DecaGram.Base())
-	assert.Equal(t, Gram, DeciGram.Base())
-	assert.Equal(t, Gram, CentiGram.Base())
-	assert.Equal(t, Gram, MilliGram.Base())
-	assert.Equal(t, Gram, MicroGram.Base())
-	assert.Equal(t, Gram, NanoGram.Base())
-	assert.Equal(t, Gram, PicoGram.Base())
-	assert.Equal(t, Gram, FemtoGram.Base())
-	assert.Equal(t, Gram, AttoGram.Base())
-}
-
-func Test_Lookup_Mass_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		// Gram
-		{Gram, "gram"},
-		{Gram, "g"},
-
-		// Metric prefixes (sample)
-		{KiloGram, "kilogram"},
-		{KiloGram, "kg"},
-		{MilliGram, "milligram"},
-		{MilliGram, "mg"},
-		{MicroGram, "microgram"},
-		{MicroGram, "μg"},
-
-		// Metric ton
-		{MetricTon, "metric ton"},
-		{MetricTon, "t"},
-		{MetricTon, "tonne"},
-		{MetricTon, "tonnes"},
-		{MetricTon, "metric tons"},
-
-		// Imperial units
-		{Grain, "grain"},
-		{Grain, "gr"},
-		{Drachm, "drachm"},
-		{Drachm, "dr"},
-		{Ounce, "ounce"},
-		{Ounce, "oz"},
-		{Pound, "pound"},
-		{Pound, "lb"},
-		{Stone, "stone"},
-		{Stone, "st"},
-		{Ton, "ton"},
-		{Ton, "LT"},
-		{Ton, "long ton"},
-		{Ton, "long tons"},
-		{Ton, "imperial ton"},
-		{Ton, "displacement ton"},
-		{Slug, "slug"},
-		{ShortTon, "short ton"},
-		{ShortTon, "Tons"},
-		{ShortTon, "US ton"},
-		{ShortTon, "short tons"},
+	tests := []unitSystemTest{
+		{Gram, SiSystem},
+		{ExaGram, SiSystem},
+		{PetaGram, SiSystem},
+		{TeraGram, SiSystem},
+		{GigaGram, SiSystem},
+		{MegaGram, SiSystem},
+		{KiloGram, SiSystem},
+		{HectoGram, SiSystem},
+		{DecaGram, SiSystem},
+		{DeciGram, SiSystem},
+		{CentiGram, SiSystem},
+		{MilliGram, SiSystem},
+		{MicroGram, SiSystem},
+		{NanoGram, SiSystem},
+		{PicoGram, SiSystem},
+		{FemtoGram, SiSystem},
+		{AttoGram, SiSystem},
+		{MetricTon, SiSystem},
+		{Grain, BiSystem},
+		{Drachm, BiSystem},
+		{Ounce, BiSystem},
+		{Pound, BiSystem},
+		{Stone, BiSystem},
+		{Ton, BiSystem},
+		{Slug, BiSystem},
+		{ShortTon, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }
-

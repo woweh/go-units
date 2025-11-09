@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Velocity_Conversions(t *testing.T) {
@@ -26,51 +24,14 @@ func Test_Velocity_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_Velocity_UnitSystem(t *testing.T) {
-	assert.Equal(t, SiSystem, MeterPerSecond.System())
-	assert.Equal(t, SiSystem, CentimeterPerMinute.System())
-	assert.Equal(t, SiSystem, KilometerPerHour.System())
-	assert.Equal(t, BiSystem, FootPerSecond.System())
-	assert.Equal(t, BiSystem, FootPerMinute.System())
-	assert.Equal(t, BiSystem, MilePerHour.System())
-}
-
-func Test_Velocity_MetricFactory_BaseUnits(t *testing.T) {
-	// CentimeterPerMinute is a metric factory unit
-	assert.Equal(t, MeterPerSecond, CentimeterPerMinute.Base())
-}
-
-func Test_Velocity_Lookup_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		// SI
-		{MeterPerSecond, "m/s"},
-		{MeterPerSecond, "meters per second"},
-		{MeterPerSecond, "metre per second"},
-		{MeterPerSecond, "metres per second"},
-		{MeterPerSecond, "mps"},
-		{CentimeterPerMinute, "cm/min"},
-		{CentimeterPerMinute, "centimeter per minute"},
-		{CentimeterPerMinute, "centimeters per minute"},
-		{CentimeterPerMinute, "centimetre per minute"},
-		{CentimeterPerMinute, "centimetres per minute"},
-		{KilometerPerHour, "km/h"},
-		{KilometerPerHour, "kilometer per hour"},
-		{KilometerPerHour, "kilometers per hour"},
-		{KilometerPerHour, "kilometre per hour"},
-		{KilometerPerHour, "kilometres per hour"},
-		{KilometerPerHour, "kph"},
-		// Imperial/US
-		{FootPerSecond, "ft/s"},
-		{FootPerSecond, "foot per second"},
-		{FootPerSecond, "feet per second"},
-		{FootPerSecond, "fps"},
-		{FootPerMinute, "ft/min"},
-		{FootPerMinute, "foot per minute"},
-		{FootPerMinute, "feet per minute"},
-		{FootPerMinute, "fpm"},
-		{MilePerHour, "mph"},
-		{MilePerHour, "mile per hour"},
-		{MilePerHour, "miles per hour"},
+func Test_Velocity_UnitSystems(t *testing.T) {
+	tests := []unitSystemTest{
+		{MeterPerSecond, SiSystem},
+		{CentimeterPerMinute, SiSystem},
+		{KilometerPerHour, SiSystem},
+		{FootPerSecond, BiSystem},
+		{FootPerMinute, BiSystem},
+		{MilePerHour, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

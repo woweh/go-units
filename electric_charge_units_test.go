@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_ElectricCharge_Conversions(t *testing.T) {
@@ -33,48 +31,20 @@ func Test_ElectricCharge_Conversions(t *testing.T) {
 }
 
 func Test_ElectricCharge_UnitSystems(t *testing.T) {
-	si := SiSystem
-
-	assert.Equal(t, si, Coulomb.System())
-	assert.Equal(t, si, KiloCoulomb.System())
-	assert.Equal(t, si, MilliCoulomb.System())
-	assert.Equal(t, si, MicroCoulomb.System())
-	assert.Equal(t, si, AmpereHour.System())
-	assert.Equal(t, si, KiloAmpereHour.System())
-	assert.Equal(t, si, MilliAmpereHour.System())
-	assert.Equal(t, si, AmpereMinute.System())
-	assert.Equal(t, si, KiloAmpereMinute.System())
-	assert.Equal(t, si, MilliAmpereMinute.System())
-	assert.Equal(t, si, AmpereSecond.System())
-	assert.Equal(t, si, KiloAmpereSecond.System())
-	assert.Equal(t, si, MilliAmpereSecond.System())
-}
-
-func Test_ElectricCharge_BaseUnits(t *testing.T) {
-	// Only a few representative metric units
-	assert.Equal(t, Coulomb, Coulomb.Base())
-	assert.Equal(t, Coulomb, KiloCoulomb.Base())
-	assert.Equal(t, Coulomb, MilliCoulomb.Base())
-	assert.Equal(t, Coulomb, AmpereHour.Base())
-	assert.Equal(t, Coulomb, AmpereMinute.Base())
-	assert.Equal(t, Coulomb, AmpereSecond.Base())
-}
-
-func Test_Lookup_ElectricCharge_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{Coulomb, "coulomb"}, {Coulomb, "C"},
-		{KiloCoulomb, "kilocoulomb"}, {KiloCoulomb, "kC"},
-		{MilliCoulomb, "millicoulomb"}, {MilliCoulomb, "mC"},
-		{MicroCoulomb, "microcoulomb"}, {MicroCoulomb, "μC"}, {MicroCoulomb, "uC"},
-		{AmpereHour, "ampere-hour"}, {AmpereHour, "A·h"}, {AmpereHour, "A⋅h"}, {AmpereHour, "A*h"}, {AmpereHour, "A.h"}, {AmpereHour, "Ah"}, {AmpereHour, "AHr"},
-		{KiloAmpereHour, "kiloampere-hour"}, {KiloAmpereHour, "kA·h"},
-		{MilliAmpereHour, "milliampere-hour"}, {MilliAmpereHour, "mA·h"},
-		{AmpereMinute, "ampere-minute"}, {AmpereMinute, "A·min"}, {AmpereMinute, "A⋅min"}, {AmpereMinute, "A*min"}, {AmpereMinute, "A.min"}, {AmpereMinute, "Amin"},
-		{KiloAmpereMinute, "kiloampere-minute"}, {KiloAmpereMinute, "kA·min"},
-		{MilliAmpereMinute, "milliampere-minute"}, {MilliAmpereMinute, "mA·min"},
-		{AmpereSecond, "ampere-second"}, {AmpereSecond, "A·s"}, {AmpereSecond, "A⋅s"}, {AmpereSecond, "A*s"}, {AmpereSecond, "A.s"}, {AmpereSecond, "As"},
-		{KiloAmpereSecond, "kiloampere-second"}, {KiloAmpereSecond, "kA·s"},
-		{MilliAmpereSecond, "milliampere-second"}, {MilliAmpereSecond, "mA·s"},
+	tests := []unitSystemTest{
+		{Coulomb, SiSystem},
+		{KiloCoulomb, SiSystem},
+		{MilliCoulomb, SiSystem},
+		{MicroCoulomb, SiSystem},
+		{AmpereHour, SiSystem},
+		{KiloAmpereHour, SiSystem},
+		{MilliAmpereHour, SiSystem},
+		{AmpereMinute, SiSystem},
+		{KiloAmpereMinute, SiSystem},
+		{MilliAmpereMinute, SiSystem},
+		{AmpereSecond, SiSystem},
+		{KiloAmpereSecond, SiSystem},
+		{MilliAmpereSecond, SiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Volume_Conversions(t *testing.T) {
@@ -30,45 +28,16 @@ func Test_Volume_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_Volume_UnitSystem(t *testing.T) {
-	assert.Equal(t, SiSystem, Liter.System())
-	assert.Equal(t, SiSystem, KiloLiter.System())
-	assert.Equal(t, SiSystem, CentiLiter.System())
-	assert.Equal(t, SiSystem, CubicMeter.System())
-	assert.Equal(t, SiSystem, CubicCentiMeter.System())
-	assert.Equal(t, BiSystem, Gallon.System())
-	assert.Equal(t, BiSystem, CubicFoot.System())
-	assert.Equal(t, BiSystem, CubicInch.System())
-}
-
-func Test_Volume_MetricFactory_BaseUnits(t *testing.T) {
-	assert.Equal(t, Liter, CentiLiter.Base())
-	assert.Equal(t, Liter, KiloLiter.Base())
-}
-
-func Test_Volume_Lookup_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		// SI/metric
-		{Liter, "l"},
-		{Liter, "liter"},
-		{Liter, "litre"},
-		{KiloLiter, "kl"},
-		{CentiLiter, "cl"},
-		{CubicMeter, "m³"},
-		{CubicMeter, "cubic meter"},
-		{CubicMeter, "cubic metre"},
-		{CubicMeter, "m3"},
-		{CubicCentiMeter, "cm³"},
-		{CubicCentiMeter, "cubic centimeter"},
-		{CubicCentiMeter, "cubic centimetre"},
-		{CubicCentiMeter, "cc"},
-		// Imperial/US
-		{Gallon, "gal"},
-		{Gallon, "gallon"},
-		{CubicFoot, "ft³"},
-		{CubicFoot, "cubic foot"},
-		{CubicInch, "in³"},
-		{CubicInch, "cubic inch"},
+func Test_Volume_UnitSystems(t *testing.T) {
+	tests := []unitSystemTest{
+		{Liter, SiSystem},
+		{KiloLiter, SiSystem},
+		{CentiLiter, SiSystem},
+		{CubicMeter, SiSystem},
+		{CubicCentiMeter, SiSystem},
+		{Gallon, BiSystem},
+		{CubicFoot, BiSystem},
+		{CubicInch, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

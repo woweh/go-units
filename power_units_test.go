@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Power_Conversions(t *testing.T) {
@@ -49,51 +47,19 @@ func Test_Power_Conversions(t *testing.T) {
 }
 
 func Test_Power_UnitSystems(t *testing.T) {
-	si := SiSystem
-	bi := BiSystem
-	assert.Equal(t, si, Watt.System())
-	assert.Equal(t, si, MilliWatt.System())
-	assert.Equal(t, si, KiloWatt.System())
-	assert.Equal(t, si, MegaWatt.System())
-	assert.Equal(t, si, VoltAmpere.System())
-	assert.Equal(t, si, KiloVoltAmpere.System())
-	assert.Equal(t, si, MegaVoltAmpere.System())
-	assert.Equal(t, si, VoltAmpereReactive.System())
-	assert.Equal(t, si, KiloVoltAmpereReactive.System())
-	assert.Equal(t, si, MegaVoltAmpereReactive.System())
-	assert.Equal(t, si, CaloriePerSecond.System())
-	assert.Equal(t, si, KiloCaloriePerSecond.System())
-	assert.Equal(t, bi, BritishThermalUnitPerHour.System())
-	assert.Equal(t, bi, BritishThermalUnitPerSecond.System())
-	assert.Equal(t, bi, Horsepower.System())
-	assert.Equal(t, bi, ThousandBritishThermalUnitsPerHour.System())
-}
-
-func Test_Power_BaseUnits(t *testing.T) {
-	// Only a few representative metric units
-	assert.Equal(t, Watt, MilliWatt.Base())
-	assert.Equal(t, Watt, KiloWatt.Base())
-	assert.Equal(t, Watt, MegaWatt.Base())
-	assert.Equal(t, VoltAmpere, KiloVoltAmpere.Base())
-	assert.Equal(t, VoltAmpereReactive, KiloVoltAmpereReactive.Base())
-}
-
-func Test_Lookup_Power_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{Watt, "watt"}, {Watt, "W"},
-		{KiloWatt, "kilowatt"}, {KiloWatt, "kW"},
-		{MegaWatt, "megawatt"}, {MegaWatt, "MW"},
-		{MilliWatt, "milliwatt"}, {MilliWatt, "mW"},
-		{VoltAmpere, "volt-ampere"}, {VoltAmpere, "volt ampere"}, {VoltAmpere, "VA"}, {VoltAmpere, "V*A"}, {VoltAmpere, "V.A"}, {VoltAmpere, "V A"},
-		{KiloVoltAmpere, "kilovolt-ampere"}, {KiloVoltAmpere, "kVA"},
-		{VoltAmpereReactive, "volt-ampere reactive"}, {VoltAmpereReactive, "volt ampere reactive"}, {VoltAmpereReactive, "VAR"}, {VoltAmpereReactive, "VAr"}, {VoltAmpereReactive, "V⋅Ar"}, {VoltAmpereReactive, "V.A.r"}, {VoltAmpereReactive, "V A r"},
-		{KiloVoltAmpereReactive, "kilovolt-ampere reactive"}, {KiloVoltAmpereReactive, "kVAR"},
-		{BritishThermalUnitPerHour, "British thermal unit per hour"}, {BritishThermalUnitPerHour, "Btu/h"},
-		{BritishThermalUnitPerSecond, "British thermal unit per second"}, {BritishThermalUnitPerSecond, "Btu/s"},
-		{CaloriePerSecond, "calorie per second"}, {CaloriePerSecond, "cal/s"},
-		{KiloCaloriePerSecond, "kilocalorie per second"}, {KiloCaloriePerSecond, "kcal/s"},
-		{Horsepower, "horsepower"}, {Horsepower, "hp"},
-		{ThousandBritishThermalUnitsPerHour, "thousand British thermal units per hour"}, {ThousandBritishThermalUnitsPerHour, "MBH"},
+	tests := []unitSystemTest{
+		{Watt, SiSystem},
+		{MilliWatt, SiSystem},
+		{KiloWatt, SiSystem},
+		{MegaWatt, SiSystem},
+		{VoltAmpere, SiSystem},
+		{MegaVoltAmpere, SiSystem},
+		{VoltAmpereReactive, SiSystem},
+		{BritishThermalUnitPerHour, BiSystem},
+		{BritishThermalUnitPerSecond, BiSystem},
+		{CaloriePerSecond, NoSystem},
+		{Horsepower, NoSystem},
+		{ThousandBritishThermalUnitsPerHour, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

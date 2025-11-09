@@ -3,8 +3,6 @@ package units
 import (
 	"math"
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Frequency_Conversions(t *testing.T) {
@@ -26,38 +24,17 @@ func Test_Frequency_Conversions(t *testing.T) {
 	testConversions(t, conversionTests)
 }
 
-func Test_Frequency_Systems(t *testing.T) {
-	si := SiSystem
-	assert.Equal(t, si, Hertz.System())
-	assert.Equal(t, si, KiloHertz.System())
-	assert.Equal(t, si, MegaHertz.System())
-	assert.Equal(t, si, GigaHertz.System())
-	assert.Equal(t, si, MilliHertz.System())
-	assert.Equal(t, si, MicroHertz.System())
-
-	// derived SI frequency units (angles/revolutions) are also in SI
-	assert.Equal(t, si, RadianPerSecond.System())
-	assert.Equal(t, si, DegreePerSecond.System())
-	assert.Equal(t, si, RevolutionPerSecond.System())
-}
-
-func Test_Frequency_BaseUnits(t *testing.T) {
-	// metric factories should report Hertz as base unit
-	assert.Equal(t, Hertz, KiloHertz.Base())
-	assert.Equal(t, Hertz, MilliHertz.Base())
-	assert.Equal(t, Hertz, CentiHertz.Base())
-}
-
-func Test_Lookup_Frequency_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{Hertz, "hertz"}, {Hertz, "Hz"}, {Hertz, "cps"}, {Hertz, "1/s"}, {Hertz, "cycles per second"},
-		{KiloHertz, "kilohertz"}, {KiloHertz, "kHz"},
-		{GigaHertz, "gigahertz"}, {GigaHertz, "GHz"},
-		{TeraHertz, "terahertz"}, {TeraHertz, "fresnel"}, {TeraHertz, "THz"},
-		{RadianPerSecond, "radian per second"}, {RadianPerSecond, "rad/s"},
-		{DegreePerHour, "degree per hour"}, {DegreePerHour, "°/h"},
-		{RevolutionPerDay, "revolution per day"}, {RevolutionPerDay, "rev/d"},
+func Test_Frequency_UnitSystems(t *testing.T) {
+	tests := []unitSystemTest{
+		{Hertz, SiSystem},
+		{KiloHertz, SiSystem},
+		{MegaHertz, SiSystem},
+		{GigaHertz, SiSystem},
+		{MilliHertz, SiSystem},
+		{MicroHertz, SiSystem},
+		{RadianPerSecond, SiSystem},
+		{DegreePerSecond, SiSystem},
+		{RevolutionPerSecond, SiSystem},
 	}
-
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

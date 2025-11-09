@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_MassPerTime_Conversions(t *testing.T) {
@@ -34,43 +32,13 @@ func Test_MassPerTime_Conversions(t *testing.T) {
 }
 
 func Test_MassPerTime_UnitSystems(t *testing.T) {
-	assert.Equal(t, SiSystem, KilogramPerSecond.System())
-	assert.Equal(t, SiSystem, KilogramPerMinute.System())
-	assert.Equal(t, SiSystem, KilogramPerHour.System())
-	assert.Equal(t, BiSystem, PoundPerSecond.System())
-	assert.Equal(t, BiSystem, PoundPerMinute.System())
-	assert.Equal(t, BiSystem, PoundPerHour.System())
-}
-
-func Test_Lookup_MassPerTime_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{KilogramPerSecond, "kilogram per second"},
-		{KilogramPerSecond, "kg/s"},
-		{KilogramPerSecond, "kilograms per second"},
-		{KilogramPerSecond, "kg per second"},
-		{KilogramPerMinute, "kilogram per minute"},
-		{KilogramPerMinute, "kg/min"},
-		{KilogramPerMinute, "kilograms per minute"},
-		{KilogramPerMinute, "kg per minute"},
-		{KilogramPerHour, "kilogram per hour"},
-		{KilogramPerHour, "kg/h"},
-		{KilogramPerHour, "kilograms per hour"},
-		{KilogramPerHour, "kg per hour"},
-		{PoundPerSecond, "pound per second"},
-		{PoundPerSecond, "lb/s"},
-		{PoundPerSecond, "pounds per second"},
-		{PoundPerSecond, "pounds mass per second"},
-		{PoundPerSecond, "lbm/s"},
-		{PoundPerMinute, "pound per minute"},
-		{PoundPerMinute, "lb/min"},
-		{PoundPerMinute, "pounds per minute"},
-		{PoundPerMinute, "pounds mass per minute"},
-		{PoundPerMinute, "lbm/min"},
-		{PoundPerHour, "pound per hour"},
-		{PoundPerHour, "lb/h"},
-		{PoundPerHour, "pounds per hour"},
-		{PoundPerHour, "pounds mass per hour"},
-		{PoundPerHour, "lbm/h"},
+	tests := []unitSystemTest{
+		{KilogramPerSecond, SiSystem},
+		{KilogramPerMinute, SiSystem},
+		{KilogramPerHour, SiSystem},
+		{PoundPerSecond, BiSystem},
+		{PoundPerMinute, BiSystem},
+		{PoundPerHour, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }

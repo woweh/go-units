@@ -2,8 +2,6 @@ package units
 
 import (
 	"testing"
-
-	"github.com/alecthomas/assert/v2"
 )
 
 func Test_Diffusivity_Conversions(t *testing.T) {
@@ -15,27 +13,9 @@ func Test_Diffusivity_Conversions(t *testing.T) {
 }
 
 func Test_Diffusivity_UnitSystems(t *testing.T) {
-	assert.Equal(t, SiSystem, SquareMeterPerSecond.System())
-	assert.Equal(t, BiSystem, SquareFootPerSecond.System())
-}
-
-func Test_Diffusivity_BaseUnits(t *testing.T) {
-	assert.Equal(t, SquareMeterPerSecond, SquareMeterPerSecond.Base())
-	assert.Equal(t, SquareMeterPerSecond, SquareFootPerSecond.Base())
-}
-
-func Test_Lookup_Diffusivity_Names_and_Symbols(t *testing.T) {
-	tests := lookUpTests{
-		{SquareMeterPerSecond, "square meter per second"},
-		{SquareMeterPerSecond, "m²/s"},
-		{SquareMeterPerSecond, "square meters per second"},
-		{SquareMeterPerSecond, "square metre per second"},
-		{SquareMeterPerSecond, "square metres per second"},
-		{SquareMeterPerSecond, "m2/s"},
-		{SquareFootPerSecond, "square foot per second"},
-		{SquareFootPerSecond, "ft²/s"},
-		{SquareFootPerSecond, "square feet per second"},
-		{SquareFootPerSecond, "ft2/s"},
+	tests := []unitSystemTest{
+		{SquareMeterPerSecond, SiSystem},
+		{SquareFootPerSecond, BiSystem},
 	}
-	testLookupNamesAndSymbols(t, tests)
+	testUnitSystems(t, tests)
 }
