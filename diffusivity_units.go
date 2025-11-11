@@ -12,7 +12,7 @@ var (
 	SquareFootPerSecond = mustCreateNewUnit("square foot per second", "ft²/s", _diffusivity, BI)
 )
 
-func init() {
+func initDiffusivityUnits() {
 	// SI base unit: m²/s
 	// Conversion: 1 m²/s = 10.763910416709722 ft²/s
 	NewRatioConversion(SquareMeterPerSecond, SquareFootPerSecond, 10.763910416709722)

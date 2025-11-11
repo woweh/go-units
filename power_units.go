@@ -46,7 +46,7 @@ var (
 	ThousandBritishThermalUnitsPerHour = mustCreateNewUnit("thousand British thermal units per hour", "MBH", _power, BI)
 )
 
-func init() {
+func initPowerUnits() {
 	NewRatioConversion(Watt, VoltAmpere, 1)
 	NewRatioConversion(Watt, VoltAmpereReactive, 1)
 

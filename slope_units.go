@@ -25,7 +25,7 @@ var (
 	SlopePermille = mustCreateNewUnit("slope permille", "", _slope, SI, Plural(PluralNone))
 )
 
-func init() {
+func initSlopeUnits() {
 	// Use SlopeValue as base unit for all conversions.
 	// When using `NewConversionFromFn`, you must define conversions in both directions.
 

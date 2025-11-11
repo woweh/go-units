@@ -26,7 +26,7 @@ var (
 	SquareYard = mustCreateNewUnit("square yard", "yd²", _area, BI)
 )
 
-func init() {
+func initAreaUnits() {
 	// https://www.calculatorsoup.com/calculators/conversions/area.php
 
 	// metric

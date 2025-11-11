@@ -13,7 +13,7 @@ var (
 	WattPerFoot = mustCreateNewUnit("watt per foot", "W/ft", _powerPerLength, BI)
 )
 
-func init() {
+func initPowerPerLengthUnits() {
 	// SI base unit: W/m
 	// Conversion: 1 W/m = 0.3048 W/ft (1 W/ft = 3.28084 W/m)
 	NewRatioConversion(WattPerMeter, WattPerFoot, 0.3048)

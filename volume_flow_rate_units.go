@@ -73,7 +73,7 @@ var (
 	CubicYardPerDay    = mustCreateNewUnit("cubic yard per day", "yd³/d", _volumeFlowRate, BI)
 )
 
-func init() {
+func initVolumeFlowRateUnits() {
 	// use CubicMeterPerSecond as the base unit
 	NewRatioConversion(CubicMeterPerSecond, CubicMeterPerMinute, 60)
 	NewRatioConversion(CubicMeterPerSecond, CubicMeterPerHour, 3600)

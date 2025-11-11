@@ -8,6 +8,58 @@ import (
 	"strings"
 )
 
+// init is the main initialization function for the units package.
+// It calls all necessary initialization functions for the package.
+func init() {
+	// Conversion helpers
+	initSlopeUnits()
+	initDimensionlessRatioUnits()
+
+	// SI base units (order: m, kg, s, A, K, cd)
+	initLengthUnits()
+	initMassUnits()
+	initTimeUnits()
+	// electric current doesn't have/need a dedicated init function
+	initTemperatureUnits()
+	initLuminanceUnits() // candela (cd) is the SI base for luminous intensity
+
+	// Other fundamental/derived units
+	initAngleUnits()
+	initInformationUnits()
+
+	// Area, volume, velocity, acceleration, force, energy, power, etc.
+	initAreaUnits()
+	initVolumeUnits()
+	initVelocityUnits()
+	initAccelerationUnits()
+	initForceUnits()
+	initEnergyUnits()
+	initPowerUnits()
+	initPowerDensityUnits()
+	initPowerPerLengthUnits()
+	initPressureUnits()
+	initStressUnits()
+	initMomentUnits()
+	initMomentOfInertiaUnits()
+	initDensityUnits()
+	initMassPerTimeUnits()
+	initDynamicViscosityUnits()
+	initDiffusivityUnits()
+	initCoefficientOfHeatTransferUnits()
+	initSpecificHeatUnits()
+	initThermalConductivityUnits()
+	initThermalResistanceUnits()
+	initThermalInsulanceUnits()
+	initThermalMassUnits()
+	initTemperatureDifferenceUnits()
+	initFrictionUnits()
+	initIlluminanceUnits()
+	initElectricChargeUnits()
+	initFrequencyUnits()
+	initUnitWeightUnits()
+	initVolumeFlowRateUnits()
+}
+
 // CsvHeader is the header row for the CSV output (> see func GetCsv).
 // It matches the format of the Unit.CsvLine method.
 const CsvHeader = "Name,Symbol,PluralName,Quantity,System,Aliases & Symbols"

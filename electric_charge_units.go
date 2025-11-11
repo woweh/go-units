@@ -39,7 +39,7 @@ var (
 	MilliAmpereSecond = Milli(AmpereSecond)
 )
 
-func init() {
+func initElectricChargeUnits() {
 	NewRatioConversion(AmpereHour, Coulomb, 3600)
 	NewRatioConversion(AmpereMinute, Coulomb, 60)
 	NewRatioConversion(AmpereSecond, Coulomb, 1)

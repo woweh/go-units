@@ -18,15 +18,7 @@ var (
 	PoundPerHour   = mustCreateNewUnit("pound per hour", "lb/h", _massPerTime, BI)
 )
 
-func init() {
-	// From RevitUnits.json:
-	// kg/s: CF = 1.0
-	// kg/min: CF = 60.0
-	// kg/h: CF = 3600.0
-	// lb/s: CF = 2.2046226218487757
-	// lb/min: CF = 132.27735731092656
-	// lb/h: CF = 7936.6414386555925
-
+func initMassPerTimeUnits() {
 	NewRatioConversion(KilogramPerSecond, KilogramPerMinute, 60.0)
 	NewRatioConversion(KilogramPerSecond, KilogramPerHour, 3600.0)
 	NewRatioConversion(KilogramPerSecond, PoundPerSecond, 2.2046226218487757)

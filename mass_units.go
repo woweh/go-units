@@ -39,7 +39,7 @@ var (
 	ShortTon = mustCreateNewUnit("short ton", "short ton", _mass, BI)
 )
 
-func init() {
+func initMassUnits() {
 	// metric ton (tonne) as a distinct unit
 	NewRatioConversion(MetricTon, Gram, 1e6) // == MegaGram
 	MetricTon.AddAliases("tonne", "tonnes", "metric tons")

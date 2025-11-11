@@ -17,7 +17,7 @@ var (
 	MilePerHour   = mustCreateNewUnit("mile per hour", "mph", _velocity, BI)
 )
 
-func init() {
+func initVelocityUnits() {
 	// SI base unit: m/s
 	// Conversions: 1 m/s = 3.28084 ft/s = 196.85 ft/min = 3.6 km/h = 2.237 mph
 	NewRatioConversion(MeterPerSecond, FootPerSecond, 3.2808398950131)

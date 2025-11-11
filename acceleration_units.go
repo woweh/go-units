@@ -16,7 +16,7 @@ var (
 	MilePerSecondSquared = mustCreateNewUnit("mile per second squared", "mi/s²", _acceleration, BI)
 )
 
-func init() {
+func initAccelerationUnits() {
 	// SI base unit: m/s²
 	// Conversions: 1 m/s² = 3.28084 ft/s² = 39.37008 in/s²
 	NewRatioConversion(MeterPerSecondSquared, FootPerSecondSquared, 3.2808398950131)

@@ -16,12 +16,7 @@ var (
 	BritishThermalUnitPerFahrenheit = mustCreateNewUnit("British thermal unit per degree Fahrenheit", "BTU/°F", _thermalMass, BI)
 )
 
-func init() {
-	// From RevitUnits.json:
-	// J/K: CF = 0.09290304
-	// kJ/K: CF = 9.290304e-05
-	// BTU/°F: CF = 4.891949546730718e-05
-
+func initThermalMassUnits() {
 	// 1 kJ/K = 1000 J/K
 	NewRatioConversion(KiloJoulePerKelvin, JoulePerKelvin, 1000.0)
 

@@ -13,7 +13,7 @@ var (
 	PartsPerTrillion = mustCreateNewUnit("partsPerTrillion", "", _dimensionlessRatio, SI, Plural(PluralNone))
 )
 
-func init() {
+func initDimensionlessRatioUnits() {
 	NewRatioConversion(Fraction, Percent, 100)
 	NewRatioConversion(Fraction, Permille, 1000)
 	NewRatioConversion(Fraction, PartsPerMillion, 1000000)

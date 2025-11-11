@@ -53,7 +53,7 @@ var (
 	PoundForcePerSquareInchGauge = mustCreateNewUnit("pound-force per square inch gauge", "psig", _pressure, BI)
 )
 
-func init() {
+func initPressureUnits() {
 	// https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9#PRESSURE
 	NewRatioConversion(At, Pascal, 9.80665e+04)
 	NewRatioConversion(Atm, Pascal, 1.01325e+05)

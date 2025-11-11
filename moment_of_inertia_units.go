@@ -16,7 +16,7 @@ var (
 	InchToTheFourthPower = mustCreateNewUnit("inch to the fourth power", "in⁴", _momentOfInertia, BI)
 )
 
-func init() {
+func initMomentOfInertiaUnits() {
 	// SI base unit: m⁴
 	// Conversions: 1 m⁴ = 115.86176745901283 ft⁴ = 2402509.6100288294 in⁴ = 100000000 cm⁴ = 1e12 mm⁴
 	NewRatioConversion(MeterToTheFourthPower, FootToTheFourthPower, 115.86176745901283)

@@ -45,7 +45,7 @@ var (
 	RevolutionPerDay    = mustCreateNewUnit("revolution per day", "rev/d", _frequency, SI)
 )
 
-func init() {
+func initFrequencyUnits() {
 	Hertz.AddAliases("cycles per second", "cycles/second", "1-per-second", "Frames-per-second")
 	Hertz.AddSymbols("cps", "1/s", "fps")
 

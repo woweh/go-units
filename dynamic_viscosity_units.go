@@ -22,17 +22,7 @@ var (
 	PoundMassPerFootHour          = mustCreateNewUnit("pound mass per foot hour", "lbm/ft-h", _dynamicViscosity, BI)
 )
 
-func init() {
-	// From RevitUnits.json (all relative to Pa-s):
-	// Pa-s: CF = 3.280839895013123
-	// N·s/m²: CF = 3.280839895013123 (same as Pa-s)
-	// kg/(m·s): CF = 3.280839895013123 (same as Pa-s)
-	// kg/(m·h): CF = 11811.023622047243
-	// cP: CF = 3280.839895013123
-	// lb·s/ft²: CF = 0.06852176585679176
-	// lbm/ft-s: CF = 2.2046226218487757
-	// lbm/ft-h: CF = 7936.6414386555925
-
+func initDynamicViscosityUnits() {
 	// Pa-s equivalents
 	NewRatioConversion(PascalSecond, NewtonSecondPerSquareMeter, 1.0)
 	NewRatioConversion(PascalSecond, KilogramPerMeterSecond, 1.0)

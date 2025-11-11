@@ -16,12 +16,7 @@ var (
 	KipPerCubicInch = mustCreateNewUnit("kip per cubic inch", "kip/in³", _unitWeight, BI)
 )
 
-func init() {
-	// From RevitUnits.json:
-	// lbf/ft³: CF = 0.06852176585679176
-	// kN/m³: CF = 0.010763910416709722
-	// kip/in³: CF = 3.9653799685643397e-08
-
+func initUnitWeightUnits() {
 	// SI base unit: kN/m³
 	// 1 kN/m³ = 6.36588 lbf/ft³
 	NewRatioConversion(KiloNewtonPerCubicMeter, PoundForcePerCubicFoot, 6.36588)

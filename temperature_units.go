@@ -12,7 +12,7 @@ var (
 	Rankine    = mustCreateNewUnit("rankine", "°R", _temperature, US, Plural(PluralNone))
 )
 
-func init() {
+func initTemperatureUnits() {
 	// https://en.wikipedia.org/wiki/Conversion_of_scales_of_temperature
 
 	NewConversionFromFn(

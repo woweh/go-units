@@ -24,7 +24,7 @@ var (
 	TonneForcePerSquareMeter      = mustCreateNewUnit("tonne force per square meter", "Tf/m²", _stress, MKpS)
 )
 
-func init() {
+func initStressUnits() {
 	// Stress-specific conversions (using Pascal from pressure_units.go as base)
 
 	// 1 ksf = 1000 psf = 47880.26 Pa

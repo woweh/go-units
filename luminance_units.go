@@ -13,7 +13,7 @@ var (
 	Footlambert          = mustCreateNewUnit("footlambert", "ftL", _luminance, BI)
 )
 
-func init() {
+func initLuminanceUnits() {
 	// SI base unit: cd/m²
 	// Conversions: 1 cd/m² = 0.09290304 cd/ft² = 0.29186351 ftL
 	NewRatioConversion(CandelaPerSquareMeter, CandelaPerSquareFoot, 0.09290304)

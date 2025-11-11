@@ -111,8 +111,8 @@ func Test_findBestMatchingUnit(t *testing.T) {
 		{"Partial: exp=8", VoltAmpere, 8, MegaVoltAmpere},
 		{"Partial: exp=15", VoltAmpere, 15, MegaVoltAmpere},
 		{"Partial: exp=100", VoltAmpere, 100, MegaVoltAmpere},
-		// Data units (uses kilo which is 10^3, not 1024)
-		{"Data: exp=3", Byte, 3, KiloByte},
+		// Information units (uses kilo which is 10^3, not 1024)
+		{"Information: exp=3", Byte, 3, KiloByte},
 		// Edge cases around the "within 3" boundary
 		{"Just within 3 - lower", Hertz, 11, GigaHertz},    // 11 is 2 away from giga(9)
 		{"At boundary - exactly 3", Hertz, 12, TeraHertz},  // 12 is exact match

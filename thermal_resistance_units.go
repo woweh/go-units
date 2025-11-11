@@ -13,11 +13,7 @@ var (
 	HourSquareFootFahrenheitPerBritishThermalUnit = mustCreateNewUnit("hour square foot degree Fahrenheit per British thermal unit", "(h·ft²·°F)/BTU", _thermalResistance, BI)
 )
 
-func init() {
-	// From RevitUnits.json:
-	// (m²·K)/W: CF = 1.0
-	// (h·ft²·°F)/BTU: CF = 5.678263341113486
-	// This means: 1 (m²·K)/W = 5.678263 (h·ft²·°F)/BTU
+func initThermalResistanceUnits() {
 	NewRatioConversion(SquareMeterKelvinPerWatt, HourSquareFootFahrenheitPerBritishThermalUnit, 5.678263341113486)
 
 	SquareMeterKelvinPerWatt.AddAliases("square meter kelvins per watt", "square metre kelvin per watt", "square metre kelvins per watt", "(m2*K)/W", "m2*K/W")

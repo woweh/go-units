@@ -46,7 +46,7 @@ var (
 	Therm              = mustCreateNewUnit("therm", "therm", _energy, BI)
 )
 
-func init() {
+func initEnergyUnits() {
 	// https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9#ENERGY
 	// electronvolt (eV)	joule (J)	1.602177e-19
 	NewRatioConversion(ElectronVolt, Joule, 1.602177e-19)

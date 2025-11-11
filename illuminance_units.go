@@ -12,7 +12,7 @@ var (
 	Footcandle = mustCreateNewUnit("footcandle", "Ftc", _illuminance, BI)
 )
 
-func init() {
+func initIlluminanceUnits() {
 	// SI base unit: lux
 	// Conversion: 1 lx = 0.09290304 Ftc (1 Ftc = 10.76391 lx)
 	NewRatioConversion(Lux, Footcandle, 0.09290304)

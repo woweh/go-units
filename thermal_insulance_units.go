@@ -24,7 +24,7 @@ var (
 	)
 )
 
-func init() {
+func initThermalInsulanceUnits() {
 	// SI base unit: K·m²/W
 	// 1 I-P R-value = 0.1761102 SI R-value (NIST, Revit)
 	NewRatioConversion(DegreeFahrenheitHourSquareFootPerBtu, KelvinSquareMeterPerWatt, 0.1761102)

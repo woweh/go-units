@@ -37,10 +37,10 @@ var (
 	TonneForce    = mustCreateNewUnit("tonne-force", "tf", _force, MKpS)
 
 	Kip           = Kilo(PoundForce)
-	ShortTonForce = mustCreateNewUnit("short ton force", "Tons", _force, BI)
+	ShortTonForce = mustCreateNewUnit("short ton force", "stf", _force, BI)
 )
 
-func init() {
+func initForceUnits() {
 	// https://qudt.org/vocab/unit/LB_F  4.448222
 	NewRatioConversion(PoundForce, Newton, 4.448222)
 

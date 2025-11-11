@@ -17,7 +17,7 @@ var (
 	InchOfWaterPer100Feet = mustCreateNewUnit("inch of water per 100 feet", "in-wg/100ft", _friction, BI)
 )
 
-func init() {
+func initFrictionUnits() {
 	// SI base unit: Pa/m
 	// Revit base: mmH2O/m (CF=1.0976133966960913), but SI base is Pa/m
 	// mmH2O/m: 1 mmH2O = 9.80665 Pa, so 1 mmH2O/m = 9.80665 Pa/m

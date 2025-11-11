@@ -40,7 +40,7 @@ var (
 	Score      = mustCreateNewUnit("score", "", _time)
 )
 
-func init() {
+func initTimeUnits() {
 	NewRatioConversion(Minute, Second, 60.0)
 	NewRatioConversion(Hour, Second, 3600.0)
 	NewRatioConversion(Day, Hour, 24.0)

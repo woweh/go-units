@@ -51,7 +51,7 @@ var (
 	CustomaryFluidOunce = mustCreateNewUnit("customary fluid ounce", "", _volume, US)
 )
 
-func init() {
+func initVolumeUnits() {
 	NewRatioConversion(CubicKiloMeter, TeraLiter, 1)
 	NewRatioConversion(CubicHectoMeter, GigaLiter, 1)
 	NewRatioConversion(CubicDecaMeter, MegaLiter, 1)

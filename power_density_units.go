@@ -14,7 +14,7 @@ var (
 	BritishThermalUnitPerHourSquareFoot = mustCreateNewUnit("British thermal unit per hour square foot", "Btu/(h·ft²)", _powerDensity, BI)
 )
 
-func init() {
+func initPowerDensityUnits() {
 	// SI base unit: W/m²
 	// Conversion: 1 W/m² = 0.09290304 W/ft²
 	NewRatioConversion(WattPerSquareMeter, WattPerSquareFoot, 0.09290304)

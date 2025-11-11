@@ -58,21 +58,27 @@ func testConversions(t *testing.T, convTests []conversionTest) {
 			tolerance := cTest.getTolerance()
 			u1, err := Find(cTest.from)
 			if err != nil {
-				t.Errorf("failed to find unit %s: %v", cTest.from, err)
+				t.Fatalf("failed to find unit %s: %v", cTest.from, err)
 			}
 			u2, err := Find(cTest.to)
 			if err != nil {
-				t.Errorf("failed to find unit %s: %v", cTest.to, err)
+				t.Fatalf("failed to find unit %s: %v", cTest.to, err)
 			}
 
-			converted := MustConvertFloat(_baseValue, u1, u2)
+			converted, err := ConvertFloat(_baseValue, u1, u2)
+			if err != nil {
+				t.Fatalf("conversion failed: %v", err)
+			}
 			got := converted.Float()
 			if !floatEquals(got, cTest.exp, tolerance) {
 				t.Errorf("%s -> %s conversion failed: want %.9f, got %.9f", cTest.from, cTest.to, cTest.exp, got)
 			}
 
 			// test inverse conversion
-			inverse := MustConvertFloat(got, u2, u1)
+			inverse, err := ConvertFloat(got, u2, u1)
+			if err != nil {
+				t.Fatalf("inverse conversion failed: %v", err)
+			}
 			gotInv := inverse.Float()
 			if !floatEquals(gotInv, _baseValue, tolerance) {
 				t.Errorf("%s <- %s inverse conversion failed: want 1.0, got %.2f", cTest.from, cTest.to, gotInv)

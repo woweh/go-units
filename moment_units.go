@@ -23,17 +23,7 @@ var (
 	TonneForceMeter    = mustCreateNewUnit("tonne force meter", "Tf-m", _moment, MKpS)
 )
 
-func init() {
-	// From RevitUnits.json:
-	// N-m: CF = 0.09290304
-	// daN-m: CF = 0.009290304
-	// kN-m: CF = 9.290304e-05
-	// MN-m: CF = 9.290304e-08
-	// lb-ft: CF = 0.06852176585679176
-	// kip-ft: CF = 6.852176585679177e-05
-	// kgf-m: CF = 0.0094734736122937
-	// Tf-m: CF = 9.4734736122937e-06
-
+func initMomentUnits() {
 	NewRatioConversion(NewtonMeter, DekaNewtonMeter, 0.1)
 	NewRatioConversion(NewtonMeter, KiloNewtonMeter, 0.001)
 	NewRatioConversion(NewtonMeter, MegaNewtonMeter, 0.000001)

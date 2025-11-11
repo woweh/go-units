@@ -42,7 +42,7 @@ var (
 	DMS = mustCreateNewUnit("degree minute second", "DMS", _angle)
 )
 
-func init() {
+func initAngleUnits() {
 	NewRatioConversion(Turn, Radian, 2*math.Pi)
 	NewRatioConversion(Turn, Degree, 360)
 	NewRatioConversion(Turn, Gon, 400)

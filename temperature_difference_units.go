@@ -21,13 +21,7 @@ var (
 	RankineInterval    = mustCreateNewUnit("rankine interval", "Δ°R", _temperatureDifference, BI)
 )
 
-func init() {
-	// From RevitUnits.json:
-	// K: CF = 1.0
-	// delta°C: CF = 1.0
-	// delta°F: CF = 1.7999999999999998
-	// delta°R: CF = 1.7999999999999998
-
+func initTemperatureDifferenceUnits() {
 	// Kelvin and Celsius have the same interval scale
 	NewRatioConversion(KelvinInterval, CelsiusInterval, 1.0)
 

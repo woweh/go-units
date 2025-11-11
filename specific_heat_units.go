@@ -16,7 +16,7 @@ var (
 	BritishThermalUnitPerPoundFahrenheit = mustCreateNewUnit("British thermal unit per pound degree Fahrenheit", "BTU/(lb·°F)", _specificHeat, BI)
 )
 
-func init() {
+func initSpecificHeatUnits() {
 	// 1 J/(g·°C) = 1000 J/(kg·°C)
 	NewRatioConversion(JoulePerGramCelsius, JoulePerKilogramCelsius, 1000.0)
 
