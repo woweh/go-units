@@ -7,24 +7,24 @@ import (
 func Test_ElectricCharge_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// SI/metric progressions (sampled)
-		{"kilocoulomb", "coulomb", 1000},
-		{"millicoulomb", "coulomb", 0.001},
-		{"microcoulomb", "coulomb", 0.000001},
+		{from: "kilocoulomb", to: "coulomb", exp: 1000},
+		{from: "millicoulomb", to: "coulomb", exp: 0.001},
+		{from: "microcoulomb", to: "coulomb", exp: 0.000001},
 		// Ampere-hour/minute/second to coulomb (from implementation)
-		{"ampere-hour", "coulomb", 3600},
-		{"ampere-minute", "coulomb", 60},
-		{"ampere-second", "coulomb", 1},
+		{from: "ampere-hour", to: "coulomb", exp: 3600},
+		{from: "ampere-minute", to: "coulomb", exp: 60},
+		{from: "ampere-second", to: "coulomb", exp: 1},
 		// Reverse conversions
-		{"coulomb", "ampere-hour", 1.0 / 3600},
-		{"coulomb", "ampere-minute", 1.0 / 60},
-		{"coulomb", "ampere-second", 1},
+		{from: "coulomb", to: "ampere-hour", exp: 1.0 / 3600},
+		{from: "coulomb", to: "ampere-minute", exp: 1.0 / 60},
+		{from: "coulomb", to: "ampere-second", exp: 1},
 		// Kilo/milli ampere-hour/minute/second
-		{"kiloampere-hour", "kilocoulomb", 3600},
-		{"kiloampere-minute", "kilocoulomb", 60},
-		{"kiloampere-second", "kilocoulomb", 1},
-		{"milliampere-hour", "millicoulomb", 3600},
-		{"milliampere-minute", "millicoulomb", 60},
-		{"milliampere-second", "millicoulomb", 1},
+		{from: "kiloampere-hour", to: "kilocoulomb", exp: 3600},
+		{from: "kiloampere-minute", to: "kilocoulomb", exp: 60},
+		{from: "kiloampere-second", to: "kilocoulomb", exp: 1},
+		{from: "milliampere-hour", to: "millicoulomb", exp: 3600},
+		{from: "milliampere-minute", to: "millicoulomb", exp: 60},
+		{from: "milliampere-second", to: "millicoulomb", exp: 1},
 	}
 
 	testConversions(t, conversionTests)

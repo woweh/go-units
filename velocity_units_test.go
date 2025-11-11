@@ -7,19 +7,19 @@ import (
 func Test_Velocity_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Revit conversions (from/to internal, see RevitUnits.csv)
-		{"m/s", "ft/s", 3.28083989501312},
-		{"ft/s", "m/s", 0.3048},
-		{"m/s", "ft/min", 196.850394},
-		{"ft/min", "m/s", 0.00508},
-		{"m/s", "cm/min", 6000},
-		{"cm/min", "m/s", 0.000166666666666667},
-		{"m/s", "km/h", 3.6},
-		{"km/h", "m/s", 0.277777777777778},
-		{"m/s", "mph", 2.2369362920544},
-		{"mph", "m/s", 0.44704},
+		{from: "m/s", to: "ft/s", exp: 3.28083989501312},
+		{from: "ft/s", to: "m/s", exp: 0.3048},
+		{from: "m/s", to: "ft/min", exp: 196.850394},
+		{from: "ft/min", to: "m/s", exp: 0.00508},
+		{from: "m/s", to: "cm/min", exp: 6000},
+		{from: "cm/min", to: "m/s", exp: 0.000166666666666667},
+		{from: "m/s", to: "km/h", exp: 3.6},
+		{from: "km/h", to: "m/s", exp: 0.277777777777778},
+		{from: "m/s", to: "mph", exp: 2.2369362920544},
+		{from: "mph", to: "m/s", exp: 0.44704},
 		// Cross-system
-		{"mph", "km/h", 1.609344},
-		{"km/h", "mph", 0.621371192237334},
+		{from: "mph", to: "km/h", exp: 1.609344},
+		{from: "km/h", to: "mph", exp: 0.621371192237334},
 	}
 	testConversions(t, conversionTests)
 }

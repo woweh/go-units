@@ -7,10 +7,10 @@ import (
 func Test_ThermalMass_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Revit conversions (from/to internal, see RevitUnits.csv)
-		{"kJ/K", "J/K", 1000},
-		{"J/K", "kJ/K", 0.001},
-		{"BTU/°F", "J/K", 1899.1},
-		{"J/K", "BTU/°F", 0.000526565},
+		{from: "kJ/K", to: "J/K", exp: 1000},
+		{from: "J/K", to: "kJ/K", exp: 0.001},
+		{from: "BTU/°F", to: "J/K", exp: 1899.1},
+		{from: "J/K", to: "BTU/°F", exp: 0.000526565},
 	}
 	testConversions(t, conversionTests)
 }

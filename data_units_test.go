@@ -7,30 +7,30 @@ import (
 func Test_Data_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Binary (IEC) progressions
-		{"kibibyte", "byte", 1024},
-		{"mebibyte", "kibibyte", 1024},
-		{"gibibyte", "mebibyte", 1024},
-		{"tebibyte", "gibibyte", 1024},
-		{"pebibyte", "tebibyte", 1024},
-		{"exbibyte", "pebibyte", 1024},
-		{"zebibyte", "exbibyte", 1024},
-		{"yobibyte", "zebibyte", 1024},
+		{from: "kibibyte", to: "byte", exp: 1024},
+		{from: "mebibyte", to: "kibibyte", exp: 1024},
+		{from: "gibibyte", to: "mebibyte", exp: 1024},
+		{from: "tebibyte", to: "gibibyte", exp: 1024},
+		{from: "pebibyte", to: "tebibyte", exp: 1024},
+		{from: "exbibyte", to: "pebibyte", exp: 1024},
+		{from: "zebibyte", to: "exbibyte", exp: 1024},
+		{from: "yobibyte", to: "zebibyte", exp: 1024},
 		// Decimal (SI) progressions (bytes)
-		{"kilobyte", "byte", 1000},
-		{"megabyte", "kilobyte", 1000},
-		{"gigabyte", "megabyte", 1000},
-		{"terabyte", "gigabyte", 1000},
+		{from: "kilobyte", to: "byte", exp: 1000},
+		{from: "megabyte", to: "kilobyte", exp: 1000},
+		{from: "gigabyte", to: "megabyte", exp: 1000},
+		{from: "terabyte", to: "gigabyte", exp: 1000},
 		// Decimal (SI) progressions (bits)
-		{"kilobit", "bit", 1000},
-		{"megabit", "kilobit", 1000},
-		{"gigabit", "megabit", 1000},
+		{from: "kilobit", to: "bit", exp: 1000},
+		{from: "megabit", to: "kilobit", exp: 1000},
+		{from: "gigabit", to: "megabit", exp: 1000},
 		// Cross-system and special conversions
-		{"byte", "bit", 8},
-		{"nibble", "bit", 4},
-		{"kibibyte", "kilobit", 8.192},
-		{"mebibyte", "megabit", 8.388608},
-		{"kilobyte", "kibibyte", 0.9765625},
-		{"megabyte", "mebibyte", 0.95367431640625},
+		{from: "byte", to: "bit", exp: 8},
+		{from: "nibble", to: "bit", exp: 4},
+		{from: "kibibyte", to: "kilobit", exp: 8.192},
+		{from: "mebibyte", to: "megabit", exp: 8.388608},
+		{from: "kilobyte", to: "kibibyte", exp: 0.9765625},
+		{from: "megabyte", to: "mebibyte", exp: 0.95367431640625},
 	}
 	testConversions(t, conversionTests)
 }

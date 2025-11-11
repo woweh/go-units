@@ -7,12 +7,12 @@ import (
 func Test_ElectricalResistance_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Metric progressions (sampled)
-		{"kiloohm", "ohm", 1000},
-		{"megaohm", "kiloohm", 1000},
-		{"miliohm", "ohm", 0.001},
-		{"microohm", "ohm", 0.000001},
-		{"gigaohm", "megaohm", 1000},
-		{"teraohm", "gigaohm", 1000},
+		{from: "kiloohm", to: "ohm", exp: 1000},
+		{from: "megaohm", to: "kiloohm", exp: 1000},
+		{from: "miliohm", to: "ohm", exp: 0.001},
+		{from: "microohm", to: "ohm", exp: 0.000001},
+		{from: "gigaohm", to: "megaohm", exp: 1000},
+		{from: "teraohm", to: "gigaohm", exp: 1000},
 	}
 	testConversions(t, conversionTests)
 }

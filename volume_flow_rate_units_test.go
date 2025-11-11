@@ -7,18 +7,18 @@ import (
 func Test_VolumeFlowRate_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// SI conversions
-		{"cubic meter per second", "cubic meter per minute", 60},
-		{"cubic meter per second", "cubic meter per hour", 3600},
-		{"cubic meter per second", "cubic meter per day", 86400},
-		{"cubic meter per second", "cubic decimeter per second", 1000},
-		{"cubic meter per second", "cubic centimeter per second", 1000000},
+		{from: "cubic meter per second", to: "cubic meter per minute", exp: 60},
+		{from: "cubic meter per second", to: "cubic meter per hour", exp: 3600},
+		{from: "cubic meter per second", to: "cubic meter per day", exp: 86400},
+		{from: "cubic meter per second", to: "cubic decimeter per second", exp: 1000},
+		{from: "cubic meter per second", to: "cubic centimeter per second", exp: 1000000},
 		// Imperial conversions
-		{"cubic meter per second", "cubic inch per second", 61023.744095},
-		{"cubic meter per second", "cubic foot per second", 35.314667},
-		{"cubic meter per second", "cubic yard per second", 1.307951},
+		{from: "cubic meter per second", to: "cubic inch per second", exp: 61023.744095},
+		{from: "cubic meter per second", to: "cubic foot per second", exp: 35.314667},
+		{from: "cubic meter per second", to: "cubic yard per second", exp: 1.307951},
 		// Cross-system
-		{"cubic foot per second", "cubic meter per second", 0.0283168},
-		{"cubic inch per second", "cubic meter per second", 0.0000163871},
+		{from: "cubic foot per second", to: "cubic meter per second", exp: 0.0283168},
+		{from: "cubic inch per second", to: "cubic meter per second", exp: 0.0000163871},
 	}
 	testConversions(t, conversionTests)
 }

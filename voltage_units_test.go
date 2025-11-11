@@ -7,12 +7,12 @@ import (
 func Test_Voltage_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Metric factory conversions (SI multiples)
-		{"kV", "V", 1000},
-		{"V", "kV", 0.001},
-		{"MV", "V", 1000000},
-		{"V", "MV", 0.000001},
-		{"mV", "V", 0.001},
-		{"V", "mV", 1000},
+		{from: "kV", to: "V", exp: 1000},
+		{from: "V", to: "kV", exp: 0.001},
+		{from: "MV", to: "V", exp: 1000000},
+		{from: "V", to: "MV", exp: 0.000001},
+		{from: "mV", to: "V", exp: 0.001},
+		{from: "V", to: "mV", exp: 1000},
 	}
 	testConversions(t, conversionTests)
 }

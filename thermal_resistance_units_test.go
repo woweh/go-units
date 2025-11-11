@@ -7,8 +7,8 @@ import (
 func Test_ThermalResistance_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Revit conversions (from/to internal, see RevitUnits.csv)
-		{"(m²·K)/W", "(h·ft²·°F)/BTU", 5.67826334111349},
-		{"(h·ft²·°F)/BTU", "(m²·K)/W", 0.176110183682306},
+		{from: "(m²·K)/W", to: "(h·ft²·°F)/BTU", exp: 5.67826334111349},
+		{from: "(h·ft²·°F)/BTU", to: "(m²·K)/W", exp: 0.176110183682306},
 	}
 	testConversions(t, conversionTests)
 }

@@ -6,13 +6,13 @@ import (
 
 func Test_ElectricCurrent_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
-		{"kiloampere", "ampere", 1000},
-		{"megaampere", "kiloampere", 1000},
-		{"milliampere", "ampere", 0.001},
-		{"microampere", "ampere", 0.000001},
-		{"nanoampere", "ampere", 0.000000001},
-		{"gigaampere", "megaampere", 1000},
-		{"teraampere", "gigaampere", 1000},
+		{from: "kiloampere", to: "ampere", exp: 1000},
+		{from: "megaampere", to: "kiloampere", exp: 1000},
+		{from: "milliampere", to: "ampere", exp: 0.001},
+		{from: "microampere", to: "ampere", exp: 0.000001},
+		{from: "nanoampere", to: "ampere", exp: 0.000000001},
+		{from: "gigaampere", to: "megaampere", exp: 1000},
+		{from: "teraampere", to: "gigaampere", exp: 1000},
 	}
 	testConversions(t, conversionTests)
 }

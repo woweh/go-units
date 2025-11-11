@@ -7,14 +7,14 @@ import (
 func Test_PowerDensity_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Revit conversions from internal (W/m²)
-		{"W/m²", "W/ft²", 0.09290304},
-		{"W/ft²", "W/m²", 10.7639104167097},
-		{"W/m²", "Btu/(h·ft²)", 0.316998330628151},
-		{"Btu/(h·ft²)", "W/m²", 3.15459074506305},
+		{from: "W/m²", to: "W/ft²", exp: 0.09290304},
+		{from: "W/ft²", to: "W/m²", exp: 10.7639104167097},
+		{from: "W/m²", to: "Btu/(h·ft²)", exp: 0.316998330628151},
+		{from: "Btu/(h·ft²)", to: "W/m²", exp: 3.15459074506305},
 
 		// Cross conversions
-		{"W/ft²", "Btu/(h·ft²)", 3.41214},
-		{"Btu/(h·ft²)", "W/ft²", 0.29307107017222},
+		{from: "W/ft²", to: "Btu/(h·ft²)", exp: 3.41214},
+		{from: "Btu/(h·ft²)", to: "W/ft²", exp: 0.29307107017222},
 	}
 	testConversions(t, conversionTests)
 }

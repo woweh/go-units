@@ -7,23 +7,23 @@ import (
 func Test_Volume_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// SI/metric
-		{"cubic meter", "liter", 1000},
-		{"liter", "cubic meter", 0.001},
-		{"cubic centimeter", "liter", 0.001},
-		{"liter", "cubic centimeter", 1000},
+		{from: "cubic meter", to: "liter", exp: 1000},
+		{from: "liter", to: "cubic meter", exp: 0.001},
+		{from: "cubic centimeter", to: "liter", exp: 0.001},
+		{from: "liter", to: "cubic centimeter", exp: 1000},
 		// Metric factory
-		{"kiloliter", "liter", 1000},
-		{"liter", "kiloliter", 0.001},
-		{"centiliter", "liter", 0.01},
-		{"liter", "centiliter", 100},
+		{from: "kiloliter", to: "liter", exp: 1000},
+		{from: "liter", to: "kiloliter", exp: 0.001},
+		{from: "centiliter", to: "liter", exp: 0.01},
+		{from: "liter", to: "centiliter", exp: 100},
 		// Imperial/US
-		{"gallon", "liter", 4.54609},
-		{"liter", "gallon", 0.2199692},
-		{"cubic foot", "liter", 28.316846592},
-		{"liter", "cubic foot", 0.0353146667214886},
+		{from: "gallon", to: "liter", exp: 4.54609},
+		{from: "liter", to: "gallon", exp: 0.2199692},
+		{from: "cubic foot", to: "liter", exp: 28.316846592},
+		{from: "liter", to: "cubic foot", exp: 0.0353146667214886},
 		// Cross-system
-		{"cubic inch", "liter", 0.016387064},
-		{"liter", "cubic inch", 61.0237440947323},
+		{from: "cubic inch", to: "liter", exp: 0.016387064},
+		{from: "liter", to: "cubic inch", exp: 61.0237440947323},
 	}
 	testConversions(t, conversionTests)
 }

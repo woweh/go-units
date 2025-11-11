@@ -7,30 +7,30 @@ import (
 func Test_Energy_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// SI base and metric
-		{"joule", "calorie", 0.2390057361376673},
-		{"joule", "electronvolt", 6.241507648655548e+18},
-		{"joule", "watt-hour", 0.0002777777777777778},
-		{"watt-hour", "joule", 3600},
-		{"megawatt-hour", "joule", 3.6e+9},
-		{"kilowatt-hour", "joule", 3.6e+6},
-		{"joule", "megajoule", 1e-6},
-		{"joule", "gigajoule", 1e-9},
+		{from: "joule", to: "calorie", exp: 0.2390057361376673},
+		{from: "joule", to: "electronvolt", exp: 6.241507648655548e+18},
+		{from: "joule", to: "watt-hour", exp: 0.0002777777777777778},
+		{from: "watt-hour", to: "joule", exp: 3600},
+		{from: "megawatt-hour", to: "joule", exp: 3.6e+9},
+		{from: "kilowatt-hour", to: "joule", exp: 3.6e+6},
+		{from: "joule", to: "megajoule", exp: 1e-6},
+		{from: "joule", to: "gigajoule", exp: 1e-9},
 		// Imperial/other
-		{"joule", "british thermal unit", 0.0009478171203133172},
-		{"british thermal unit", "joule", 1055.05585262},
-		{"therm", "joule", 105505585.262},
+		{from: "joule", to: "british thermal unit", exp: 0.0009478171203133172},
+		{from: "british thermal unit", to: "joule", exp: 1055.05585262},
+		{from: "therm", to: "joule", exp: 105505585.262},
 		// Additional metric progressions (sampled)
-		{"kilojoule", "joule", 1000},
-		{"megajoule", "kilojoule", 1000},
-		{"gigajoule", "megajoule", 1000},
-		{"millijoule", "joule", 0.001},
-		{"microjoule", "joule", 0.000001},
+		{from: "kilojoule", to: "joule", exp: 1000},
+		{from: "megajoule", to: "kilojoule", exp: 1000},
+		{from: "gigajoule", to: "megajoule", exp: 1000},
+		{from: "millijoule", to: "joule", exp: 0.001},
+		{from: "microjoule", to: "joule", exp: 0.000001},
 		// Electronvolt progressions (sampled)
-		{"kiloelectronvolt", "electronvolt", 1000},
-		{"megaelectronvolt", "kiloelectronvolt", 1000},
-		{"gigaelectronvolt", "megaelectronvolt", 1000},
+		{from: "kiloelectronvolt", to: "electronvolt", exp: 1000},
+		{from: "megaelectronvolt", to: "kiloelectronvolt", exp: 1000},
+		{from: "gigaelectronvolt", to: "megaelectronvolt", exp: 1000},
 		// Calorie progressions
-		{"kilocalorie", "calorie", 1000},
+		{from: "kilocalorie", to: "calorie", exp: 1000},
 	}
 	testConversions(t, conversionTests)
 }

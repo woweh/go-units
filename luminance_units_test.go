@@ -7,14 +7,14 @@ import (
 func Test_Luminance_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Revit conversions from internal (cd/ft²)
-		{"cd/ft²", "cd/m²", 10.7639104167097},
-		{"cd/m²", "cd/ft²", 0.09290304},
-		{"cd/ft²", "ftL", 3.14159265358979},
-		{"ftL", "cd/ft²", 0.318309886183791},
+		{from: "cd/ft²", to: "cd/m²", exp: 10.7639104167097},
+		{from: "cd/m²", to: "cd/ft²", exp: 0.09290304},
+		{from: "cd/ft²", to: "ftL", exp: 3.14159265358979},
+		{from: "ftL", to: "cd/ft²", exp: 0.318309886183791},
 
 		// Cross conversions
-		{"cd/m²", "ftL", 0.29186351},
-		{"ftL", "cd/m²", 3.426259},
+		{from: "cd/m²", to: "ftL", exp: 0.29186351},
+		{from: "ftL", to: "cd/m²", exp: 3.426259},
 	}
 	testConversions(t, conversionTests)
 }

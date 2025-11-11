@@ -7,24 +7,24 @@ import (
 func Test_MomentOfInertia_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Revit conversions from internal (ft⁴)
-		{"ft⁴", "cm⁴", 863097.48412416},
-		{"cm⁴", "ft⁴", 1.15861767458952e-06},
-		{"ft⁴", "in⁴", 20736},
-		{"in⁴", "ft⁴", 4.82253086419753e-05},
-		{"ft⁴", "m⁴", 0.0086309748412416},
-		{"m⁴", "ft⁴", 115.861767458952},
-		{"ft⁴", "mm⁴", 8630974841.2416},
-		{"mm⁴", "ft⁴", 1.15861767458952e-10},
+		{from: "ft⁴", to: "cm⁴", exp: 863097.48412416},
+		{from: "cm⁴", to: "ft⁴", exp: 1.15861767458952e-06},
+		{from: "ft⁴", to: "in⁴", exp: 20736},
+		{from: "in⁴", to: "ft⁴", exp: 4.82253086419753e-05},
+		{from: "ft⁴", to: "m⁴", exp: 0.0086309748412416},
+		{from: "m⁴", to: "ft⁴", exp: 115.861767458952},
+		{from: "ft⁴", to: "mm⁴", exp: 8630974841.2416},
+		{from: "mm⁴", to: "ft⁴", exp: 1.15861767458952e-10},
 
 		// Cross conversions (metric units)
-		{"m⁴", "cm⁴", 100000000},
-		{"cm⁴", "m⁴", 1e-08},
-		{"m⁴", "mm⁴", 1000000000000},
-		{"mm⁴", "m⁴", 1e-12},
+		{from: "m⁴", to: "cm⁴", exp: 100000000},
+		{from: "cm⁴", to: "m⁴", exp: 1e-08},
+		{from: "m⁴", to: "mm⁴", exp: 1000000000000},
+		{from: "mm⁴", to: "m⁴", exp: 1e-12},
 
 		// Cross conversions (imperial)
-		{"m⁴", "in⁴", 2402509.6100288294},
-		{"in⁴", "m⁴", 4.16231426e-07},
+		{from: "m⁴", to: "in⁴", exp: 2402509.6100288294},
+		{from: "in⁴", to: "m⁴", exp: 4.16231426e-07},
 	}
 	testConversions(t, conversionTests)
 }

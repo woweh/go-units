@@ -7,34 +7,34 @@ import (
 func Test_Moment_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// SI metric unit conversions
-		{"N-m", "daN-m", 0.1},
-		{"daN-m", "N-m", 10},
-		{"N-m", "kN-m", 0.001},
-		{"kN-m", "N-m", 1000},
-		{"N-m", "MN-m", 0.000001},
-		{"MN-m", "N-m", 1000000},
+		{from: "N-m", to: "daN-m", exp: 0.1},
+		{from: "daN-m", to: "N-m", exp: 10},
+		{from: "N-m", to: "kN-m", exp: 0.001},
+		{from: "kN-m", to: "N-m", exp: 1000},
+		{from: "N-m", to: "MN-m", exp: 0.000001},
+		{from: "MN-m", to: "N-m", exp: 1000000},
 
 		// SI to Imperial conversions
-		{"N-m", "lb-ft", 0.737562},
-		{"lb-ft", "N-m", 1.35581794833},
-		{"kN-m", "lb-ft", 737.562},
-		{"lb-ft", "kN-m", 0.00135581794833},
+		{from: "N-m", to: "lb-ft", exp: 0.737562},
+		{from: "lb-ft", to: "N-m", exp: 1.35581794833},
+		{from: "kN-m", to: "lb-ft", exp: 737.562},
+		{from: "lb-ft", to: "kN-m", exp: 0.00135581794833},
 
 		// Imperial conversions
-		{"kip-ft", "lb-ft", 1000},
-		{"lb-ft", "kip-ft", 0.001},
+		{from: "kip-ft", to: "lb-ft", exp: 1000},
+		{from: "lb-ft", to: "kip-ft", exp: 0.001},
 
 		// Force-based conversions
-		{"kgf-m", "N-m", 9.80665},
-		{"N-m", "kgf-m", 0.10197162129779},
-		{"Tf-m", "N-m", 9806.65},
-		{"N-m", "Tf-m", 0.00010197162129779},
+		{from: "kgf-m", to: "N-m", exp: 9.80665},
+		{from: "N-m", to: "kgf-m", exp: 0.10197162129779},
+		{from: "Tf-m", to: "N-m", exp: 9806.65},
+		{from: "N-m", to: "Tf-m", exp: 0.00010197162129779},
 
 		// Cross conversions
-		{"kip-ft", "kN-m", 1.35581794833},
-		{"kN-m", "kip-ft", 0.737562},
-		{"kgf-m", "lb-ft", 7.23301385120968},
-		{"Tf-m", "kip-ft", 7.23301385120968},
+		{from: "kip-ft", to: "kN-m", exp: 1.35581794833},
+		{from: "kN-m", to: "kip-ft", exp: 0.737562},
+		{from: "kgf-m", to: "lb-ft", exp: 7.23301385120968},
+		{from: "Tf-m", to: "kip-ft", exp: 7.23301385120968},
 	}
 	testConversions(t, conversionTests)
 }

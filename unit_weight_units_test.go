@@ -7,10 +7,10 @@ import (
 func Test_UnitWeight_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Revit conversions (from/to internal, see RevitUnits.csv)
-		{"kN/m³", "lbf/ft³", 6.36588},
-		{"lbf/ft³", "kN/m³", 0.157196},
-		{"kip/in³", "lbf/ft³", 1728000},
-		{"lbf/ft³", "kip/in³", 0.0000005787037},
+		{from: "kN/m³", to: "lbf/ft³", exp: 6.36588},
+		{from: "lbf/ft³", to: "kN/m³", exp: 0.157196},
+		{from: "kip/in³", to: "lbf/ft³", exp: 1728000},
+		{from: "lbf/ft³", to: "kip/in³", exp: 0.0000005787037},
 	}
 	testConversions(t, conversionTests)
 }

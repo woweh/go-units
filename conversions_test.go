@@ -6,51 +6,78 @@ import (
 	"testing"
 )
 
-// conversionTest struct defines test data for a conversion, where a value of 1.0 in
-// the `from` unit name is expected to equal `val` when converted to the `to` unit name
+// conversionTest defines a test case for unit conversion (> testConversions).
+//
+// It specifies the source unit, target unit, expected result, and an optional
+// tolerance for floating-point comparison. If tolerance is nil, a default
+// value (_defaultTolerance) is used.
+//
+// A value of 1.0 (_baseValue) in the `from` unit should convert to `exp` in the `to` unit.
 type conversionTest struct {
+	// from is the name, alias, or symbol of the unit to convert from.
 	from string
-	to   string
-	val  float64
+	// to is the name, alias, or symbol of the unit to convert to.
+	to string
+	// exp is the value expected after conversion.
+	exp float64
+	// tol is the optional tolerance for floating-point comparison.
+	// If nil, the default tolerance is used.
+	tol *float64
 }
 
-// floatEquals returns true if a and b are within tolerance 'epsilon' of each other.
-func floatEquals(a, b, epsilon float64) bool {
-	return math.Abs(a-b) <= epsilon
+// fPtr returns a pointer to the given float64 value.
+func fPtr(f float64) *float64 {
+	return &f
 }
 
+const (
+	// _defaultTolerance is the default tolerance used for comparing floating-point numbers.
+	_defaultTolerance = 1e-8
+	// _baseValue is the initial/base value used for conversion tests.
+	_baseValue = 1.0
+)
+
+// getTolerance returns the tolerance for floating-point comparison, defaulting to _defaultTolerance if not specified.
+func (ct conversionTest) getTolerance() float64 {
+	if ct.tol == nil {
+		return _defaultTolerance
+	}
+	return *ct.tol
+}
+
+// floatEquals returns true if a and b are within tolerance t of each other.
+func floatEquals(a, b, t float64) bool {
+	return math.Abs(a-b) <= t
+}
+
+// testConversions executes the conversion tests and verifies the results.
 func testConversions(t *testing.T, convTests []conversionTest) {
-	const (
-		// epsilon is the tolerance used for comparing floating-point numbers
-		epsilon   = 1e-9
-		baseValue = 1.0
-	)
 	for _, cTest := range convTests {
 		label := fmt.Sprintf("%s <-> %s conversion", cTest.from, cTest.to)
-		t.Run(
-			label, func(t *testing.T) {
-				u1, err := Find(cTest.from)
-				if err != nil {
-					t.Errorf("failed to find unit %s: %v", cTest.from, err)
-				}
-				u2, err := Find(cTest.to)
-				if err != nil {
-					t.Errorf("failed to find unit %s: %v", cTest.to, err)
-				}
+		t.Run(label, func(t *testing.T) {
+			tolerance := cTest.getTolerance()
+			u1, err := Find(cTest.from)
+			if err != nil {
+				t.Errorf("failed to find unit %s: %v", cTest.from, err)
+			}
+			u2, err := Find(cTest.to)
+			if err != nil {
+				t.Errorf("failed to find unit %s: %v", cTest.to, err)
+			}
 
-				converted := MustConvertFloat(baseValue, u1, u2)
-				got := converted.Float()
-				if !floatEquals(got, cTest.val, epsilon) {
-					t.Errorf("%s -> %s conversion failed: want %f, got %f", cTest.from, cTest.to, cTest.val, got)
-				}
+			converted := MustConvertFloat(_baseValue, u1, u2)
+			got := converted.Float()
+			if !floatEquals(got, cTest.exp, tolerance) {
+				t.Errorf("%s -> %s conversion failed: want %.9f, got %.9f", cTest.from, cTest.to, cTest.exp, got)
+			}
 
-				// test inverse conversion
-				inverse := MustConvertFloat(got, u2, u1)
-				gotInv := inverse.Float()
-				if !floatEquals(gotInv, baseValue, epsilon) {
-					t.Errorf("%s <- %s inverse conversion failed: want 1.0, got %f", cTest.from, cTest.to, gotInv)
-				}
-			},
+			// test inverse conversion
+			inverse := MustConvertFloat(got, u2, u1)
+			gotInv := inverse.Float()
+			if !floatEquals(gotInv, _baseValue, tolerance) {
+				t.Errorf("%s <- %s inverse conversion failed: want 1.0, got %.2f", cTest.from, cTest.to, gotInv)
+			}
+		},
 		)
 	}
 }

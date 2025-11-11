@@ -7,18 +7,18 @@ import (
 func Test_TemperatureDifference_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Revit conversions (from/to internal, see RevitUnits.csv)
-		{"delta K", "delta°C", 1},
-		{"delta°C", "delta K", 1},
-		{"delta K", "delta°F", 1.8},
-		{"delta°F", "delta K", 0.555555555555556},
-		{"delta K", "delta°R", 1.8},
-		{"delta°R", "delta K", 0.555555555555556},
-		{"delta°C", "delta°F", 1.8},
-		{"delta°F", "delta°C", 0.555555555555556},
-		{"delta°C", "delta°R", 1.8},
-		{"delta°R", "delta°C", 0.555555555555556},
-		{"delta°F", "delta°R", 1},
-		{"delta°R", "delta°F", 1},
+		{from: "delta K", to: "delta°C", exp: 1},
+		{from: "delta°C", to: "delta K", exp: 1},
+		{from: "delta K", to: "delta°F", exp: 1.8},
+		{from: "delta°F", to: "delta K", exp: 0.555555555555556},
+		{from: "delta K", to: "delta°R", exp: 1.8},
+		{from: "delta°R", to: "delta K", exp: 0.555555555555556},
+		{from: "delta°C", to: "delta°F", exp: 1.8},
+		{from: "delta°F", to: "delta°C", exp: 0.555555555555556},
+		{from: "delta°C", to: "delta°R", exp: 1.8},
+		{from: "delta°R", to: "delta°C", exp: 0.555555555555556},
+		{from: "delta°F", to: "delta°R", exp: 1},
+		{from: "delta°R", to: "delta°F", exp: 1},
 	}
 	testConversions(t, conversionTests)
 }

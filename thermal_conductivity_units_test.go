@@ -7,11 +7,11 @@ import (
 func Test_ThermalConductivity_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Revit conversions (from/to internal, see RevitUnits.csv)
-		{"BTU/(h·ft·°F)", "W/(m·K)", 5.67826334111349},
-		{"W/(m·K)", "BTU/(h·ft·°F)", 0.176110183682306},
+		{from: "BTU/(h·ft·°F)", to: "W/(m·K)", exp: 5.67826334111349},
+		{from: "W/(m·K)", to: "BTU/(h·ft·°F)", exp: 0.176110183682306},
 		// Library ratio
-		{"BTU/(h·ft·°F)", "W/(m·K)", 1.730735},
-		{"W/(m·K)", "BTU/(h·ft·°F)", 0.577789},
+		{from: "BTU/(h·ft·°F)", to: "W/(m·K)", exp: 1.730735},
+		{from: "W/(m·K)", to: "BTU/(h·ft·°F)", exp: 0.577789},
 	}
 	testConversions(t, conversionTests)
 }

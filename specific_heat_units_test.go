@@ -7,10 +7,10 @@ import (
 func Test_SpecificHeat_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Library and Revit conversions (from internal and to internal)
-		{"J/(g·°C)", "J/(kg·°C)", 1000},
-		{"J/(kg·°C)", "J/(g·°C)", 0.001},
-		{"BTU/(lb·°F)", "J/(kg·°C)", 4186.8},
-		{"J/(kg·°C)", "BTU/(lb·°F)", 0.0002388459},
+		{from: "J/(g·°C)", to: "J/(kg·°C)", exp: 1000},
+		{from: "J/(kg·°C)", to: "J/(g·°C)", exp: 0.001},
+		{from: "BTU/(lb·°F)", to: "J/(kg·°C)", exp: 4186.8},
+		{from: "J/(kg·°C)", to: "BTU/(lb·°F)", exp: 0.0002388459},
 	}
 	testConversions(t, conversionTests)
 }
