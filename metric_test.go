@@ -26,7 +26,7 @@ var magNames = []string{
 type magFn func(Unit, ...UnitOption) Unit
 
 func Test_getUnitForExponent(t *testing.T) {
-	u := mustCreateNewUnit("testunit_gufe", "TUGUFE")
+	u := quantityForUnitTests.MustCreateUnit("testunit_gufe", "TUGUFE")
 	Kilo(u)
 	tests := []struct {
 		name     string
@@ -49,6 +49,7 @@ func Test_getUnitForExponent(t *testing.T) {
 			} else {
 				if got == nil {
 					t.Errorf("getUnitForExponent(%q, %d) = nil, want %q", tt.baseName, tt.exp, tt.wantName)
+					return
 				}
 				if got.Name != tt.wantName {
 					t.Errorf("getUnitForExponent(%q, %d) = %q, want %q", tt.baseName, tt.exp, got.Name, tt.wantName)
@@ -59,7 +60,7 @@ func Test_getUnitForExponent(t *testing.T) {
 }
 
 func Test_Magnitudes(t *testing.T) {
-	u := mustCreateNewUnit("dong", "₫")
+	u := quantityForUnitTests.MustCreateUnit("dong", "₫")
 	for i, mfn := range []magFn{
 		Exa, Peta, Tera, Giga, Mega, Kilo, Hecto, Deca, Deci, Centi, Milli, Micro, Nano, Pico, Femto, Atto,
 	} {

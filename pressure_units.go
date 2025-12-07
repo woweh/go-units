@@ -1,14 +1,11 @@
 package units
 
-// Pressure is the UnitQuantity (string/name) for pressure units
-const Pressure UnitQuantity = "pressure"
-
 var (
-	// _pressure is the UnitOption for pressure units, used in unit definitions
-	_pressure = Quantity(Pressure)
+	// Pressure is the unit quantity for pressure.
+	Pressure = NewUnitQuantity("pressure")
 
 	// SI unit metric
-	Pascal      = mustCreateNewUnit("pascal", "Pa", _pressure, SI)
+	Pascal      = Pressure.MustCreateUnit("pascal", "Pa", SI)
 	ExaPascal   = Exa(Pascal)
 	PetaPascal  = Peta(Pascal)
 	TeraPascal  = Tera(Pascal)
@@ -27,34 +24,36 @@ var (
 	AttoPascal  = Atto(Pascal)
 
 	// Other
-	At       = mustCreateNewUnit("technical atmosphere", "at", _pressure, BI)
-	Atm      = mustCreateNewUnit("standard atmosphere", "atm", _pressure, BI)
-	Bar      = mustCreateNewUnit("bar", "bar", _pressure, BI)
+	At       = Pressure.MustCreateUnit("technical atmosphere", "at", BI)
+	Atm      = Pressure.MustCreateUnit("standard atmosphere", "atm", BI)
+	Bar      = Pressure.MustCreateUnit("bar", "bar")
 	CentiBar = Centi(Bar, BI)
 	MilliBar = Milli(Bar, BI)
 	MicroBar = Micro(Bar, BI)
-	Barye    = mustCreateNewUnit("barye", "Ba", _pressure, BI)
-	InH2O    = mustCreateNewUnit(
-		"inch of Water Column", "inH2O", _pressure, BI, Plural("inches of Water Column"),
+	Barye    = Pressure.MustCreateUnit("barye", "Ba")
+	InH2O    = Pressure.MustCreateUnit(
+		"inch of Water Column", "inH2O", BI, Plural("inches of Water Column"),
 	)
-	InHg                         = mustCreateNewUnit("inch of Mercury", "inHg", _pressure, BI, Plural("inches of Mercury"))
-	MH2O                         = mustCreateNewUnit("meter of Water Column", "mH2O", _pressure, BI, Plural("meters of Water Column"))
+	InHg                         = Pressure.MustCreateUnit("inch of Mercury", "inHg", BI, Plural("inches of Mercury"))
+	MH2O                         = Pressure.MustCreateUnit("meter of Water Column", "mH2O", BI, Plural("meters of Water Column"))
 	MilliMH2O                    = Milli(MH2O, BI, Plural("millimeters of Water Column"))
 	CentiMH2O                    = Centi(MH2O, BI, Plural("centimeters of Water Column"))
-	MHg                          = mustCreateNewUnit("meter of Mercury", "mmHg", _pressure, BI, Plural("meters of Mercury"))
+	MHg                          = Pressure.MustCreateUnit("meter of Mercury", "mmHg", BI, Plural("meters of Mercury"))
 	MilliMHg                     = Milli(MHg, BI, Plural("millimeters of Mercury"))
 	CentiMHg                     = Centi(MHg, BI, Plural("centimeters of Mercury"))
-	NewtonSqm                    = mustCreateNewUnit("newton per square meter", "N/m²", _pressure, SI)
+	NewtonSqm                    = Pressure.MustCreateUnit("newton per square meter", "N/m²", SI)
 	KiloNewtonSqm                = Kilo(NewtonSqm)
-	Psi                          = mustCreateNewUnit("pound-force per square inch", "psi", _pressure, BI)
-	Torr                         = mustCreateNewUnit("torr", "Torr", _pressure, BI)
-	FootH2O                      = mustCreateNewUnit("foot of Water Column", "FT", _pressure, BI)
-	InchesOfWater                = mustCreateNewUnit("inches of Water Column", "in-wg", _pressure, BI)
-	PoundForcePerSquareInchGauge = mustCreateNewUnit("pound-force per square inch gauge", "psig", _pressure, BI)
+	Psi                          = Pressure.MustCreateUnit("pound-force per square inch", "psi", BI)
+	Torr                         = Pressure.MustCreateUnit("torr", "Torr")
+	FootH2O                      = Pressure.MustCreateUnit("foot of Water Column", "FT", BI)
+	InchesOfWater                = Pressure.MustCreateUnit("inch of water gauge", "in-wg", BI)
+	PoundForcePerSquareInchGauge = Pressure.MustCreateUnit("pound-force per square inch gauge", "psig", BI)
 )
 
 func initPressureUnits() {
 	// https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9#PRESSURE
+
+	// Empirical/standard pressure definitions (remain hardcoded)
 	NewRatioConversion(At, Pascal, 9.80665e+04)
 	NewRatioConversion(Atm, Pascal, 1.01325e+05)
 	NewRatioConversion(Bar, Pascal, 1.0e+05)
@@ -67,14 +66,40 @@ func initPressureUnits() {
 	NewRatioConversion(MilliMH2O, Pascal, 9.80665e+00)
 	// millimeter of mercury, conventional (mmHg)
 	NewRatioConversion(MilliMHg, Pascal, 1.333224e+02)
-	NewRatioConversion(NewtonSqm, Pascal, 1)
-	NewRatioConversion(Psi, Pascal, 6.894757e+03)
 	NewRatioConversion(Torr, Pascal, 1.333224e+02)
+	NewRatioConversion(FootH2O, Pascal, 2989.06692)
+	NewRatioConversion(InchesOfWater, Pascal, 249.0889)
 
+	// Calculated pressure conversions (force/area)
+	NewRatioConversion(NewtonSqm, Pascal, 1) // By definition: 1 Pa = 1 N/m²
+	// Psi = lbf/in²
+	NewRatioConversion(Psi, Pascal, pressureFactor(PoundForce, Inch))
 	Psi.AddAliases("pound-force per square inch")
 	Psi.AddSymbols("lbf/in²", "lbf/in^2")
 
-	NewRatioConversion(FootH2O, Pascal, 2989.06692)
-	NewRatioConversion(InchesOfWater, Pascal, 249.0889)
-	NewRatioConversion(PoundForcePerSquareInchGauge, Pascal, 6894.757)
+	// Gauge pressure (same as absolute for conversion purposes)
+	NewRatioConversion(PoundForcePerSquareInchGauge, Pascal, pressureFactor(PoundForce, Inch))
+}
+
+// pressureFactor calculates the conversion factor for pressure units.
+// Pressure = force / area
+// Base unit: Pascal = N/m²
+//
+// To calculate how many Pascals in 1 unit of target pressure (e.g., psi):
+// - forceRatio: how many Newtons in 1 unit of target force
+// - areaRatio: how many m² in 1 unit of target area
+// - pressure factor = forceRatio / areaRatio
+//
+// Example: How many Pa in 1 psi?
+// - 1 psi = 1 lbf/in²
+// - 1 lbf = 4.448222 N
+// - 1 in² = 0.00064516 m²
+// - 1 psi = 4.448222 N / 0.00064516 m² = 6894.757 Pa
+func pressureFactor(force, length Unit) float64 {
+	// How many Newtons in 1 unit of the target force
+	forceRatio := force.to(Newton)
+	// How many m² in 1 unit of target area (length²)
+	areaRatio := areaFactor(length)
+	// Pressure factor: force per area
+	return forceRatio / areaRatio
 }

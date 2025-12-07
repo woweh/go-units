@@ -1,16 +1,14 @@
 package units
 
 // ThermalResistance is a unit quantity for thermal resistance
-const ThermalResistance UnitQuantity = "thermal resistance"
-
 var (
-	_thermalResistance = Quantity(ThermalResistance)
-
+	// ThermalResistance is the unit quantity for thermal resistance.
+	ThermalResistance = NewUnitQuantity("thermal resistance")
 	// SI base unit: square meter kelvin per watt (m²·K)/W
-	SquareMeterKelvinPerWatt = mustCreateNewUnit("square meter kelvin per watt", "(m²·K)/W", _thermalResistance, SI)
+	SquareMeterKelvinPerWatt = ThermalResistance.MustCreateUnit("square meter kelvin per watt", "(m²·K)/W", SI)
 
 	// Imperial unit: hour square foot degree Fahrenheit per British thermal unit
-	HourSquareFootFahrenheitPerBritishThermalUnit = mustCreateNewUnit("hour square foot degree Fahrenheit per British thermal unit", "(h·ft²·°F)/BTU", _thermalResistance, BI)
+	HourSquareFootFahrenheitPerBritishThermalUnit = ThermalResistance.MustCreateUnit("hour square foot degree Fahrenheit per British thermal unit", "(h·ft²·°F)/BTU", BI)
 )
 
 func initThermalResistanceUnits() {

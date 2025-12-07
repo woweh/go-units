@@ -5,21 +5,20 @@ import (
 	"math"
 )
 
-const Angle UnitQuantity = "angle"
-
 var (
-	_angle = Quantity(Angle)
+	// Angle is a unit quantity for angle measurement
+	Angle = NewUnitQuantity("angle")
 
-	Turn = mustCreateNewUnit("turn", "tr", _angle)
+	Turn = Angle.MustCreateUnit("turn", "tr")
 
-	Radian      = mustCreateNewUnit("radian", "rad", _angle, SI)
+	Radian      = Angle.MustCreateUnit("radian", "rad", SI)
 	MilliRadian = Milli(Radian)
 	MicroRadian = Micro(Radian)
 
 	// Degree (= decimal degree) is a unit of angle equal to 1/360 of a circle.
-	Degree = mustCreateNewUnit("degree", "°", _angle, SI)
+	Degree = Angle.MustCreateUnit("degree", "°", SI)
 
-	Gon      = mustCreateNewUnit("gon", "gon", _angle, SI, Symbols("grad"))
+	Gon      = Angle.MustCreateUnit("gon", "gon", SI, Symbols("grad"))
 	DeciGon  = Deci(Gon)
 	CentiGon = Centi(Gon)
 	MilliGon = Milli(Gon)
@@ -39,7 +38,7 @@ var (
 	PetaGon  = Peta(Gon)
 
 	// DMS (Degrees, Minutes, Seconds) as a unit
-	DMS = mustCreateNewUnit("degree minute second", "DMS", _angle)
+	DMS = Angle.MustCreateUnit("degree minute second", "DMS")
 )
 
 func initAngleUnits() {

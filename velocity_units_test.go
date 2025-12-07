@@ -9,7 +9,7 @@ func Test_Velocity_Conversions(t *testing.T) {
 		// Revit conversions (from/to internal, see RevitUnits.csv)
 		{from: "m/s", to: "ft/s", exp: 3.28083989501312},
 		{from: "ft/s", to: "m/s", exp: 0.3048},
-		{from: "m/s", to: "ft/min", exp: 196.850394},
+		{from: "m/s", to: "ft/min", exp: 196.8503937},
 		{from: "ft/min", to: "m/s", exp: 0.00508},
 		{from: "m/s", to: "cm/min", exp: 6000},
 		{from: "cm/min", to: "m/s", exp: 0.000166666666666667},

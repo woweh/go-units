@@ -1,20 +1,18 @@
 package units
 
-const Friction UnitQuantity = "friction"
-
 var (
-	_friction = Quantity(Friction)
-
+	// Friction is the unit quantity for friction.
+	Friction = NewUnitQuantity("friction")
 	// SI base unit: pascal per meter (Pa/m)
-	PascalPerMeter = mustCreateNewUnit("pascal per meter", "Pa/m", _friction, SI)
+	PascalPerMeter = Friction.MustCreateUnit("pascal per meter", "Pa/m", SI)
 
 	// Metric (hydraulic engineering)
-	MillimeterOfWaterPerMeter = mustCreateNewUnit("millimeter of water column per meter", "mmH2O/m", _friction)
-	MeterOfWaterPerMeter      = mustCreateNewUnit("meter of water column per meter", "mH2O/m", _friction)
+	MillimeterOfWaterPerMeter = Friction.MustCreateUnit("millimeter of water column per meter", "mmH2O/m", SI)
+	MeterOfWaterPerMeter      = Friction.MustCreateUnit("meter of water column per meter", "mH2O/m", SI)
 
 	// Imperial
-	FootOfWaterPer100Feet = mustCreateNewUnit("foot of water per 100 feet", "FT/100ft", _friction, BI)
-	InchOfWaterPer100Feet = mustCreateNewUnit("inch of water per 100 feet", "in-wg/100ft", _friction, BI)
+	FootOfWaterPer100Feet = Friction.MustCreateUnit("foot of water per 100 feet", "FT/100ft", BI)
+	InchOfWaterPer100Feet = Friction.MustCreateUnit("inch of water per 100 feet", "in-wg/100ft", BI)
 )
 
 func initFrictionUnits() {

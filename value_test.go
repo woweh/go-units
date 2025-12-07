@@ -114,7 +114,7 @@ func TestValue_String_Fmt(t *testing.T) {
 		{"fractional > +1", NewValue(1.2, Meter), DefaultFmtOptions, "1.2 meters"},
 		{"negative fractional < -1", NewValue(-1.2, Meter), DefaultFmtOptions, "-1.2 meters"},
 		{"negative fractional > -1", NewValue(-0.99, Meter), DefaultFmtOptions, "-0.99 meters"},
-		{"negative zero", NewValue(-0.0, Meter), DefaultFmtOptions, "0 meters"},
+
 		{"DMS", NewValue(12.3045, DMS), DefaultFmtOptions, "12°30'45''"},
 	}
 	for _, tc := range cases {

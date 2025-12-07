@@ -5,18 +5,6 @@ import (
 	"fmt"
 )
 
-var (
-	// _conversionMap holds all registered conversions between units.
-	//
-	// This is an adjacency list for a directed, labeled graph:
-	//
-	//- Keys are graph nodes (Unit).
-	//- Values are outgoing edges ([]Conversion) from that node.
-	//- Each Conversion is a directed, labeled edge from `FromUnit` to `ToUnit` (carries a function and formula).
-	//- Used as the graph structure for BFS in `findPath` to find a path from `start` to `end`.
-	_conversionMap = make(map[Unit]Conversions)
-)
-
 // ConversionFn defines a function that converts a float64 value.
 type ConversionFn func(float64) float64
 
@@ -90,7 +78,12 @@ func (c Conversion) isValid() error {
 type Conversions []Conversion
 
 // NewRatioConversion registers a conversion formula and the **inverse**, given the ratio between `from` and `to` Unit.
+// PANICS if the units have incompatible quantities.
 func NewRatioConversion(from, to Unit, ratio float64) {
+	if !from.Quantity.IsCompatible(to.Quantity) {
+		panic(fmt.Sprintf("cannot create conversion between incompatible quantities: %s and %s",
+			from.Quantity.Name(), to.Quantity.Name()))
+	}
 	// use standard formatting for ratio in formula string: %g => %e for large exponents, %f otherwise.
 	ratioStr := fmt.Sprintf("%g", ratio)
 	NewConversionFromFn(from, to, func(x float64) float64 { return x * ratio }, "x * "+ratioStr)
@@ -98,21 +91,33 @@ func NewRatioConversion(from, to Unit, ratio float64) {
 }
 
 // NewConversionFromFn registers a new conversion formula from one Unit to another.
-//
-// NOTE:
-//   - When using `NewConversionFromFn` directly, you must define _conversions in both directions!
-//
-// Example:
-//
-//	NewConversionFromFn(SlopeValue, SlopeDegree, slopeValueToDegree, "math.Atan(x) * 180 / math.Pi")
-//	NewConversionFromFn(SlopeDegree, SlopeValue, slopeDegreeToValue, "math.Tan(x * math.Pi / 180)")
+// PANICS if the units have incompatible quantities.
 func NewConversionFromFn(from, to Unit, f ConversionFn, formula string) {
+	if !from.Quantity.IsCompatible(to.Quantity) {
+		panic(fmt.Sprintf("cannot create conversion between incompatible quantities: %s and %s",
+			from.Quantity.Name(), to.Quantity.Name()))
+	}
+
 	c := &conversion{from, to, f, formula}
-	_conversionMap[from] = append(_conversionMap[from], c)
+	base := from.Quantity.Base()
+
+	// ensure initialization (just in case, though NewUnitQuantity handles it)
+	if base.conversions == nil {
+		base.conversions = make(conversionMap)
+	}
+
+	if base.conversions[from.Name] == nil {
+		base.conversions[from.Name] = make(map[string]Conversion)
+	}
+	base.conversions[from.Name][to.Name] = c
 }
 
 // ResolveConversion resolves a path of one or more Conversions between two units.
 func ResolveConversion(from, to Unit) (Conversions, error) {
+	if !from.Quantity.IsCompatible(to.Quantity) {
+		return nil, fmt.Errorf("incompatible quantities: %s and %s", from.Quantity.Name(), to.Quantity.Name())
+	}
+
 	path := findPath(from, to)
 	if path == nil {
 		return nil, errors.New("no conversion path found from " + from.Name + " to " + to.Name)
@@ -125,7 +130,11 @@ func findPath(start, end Unit) Conversions {
 	if start == end {
 		return nil
 	}
-	visited := make(map[Unit]bool)
+
+	// Use the conversion map from the starting unit's quantity base
+	conversions := start.Quantity.Base().conversions
+
+	visited := make(map[string]bool)
 	queue := []Conversions{{}} // start with empty path
 	for len(queue) > 0 {
 		path := queue[0]
@@ -134,15 +143,18 @@ func findPath(start, end Unit) Conversions {
 		if len(path) > 0 {
 			current = path[len(path)-1].ToUnit
 		}
-		if visited[current] {
+		if visited[current.Name] {
 			continue
 		}
-		visited[current] = true
+		visited[current.Name] = true
 		if current == end {
 			return path
 		}
-		for _, conv := range _conversionMap[current] {
-			if !visited[conv.ToUnit] {
+
+		// Get outgoing edges using the nested map
+		outgoing := conversions[current.Name]
+		for _, conv := range outgoing {
+			if !visited[conv.ToUnit.Name] {
 				newPath := make(Conversions, len(path)+1)
 				copy(newPath, path)
 				newPath[len(path)] = conv
@@ -153,32 +165,41 @@ func findPath(start, end Unit) Conversions {
 	return nil
 }
 
-// CheckConversionIntegrity checks if every conversion in internal _conversionMap has a corresponding reverse conversion.
+// CheckConversionIntegrity checks if every conversion in internal conversion maps has a corresponding reverse conversion.
 func CheckConversionIntegrity() error {
-	// loop through the entire _conversionMap
-	for fromUnit, conversions := range _conversionMap {
-		// loop through the conversions of fromUnit
-		for _, conv := range conversions {
-			if conv == nil {
-				// can this ever happen??? I don't think so...
-				return fmt.Errorf("conversion map integrity error: nil conversion in conversions for unit %s", fromUnit.Name)
-			}
+	// We need to iterate over all registered units to find all Quantities,
+	// then check each Quantity's conversion map.
 
-			e := conv.isValid()
-			if e != nil {
-				return fmt.Errorf("conversion map integrity error: invalid conversion for unit %s: %w", fromUnit.Name, e)
-			}
+	checkedQuantities := make(map[UnitQuantity]bool)
 
-			if fromUnit != conv.FromUnit {
-				return fmt.Errorf("conversion map integrity error: expected from unit %s, got %s", fromUnit.Name, conv.FromUnit.Name)
-			}
+	for _, u := range All() {
+		q := u.Quantity.Base()
+		if checkedQuantities[q] {
+			continue
+		}
+		checkedQuantities[q] = true
 
-			cc := _conversionMap[conv.ToUnit]
-			if cc == nil {
-				return fmt.Errorf("conversion map integrity error: no reverse conversion found for conversion from %v to %v", conv.FromUnit, conv.ToUnit)
-			}
-			if !cc.HasTo(fromUnit) {
-				return fmt.Errorf("conversion map integrity error: no reverse conversion found for conversion from %v to %v", conv.FromUnit, conv.ToUnit)
+		for fromUnitName, outgoing := range q.conversions {
+			for _, conv := range outgoing {
+				if conv == nil {
+					return fmt.Errorf("conversion map integrity error: nil conversion in conversions for unit %s", fromUnitName)
+				}
+				e := conv.isValid()
+				if e != nil {
+					return fmt.Errorf("conversion map integrity error: invalid conversion for unit %s: %w", fromUnitName, e)
+				}
+				if fromUnitName != conv.FromUnit.Name {
+					return fmt.Errorf("conversion map integrity error: expected from unit %s, got %s", fromUnitName, conv.FromUnit.Name)
+				}
+
+				// Check reverse
+				reverseMap := q.conversions[conv.ToUnit.Name]
+				if reverseMap == nil {
+					return fmt.Errorf("conversion map integrity error: no outgoing conversions from %v (reverse of %v -> %v)", conv.ToUnit, conv.FromUnit, conv.ToUnit)
+				}
+				if _, ok := reverseMap[fromUnitName]; !ok {
+					return fmt.Errorf("conversion map integrity error: no reverse conversion found for conversion from %v to %v", conv.FromUnit, conv.ToUnit)
+				}
 			}
 		}
 	}

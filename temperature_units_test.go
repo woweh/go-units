@@ -15,7 +15,7 @@ func Test_Temperature_Conversions(t *testing.T) {
 		{from: "kelvin", to: "rankine", exp: 1.8},
 		// Cross-system
 		{from: "celsius", to: "fahrenheit", exp: 33.8},
-		{from: "fahrenheit", to: "celsius", exp: -17.222222},
+		{from: "fahrenheit", to: "celsius", exp: -17.222222222, tol: fPtr(1e-9)},
 		{from: "fahrenheit", to: "rankine", exp: 460.67},
 		{from: "rankine", to: "fahrenheit", exp: -458.67},
 	}

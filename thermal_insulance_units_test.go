@@ -8,7 +8,7 @@ func Test_ThermalInsulance_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Library/NIST conversions (see thermal_insulance_units.go)
 		{from: "°F⋅hr⋅ft²/Btu", to: "K·m²/W", exp: 0.1761102},
-		{from: "K·m²/W", to: "°F⋅hr⋅ft²/Btu", exp: 5.678263},
+		{from: "K·m²/W", to: "°F⋅hr⋅ft²/Btu", exp: 5.67826281},
 	}
 	testConversions(t, conversionTests)
 }

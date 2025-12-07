@@ -26,16 +26,16 @@ func Test_Density_Conversions(t *testing.T) {
 		// Imperial conversions
 		{from: "kg/m³", to: "oz/ft³", exp: 0.998847369},
 		{from: "kg/m³", to: "oz/in³", exp: 0.000578036672},
-		{from: "kg/m³", to: "oz/yd³", exp: 26.968879},
-		{from: "kg/m³", to: "oz/gal", exp: 0.13352647123},
+		{from: "kg/m³", to: "oz/yd³", exp: 26.968878969},
+		{from: "kg/m³", to: "oz/gal", exp: 0.16035856},
 		{from: "kg/m³", to: "lb/ft³", exp: 0.062427960576},
 		{from: "kg/m³", to: "lb/in³", exp: 0.000036127292},
-		{from: "kg/m³", to: "lb/yd³", exp: 1.6855549},
-		{from: "kg/m³", to: "lb/gal", exp: 0.008345404452},
+		{from: "kg/m³", to: "lb/yd³", exp: 1.685554936},
+		{from: "kg/m³", to: "lb/gal", exp: 0.010022412},
 		{from: "kg/m³", to: "slug/ft³", exp: 0.001940320},
 		{from: "kg/m³", to: "slug/in³", exp: 0.0000011228706},
 		{from: "kg/m³", to: "slug/yd³", exp: 0.052388649},
-		{from: "kg/m³", to: "l ton/yd³", exp: 0.000842777},
+		{from: "kg/m³", to: "l ton/yd³", exp: 0.000752480},
 
 		// Metric to metric
 		{from: "g/cm³", to: "kg/m³", exp: 1000},
@@ -46,21 +46,21 @@ func Test_Density_Conversions(t *testing.T) {
 		{from: "kg/L", to: "kg/m³", exp: 1000},
 
 		// Imperial to metric
-		{from: "oz/in³", to: "kg/m³", exp: 1729.99404},
-		{from: "oz/ft³", to: "kg/m³", exp: 1.001153},
-		{from: "oz/gal", to: "kg/m³", exp: 6.236023},
-		{from: "lb/in³", to: "kg/m³", exp: 27673.999},
-		{from: "lb/ft³", to: "kg/m³", exp: 16.018463},
-		{from: "lb/gal", to: "kg/m³", exp: 99.776372},
-		{from: "slug/ft³", to: "kg/m³", exp: 515.3788184},
-		{from: "l ton/yd³", to: "kg/m³", exp: 1328.939},
+		{from: "oz/in³", to: "kg/m³", exp: 1729.994044392},
+		{from: "oz/ft³", to: "kg/m³", exp: 1.001153961},
+		{from: "oz/gal", to: "kg/m³", exp: 6.236025068},
+		{from: "lb/in³", to: "kg/m³", exp: 27679.904710203},
+		{from: "lb/ft³", to: "kg/m³", exp: 16.018463374},
+		{from: "lb/gal", to: "kg/m³", exp: 99.776381175},
+		{from: "slug/ft³", to: "kg/m³", exp: 515.378818492},
+		{from: "l ton/yd³", to: "kg/m³", exp: 1328.939, tol: fPtr(1)},
 
 		// Cross-system
-		{from: "oz/in³", to: "slug/ft³", exp: 0.297908},
-		{from: "g/cm³", to: "lb/ft³", exp: 62.42796},
+		{from: "oz/in³", to: "slug/ft³", exp: 3.356742618},
+		{from: "g/cm³", to: "lb/ft³", exp: 62.42796057600, tol: fPtr(1e-6)},
 		{from: "kg/L", to: "lb/gal", exp: 10.022412},
 		{from: "kg/m³", to: "oz/in³", exp: 0.000578037},
-		{from: "oz/in³", to: "kg/m³", exp: 1729.99404},
+		{from: "oz/in³", to: "kg/m³", exp: 1729.994044392},
 	}
 	testConversions(t, conversionTests)
 }

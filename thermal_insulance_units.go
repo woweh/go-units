@@ -1,21 +1,19 @@
 package units
 
 // ThermalInsulance is a unit quantity for thermal insulance
-const ThermalInsulance UnitQuantity = "thermal insulance"
-
 var (
-	_thermalInsulance = Quantity(ThermalInsulance)
-
+	// ThermalInsulance is the unit quantity for thermal insulance.
+	ThermalInsulance = NewUnitQuantity("thermal insulance")
 	// SI base unit: kelvin square meter per watt (K·m²/W)
-	KelvinSquareMeterPerWatt = mustCreateNewUnit(
-		"kelvin square meter per watt", "K·m²/W", _thermalInsulance, SI,
+	KelvinSquareMeterPerWatt = ThermalInsulance.MustCreateUnit(
+		"kelvin square meter per watt", "K·m²/W", SI,
 		Aliases("R-value", "RSI", "RSI-value"),
 		Symbols("K*m2/W", "°C⋅m²/W", "°C*m2/W", "m2.K.W-1", "m²·K/W", "m2*K/W"),
 	)
 
 	// Imperial/US unit: degree Fahrenheit hour square foot per British thermal unit
-	DegreeFahrenheitHourSquareFootPerBtu = mustCreateNewUnit(
-		"degree Fahrenheit hour square foot per British thermal unit", "°F⋅hr⋅ft²/Btu", _thermalInsulance, BI,
+	DegreeFahrenheitHourSquareFootPerBtu = ThermalInsulance.MustCreateUnit(
+		"degree Fahrenheit hour square foot per British thermal unit", "°F⋅hr⋅ft²/Btu", BI,
 		Aliases(
 			"degree Fahrenheit hour square foot per British thermal unitIT",
 			"degree Fahrenheit hour square foot per British thermal unitth",

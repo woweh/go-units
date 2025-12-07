@@ -6,23 +6,22 @@ import "math"
 // https://en.wikipedia.org/wiki/Grade_(slope)
 
 // Slope is a unit quantity for slope (gradient)
-const Slope UnitQuantity = "slope"
-
 var (
-	_slope = Quantity(Slope)
+	// Slope is the unit quantity for slope.
+	Slope = NewUnitQuantity("slope")
 
 	// SlopeValue is the base unit: rise/run (dimensionless, SI system)
-	SlopeValue = mustCreateNewUnit("slope value", "", _slope, SI, Plural(PluralNone))
+	SlopeValue = Slope.MustCreateUnit("slope value", "", SI, Plural(PluralNone))
 	// SlopeRatio is a ratio of one part rise to so many parts run (e.g. 1:10), dimensionless, SI system
-	SlopeRatio = mustCreateNewUnit("slope ratio", "", _slope, SI, Plural(PluralNone))
+	SlopeRatio = Slope.MustCreateUnit("slope ratio", "", SI, Plural(PluralNone))
 	// SlopeInverseRatio is a ratio of many parts run to one part rise (e.g. 10:1), dimensionless, SI system
-	SlopeInverseRatio = mustCreateNewUnit("inverse slope ratio", "", _slope, SI, Plural(PluralNone))
+	SlopeInverseRatio = Slope.MustCreateUnit("inverse slope ratio", "", SI, Plural(PluralNone))
 	// SlopeDegree is the angle of inclination in degrees (e.g. 45°), SI system
-	SlopeDegree = mustCreateNewUnit("slope degree", "deg", _slope, SI, Plural(PluralNone))
+	SlopeDegree = Slope.MustCreateUnit("slope degree", "deg", SI, Plural(PluralNone))
 	// SlopePercent 100 * m = 100 * (rise/run) = 100 * tan(α), SI system - note that the % symbol is already used by Percent
-	SlopePercent = mustCreateNewUnit("slope percent", "", _slope, SI, Plural(PluralNone))
+	SlopePercent = Slope.MustCreateUnit("slope percent", "", SI, Plural(PluralNone))
 	// SlopePermille 1000 * m = 1000 * (rise/run) = 1000 * tan(α), SI system - note that the ‰ symbol is already used by Permille
-	SlopePermille = mustCreateNewUnit("slope permille", "", _slope, SI, Plural(PluralNone))
+	SlopePermille = Slope.MustCreateUnit("slope permille", "", SI, Plural(PluralNone))
 )
 
 func initSlopeUnits() {

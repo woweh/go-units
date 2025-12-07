@@ -1,12 +1,11 @@
 package units
 
-const Mass UnitQuantity = "mass"
-
 var (
-	_mass = Quantity(Mass)
+	// Mass is the unit quantity for mass.
+	Mass = NewUnitQuantity("mass")
 
 	// metric
-	Gram      = mustCreateNewUnit("gram", "g", _mass, SI)
+	Gram      = Mass.MustCreateUnit("gram", "g", SI)
 	ExaGram   = Exa(Gram)
 	PetaGram  = Peta(Gram)
 	TeraGram  = Tera(Gram)
@@ -25,18 +24,18 @@ var (
 	AttoGram  = Atto(Gram)
 
 	// metric ton (tonne) as a distinct unit
-	MetricTon = mustCreateNewUnit("metric ton", "t", _mass, SI)
+	MetricTon = Mass.MustCreateUnit("metric ton", "t", SI)
 
 	// imperial
-	Grain  = mustCreateNewUnit("grain", "gr", _mass, BI)
-	Drachm = mustCreateNewUnit("drachm", "dr", _mass, BI)
-	Ounce  = mustCreateNewUnit("ounce", "oz", _mass, BI)
-	Pound  = mustCreateNewUnit("pound", "lb", _mass, BI)
-	Stone  = mustCreateNewUnit("stone", "st", _mass, BI)
-	Ton    = mustCreateNewUnit("ton", "LT", _mass, BI)
-	Slug   = mustCreateNewUnit("slug", "", _mass, BI)
+	Grain  = Mass.MustCreateUnit("grain", "gr", BI)
+	Drachm = Mass.MustCreateUnit("drachm", "dr", BI)
+	Ounce  = Mass.MustCreateUnit("ounce", "oz", BI)
+	Pound  = Mass.MustCreateUnit("pound", "lb", BI)
+	Stone  = Mass.MustCreateUnit("stone", "st", BI)
+	Ton    = Mass.MustCreateUnit("ton", "LT", BI)
+	Slug   = Mass.MustCreateUnit("slug", "", BI)
 
-	ShortTon = mustCreateNewUnit("short ton", "short ton", _mass, BI)
+	ShortTon = Mass.MustCreateUnit("short ton", "short ton", BI)
 )
 
 func initMassUnits() {

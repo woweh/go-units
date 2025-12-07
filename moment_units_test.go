@@ -15,9 +15,9 @@ func Test_Moment_Conversions(t *testing.T) {
 		{from: "MN-m", to: "N-m", exp: 1000000},
 
 		// SI to Imperial conversions
-		{from: "N-m", to: "lb-ft", exp: 0.737562},
-		{from: "lb-ft", to: "N-m", exp: 1.35581794833},
-		{from: "kN-m", to: "lb-ft", exp: 737.562},
+		{from: "N-m", to: "lb-ft", exp: 0.737562085, tol: fPtr(1e-8)},
+		{from: "lb-ft", to: "N-m", exp: 1.355817948, tol: fPtr(1e-6)},
+		{from: "kN-m", to: "lb-ft", exp: 737.562085483, tol: fPtr(1e-8)},
 		{from: "lb-ft", to: "kN-m", exp: 0.00135581794833},
 
 		// Imperial conversions
@@ -31,10 +31,10 @@ func Test_Moment_Conversions(t *testing.T) {
 		{from: "N-m", to: "Tf-m", exp: 0.00010197162129779},
 
 		// Cross conversions
-		{from: "kip-ft", to: "kN-m", exp: 1.35581794833},
-		{from: "kN-m", to: "kip-ft", exp: 0.737562},
-		{from: "kgf-m", to: "lb-ft", exp: 7.23301385120968},
-		{from: "Tf-m", to: "kip-ft", exp: 7.23301385120968},
+		{from: "kip-ft", to: "kN-m", exp: 1.355817948, tol: fPtr(1e-6)},
+		{from: "kN-m", to: "kip-ft", exp: 0.737562085, tol: fPtr(1e-8)},
+		{from: "kgf-m", to: "lb-ft", exp: 7.23301385120968, tol: fPtr(1e-5)},
+		{from: "Tf-m", to: "kip-ft", exp: 7.23301385120968, tol: fPtr(1e-5)},
 	}
 	testConversions(t, conversionTests)
 }

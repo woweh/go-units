@@ -38,6 +38,7 @@ func init() {
 	initPowerDensityUnits()
 	initPowerPerLengthUnits()
 	initPressureUnits()
+	// Stress is an alias of Pressure => initialized Pressure units first
 	initStressUnits()
 	initMomentUnits()
 	initMomentOfInertiaUnits()
@@ -84,7 +85,7 @@ func (ul UnitList) Less(i, j int) bool {
 	// 2. sort by system
 	// 3. sort by name
 	if ul[i].Quantity != ul[j].Quantity {
-		return ul[i].Quantity < ul[j].Quantity
+		return ul[i].Quantity.Name() < ul[j].Quantity.Name()
 	}
 	if ul[i].system != ul[j].system {
 		return ul[i].system < ul[j].system
@@ -94,8 +95,13 @@ func (ul UnitList) Less(i, j int) bool {
 
 // All returns all registered Units, sorted by name and quantity
 func All() UnitList {
-	units := make(UnitList, 0, len(_unitMap))
+	uniqueUnits := make(map[*unit]Unit)
 	for _, u := range _unitMap {
+		uniqueUnits[u] = u
+	}
+
+	units := make(UnitList, 0, len(uniqueUnits))
+	for _, u := range uniqueUnits {
 		units = append(units, u)
 	}
 	sort.Sort(units)
@@ -119,7 +125,7 @@ func ConvertFloat(x float64, from, to Unit) (Value, error) {
 	if to == nil {
 		return Value{}, fmt.Errorf("no unit specified to convert to")
 	}
-	if from.Quantity != to.Quantity {
+	if !from.Quantity.IsCompatible(to.Quantity) {
 		return Value{}, fmt.Errorf("cannot convert from unit of quantity %s to %s", from.Quantity, to.Quantity)
 	}
 	// allow converting to same unit

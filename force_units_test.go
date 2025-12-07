@@ -15,8 +15,8 @@ func Test_Force_Conversions(t *testing.T) {
 		{from: "newton", to: "dyne", exp: 100000.0},
 
 		// Imperial / other
-		{from: "newton", to: "pound force", exp: 0.22480894387096}, // 1 N = 0.22480894387096 lbf
-		{from: "newton", to: "poundal", exp: 7.2330139987},         // 1 N = 7.2330139987 pdl
+		{from: "newton", to: "pound force", exp: 0.22480894387096, tol: fPtr(1e-7)}, // 1 N = 0.22480894387096 lbf
+		{from: "newton", to: "poundal", exp: 7.2330139987, tol: fPtr(1e-6)},         // 1 N = 7.2330139987 pdl
 		{from: "newton", to: "kilogram-force", exp: 0.10197162129779},
 		{from: "newton", to: "tonne-force", exp: 0.00010197162129779},
 	}

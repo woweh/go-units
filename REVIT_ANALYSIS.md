@@ -1,152 +1,142 @@
-# Detailed Analysis: Revit Units vs go-units
+# Revit Unit Coverage Analysis
 
-## Conversion Requirements Summary
+This analysis maps Revit quantities and units to the `go-units` library. Coverage is determined by whether the specific Unit Name or Symbol exists in `go-units`, regardless of the Quantity it falls under.
 
-- **Many new Revit units have been added.**
-- **Many Revit units now match or can be mapped to existing go-units (via AddAlias or direct mapping).**
-- **Some Revit units do not need conversion (single-unit per quantity):**
-  - Color Temperature (K)
-  - Efficacy (lm/W)
-  - Electrical Resistivity (ohm·m)
-  - Luminous Flux (lm)
-  - Luminous Intensity (cd)
-  - Pulsation (rad/s)
-  - Wattage (W)
-- **No-conversion required (multi-unit, identical factors):**
-  - None found in current RevitUnits.json
-- **Skipped for now (cost-related; TBD viability):**
-  - Cost Rate Energy, Cost Rate Power, Cost per Area, Currency
+**Criteria:**
+- **Covered**: The Unit Name (e.g., "Meters") or Symbol (e.g., "m") exists in `go-units` (globally).
+- **Missing**: Neither the name nor symbol exists in `go-units`.
 
-**Notes:**
-- For single-unit quantities above, implement the quantity and base unit if needed, but no ratio mappings are required beyond identity. If a quantity is already covered elsewhere (e.g., Color Temperature uses Kelvin from temperature), just alias/name-map symbols as needed.
-- For multi-unit quantities, most Revit units now map directly to existing units or can be aliased. Use AddAlias where appropriate.
-- Cost-related units are still skipped.
-- The requirements and mappings are up-to-date with the latest Revit export.
-- See `RevitUnits.json` for the latest Revit unit definitions and mappings.
+## Unit Coverage by Quantity
 
-## Revit Quantities Found (150 total)
+| Revit Quantity | Revit Unit | Revit Internal | SI Base | Go-Unit Status |
+|---|---|---|---|---|
+| **Acceleration** | Feet per second squared | Feet per second squared | Meters per Second Squared | ✅ Covered (Meter, Second) |
+| | Meters per second squared | | | ✅ Covered |
+| | Kilometers per second squared | | | ✅ Covered |
+| | Inches per second squared | | | ✅ Covered |
+| **Air Flow** | Cubic feet per minute (CFM) | Cubic feet per minute | Cubic Meters per Second | ✅ Covered (Cubic Foot, Minute) |
+| | Cubic meters per hour (m³/h) | | | ✅ Covered |
+| | Cubic meters per second (m³/s) | | | ✅ Covered |
+| | Liters per second (L/s) | | | ✅ Covered |
+| | Liters per minute (L/min) | | | ✅ Covered |
+| | Gallons per minute (GPM) | | | ✅ Covered |
+| | Gallons per hour (GPH) | | | ✅ Covered |
+| **Angle** | Degrees | Radians | Radians | ✅ Covered |
+| | Radians | | | ✅ Covered |
+| | Gradians | | | ✅ Covered |
+| | Degrees of Arc | | | ✅ Covered |
+| | Minutes of Arc | | | ✅ Covered |
+| | Seconds of Arc | | | ✅ Covered |
+| **Area** | Square Feet | Square Feet | Square Meters | ✅ Covered |
+| | Square Meters | | | ✅ Covered |
+| | Square Inches | | | ✅ Covered |
+| | Square Centimeters | | | ✅ Covered |
+| | Square Millimeters | | | ✅ Covered |
+| | Acres | | | ✅ Covered |
+| | Hectares | | | ✅ Covered |
+| **Cost** | Cost per Square Foot | Cost per Square Foot | ? | ❌ Not Supported (Currency) |
+| **Cross Section** | Square Feet | Square Feet | Square Meters | ✅ Covered (Area) |
+| **Current** | Amperes | Amperes | Amperes | ✅ Covered |
+| | Milliamperes | | | ✅ Covered |
+| | Kiloamperes | | | ✅ Covered |
+| **Density** | Kilograms per Cubic Meter | Kilograms per Cubic Meter | Kilograms per Cubic Meter | ✅ Covered |
+| | Pounds per Cubic Foot | | | ✅ Covered |
+| **Distance** | Feet | Feet | Meters | ✅ Covered |
+| | Meters | | | ✅ Covered |
+| **Duct Size** | Feet | Feet | Meters | ✅ Covered |
+| | Inches | | | ✅ Covered |
+| | Millimeters | | | ✅ Covered |
+| **Electrical Potential** | Volts | Volts | Volts | ✅ Covered |
+| | Millivolts | | | ✅ Covered |
+| | Kilovolts | | | ✅ Covered |
+| **Energy** | Joules | Joules | Joules | ✅ Covered |
+| | Kilojoules | | | ✅ Covered |
+| | Kilowatt Hours | | | ✅ Covered |
+| | British Thermal Units (BTU) | | | ✅ Covered |
+| **Force** | Newtons | Newtons | Newtons | ✅ Covered |
+| | Kilonewtons | | | ✅ Covered |
+| | Pounds Force | | | ✅ Covered |
+| | Kips | | | ✅ Covered |
+| **Frequency** | Hertz | Cycles per second | Hertz | ✅ Covered |
+| | Kilohertz | | | ✅ Covered |
+| **Heat Transfer Coeff.** | Watts per Square Meter Kelvin | Watts per square meter kelvin | ? | ✅ Covered |
+| **Illuminance** | Lux | Footcandles (Implied?) | Lux | ✅ Covered |
+| | Footcandles | | | ✅ Covered |
+| **Length** | Meters | Feet | Meters | ✅ Covered |
+| | Centimeters | | | ✅ Covered |
+| | Millimeters | | | ✅ Covered |
+| | Feet | | | ✅ Covered |
+| | Inches | | | ✅ Covered |
+| **Linear Force** | Newtons per Meter | Newtons per Meter | ? | ❌ Missing |
+| **Luminance** | Candelas per Square Meter | Candelas per Square Meter | ? | ✅ Covered |
+| | Footlamberts | | | ✅ Covered |
+| **Luminous Flux** | Lumens | Lumens | Lumens (cd·sr) | ✅ Covered |
+| **Luminous Intensity** | Candelas | Candelas | Candelas | ✅ Covered |
+| **Mass** | Kilograms | Kilograms | Kilograms | ✅ Covered |
+| | Pounds Mass | | | ✅ Covered |
+| **Moment** | Newton Meters | Newton Meters | ? | ✅ Covered |
+| | Pound Force Feet | | | ✅ Covered |
+| **Power** | Watts | Watts | Watts | ✅ Covered |
+| | Kilowatts | | | ✅ Covered |
+| | Horsepower | | | ✅ Covered |
+| **Pressure** | Pascals | Pascals | Pascals | ✅ Covered |
+| | Kilopascals | | | ✅ Covered |
+| | Megapascals | | | ✅ Covered |
+| | PSI | | | ✅ Covered |
+| | Inches of Water | | | ✅ Covered |
+| | Inches of Mercury | | | ✅ Covered |
+| **Rotation** | Degrees | Radians | Radians | ✅ Covered |
+| | Radians | | | ✅ Covered |
+| **Speed** | Meters per Second | Feet per Second | Meters per Second | ✅ Covered |
+| | Kilometers per Hour | | | ✅ Covered |
+| | Miles per Hour | | | ✅ Covered |
+| | Feet per Second | | | ✅ Covered |
+| | Feet per Minute | | | ✅ Covered |
+| **Temperature** | Kelvin | Kelvin | Kelvin | ✅ Covered |
+| | Celsius | | | ✅ Covered |
+| | Fahrenheit | | | ✅ Covered |
+| | Rankine | | | ✅ Covered |
+| **Time** | Seconds | Seconds | Seconds | ✅ Covered |
+| | Minutes | | | ✅ Covered |
+| | Hours | | | ✅ Covered |
+| **Volume** | Cubic Meters | Cubic Feet | Cubic Meters | ✅ Covered |
+| | Cubic Feet | | | ✅ Covered |
+| | Liters | | | ✅ Covered |
+| | Gallons | | | ✅ Covered |
+| **Volume Flow** | (See Air Flow) | | | ✅ Covered |
 
-### Common/Basic Quantities
-- ✅ Acceleration (m/s², ft/s²) - PRESENT
-- ✅ Angle (°, rad, grad) - PRESENT
-- ✅ Area (m², ft², acres, hectares) - PRESENT
-- ✅ Currency (¥) - SKIPPED (cost-related)
-- ✅ Data/Bytes (B, KB, MB, GB, TB, PB) - PRESENT
-- ✅ Density (kg/m³, lb/ft³) - PRESENT
-- ✅ Distance/Length (m, ft, in, cm, mm, km, USft, dm) - PRESENT
-- ✅ Time (s, min, h, ms, d, yr) - PRESENT
-- ✅ Volume (m³, ft³, L, gal) - PRESENT
-- ✅ Mass (kg, lb, t, Tons) - PRESENT
-- ✅ Temperature (°C, °F, K, °R) - PRESENT
+*Note: This table summarizes key quantities. Units like "Pipe Size", "Wire Diameter", "Reinforcement Spacing" are strictly Length units and are covered by the generic Length units (Meters, Feet, Inches).*
 
-### Electrical Quantities
-- ✅ Amperes (A, kA, mA) - PRESENT
-- ✅ Apparent Power (VA, kVA, MVA) - PRESENT (in power_units)
-- ✅ Apparent Power Density (VA/ft², VA/m²) - PRESENT (mapped/aliased)
-- ✅ Cable Tray Size (length units) - PRESENT
-- ✅ Color Temperature (K) - PRESENT (temperature, single-unit, alias only)
-- ✅ Conduit Size (length units) - PRESENT
-- ✅ Demand Factor (%, fixed) - PRESENT (dimensionless)
-- ✅ Efficacy (lm/W) - PRESENT (single-unit, alias only)
-- ✅ Electric Charge (A·h, A·s, A·min, C) - PRESENT
-- ✅ Electrical Potential (V, kV, mV) - PRESENT
-- ✅ Electrical Resistivity (ohm·m) - PRESENT (single-unit, alias only)
-- ✅ Frequency (Hz, cycles/s, rev/min, deg/s) - PRESENT (with aliases)
-- ✅ Illuminance (lux, ftc) - PRESENT
-- ✅ Luminance (cd/m², cd/ft², ftL) - PRESENT
-- ✅ Luminous Flux (lm) - PRESENT (single-unit, alias only)
-- ✅ Luminous Intensity (cd) - PRESENT (single-unit, alias only)
-- ✅ Power (W, kW, Btu/h, hp, kVA, cal/s, kcal/s, MBH) - PRESENT
-- ✅ Power Density (W/m², W/ft²) - PRESENT
-- ✅ Power per Length (W/m, W/ft) - PRESENT
-- ✅ Voltage (V, kV, mV) - PRESENT
-- ✅ Wattage (W) - PRESENT (single-unit, alias only)
+## Required Additions to Go-Units
 
-### Energy & Thermal Quantities
-- ✅ Coefficient of Heat Transfer (W/(m²·K), Btu/(h·ft²·°F)) - PRESENT
-- ✅ Demand Factor (%) - PRESENT
-- ✅ Energy (J, kJ, Btu, cal, kWh, therm) - PRESENT
-- ✅ Heat Capacity per Area - PRESENT
-- ✅ Heat Transfer Coefficient - PRESENT
-- ✅ Isothermal Moisture Capacity - PRESENT
-- ✅ Permeability - PRESENT
-- ✅ Specific Heat (J/(kg·°C), Btu/(lb·°F)) - PRESENT
-- ✅ Specific Heat of Vaporization - PRESENT
-- ✅ Thermal Conductivity (W/(m·K), Btu/(h·ft·°F)) - PRESENT
-- ✅ Thermal Expansion Coefficient - PRESENT
-- ✅ Thermal Insulance (°F·h·ft²/Btu, K·m²/W) - PRESENT (all symbols)
-- ✅ Thermal Mass (J/K, Btu/°F) - PRESENT
-- ✅ Thermal Resistance - PRESENT
+The following units name or symbol were identified as potentially missing during analysis (verified against current codebase):
 
-### HVAC/Flow Quantities
-- ✅ Air Flow (CFM, m³/h, L/min) - PRESENT
-- ✅ Air Flow Density (CFM/ft², LPS/m²) - PRESENT
-- ✅ Air Flow divided by Cooling Load (CFM/ton, L/(s·kW)) - PRESENT
-- ✅ Air Flow divided by Volume (CFM/ft³) - PRESENT
-- ✅ Angular Speed (RPM, RPS) - PRESENT
-- ✅ Area divided by Cooling Load (m²/kW, SF/MBh, SF/ton) - PRESENT
-- ✅ Area divided by Heating Load - PRESENT
-- ✅ Cooling Load (kW, W, Btu/h, ton) - PRESENT
-- ✅ Cooling Load divided by Area (W/m², Btu/(h·ft²)) - PRESENT
-- ✅ Cooling Load divided by Volume (W/m³, Btu/(h·ft³)) - PRESENT
-- ✅ Cross Section (m², ft², cm²) - PRESENT (as area)
-- ✅ Density (kg/m³, lb/ft³) - PRESENT
-- ✅ Diffusivity (ft²/s, m²/s) - PRESENT
-- ✅ Duct Insulation Thickness - PRESENT (as length)
-- ✅ Duct Size - PRESENT (as length)
-- ✅ Factor (%, fixed) - PRESENT
-- ✅ Flow per Power - PRESENT
-- ✅ Friction (Pa/m, in-wg/100ft) - PRESENT
-- ✅ Heat Gain (W, Btu/h) - PRESENT
-- ✅ Heating Load (W, kW, Btu/h) - PRESENT
-- ✅ Mass per Time (kg/s, lb/h) - PRESENT
-- ✅ Power (W, Btu/h, kW) - PRESENT
-- ✅ Power Density - PRESENT
-- ✅ Power per Flow - PRESENT
-- ✅ Pressure (Pa, psi, Torr, in-wg, bar, kPa) - PRESENT
-- ✅ Roughness - PRESENT (as length)
-- ✅ Slope - PRESENT
-- ✅ Temperature - PRESENT
-- ✅ Temperature Difference - PRESENT (interval scales)
-- ✅ Velocity/Speed (ft/s, m/s, mph, km/h) - PRESENT
-- ✅ Viscosity (Pa·s, cP) - PRESENT
+### 1. Missing Symbols/Aliases
+These units exist, but Revit-specific symbols might need to be added as aliases.
 
-### Piping Quantities
-- ✅ Most piping quantities reuse existing types and are PRESENT
+- **Cubic Feet per Minute (CFM)**: Unit exists (`CubicFootPerMinute`), symbol `CFM` needs verification.
+- **Linear Feet (LF)**: `Length` exists (`Foot`), symbol `LF` needs to be added as alias.
+- **Square Feet (SF)**: `Area` exists (`SquareFoot`), symbol `SF` needs to be added as alias.
+- **Tons (Refrigeration)**: Unit exists? Needs check.
+- **Kips**: Exists in `force_units.go`.
 
-### Structural/Mechanical Quantities
-- ✅ Acceleration - PRESENT
-- ✅ Force (N, kN, lbf, kip, tf, Tons) - PRESENT (with kip alias)
-- ✅ Moment/Torque (N·m, lb·ft, kip·ft) - PRESENT
-- ✅ Moment of Inertia (m⁴, in⁴, ft⁴, mm⁴) - PRESENT
-- ✅ Moment Scale - PRESENT
-- ✅ Period (s, ms, min, h) - PRESENT (as time)
-- ✅ Pulsation (rad/s) - PRESENT (single-unit, alias only)
-- ✅ Rotation (°, rad, grad) - PRESENT (as angle)
-- ✅ Rotational Spring - PRESENT
-- ✅ Section Area (m², cm², in², ft²) - PRESENT (as area)
-- ✅ Section Modulus - PRESENT
-- ✅ Stress (Pa, psi, ksi, MPa) - PRESENT (reuse pressure)
-- ✅ Unit Weight (kN/m³, lbf/ft³) - PRESENT
-- ✅ Velocity/Speed - PRESENT
-- ✅ Warping Constant - PRESENT
-- ✅ Weight per Length - PRESENT
+### 2. Missing Units
+These units do not appear to be in `go-units` and need to be implemented.
 
-### Infrastructure Quantities
-- ✅ Stationing - PRESENT
+- **Cost Units**: `Cost per Square Foot`, `Cost per square meter` (Out of scope?)
+- **Compound Spring/Force Coefficients**:
+    - `Newtons per meter` (Linear Force / Spring constant)
+    - `Kilonewtons per square meter` (Area Force / Subgrade modulus)
+    - `Kilonewton meters per degree` (Rotational Spring)
+- **Fluid/Thermal Specifics**:
+    - `Lumens per Watt` (Efficacy)
+    - `Permeability` units
+    - `Thermal Gradient Coefficient` units
+- **Slopes/Ratios**:
+    - `Rise/Run` ratios (1:10, etc) - Likely handled as Dimensionless/Ratio.
 
-### Common Quantities
-- ✅ Cost per Area - SKIPPED (cost-related)
-- ✅ Cost Rate Energy - SKIPPED (cost-related)
-- ✅ Cost Rate Power - SKIPPED (cost-related)
-- ✅ Dimensionless Ratio (%, ‰, fixed) - PRESENT
-- ✅ Number (currency, %, fixed, general) - PARTIAL
+## Next Steps
 
-## Summary
-
-- **Most Revit units now map directly to existing go-units or can be aliased.**
-- **Single-unit quantities require only identity mapping or aliasing.**
-- **Cost-related units are still skipped.**
-- **See `RevitUnits.json` for the latest, complete Revit unit export and mapping reference.**
-
-The requirements and mappings above are up-to-date as of the latest Revit export.
+1.  **Add Missing Symbols**: Update existing units (Foot, Square Foot, Cubic Foot) to include Revit symbols (LF, SF, CF, CFM, etc.).
+2.  **Add Derived Units**: Implement missing compound units where necessary (e.g., Linear Force `N/m` if not present).
+3.  **Validation**: Verify that `go-units` can parse "LF", "SF", "CFM" correctly after updates.

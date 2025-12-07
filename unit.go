@@ -13,35 +13,6 @@ const (
 	PluralAuto = "<|_auto_|>"
 )
 
-// UnitSystem is a system of units
-type UnitSystem string
-
-// Systems of units
-func (s UnitSystem) String() string { return string(s) }
-
-const (
-	// SiSystem provides the internal name for International System of Units
-	SiSystem UnitSystem = "metric"
-	// BiSystem provides the internal name the British Imperial system of units
-	BiSystem UnitSystem = "imperial"
-	// UsSystem provides the internal name the United States customary system of units
-	UsSystem UnitSystem = "us"
-	// IecSystem provides the internal name the International Electrotechnical Commission system of units
-	IecSystem UnitSystem = "iec"
-	// CgsSystem provides the internal name the centimeter-gram-second system of units
-	CgsSystem UnitSystem = "cgs"
-	// MKpSSystem provides the internal name the MKpS system of units (from French mètre–kilogramme-poids–seconde)
-	MKpSSystem UnitSystem = "MKpS"
-	// NoSystem provides the internal name for no system of units
-	NoSystem UnitSystem = ""
-)
-
-// UnitQuantity is a quantity label for which a unit belongs
-type UnitQuantity string
-
-// Quantity labels for which units may belong
-func (q UnitQuantity) String() string { return string(q) }
-
 var (
 	// _unitMap is a map of all registered units.
 	// The key is the unit name or alias, the value is the Unit.
@@ -86,11 +57,11 @@ type unit struct {
 // Unit represents a unit of measurement.
 type Unit = *unit
 
-// NewUnit registers a new Unit within the package, returning the newly created Unit.
+// newUnit registers a new Unit within the package, returning the newly created Unit.
 // Returns an error if the unit already exists.
 // The name is mandatory and must be unique.
 // The symbol is optional, but if provided, must be unique.
-func NewUnit(name, symbol string, opts ...UnitOption) (Unit, error) {
+func newUnit(name, symbol string, opts ...UnitOption) (Unit, error) {
 	if name == "" {
 		return nil, errors.New("unit name cannot be empty")
 	}
@@ -122,10 +93,10 @@ func NewUnit(name, symbol string, opts ...UnitOption) (Unit, error) {
 	return u, nil
 }
 
-// mustCreateNewUnit registers a new Unit within the package, returning the newly created Unit.
+// mustCreateUnit registers a new Unit within the package, returning the newly created Unit.
 // PANICS if the unit already exists!
-func mustCreateNewUnit(name, symbol string, opts ...UnitOption) Unit {
-	u, err := NewUnit(name, symbol, opts...)
+func mustCreateUnit(name, symbol string, opts ...UnitOption) Unit {
+	u, err := newUnit(name, symbol, opts...)
 	if err != nil {
 		panic(err)
 	}
@@ -205,6 +176,28 @@ func (u Unit) CsvLine() string {
 // ConvertTo converts the provided value from this unit to the provided unit
 func (u Unit) ConvertTo(value float64, to Unit) (Value, error) {
 	return ConvertFloat(value, u, to)
+}
+
+// FactorTo returns the multiplicative conversion factor from this unit to the target unit.
+// For example, Meter.FactorTo(Foot) returns 3.28084 (1 meter = 3.28084 feet).
+// Returns an error if the units are incompatible or no conversion path exists.
+func (u Unit) FactorTo(to Unit) (float64, error) {
+	result, err := ConvertFloat(1.0, u, to)
+	if err != nil {
+		return 0, err
+	}
+	return result.Float(), nil
+}
+
+// to is an internal helper that returns the conversion factor, panicking on error.
+// This is useful during initialization when conversion paths are known to exist.
+// For example: Meter.to(Foot) returns 3.28084.
+func (u Unit) to(target Unit) float64 {
+	factor, err := u.FactorTo(target)
+	if err != nil {
+		panic(fmt.Sprintf("failed to get conversion factor from %s to %s: %v", u.Name, target.Name, err))
+	}
+	return factor
 }
 
 // IsMetric returns true if the UnitSystem is metric (SiSystem)
@@ -356,6 +349,22 @@ func (u Unit) AddFormatFn(fn FormatFn) Unit {
 	return u
 }
 
+// IsCompatible returns true if the other unit is compatible with this unit.
+// Two units are compatible if their quantities are compatible.
+func (u Unit) IsCompatible(other unit) bool {
+	return UnitsAreCompatible(u, &other)
+}
+
+// UnitsAreCompatible returns true if the two units are compatible.
+// Two units are compatible if their quantities are compatible.
+func UnitsAreCompatible(u1, u2 Unit) bool {
+	// nil units are not compatible
+	if u1 == nil || u2 == nil {
+		return false
+	}
+	return u1.Quantity.IsCompatible(u2.Quantity)
+}
+
 // UnitOption defines an option that may be passed to mustCreateNewUnit
 type UnitOption func(Unit) Unit
 
@@ -377,26 +386,10 @@ func System(s UnitSystem) UnitOption {
 	}
 }
 
-// Shorthands for pre-defined unit systems:
-var (
-	// SI is the International System of Units
-	SI = System(SiSystem)
-	// BI is the British Imperial system of units
-	BI = System(BiSystem)
-	// US is the United States customary system of units
-	US = System(UsSystem)
-	// IEC is the International Electrotechnical Commission system of units
-	IEC = System(IecSystem)
-	// CGS is the centimeter-gram-second system of units
-	CGS = System(CgsSystem)
-	// MKpS is the MKpS system of units (from French mètre–kilogramme-poids–seconde)
-	MKpS = System(MKpSSystem)
-)
-
-// Quantity sets a quantity label for which this Unit belongs
-func Quantity(s UnitQuantity) UnitOption {
+// quantity sets a quantity label for which this Unit belongs
+func quantity(uq UnitQuantity) UnitOption {
 	return func(u Unit) Unit {
-		u.Quantity = s
+		u.Quantity = uq
 		return u
 	}
 }

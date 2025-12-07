@@ -18,7 +18,7 @@ func Test_Volume_Conversions(t *testing.T) {
 		{from: "liter", to: "centiliter", exp: 100},
 		// Imperial/US
 		{from: "gallon", to: "liter", exp: 4.54609},
-		{from: "liter", to: "gallon", exp: 0.2199692},
+		{from: "liter", to: "gallon", exp: 0.219969248},
 		{from: "cubic foot", to: "liter", exp: 28.316846592},
 		{from: "liter", to: "cubic foot", exp: 0.0353146667214886},
 		// Cross-system

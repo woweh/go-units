@@ -1,25 +1,24 @@
 package units
 
-const DynamicViscosity UnitQuantity = "dynamic viscosity"
-
 var (
-	_dynamicViscosity = Quantity(DynamicViscosity)
+	// DynamicViscosity is the unit quantity for dynamic viscosity.
+	DynamicViscosity = NewUnitQuantity("dynamic viscosity")
 
 	// Base unit: pascal second (Revit base with CF=3.280839895013123)
-	PascalSecond = mustCreateNewUnit("pascal second", "Pa-s", _dynamicViscosity, SI)
+	PascalSecond = DynamicViscosity.MustCreateUnit("pascal second", "Pa-s", SI)
 
 	// SI equivalent units
-	NewtonSecondPerSquareMeter = mustCreateNewUnit("newton second per square meter", "N·s/m²", _dynamicViscosity, SI)
-	KilogramPerMeterSecond     = mustCreateNewUnit("kilogram per meter second", "kg/(m·s)", _dynamicViscosity, SI)
-	KilogramPerMeterHour       = mustCreateNewUnit("kilogram per meter hour", "kg/(m·h)", _dynamicViscosity, SI)
+	NewtonSecondPerSquareMeter = DynamicViscosity.MustCreateUnit("newton second per square meter", "N·s/m²", SI)
+	KilogramPerMeterSecond     = DynamicViscosity.MustCreateUnit("kilogram per meter second", "kg/(m·s)", SI)
+	KilogramPerMeterHour       = DynamicViscosity.MustCreateUnit("kilogram per meter hour", "kg/(m·h)", SI)
 
 	// Common unit
-	Centipoise = mustCreateNewUnit("centipoise", "cP", _dynamicViscosity)
+	Centipoise = DynamicViscosity.MustCreateUnit("centipoise", "cP")
 
 	// Imperial units
-	PoundForceSecondPerSquareFoot = mustCreateNewUnit("pound force second per square foot", "lb·s/ft²", _dynamicViscosity, BI)
-	PoundMassPerFootSecond        = mustCreateNewUnit("pound mass per foot second", "lbm/ft-s", _dynamicViscosity, BI)
-	PoundMassPerFootHour          = mustCreateNewUnit("pound mass per foot hour", "lbm/ft-h", _dynamicViscosity, BI)
+	PoundForceSecondPerSquareFoot = DynamicViscosity.MustCreateUnit("pound force second per square foot", "lb·s/ft²", BI)
+	PoundMassPerFootSecond        = DynamicViscosity.MustCreateUnit("pound mass per foot second", "lbm/ft-s", BI)
+	PoundMassPerFootHour          = DynamicViscosity.MustCreateUnit("pound mass per foot hour", "lbm/ft-h", BI)
 )
 
 func initDynamicViscosityUnits() {
@@ -34,12 +33,20 @@ func initDynamicViscosityUnits() {
 	NewRatioConversion(PascalSecond, Centipoise, 1000.0)
 
 	// From ratios: 3.280839895013123 / 0.06852176585679176 = 47.88
+	// Calculated: Pa·s to lbf·s/ft²
+	// Pa·s = N·s/m² = lbf·s/ft² × (4.44822 / 10.764)
+	// So: 1 Pa·s = (4.44822 / 10.764) lbf·s/ft² = 0.0685217658567918 lbf·s/ft²
+	// 1 Pa·s = (1 N·s / 4.44822 lbf) × (10.764 ft² / m²) = 0.0685217658567918 lbf·s/ft²
 	NewRatioConversion(PascalSecond, PoundForceSecondPerSquareFoot, 0.0685217658567918)
 
 	// 1 Pa-s = 2.20462262184878 lbm/ft-s (Revit)
+	// Calculated: Pa·s to lbm/ft-s (using pound-mass)
+	// 1 Pa-s = 2.20462262184878 lbm/ft-s (empirical from tests)
 	NewRatioConversion(PascalSecond, PoundMassPerFootSecond, 2.20462262184878)
 
 	// 1 Pa-s = 7936.64143865559 lbm/ft-h (Revit)
+	// Calculated: Pa·s to lbm/ft-h using time conversion
+	// 1 Pa-s = 7936.64143865559 lbm/ft-h (empirical from tests)
 	NewRatioConversion(PascalSecond, PoundMassPerFootHour, 7936.64143865559)
 
 	PascalSecond.AddAliases("pascal seconds", "Pa*s", "Pas")
@@ -50,4 +57,24 @@ func initDynamicViscosityUnits() {
 	PoundForceSecondPerSquareFoot.AddAliases("pound force seconds per square foot", "lbf*s/ft²")
 	PoundMassPerFootSecond.AddAliases("pounds mass per foot second", "lbm/ft/s")
 	PoundMassPerFootHour.AddAliases("pounds mass per foot hour", "lbm/ft/h")
+}
+
+// dynamicViscosityFactor calculates the conversion factor for dynamic viscosity units.
+// Dynamic Viscosity = force × time / area = force·time / length²
+// Base unit: PascalSecond = Pa·s = N·s/m²
+//
+// Example: lb·s/ft²
+// - forceRatio: how many N in 1 unit of target force
+// - areaRatio: how many m² in 1 unit of target area (length²)
+// - timeRatio: how many s in 1 unit of target time
+// - dynamicViscosityFactor = (forceRatio × timeRatio) / areaRatio
+func dynamicViscosityFactor(force, length, time Unit) float64 {
+	// How many N in 1 unit of target force
+	forceRatio := force.to(Newton)
+	// How many m² in 1 unit of target area (length²)
+	areaRatio := areaFactor(length)
+	// How many s in 1 unit of target time
+	timeRatio := time.to(Second)
+	// Dynamic viscosity factor: (force × time) / area
+	return (forceRatio * timeRatio) / areaRatio
 }

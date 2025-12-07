@@ -1,12 +1,11 @@
 package units
 
-const ElectricCurrent UnitQuantity = "electric current"
-
 var (
-	_electricCurrent = Quantity(ElectricCurrent)
+	// ElectricCurrent is the unit quantity for electric current.
+	ElectricCurrent = NewUnitQuantity("electric current")
 
 	// metric
-	Ampere      = mustCreateNewUnit("ampere", "A", _electricCurrent, SI)
+	Ampere      = ElectricCurrent.MustCreateUnit("ampere", "A", SI)
 	MilliAmpere = Milli(Ampere)
 	MicroAmpere = Micro(Ampere)
 	NanoAmpere  = Nano(Ampere)

@@ -1,19 +1,17 @@
 package units
 
-// ThermalMass is a unit quantity for thermal mass
-const ThermalMass UnitQuantity = "thermal mass"
-
 var (
-	_thermalMass = Quantity(ThermalMass)
+	// ThermalMass is the unit quantity for thermal mass.
+	ThermalMass = NewUnitQuantity("thermal mass")
 
 	// SI base unit: joule per kelvin
-	JoulePerKelvin = mustCreateNewUnit("joule per kelvin", "J/K", _thermalMass, SI)
+	JoulePerKelvin = ThermalMass.MustCreateUnit("joule per kelvin", "J/K", SI)
 
 	// Other SI unit
-	KiloJoulePerKelvin = mustCreateNewUnit("kilojoule per kelvin", "kJ/K", _thermalMass, SI)
+	KiloJoulePerKelvin = ThermalMass.MustCreateUnit("kilojoule per kelvin", "kJ/K", SI)
 
 	// Imperial/US unit
-	BritishThermalUnitPerFahrenheit = mustCreateNewUnit("British thermal unit per degree Fahrenheit", "BTU/°F", _thermalMass, BI)
+	BritishThermalUnitPerFahrenheit = ThermalMass.MustCreateUnit("British thermal unit per degree Fahrenheit", "BTU/°F", BI)
 )
 
 func initThermalMassUnits() {

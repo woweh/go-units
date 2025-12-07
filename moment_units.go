@@ -1,26 +1,24 @@
 package units
 
-// Moment is a unit quantity for moment (torque)
-const Moment UnitQuantity = "moment"
-
 var (
-	_moment = Quantity(Moment)
+	// Moment is the unit quantity for moment (torque).
+	Moment = NewUnitQuantity("moment")
 
 	// SI base unit: newton meter
-	NewtonMeter = mustCreateNewUnit("newton meter", "N-m", _moment, SI)
+	NewtonMeter = Moment.MustCreateUnit("newton meter", "N-m", SI)
 
 	// SI units
-	DekaNewtonMeter = mustCreateNewUnit("dekanewton meter", "daN-m", _moment, SI)
-	KiloNewtonMeter = mustCreateNewUnit("kilonewton meter", "kN-m", _moment, SI)
-	MegaNewtonMeter = mustCreateNewUnit("meganewton meter", "MN-m", _moment, SI)
+	DekaNewtonMeter = Moment.MustCreateUnit("dekanewton meter", "daN-m", SI)
+	KiloNewtonMeter = Moment.MustCreateUnit("kilonewton meter", "kN-m", SI)
+	MegaNewtonMeter = Moment.MustCreateUnit("meganewton meter", "MN-m", SI)
 
 	// Imperial units
-	PoundForceFoot = mustCreateNewUnit("pound force foot", "lb-ft", _moment, BI)
-	KipFoot        = mustCreateNewUnit("kip foot", "kip-ft", _moment, BI)
+	PoundForceFoot = Moment.MustCreateUnit("pound force foot", "lb-ft", BI)
+	KipFoot        = Moment.MustCreateUnit("kip foot", "kip-ft", BI)
 
 	// Other units
-	KilogramForceMeter = mustCreateNewUnit("kilogram force meter", "kgf-m", _moment, MKpS)
-	TonneForceMeter    = mustCreateNewUnit("tonne force meter", "Tf-m", _moment, MKpS)
+	KilogramForceMeter = Moment.MustCreateUnit("kilogram force meter", "kgf-m", MKpS)
+	TonneForceMeter    = Moment.MustCreateUnit("tonne force meter", "Tf-m", MKpS)
 )
 
 func initMomentUnits() {
@@ -28,17 +26,20 @@ func initMomentUnits() {
 	NewRatioConversion(NewtonMeter, KiloNewtonMeter, 0.001)
 	NewRatioConversion(NewtonMeter, MegaNewtonMeter, 0.000001)
 
-	// Standard conversion: 1 N-m = 0.737562 lb-ft
-	NewRatioConversion(NewtonMeter, PoundForceFoot, 0.737562)
+	// Calculated: 1 N-m = X lb-ft
+	NewRatioConversion(NewtonMeter, PoundForceFoot, 1.0/momentFactor(PoundForce, Foot))
 
 	// 1 kip-ft = 1000 lb-ft
-	NewRatioConversion(KipFoot, PoundForceFoot, 1000.0)
+	// Calculated: kip-ft to lb-ft
+	NewRatioConversion(KipFoot, PoundForceFoot, momentFactor(Kip, Foot)/momentFactor(PoundForce, Foot))
 
 	// 1 kgf-m = 9.80665 N-m
-	NewRatioConversion(KilogramForceMeter, NewtonMeter, 9.80665)
+	// Calculated: kgf·m to N·m
+	NewRatioConversion(KilogramForceMeter, NewtonMeter, momentFactor(KilogramForce, Meter))
 
 	// 1 Tf-m = 9806.65 N-m
-	NewRatioConversion(TonneForceMeter, NewtonMeter, 9806.65)
+	// Calculated: Tf·m to N·m
+	NewRatioConversion(TonneForceMeter, NewtonMeter, momentFactor(TonneForce, Meter))
 
 	NewtonMeter.AddAliases("newton meters", "N*m", "Nm")
 	DekaNewtonMeter.AddAliases("dekanewton meters")
@@ -48,4 +49,21 @@ func initMomentUnits() {
 	KipFoot.AddAliases("kip feet", "kip-feet")
 	KilogramForceMeter.AddAliases("kilogram force meters")
 	TonneForceMeter.AddAliases("tonne force meters")
+}
+
+// momentFactor calculates the conversion factor for moment (torque) units.
+// Moment = force × distance
+// Base unit: NewtonMeter = N·m
+//
+// Example: lbf·ft
+// - forceRatio: how many N in 1 lbf
+// - lengthRatio: how many m in 1 ft
+// - momentFactor = forceRatio × lengthRatio
+func momentFactor(force, length Unit) float64 {
+	// How many Newtons in 1 unit of the target force
+	forceRatio := force.to(Newton)
+	// How many meters in 1 unit of target length
+	lengthRatio := length.to(Meter)
+	// Moment factor: force × length
+	return forceRatio * lengthRatio
 }

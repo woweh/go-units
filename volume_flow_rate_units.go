@@ -1,120 +1,128 @@
 package units
 
-// VolumeFlowRate is a unit quantity for volume flow rate
-const VolumeFlowRateQuantity UnitQuantity = "volume flow rate"
-
 var (
-	_volumeFlowRate = Quantity(VolumeFlowRateQuantity)
+	// VolumeFlowRateQuantity is the unit quantity for volume flow rate.
+	VolumeFlowRateQuantity = NewUnitQuantity("volume flow rate")
 
 	// SI units
-	CubicMeterPerSecond = mustCreateNewUnit(
-		"cubic meter per second", "m³/s", _volumeFlowRate, SI,
+	CubicMeterPerSecond = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic meter per second", "m³/s", SI,
 		Aliases("cubic metre per second"), Symbols("m3/s", "m3s-1"),
 	)
-	CubicMeterPerMinute = mustCreateNewUnit(
-		"cubic meter per minute", "m³/min", _volumeFlowRate, SI,
+	CubicMeterPerMinute = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic meter per minute", "m³/min", SI,
 		Aliases("cubic metre per minute"), Symbols("m3/min", "m3m-1"),
 	)
-	CubicMeterPerHour = mustCreateNewUnit(
-		"cubic meter per hour", "m³/h", _volumeFlowRate, SI,
+	CubicMeterPerHour = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic meter per hour", "m³/h", SI,
 		Aliases("cubic metre per hour"), Symbols("m3/h", "m3h-1"),
 	)
-	CubicMeterPerDay = mustCreateNewUnit(
-		"cubic meter per day", "m³/d", _volumeFlowRate, SI,
+	CubicMeterPerDay = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic meter per day", "m³/d", SI,
 		Aliases("cubic metre per day"), Symbols("m3/d", "m3d-1"),
 	)
-	CubicDecimeterPerSecond = mustCreateNewUnit(
-		"cubic decimeter per second", "dm³/s", _volumeFlowRate, SI,
+	CubicDecimeterPerSecond = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic decimeter per second", "dm³/s", SI,
 		Aliases("cubic decimetre per second"), Symbols("dm3/s", "dm3s-1"),
 	)
-	CubicDecimeterPerMinute = mustCreateNewUnit(
-		"cubic decimeter per minute", "dm³/min", _volumeFlowRate, SI,
+	CubicDecimeterPerMinute = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic decimeter per minute", "dm³/min", SI,
 		Aliases("cubic decimetre per minute"), Symbols("dm3/min", "dm3m-1"),
 	)
-	CubicDecimeterPerHour = mustCreateNewUnit(
-		"cubic decimeter per hour", "dm³/h", _volumeFlowRate, SI,
+	CubicDecimeterPerHour = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic decimeter per hour", "dm³/h", SI,
 		Aliases("cubic decimetre per hour"), Symbols("dm3/h", "dm3h-1"),
 	)
-	CubicDecimeterPerDay = mustCreateNewUnit(
-		"cubic decimeter per day", "dm³/d", _volumeFlowRate, SI,
+	CubicDecimeterPerDay = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic decimeter per day", "dm³/d", SI,
 		Aliases("cubic decimetre per day"), Symbols("dm3/d", "dm3d-1"),
 	)
-	CubicCentimeterPerSecond = mustCreateNewUnit(
-		"cubic centimeter per second", "cm³/s", _volumeFlowRate, SI,
+	CubicCentimeterPerSecond = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic centimeter per second", "cm³/s", SI,
 		Aliases("cubic centimetre per second"), Symbols("cm3/s", "cm3s-1"),
 	)
-	CubicCentimeterPerMinute = mustCreateNewUnit(
-		"cubic centimeter per minute", "cm³/min", _volumeFlowRate, SI,
+	CubicCentimeterPerMinute = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic centimeter per minute", "cm³/min", SI,
 		Aliases("cubic centimetre per minute"), Symbols("cm3/min", "cm3m-1"),
 	)
-	CubicCentimeterPerHour = mustCreateNewUnit(
-		"cubic centimeter per hour", "cm³/h", _volumeFlowRate, SI,
+	CubicCentimeterPerHour = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic centimeter per hour", "cm³/h", SI,
 		Aliases("cubic centimetre per hour"), Symbols("cm3/h", "cm3h-1"),
 	)
-	CubicCentimeterPerDay = mustCreateNewUnit(
-		"cubic centimeter per day", "cm³/d", _volumeFlowRate, SI,
+	CubicCentimeterPerDay = VolumeFlowRateQuantity.MustCreateUnit(
+		"cubic centimeter per day", "cm³/d", SI,
 		Aliases("cubic centimetre per day"), Symbols("cm3/d", "cm3d-1"),
 	)
 
 	// Imperial/US units
-	CubicInchPerSecond = mustCreateNewUnit("cubic inch per second", "in³/s", _volumeFlowRate, BI)
-	CubicInchPerMinute = mustCreateNewUnit("cubic inch per minute", "in³/min", _volumeFlowRate, BI)
-	CubicInchPerHour   = mustCreateNewUnit("cubic inch per hour", "in³/h", _volumeFlowRate, BI)
-	CubicInchPerDay    = mustCreateNewUnit("cubic inch per day", "in³/d", _volumeFlowRate, BI)
+	CubicInchPerSecond = VolumeFlowRateQuantity.MustCreateUnit("cubic inch per second", "in³/s", BI)
+	CubicInchPerMinute = VolumeFlowRateQuantity.MustCreateUnit("cubic inch per minute", "in³/min", BI)
+	CubicInchPerHour   = VolumeFlowRateQuantity.MustCreateUnit("cubic inch per hour", "in³/h", BI)
+	CubicInchPerDay    = VolumeFlowRateQuantity.MustCreateUnit("cubic inch per day", "in³/d", BI)
 
-	CubicFootPerSecond = mustCreateNewUnit("cubic foot per second", "ft³/s", _volumeFlowRate, BI)
-	CubicFootPerMinute = mustCreateNewUnit("cubic foot per minute", "ft³/min", _volumeFlowRate, BI)
-	CubicFootPerHour   = mustCreateNewUnit("cubic foot per hour", "ft³/h", _volumeFlowRate, BI)
-	CubicFootPerDay    = mustCreateNewUnit("cubic foot per day", "ft³/d", _volumeFlowRate, BI)
+	CubicFootPerSecond = VolumeFlowRateQuantity.MustCreateUnit("cubic foot per second", "ft³/s", BI)
+	CubicFootPerMinute = VolumeFlowRateQuantity.MustCreateUnit("cubic foot per minute", "ft³/min", BI)
+	CubicFootPerHour   = VolumeFlowRateQuantity.MustCreateUnit("cubic foot per hour", "ft³/h", BI)
+	CubicFootPerDay    = VolumeFlowRateQuantity.MustCreateUnit("cubic foot per day", "ft³/d", BI)
 
-	CubicYardPerSecond = mustCreateNewUnit("cubic yard per second", "yd³/s", _volumeFlowRate, BI)
-	CubicYardPerMinute = mustCreateNewUnit("cubic yard per minute", "yd³/min", _volumeFlowRate, BI)
-	CubicYardPerHour   = mustCreateNewUnit("cubic yard per hour", "yd³/h", _volumeFlowRate, BI)
-	CubicYardPerDay    = mustCreateNewUnit("cubic yard per day", "yd³/d", _volumeFlowRate, BI)
+	CubicYardPerSecond = VolumeFlowRateQuantity.MustCreateUnit("cubic yard per second", "yd³/s", BI)
+	CubicYardPerMinute = VolumeFlowRateQuantity.MustCreateUnit("cubic yard per minute", "yd³/min", BI)
+	CubicYardPerHour   = VolumeFlowRateQuantity.MustCreateUnit("cubic yard per hour", "yd³/h", BI)
+	CubicYardPerDay    = VolumeFlowRateQuantity.MustCreateUnit("cubic yard per day", "yd³/d", BI)
 )
 
 func initVolumeFlowRateUnits() {
 	// use CubicMeterPerSecond as the base unit
-	NewRatioConversion(CubicMeterPerSecond, CubicMeterPerMinute, 60)
-	NewRatioConversion(CubicMeterPerSecond, CubicMeterPerHour, 3600)
-	NewRatioConversion(CubicMeterPerSecond, CubicMeterPerDay, 86400)
+	// Note: NewRatioConversion expects "how many target units in 1 source unit"
+	// For m³/s to m³/min: 1 m³/s = 60 m³/min, so ratio = volumeFlowRateFactor
+	NewRatioConversion(CubicMeterPerSecond, CubicMeterPerMinute, volumeFlowRateFactor(Meter, Minute))
+	NewRatioConversion(CubicMeterPerSecond, CubicMeterPerHour, volumeFlowRateFactor(Meter, Hour))
+	NewRatioConversion(CubicMeterPerSecond, CubicMeterPerDay, volumeFlowRateFactor(Meter, Day))
 
-	// 1 CubicMeter = 1e3 CubicDecimeter
-	r := 1e3
-	NewRatioConversion(CubicMeterPerSecond, CubicDecimeterPerSecond, r)
-	NewRatioConversion(CubicMeterPerMinute, CubicDecimeterPerMinute, r)
-	NewRatioConversion(CubicMeterPerHour, CubicDecimeterPerHour, r)
-	NewRatioConversion(CubicMeterPerDay, CubicDecimeterPerDay, r)
+	// Decimeter-based volumes
+	NewRatioConversion(CubicMeterPerSecond, CubicDecimeterPerSecond, volumeFlowRateFactor(DeciMeter, Second))
+	NewRatioConversion(CubicMeterPerMinute, CubicDecimeterPerMinute, volumeFlowRateFactor(DeciMeter, Minute))
+	NewRatioConversion(CubicMeterPerHour, CubicDecimeterPerHour, volumeFlowRateFactor(DeciMeter, Hour))
+	NewRatioConversion(CubicMeterPerDay, CubicDecimeterPerDay, volumeFlowRateFactor(DeciMeter, Day))
 
-	// 1 CubicMeter = 1e6 CubicCentimeter
-	r = 1e6
-	NewRatioConversion(CubicMeterPerSecond, CubicCentimeterPerSecond, r)
-	NewRatioConversion(CubicMeterPerMinute, CubicCentimeterPerMinute, r)
-	NewRatioConversion(CubicMeterPerHour, CubicCentimeterPerHour, r)
-	NewRatioConversion(CubicMeterPerDay, CubicCentimeterPerDay, r)
+	// Centimeter-based volumes
+	NewRatioConversion(CubicMeterPerSecond, CubicCentimeterPerSecond, volumeFlowRateFactor(CentiMeter, Second))
+	NewRatioConversion(CubicMeterPerMinute, CubicCentimeterPerMinute, volumeFlowRateFactor(CentiMeter, Minute))
+	NewRatioConversion(CubicMeterPerHour, CubicCentimeterPerHour, volumeFlowRateFactor(CentiMeter, Hour))
+	NewRatioConversion(CubicMeterPerDay, CubicCentimeterPerDay, volumeFlowRateFactor(CentiMeter, Day))
 
-	// 1 inch = 0.0254 meter, 1 in3 =  in3 0.0254*0.0254*0.0254 m3
-	// 1 m3 = 1 / (0.0254*0.0254*0.0254) in3
-	// 1 CubicMeter ~ 61023.7441 in3
-	r = 1 / (0.0254 * 0.0254 * 0.0254)
-	NewRatioConversion(CubicMeterPerSecond, CubicInchPerSecond, r)
-	NewRatioConversion(CubicMeterPerMinute, CubicInchPerMinute, r)
-	NewRatioConversion(CubicMeterPerHour, CubicInchPerHour, r)
-	NewRatioConversion(CubicMeterPerDay, CubicInchPerDay, r)
+	// Imperial inch-based volumes
+	NewRatioConversion(CubicMeterPerSecond, CubicInchPerSecond, volumeFlowRateFactor(Inch, Second))
+	NewRatioConversion(CubicMeterPerMinute, CubicInchPerMinute, volumeFlowRateFactor(Inch, Minute))
+	NewRatioConversion(CubicMeterPerHour, CubicInchPerHour, volumeFlowRateFactor(Inch, Hour))
+	NewRatioConversion(CubicMeterPerDay, CubicInchPerDay, volumeFlowRateFactor(Inch, Day))
 
-	// 1 foot = 0.3048 meter => 1 / (0.3048*0.3048*0.3048)
-	// 1 CubicMeter ~ 35.314666721488 ft3
-	r = 1 / (0.3048 * 0.3048 * 0.3048)
-	NewRatioConversion(CubicMeterPerSecond, CubicFootPerSecond, r)
-	NewRatioConversion(CubicMeterPerMinute, CubicFootPerMinute, r)
-	NewRatioConversion(CubicMeterPerHour, CubicFootPerHour, r)
-	NewRatioConversion(CubicMeterPerDay, CubicFootPerDay, r)
+	// Imperial foot-based volumes
+	NewRatioConversion(CubicMeterPerSecond, CubicFootPerSecond, volumeFlowRateFactor(Foot, Second))
+	NewRatioConversion(CubicMeterPerMinute, CubicFootPerMinute, volumeFlowRateFactor(Foot, Minute))
+	NewRatioConversion(CubicMeterPerHour, CubicFootPerHour, volumeFlowRateFactor(Foot, Hour))
+	NewRatioConversion(CubicMeterPerDay, CubicFootPerDay, volumeFlowRateFactor(Foot, Day))
 
-	// 1 yard = 0.9144 meter => 1 / (0.9144*0.9144*0.9144)
-	// 1 CubicMeter ~ 1.3079506193144 yd3
-	r = 1 / (0.9144 * 0.9144 * 0.9144)
-	NewRatioConversion(CubicMeterPerSecond, CubicYardPerSecond, r)
-	NewRatioConversion(CubicMeterPerMinute, CubicYardPerMinute, r)
-	NewRatioConversion(CubicMeterPerHour, CubicYardPerHour, r)
-	NewRatioConversion(CubicMeterPerDay, CubicYardPerDay, r)
+	// Imperial yard-based volumes
+	NewRatioConversion(CubicMeterPerSecond, CubicYardPerSecond, volumeFlowRateFactor(Yard, Second))
+	NewRatioConversion(CubicMeterPerMinute, CubicYardPerMinute, volumeFlowRateFactor(Yard, Minute))
+	NewRatioConversion(CubicMeterPerHour, CubicYardPerHour, volumeFlowRateFactor(Yard, Hour))
+	NewRatioConversion(CubicMeterPerDay, CubicYardPerDay, volumeFlowRateFactor(Yard, Day))
+}
+
+// volumeFlowRateFactor calculates the conversion factor for volume flow rate units.
+// VolumeFlowRate = volume / time
+// Base unit: CubicMeterPerSecond = m³/s
+//
+// Example: ft³/min
+// - volumeRatio: how many m³ in 1 ft³
+// - timeRatio: how many s in 1 min
+// - volumeFlowRateFactor = volumeRatio / timeRatio
+func volumeFlowRateFactor(length, time Unit) float64 {
+	// Return how many target units (length^3 / time) there are in 1 m³/s.
+	// 1 m³/s = (1 m³) / (1 s). For a target unit (L^3 / T):
+	// ratio = (seconds in 1 target time) / (m³ in 1 target volume)
+	volRatio := volumeFactor(length) // m³ per 1 target volume
+	timeRatio := time.to(Second)     // seconds per 1 target time
+	return timeRatio / volRatio
 }

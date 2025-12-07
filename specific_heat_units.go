@@ -1,19 +1,17 @@
 package units
 
 // SpecificHeat is a unit quantity for specific heat
-const SpecificHeat UnitQuantity = "specific heat"
-
 var (
-	_specificHeat = Quantity(SpecificHeat)
-
+	// SpecificHeat is the unit quantity for specific heat.
+	SpecificHeat = NewUnitQuantity("specific heat")
 	// SI base unit: joule per kilogram degree Celsius
-	JoulePerKilogramCelsius = mustCreateNewUnit("joule per kilogram degree Celsius", "J/(kg·°C)", _specificHeat, SI)
+	JoulePerKilogramCelsius = SpecificHeat.MustCreateUnit("joule per kilogram degree Celsius", "J/(kg·°C)", SI)
 
 	// Other SI unit
-	JoulePerGramCelsius = mustCreateNewUnit("joule per gram degree Celsius", "J/(g·°C)", _specificHeat, SI)
+	JoulePerGramCelsius = SpecificHeat.MustCreateUnit("joule per gram degree Celsius", "J/(g·°C)", SI)
 
 	// Imperial unit
-	BritishThermalUnitPerPoundFahrenheit = mustCreateNewUnit("British thermal unit per pound degree Fahrenheit", "BTU/(lb·°F)", _specificHeat, BI)
+	BritishThermalUnitPerPoundFahrenheit = SpecificHeat.MustCreateUnit("British thermal unit per pound degree Fahrenheit", "BTU/(lb·°F)", BI)
 )
 
 func initSpecificHeatUnits() {

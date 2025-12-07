@@ -1,13 +1,12 @@
 package units
 
 // Voltage is a unit quantity for voltage
-const VoltageQuantity UnitQuantity = "voltage"
-
 var (
-	_voltage = Quantity(VoltageQuantity)
+	// VoltageQuantity is the unit quantity for voltage.
+	VoltageQuantity = NewUnitQuantity("voltage")
 
 	// SI base unit: volt
-	Volt      = mustCreateNewUnit("volt", "V", _voltage, SI)
+	Volt      = VoltageQuantity.MustCreateUnit("volt", "V", SI)
 	YottaVolt = Yotta(Volt)
 	ZettaVolt = Zetta(Volt)
 	ExaVolt   = Exa(Volt)

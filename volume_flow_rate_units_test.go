@@ -13,12 +13,12 @@ func Test_VolumeFlowRate_Conversions(t *testing.T) {
 		{from: "cubic meter per second", to: "cubic decimeter per second", exp: 1000},
 		{from: "cubic meter per second", to: "cubic centimeter per second", exp: 1000000},
 		// Imperial conversions
-		{from: "cubic meter per second", to: "cubic inch per second", exp: 61023.744095},
-		{from: "cubic meter per second", to: "cubic foot per second", exp: 35.314667},
-		{from: "cubic meter per second", to: "cubic yard per second", exp: 1.307951},
+		{from: "cubic meter per second", to: "cubic inch per second", exp: 61023.744094732},
+		{from: "cubic meter per second", to: "cubic foot per second", exp: 35.314666721},
+		{from: "cubic meter per second", to: "cubic yard per second", exp: 1.307950619},
 		// Cross-system
-		{from: "cubic foot per second", to: "cubic meter per second", exp: 0.0283168},
-		{from: "cubic inch per second", to: "cubic meter per second", exp: 0.0000163871},
+		{from: "cubic foot per second", to: "cubic meter per second", exp: 0.028316847},
+		{from: "cubic inch per second", to: "cubic meter per second", exp: 0.000016387064},
 	}
 	testConversions(t, conversionTests)
 }

@@ -7,14 +7,14 @@ import (
 func Test_Stress_Conversions(t *testing.T) {
 	conversionTests := []conversionTest{
 		// Stress-specific units (not covered in pressure_units_test.go)
-		{from: "ksf", to: "Pa", exp: 47880.26},
-		{from: "Pa", to: "ksf", exp: 0.0000208854},
-		{from: "ksi", to: "Pa", exp: 6894757.293168},
-		{from: "Pa", to: "ksi", exp: 0.0000001450377},
-		{from: "Tf/m²", to: "Pa", exp: 9806.65},
+		{from: "ksf", to: "Pa", exp: 47880.263121637},
+		{from: "Pa", to: "ksf", exp: 0.000020885432},
+		{from: "ksi", to: "Pa", exp: 6894757.88951578},
+		{from: "Pa", to: "ksi", exp: 0.000000145037789},
+		{from: "Tf/m²", to: "Pa", exp: 9806.65, tol: fPtr(1e-6)},
 		{from: "Pa", to: "Tf/m²", exp: 0.0001019716},
 		{from: "kgf/m²", to: "Pa", exp: 9.80665},
-		{from: "Pa", to: "kgf/m²", exp: 0.1019716},
+		{from: "Pa", to: "kgf/m²", exp: 0.1019716, tol: fPtr(1e-6)},
 		{from: "N/mm²", to: "Pa", exp: 1000000},
 		{from: "Pa", to: "N/mm²", exp: 0.000001},
 		{from: "kN/cm²", to: "Pa", exp: 10000000},

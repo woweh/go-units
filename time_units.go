@@ -1,12 +1,10 @@
 package units
 
-// Time is a unit quantity for time
-const Time UnitQuantity = "time"
-
 var (
-	_time = Quantity(Time)
+	// Time is the unit quantity for time.
+	Time = NewUnitQuantity("time")
 
-	Second      = mustCreateNewUnit("second", "s", _time, SI)
+	Second      = Time.MustCreateUnit("second", "s", SI)
 	ExaSecond   = Exa(Second)
 	PetaSecond  = Peta(Second)
 	TeraSecond  = Tera(Second)
@@ -24,20 +22,20 @@ var (
 	FemtoSecond = Femto(Second)
 	AttoSecond  = Atto(Second)
 
-	Minute = mustCreateNewUnit("minute", "min", _time)
-	Hour   = mustCreateNewUnit("hour", "hr", _time)
-	Day    = mustCreateNewUnit("day", "d", _time)
-	Month  = mustCreateNewUnit("month", "", _time)
-	Year   = mustCreateNewUnit("year", "yr", _time)
+	Minute = Time.MustCreateUnit("minute", "min")
+	Hour   = Time.MustCreateUnit("hour", "hr")
+	Day    = Time.MustCreateUnit("day", "d")
+	Month  = Time.MustCreateUnit("month", "")
+	Year   = Time.MustCreateUnit("year", "yr")
 
-	Decade     = mustCreateNewUnit("decade", "", _time)
-	Century    = mustCreateNewUnit("century", "", _time)
-	Millennium = mustCreateNewUnit("millennium", "", _time)
+	Decade     = Time.MustCreateUnit("decade", "")
+	Century    = Time.MustCreateUnit("century", "")
+	Millennium = Time.MustCreateUnit("millennium", "")
 
 	// more esoteric time units
-	PlanckTime = mustCreateNewUnit("planck time", "𝑡ₚ", _time)
-	Fortnight  = mustCreateNewUnit("fortnight", "", _time)
-	Score      = mustCreateNewUnit("score", "", _time)
+	PlanckTime = Time.MustCreateUnit("planck time", "𝑡ₚ")
+	Fortnight  = Time.MustCreateUnit("fortnight", "")
+	Score      = Time.MustCreateUnit("score", "")
 )
 
 func initTimeUnits() {

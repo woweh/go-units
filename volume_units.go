@@ -1,13 +1,11 @@
 package units
 
-// Volume is a unit quantity for volume
-const VolumeQuantity UnitQuantity = "volume"
-
 var (
-	_volume = Quantity(VolumeQuantity)
+	// Volume is the unit quantity for volume.
+	Volume = NewUnitQuantity("volume")
 
 	// SI/metric units
-	Liter      = mustCreateNewUnit("liter", "l", _volume, SI, Aliases("litre"))
+	Liter      = Volume.MustCreateUnit("liter", "l", SI, Aliases("litre"))
 	ExaLiter   = Exa(Liter)
 	PetaLiter  = Peta(Liter)
 	TeraLiter  = Tera(Liter)
@@ -25,30 +23,30 @@ var (
 	FemtoLiter = Femto(Liter)
 	AttoLiter  = Atto(Liter)
 
-	CubicMeter      = mustCreateNewUnit("cubic meter", "m³", _volume, SI)
-	CubicKiloMeter  = mustCreateNewUnit("cubic kilometer", "km³", _volume, SI)
-	CubicHectoMeter = mustCreateNewUnit("cubic hectometer", "hm³", _volume, SI)
-	CubicDecaMeter  = mustCreateNewUnit("cubic decameter", "dam³", _volume, SI)
-	CubicDeciMeter  = mustCreateNewUnit("cubic decimeter", "dm³", _volume, SI)
-	CubicCentiMeter = mustCreateNewUnit("cubic centimeter", "cm³", _volume, SI)
-	CubicMilliMeter = mustCreateNewUnit("cubic millimeter", "mm³", _volume, SI)
+	CubicMeter      = Volume.MustCreateUnit("cubic meter", "m³", SI)
+	CubicKiloMeter  = Volume.MustCreateUnit("cubic kilometer", "km³", SI)
+	CubicHectoMeter = Volume.MustCreateUnit("cubic hectometer", "hm³", SI)
+	CubicDecaMeter  = Volume.MustCreateUnit("cubic decameter", "dam³", SI)
+	CubicDeciMeter  = Volume.MustCreateUnit("cubic decimeter", "dm³", SI)
+	CubicCentiMeter = Volume.MustCreateUnit("cubic centimeter", "cm³", SI)
+	CubicMilliMeter = Volume.MustCreateUnit("cubic millimeter", "mm³", SI)
 
 	// Imperial units
-	Quart      = mustCreateNewUnit("quart", "qt", _volume, BI)
-	Pint       = mustCreateNewUnit("pint", "pt", _volume, BI)
-	Gallon     = mustCreateNewUnit("gallon", "gal", _volume, BI)
-	FluidOunce = mustCreateNewUnit("fluid ounce", "fl oz", _volume, BI)
-	CubicFoot  = mustCreateNewUnit("cubic foot", "ft³", _volume, BI)
-	CubicYard  = mustCreateNewUnit("cubic yard", "yd³", _volume, BI)
-	CubicInch  = mustCreateNewUnit("cubic inch", "in³", _volume, BI)
-	CubicMile  = mustCreateNewUnit("cubic mile", "mi³", _volume, BI)
-	AcreFoot   = mustCreateNewUnit("acre foot", "ac ft", _volume, BI)
+	Quart      = Volume.MustCreateUnit("quart", "qt", BI)
+	Pint       = Volume.MustCreateUnit("pint", "pt", BI)
+	Gallon     = Volume.MustCreateUnit("gallon", "gal", BI)
+	FluidOunce = Volume.MustCreateUnit("fluid ounce", "fl oz", BI)
+	CubicFoot  = Volume.MustCreateUnit("cubic foot", "ft³", BI)
+	CubicYard  = Volume.MustCreateUnit("cubic yard", "yd³", BI)
+	CubicInch  = Volume.MustCreateUnit("cubic inch", "in³", BI)
+	CubicMile  = Volume.MustCreateUnit("cubic mile", "mi³", BI)
+	AcreFoot   = Volume.MustCreateUnit("acre foot", "ac ft", BI)
 
 	// US customary units
-	FluidQuart          = mustCreateNewUnit("fluid quart", "fl qt", _volume, US)
-	FluidPint           = mustCreateNewUnit("fluid pint", "fl pt", _volume, US)
-	FluidGallon         = mustCreateNewUnit("fluid gallon", "", _volume, US)
-	CustomaryFluidOunce = mustCreateNewUnit("customary fluid ounce", "", _volume, US)
+	FluidQuart          = Volume.MustCreateUnit("fluid quart", "fl qt", US)
+	FluidPint           = Volume.MustCreateUnit("fluid pint", "fl pt", US)
+	FluidGallon         = Volume.MustCreateUnit("fluid gallon", "", US)
+	CustomaryFluidOunce = Volume.MustCreateUnit("customary fluid ounce", "", US)
 )
 
 func initVolumeUnits() {
@@ -65,9 +63,9 @@ func initVolumeUnits() {
 	NewRatioConversion(Gallon, Liter, 4.54609)
 	NewRatioConversion(FluidOunce, MilliLiter, 28.4130625)
 
-	NewRatioConversion(CubicInch, Liter, 0.016387064)
-	NewRatioConversion(CubicFoot, Liter, 28.316846592)
-	NewRatioConversion(CubicYard, Liter, 764.554857984)
+	NewRatioConversion(CubicInch, Liter, volumeFactor(Inch)*1000) // *1000 to convert m³ to L
+	NewRatioConversion(CubicFoot, Liter, volumeFactor(Foot)*1000)
+	NewRatioConversion(CubicYard, Liter, volumeFactor(Yard)*1000)
 	NewRatioConversion(AcreFoot, Liter, 1233481.84)
 	NewRatioConversion(CubicMile, Liter, 4168181825440.64)
 
@@ -103,4 +101,11 @@ func initVolumeUnits() {
 	CubicInch.AddSymbols("cuin", "cu in", "cin", "in^3", "in**3", "in3")
 	CubicMile.AddSymbols("cumi", "cubmi", "mi^3", "mi**3", "mi3")
 	AcreFoot.AddSymbols("acft", "acreft", "acre-ft", "acre ft", "ac-ft")
+}
+
+// volumeFactor computes the conversion factor from length units to cubic meters.
+// volumeFactor = length³
+func volumeFactor(length Unit) float64 {
+	factor := length.to(Meter)
+	return factor * factor * factor
 }

@@ -1,30 +1,29 @@
 package units
 
 // Velocity is a unit quantity for velocity
-const VelocityQuantity UnitQuantity = "velocity"
-
 var (
-	_velocity = Quantity(VelocityQuantity)
+	// VelocityQuantity is the unit quantity for velocity.
+	VelocityQuantity = NewUnitQuantity("velocity")
 
 	// SI base unit: meter per second
-	MeterPerSecond      = mustCreateNewUnit("meter per second", "m/s", _velocity, SI)
-	CentimeterPerMinute = mustCreateNewUnit("centimeter per minute", "cm/min", _velocity, SI)
-	KilometerPerHour    = mustCreateNewUnit("kilometer per hour", "km/h", _velocity, SI)
+	MeterPerSecond      = VelocityQuantity.MustCreateUnit("meter per second", "m/s", SI)
+	CentimeterPerMinute = VelocityQuantity.MustCreateUnit("centimeter per minute", "cm/min", SI)
+	KilometerPerHour    = VelocityQuantity.MustCreateUnit("kilometer per hour", "km/h", SI)
 
 	// Imperial/US units
-	FootPerSecond = mustCreateNewUnit("foot per second", "ft/s", _velocity, BI)
-	FootPerMinute = mustCreateNewUnit("foot per minute", "ft/min", _velocity, BI)
-	MilePerHour   = mustCreateNewUnit("mile per hour", "mph", _velocity, BI)
+	FootPerSecond = VelocityQuantity.MustCreateUnit("foot per second", "ft/s", BI)
+	FootPerMinute = VelocityQuantity.MustCreateUnit("foot per minute", "ft/min", BI)
+	MilePerHour   = VelocityQuantity.MustCreateUnit("mile per hour", "mph", BI)
 )
 
 func initVelocityUnits() {
-	// SI base unit: m/s
-	// Conversions: 1 m/s = 3.28084 ft/s = 196.85 ft/min = 3.6 km/h = 2.237 mph
-	NewRatioConversion(MeterPerSecond, FootPerSecond, 3.2808398950131)
-	NewRatioConversion(MeterPerSecond, FootPerMinute, 196.85039370079)
-	NewRatioConversion(MeterPerSecond, CentimeterPerMinute, 6000.0)
-	NewRatioConversion(MeterPerSecond, KilometerPerHour, 3.6)
-	NewRatioConversion(MeterPerSecond, MilePerHour, 2.2369362920544)
+	// Derive conversion factors from length and time units
+	// velocity = length / time
+	NewRatioConversion(MeterPerSecond, FootPerSecond, velocityFactor(Foot, Second))
+	NewRatioConversion(MeterPerSecond, FootPerMinute, velocityFactor(Foot, Minute))
+	NewRatioConversion(MeterPerSecond, CentimeterPerMinute, velocityFactor(CentiMeter, Minute))
+	NewRatioConversion(MeterPerSecond, KilometerPerHour, velocityFactor(KiloMeter, Hour))
+	NewRatioConversion(MeterPerSecond, MilePerHour, velocityFactor(Mile, Hour))
 
 	MeterPerSecond.AddAliases("meters per second", "metre per second", "metres per second", "mps")
 	CentimeterPerMinute.AddAliases("centimeters per minute", "centimetre per minute", "centimetres per minute")
@@ -32,4 +31,10 @@ func initVelocityUnits() {
 	FootPerSecond.AddAliases("feet per second", "fps")
 	FootPerMinute.AddAliases("feet per minute", "fpm")
 	MilePerHour.AddAliases("miles per hour")
+}
+
+// velocityFactor computes the velocity conversion factor from length and time units.
+// velocity = length / time
+func velocityFactor(length, time Unit) float64 {
+	return Meter.to(length) / Second.to(time)
 }

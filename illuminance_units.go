@@ -1,15 +1,14 @@
 package units
 
-const Illuminance UnitQuantity = "illuminance"
-
 var (
-	_illuminance = Quantity(Illuminance)
+	// Illuminance is the unit quantity for illuminance.
+	Illuminance = NewUnitQuantity("illuminance")
 
 	// SI base unit: lux
-	Lux = mustCreateNewUnit("lux", "lx", _illuminance, SI)
+	Lux = Illuminance.MustCreateUnit("lux", "lx", SI)
 
 	// Imperial/US unit
-	Footcandle = mustCreateNewUnit("footcandle", "Ftc", _illuminance, BI)
+	Footcandle = Illuminance.MustCreateUnit("footcandle", "Ftc", BI)
 )
 
 func initIlluminanceUnits() {
@@ -18,4 +17,10 @@ func initIlluminanceUnits() {
 	NewRatioConversion(Lux, Footcandle, 0.09290304)
 
 	Footcandle.AddAliases("footcandles", "foot-candle", "foot-candles", "fc")
+}
+
+// illuminanceFactor computes the illuminance conversion factor from area units.
+// illuminance = lumen / area
+func illuminanceFactor(areaLength Unit) float64 {
+	return areaFactor(areaLength)
 }

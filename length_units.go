@@ -1,12 +1,11 @@
 package units
 
-const Length UnitQuantity = "length"
-
 var (
-	_length = Quantity(Length)
+	// Length is the unit quantity for length.
+	Length = NewUnitQuantity("length")
 
 	// metric
-	Meter       = mustCreateNewUnit("meter", "m", _length, SI)
+	Meter       = Length.MustCreateUnit("meter", "m", SI)
 	QuettaMeter = Quetta(Meter)
 	RonnaMeter  = Ronna(Meter)
 	ZettaMeter  = Zetta(Meter)
@@ -31,16 +30,16 @@ var (
 	RontoMeter  = Ronto(Meter)
 	QuectoMeter = Quecto(Meter)
 
-	Angstrom = mustCreateNewUnit("angstrom", "Å", _length, SI)
+	Angstrom = Length.MustCreateUnit("angstrom", "Å", SI)
 
-	Inch    = mustCreateNewUnit("inch", "in", _length, BI, Plural("inches"))
-	Foot    = mustCreateNewUnit("foot", "ft", _length, BI, Plural("feet"))
-	Yard    = mustCreateNewUnit("yard", "yd", _length, BI)
-	Mile    = mustCreateNewUnit("mile", "mi", _length, BI)
-	League  = mustCreateNewUnit("league", "lea", _length, BI)
-	Furlong = mustCreateNewUnit("furlong", "fur", _length, BI)
+	Inch    = Length.MustCreateUnit("inch", "in", BI, Plural("inches"))
+	Foot    = Length.MustCreateUnit("foot", "ft", BI, Plural("feet"))
+	Yard    = Length.MustCreateUnit("yard", "yd", BI)
+	Mile    = Length.MustCreateUnit("mile", "mi", BI)
+	League  = Length.MustCreateUnit("league", "lea", BI)
+	Furlong = Length.MustCreateUnit("furlong", "fur", BI)
 
-	USSurveyFoot = mustCreateNewUnit("US survey foot", "USft", _length, US)
+	USSurveyFoot = Length.MustCreateUnit("US survey foot", "USft", US)
 )
 
 func initLengthUnits() {

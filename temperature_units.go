@@ -1,15 +1,13 @@
 package units
 
-// Temperature is a unit quantity for temperature
-const Temperature UnitQuantity = "temperature"
-
 var (
-	_temperature = Quantity(Temperature)
+	// Temperature is the unit quantity for temperature.
+	Temperature = NewUnitQuantity("temperature")
 
-	Celsius    = mustCreateNewUnit("celsius", "°C", _temperature, SI, Plural(PluralNone))
-	Fahrenheit = mustCreateNewUnit("fahrenheit", "°F", _temperature, US, Plural(PluralNone))
-	Kelvin     = mustCreateNewUnit("kelvin", "K", _temperature, SI, Plural(PluralNone))
-	Rankine    = mustCreateNewUnit("rankine", "°R", _temperature, US, Plural(PluralNone))
+	Celsius    = Temperature.MustCreateUnit("celsius", "°C", SI, Plural(PluralNone))
+	Fahrenheit = Temperature.MustCreateUnit("fahrenheit", "°F", US, Plural(PluralNone))
+	Kelvin     = Temperature.MustCreateUnit("kelvin", "K", SI, Plural(PluralNone))
+	Rankine    = Temperature.MustCreateUnit("rankine", "°R", US, Plural(PluralNone))
 )
 
 func initTemperatureUnits() {

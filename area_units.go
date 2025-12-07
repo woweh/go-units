@@ -1,42 +1,40 @@
 package units
 
-const Area UnitQuantity = "area"
-
 var (
-	_area = Quantity(Area)
+	// Area is the unit quantity for area.
+	Area = NewUnitQuantity("area")
 
 	// metric
-	SquareMilliMeter = mustCreateNewUnit("square millimeter", "mm²", _area, SI)
-	SquareCentiMeter = mustCreateNewUnit("square centimeter", "cm²", _area, SI)
-	SquareDeciMeter  = mustCreateNewUnit("square decimeter", "dm²", _area, SI)
-	SquareMeter      = mustCreateNewUnit("square meter", "m²", _area, SI)
-	SquareDecaMeter  = mustCreateNewUnit("square decameter", "dam²", _area, SI)
-	SquareHectoMeter = mustCreateNewUnit("square hectometer", "hm²", _area, SI)
-	SquareKiloMeter  = mustCreateNewUnit("square kilometer", "km²", _area, SI)
+	SquareMilliMeter = Area.MustCreateUnit("square millimeter", "mm²", SI)
+	SquareCentiMeter = Area.MustCreateUnit("square centimeter", "cm²", SI)
+	SquareDeciMeter  = Area.MustCreateUnit("square decimeter", "dm²", SI)
+	SquareMeter      = Area.MustCreateUnit("square meter", "m²", SI)
+	SquareDecaMeter  = Area.MustCreateUnit("square decameter", "dam²", SI)
+	SquareHectoMeter = Area.MustCreateUnit("square hectometer", "hm²", SI)
+	SquareKiloMeter  = Area.MustCreateUnit("square kilometer", "km²", SI)
 
 	// SI aliases as distinct units
-	Are     = mustCreateNewUnit("are", "are", _area, SI)
-	Hectare = mustCreateNewUnit("hectare", "ha", _area, SI)
+	Are     = Area.MustCreateUnit("are", "are", SI)
+	Hectare = Area.MustCreateUnit("hectare", "ha", SI)
 
 	// imperial
-	SquareMile = mustCreateNewUnit("square mile", "mi²", _area, BI)
-	Acre       = mustCreateNewUnit("acre", "ac", _area, BI)
-	SquareInch = mustCreateNewUnit("square inch", "in²", _area, BI)
-	SquareFoot = mustCreateNewUnit("square foot", "ft²", _area, BI)
-	SquareYard = mustCreateNewUnit("square yard", "yd²", _area, BI)
+	SquareMile = Area.MustCreateUnit("square mile", "mi²", BI)
+	Acre       = Area.MustCreateUnit("acre", "ac", BI)
+	SquareInch = Area.MustCreateUnit("square inch", "in²", BI)
+	SquareFoot = Area.MustCreateUnit("square foot", "ft²", BI)
+	SquareYard = Area.MustCreateUnit("square yard", "yd²", BI)
 )
 
 func initAreaUnits() {
-	// https://www.calculatorsoup.com/calculators/conversions/area.php
-
-	// metric
-	NewRatioConversion(SquareMilliMeter, SquareMeter, 0.000001)
-	NewRatioConversion(SquareCentiMeter, SquareMeter, 0.0001)
-	NewRatioConversion(SquareDeciMeter, SquareMeter, 0.01)
+	// Derive conversion factors from length units squared
+	// area = length²
+	NewRatioConversion(SquareMilliMeter, SquareMeter, areaFactor(MilliMeter))
+	NewRatioConversion(SquareCentiMeter, SquareMeter, areaFactor(CentiMeter))
+	NewRatioConversion(SquareDeciMeter, SquareMeter, areaFactor(DeciMeter))
 	NewRatioConversion(SquareMeter, SquareMeter, 1.0)
-	NewRatioConversion(SquareDecaMeter, SquareMeter, 100.0)
-	NewRatioConversion(SquareHectoMeter, SquareMeter, 10000.0)
-	NewRatioConversion(SquareKiloMeter, SquareMeter, 1000000.0)
+	NewRatioConversion(SquareDecaMeter, SquareMeter, areaFactor(DecaMeter))
+	NewRatioConversion(SquareHectoMeter, SquareMeter, areaFactor(HectoMeter))
+	NewRatioConversion(SquareKiloMeter, SquareMeter, areaFactor(KiloMeter))
 
 	SquareMilliMeter.AddAliases("square millimetre")
 	SquareMilliMeter.AddSymbols("mm2", "mm^2", "mm**2")
@@ -64,11 +62,13 @@ func initAreaUnits() {
 	NewRatioConversion(Hectare, SquareHectoMeter, 1.0)
 
 	// imperial
-	NewRatioConversion(SquareInch, SquareMeter, 0.00064516)
-	NewRatioConversion(SquareFoot, SquareMeter, 0.09290304)
-	NewRatioConversion(SquareYard, SquareMeter, 0.83612736)
-	NewRatioConversion(SquareMile, SquareMeter, 2589988.110336)
-	NewRatioConversion(Acre, SquareMeter, 4046.8564224)
+	NewRatioConversion(SquareInch, SquareMeter, areaFactor(Inch))
+	NewRatioConversion(SquareFoot, SquareMeter, areaFactor(Foot))
+	NewRatioConversion(SquareYard, SquareMeter, areaFactor(Yard))
+	NewRatioConversion(SquareMile, SquareMeter, areaFactor(Mile))
+
+	// Acre is defined as 43,560 square feet
+	NewRatioConversion(Acre, SquareMeter, 43560*areaFactor(Foot))
 
 	SquareInch.AddAliases(
 		"square inches", "square in", "square in.", "square ins", "square ins.", "sq inches", "sq inch",
@@ -77,7 +77,7 @@ func initAreaUnits() {
 	SquareInch.AddSymbols("in2", "in^2", "in**2", "in/-2", "sq in", "sq in.", "sq ins", "sq ins.", "sqin", "sqin.", "sqins", "□″", "″2")
 
 	SquareFoot.AddAliases("square feet", "square ft", "square ft.", "square feet.")
-	SquareFoot.AddSymbols("ft2", "ft^2", "ft**2", "sq ft", "sq ft.", "sqft", "sqft.", "sqft", "'2")
+	SquareFoot.AddSymbols("ft2", "ft^2", "ft**2", "sq ft", "sq ft.", "sqft", "sqft.", "SF", "sqft", "'2")
 
 	SquareYard.AddAliases("square yds", "square yd", "sq yards", "sq yard", "yards/-2", "yard/-2", "yards^2", "yard^2")
 	SquareYard.AddSymbols("yds^2", "yd^2", "yd2", "yards²", "yard²", "yds²", "yds/-2", "yd/-2", "sq yds", "sq yd", "sq.yd.")
@@ -86,4 +86,11 @@ func initAreaUnits() {
 	SquareMile.AddSymbols("mi2", "mi^2", "mi**2", "sqmi", "sqmi.", "sq mi", "sq mi.", "sq.mi.", "sq.mi")
 
 	Acre.AddAliases("acres")
+}
+
+// areaFactor computes the area conversion factor from length units to square meters.
+// For example, areaFactor(Foot) returns 0.09290304 (1 ft² = 0.09290304 m²).
+func areaFactor(length Unit) float64 {
+	factor := length.to(Meter)
+	return factor * factor
 }

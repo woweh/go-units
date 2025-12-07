@@ -7,7 +7,7 @@ import (
 )
 
 // quantityForUnitTests is a fake quantity for testing.
-const quantityForUnitTests = "<|_quantity_for_unit_tests_|>"
+var quantityForUnitTests = NewUnitQuantity("<|_quantity_for_unit_tests_|>")
 
 func Test_NewUnit(t *testing.T) {
 	tests := []struct {
@@ -51,7 +51,7 @@ func Test_NewUnit(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(
 			tt.name, func(t *testing.T) {
-				u, err := NewUnit(tt.unitName, tt.unitSymbol, Quantity(quantityForUnitTests))
+				u, err := newUnit(tt.unitName, tt.unitSymbol, quantity(quantityForUnitTests))
 				if (err != nil) != tt.wantErr {
 					t.Errorf("NewUnit() error = %v, wantErr %v", err, tt.wantErr)
 					return
@@ -70,15 +70,15 @@ func Test_NewUnit(t *testing.T) {
 }
 
 func TestUnit_Names(t *testing.T) {
-	testUnit, err := NewUnit("TestUnit_Names", "TU_Names", Quantity(quantityForUnitTests))
+	testUnit, err := newUnit("TestUnit_Names", "TU_Names", quantity(quantityForUnitTests))
 	if err != nil || testUnit == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
-	testUnitWithPlural, err := NewUnit("TestUnitPlural_Names", "TUP_Names", Plural("TestUnitPlurals_Names"), Quantity(quantityForUnitTests))
+	testUnitWithPlural, err := newUnit("TestUnitPlural_Names", "TUP_Names", Plural("TestUnitPlurals_Names"), quantity(quantityForUnitTests))
 	if err != nil || testUnitWithPlural == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
-	testUnitWithAliases, err := NewUnit("TestUnitAlias_Names", "TUA_Names", Aliases("Alias1_Names", "Alias2_Names"), Quantity(quantityForUnitTests))
+	testUnitWithAliases, err := newUnit("TestUnitAlias_Names", "TUA_Names", Aliases("Alias1_Names", "Alias2_Names"), quantity(quantityForUnitTests))
 	if err != nil || testUnitWithAliases == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -108,7 +108,7 @@ func TestUnit_Names(t *testing.T) {
 }
 
 func TestUnit_Aliases(t *testing.T) {
-	testUnitWithAliases, err := NewUnit("TestUnitAlias_Aliases", "TUA_Aliases", Aliases("Alias1_Aliases", "Alias2_Aliases"), Quantity(quantityForUnitTests))
+	testUnitWithAliases, err := newUnit("TestUnitAlias_Aliases", "TUA_Aliases", Aliases("Alias1_Aliases", "Alias2_Aliases"), quantity(quantityForUnitTests))
 	if err != nil || testUnitWithAliases == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -119,7 +119,7 @@ func TestUnit_Aliases(t *testing.T) {
 }
 
 func TestUnit_Symbols(t *testing.T) {
-	testUnitWithSymbols, err := NewUnit("TestUnitSymbol_Symbols", "TUS_Symbols", Symbols("Sym1_Symbols", "Sym2_Symbols"), Quantity(quantityForUnitTests))
+	testUnitWithSymbols, err := newUnit("TestUnitSymbol_Symbols", "TUS_Symbols", Symbols("Sym1_Symbols", "Sym2_Symbols"), quantity(quantityForUnitTests))
 	if err != nil || testUnitWithSymbols == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -130,7 +130,7 @@ func TestUnit_Symbols(t *testing.T) {
 }
 
 func TestUnit_String(t *testing.T) {
-	testUnit, err := NewUnit("TestUnit_String", "TU_String", Quantity(quantityForUnitTests))
+	testUnit, err := newUnit("TestUnit_String", "TU_String", quantity(quantityForUnitTests))
 	if err != nil || testUnit == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -140,7 +140,7 @@ func TestUnit_String(t *testing.T) {
 }
 
 func TestUnit_System(t *testing.T) {
-	unit, err := NewUnit("TestUnitSys_System", "TUSY_System", System(SiSystem), Quantity(quantityForUnitTests))
+	unit, err := newUnit("TestUnitSys_System", "TUSY_System", System(SiSystem), quantity(quantityForUnitTests))
 	if err != nil || unit == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -150,11 +150,11 @@ func TestUnit_System(t *testing.T) {
 }
 
 func TestUnit_PluralName(t *testing.T) {
-	testUnit, err := NewUnit("TestUnit_PluralName", "TU_PluralName", Quantity(quantityForUnitTests))
+	testUnit, err := newUnit("TestUnit_PluralName", "TU_PluralName", quantity(quantityForUnitTests))
 	if err != nil || testUnit == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
-	testUnitWithPlural, err := NewUnit("TestUnitPlural_PluralName", "TUP_PluralName", Plural("TestUnitPlurals_PluralName"), Quantity(quantityForUnitTests))
+	testUnitWithPlural, err := newUnit("TestUnitPlural_PluralName", "TUP_PluralName", Plural("TestUnitPlurals_PluralName"), quantity(quantityForUnitTests))
 	if err != nil || testUnitWithPlural == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -167,7 +167,7 @@ func TestUnit_PluralName(t *testing.T) {
 }
 
 func TestUnit_HasName(t *testing.T) {
-	testUnitWithAliases, err := NewUnit("TestUnitAlias_HasName", "TUA_HasName", Aliases("Alias1_HasName", "Alias2_HasName"), Quantity(quantityForUnitTests))
+	testUnitWithAliases, err := newUnit("TestUnitAlias_HasName", "TUA_HasName", Aliases("Alias1_HasName", "Alias2_HasName"), quantity(quantityForUnitTests))
 	if err != nil || testUnitWithAliases == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -183,7 +183,7 @@ func TestUnit_HasName(t *testing.T) {
 }
 
 func TestUnit_HasSymbol(t *testing.T) {
-	testUnitWithSymbols, err := NewUnit("TestUnitSymbol_HasSymbol", "TUS_HasSymbol", Symbols("Sym1_HasSymbol", "Sym2_HasSymbol"), Quantity(quantityForUnitTests))
+	testUnitWithSymbols, err := newUnit("TestUnitSymbol_HasSymbol", "TUS_HasSymbol", Symbols("Sym1_HasSymbol", "Sym2_HasSymbol"), quantity(quantityForUnitTests))
 	if err != nil || testUnitWithSymbols == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -199,7 +199,7 @@ func TestUnit_HasSymbol(t *testing.T) {
 }
 
 func TestUnit_CsvLine(t *testing.T) {
-	unit, err := NewUnit("TestUnitCSV_CsvLine", "TUC_CsvLine", Plural("TestUnitCSVs_CsvLine"), Aliases("A1_CsvLine", "A2_CsvLine"), Symbols("S1_CsvLine", "S2_CsvLine"), Quantity(quantityForUnitTests))
+	unit, err := newUnit("TestUnitCSV_CsvLine", "TUC_CsvLine", Plural("TestUnitCSVs_CsvLine"), Aliases("A1_CsvLine", "A2_CsvLine"), Symbols("S1_CsvLine", "S2_CsvLine"), quantity(quantityForUnitTests))
 	if err != nil || unit == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -211,7 +211,7 @@ func TestUnit_CsvLine(t *testing.T) {
 }
 
 func TestUnit_IsMetric(t *testing.T) {
-	unitMetric, err := NewUnit("TestMetric_IsMetric", "TM_IsMetric", System(SiSystem), Quantity(quantityForUnitTests))
+	unitMetric, err := newUnit("TestMetric_IsMetric", "TM_IsMetric", System(SiSystem), quantity(quantityForUnitTests))
 	if err != nil || unitMetric == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -221,7 +221,7 @@ func TestUnit_IsMetric(t *testing.T) {
 }
 
 func TestUnit_IsImperial(t *testing.T) {
-	unitImperial, err := NewUnit("TestImperial_IsImperial", "TI_IsImperial", System(BiSystem), Quantity(quantityForUnitTests))
+	unitImperial, err := newUnit("TestImperial_IsImperial", "TI_IsImperial", System(BiSystem), quantity(quantityForUnitTests))
 	if err != nil || unitImperial == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -231,7 +231,7 @@ func TestUnit_IsImperial(t *testing.T) {
 }
 
 func TestUnit_IsUS(t *testing.T) {
-	unitUS, err := NewUnit("TestUS_IsUS", "TUUS_IsUS", System(UsSystem), Quantity(quantityForUnitTests))
+	unitUS, err := newUnit("TestUS_IsUS", "TUUS_IsUS", System(UsSystem), quantity(quantityForUnitTests))
 	if err != nil || unitUS == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -241,7 +241,7 @@ func TestUnit_IsUS(t *testing.T) {
 }
 
 func TestUnit_IsIEC(t *testing.T) {
-	unitIEC, err := NewUnit("TestIEC_IsIEC", "TIEC_IsIEC", System(IecSystem), Quantity(quantityForUnitTests))
+	unitIEC, err := newUnit("TestIEC_IsIEC", "TIEC_IsIEC", System(IecSystem), quantity(quantityForUnitTests))
 	if err != nil || unitIEC == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -251,7 +251,7 @@ func TestUnit_IsIEC(t *testing.T) {
 }
 
 func TestUnit_IsCGS(t *testing.T) {
-	unitCGS, err := NewUnit("TestCGS_IsCGS", "TCGS_IsCGS", System(CgsSystem), Quantity(quantityForUnitTests))
+	unitCGS, err := newUnit("TestCGS_IsCGS", "TCGS_IsCGS", System(CgsSystem), quantity(quantityForUnitTests))
 	if err != nil || unitCGS == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -261,7 +261,7 @@ func TestUnit_IsCGS(t *testing.T) {
 }
 
 func TestUnit_IsMKpS(t *testing.T) {
-	unitMKpS, err := NewUnit("TestMKpS_IsMKpS", "TMKpS_IsMKpS", System(MKpSSystem), Quantity(quantityForUnitTests))
+	unitMKpS, err := newUnit("TestMKpS_IsMKpS", "TMKpS_IsMKpS", System(MKpSSystem), quantity(quantityForUnitTests))
 	if err != nil || unitMKpS == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -271,7 +271,7 @@ func TestUnit_IsMKpS(t *testing.T) {
 }
 
 func Test_AddAliases(t *testing.T) {
-	testUnit, err := NewUnit("TestAdd_Aliases", "TA_Aliases", Quantity(quantityForUnitTests))
+	testUnit, err := newUnit("TestAdd_Aliases", "TA_Aliases", quantity(quantityForUnitTests))
 	if err != nil || testUnit == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}
@@ -285,7 +285,7 @@ func Test_AddAliases(t *testing.T) {
 }
 
 func Test_AddSymbols(t *testing.T) {
-	testUnit, err := NewUnit("TestAdd_Symbols", "TA_Symbols", Quantity(quantityForUnitTests))
+	testUnit, err := newUnit("TestAdd_Symbols", "TA_Symbols", quantity(quantityForUnitTests))
 	if err != nil || testUnit == nil {
 		t.Errorf("NewUnit() failed: %v", err)
 	}

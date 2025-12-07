@@ -45,7 +45,7 @@ func Test_UnitNameOverlap(t *testing.T) {
 	nameMap := make(map[string]Unit)
 
 	var total, failed int
-	for _, u := range nameMap {
+	for _, u := range All() {
 		for _, name := range u.Names() {
 			if existing, ok := nameMap[name]; ok {
 				t.Errorf("overlap in unit names: %s, %s (%s)", u.Name, existing.Name, name)
@@ -170,9 +170,9 @@ func Test_GetCsv(t *testing.T) {
 
 func Test_UnitList_Sorting(t *testing.T) {
 	units := UnitList{
-		&unit{Name: "B", Quantity: "Q2", system: "sys2"},
-		&unit{Name: "A", Quantity: "Q1", system: "sys1"},
-		&unit{Name: "C", Quantity: "Q1", system: "sys2"},
+		&unit{Name: "B", Quantity: NewUnitQuantity("Q2"), system: "sys2"},
+		&unit{Name: "A", Quantity: NewUnitQuantity("Q1"), system: "sys1"},
+		&unit{Name: "C", Quantity: NewUnitQuantity("Q3"), system: "sys2"},
 	}
 
 	if units.Len() != 3 {
@@ -189,8 +189,8 @@ func Test_UnitList_Sorting(t *testing.T) {
 		want bool
 	}{
 		{0, 1, true},  // Q1 < Q2
-		{1, 2, false}, // Q2 > Q1, so Less(1,2) should be false
-		{2, 0, false}, // Q1 == Q1, sys2 > sys1
+		{1, 2, true},  // Q2 < Q3, so Less(1,2) should be true
+		{2, 0, false}, // Q3 > Q1
 	}
 	for _, tt := range tests {
 		got := units.Less(tt.i, tt.j)
@@ -202,11 +202,11 @@ func Test_UnitList_Sorting(t *testing.T) {
 
 func Test_All(t *testing.T) {
 	units := All()
-	if len(units) != len(_unitMap) {
+	if len(units) == 0 {
 		t.Errorf("All() returned 0 units, want >0")
 	}
 	for i := 1; i < len(units); i++ {
-		if units[i-1].Quantity > units[i].Quantity {
+		if units[i-1].Quantity.Name() > units[i].Quantity.Name() {
 			t.Errorf("All() not sorted by Quantity: %s > %s", units[i-1].Quantity, units[i].Quantity)
 		}
 	}

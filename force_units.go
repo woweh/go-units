@@ -1,11 +1,10 @@
 package units
 
-const Force UnitQuantity = "force"
-
 var (
-	_force = Quantity(Force)
+	// Force is the unit quantity for force.
+	Force = NewUnitQuantity("force")
 
-	Newton      = mustCreateNewUnit("newton", "N", _force, SI)
+	Newton      = Force.MustCreateUnit("newton", "N", SI)
 	CentiNewton = Centi(Newton)
 	DeciNewton  = Deci(Newton)
 	MilliNewton = Milli(Newton)
@@ -27,28 +26,31 @@ var (
 	ZettaNewton = Zetta(Newton)
 	YottaNewton = Yotta(Newton)
 
-	PoundForce = mustCreateNewUnit("pound force", "lbf", _force, BI, Plural(PluralNone))
+	PoundForce = Force.MustCreateUnit("pound force", "lbf", BI, Plural(PluralNone))
 
-	Dyne = mustCreateNewUnit("dyne", "dyn", _force, CGS)
+	Dyne = Force.MustCreateUnit("dyne", "dyn", CGS)
 
-	Poundal = mustCreateNewUnit("poundal", "pdl", _force, US)
+	Poundal = Force.MustCreateUnit("poundal", "pdl")
 
-	KilogramForce = mustCreateNewUnit("kilogram-force", "kgf", _force, MKpS)
-	TonneForce    = mustCreateNewUnit("tonne-force", "tf", _force, MKpS)
+	KilogramForce = Force.MustCreateUnit("kilogram-force", "kgf", MKpS)
+	TonneForce    = Force.MustCreateUnit("tonne-force", "tf", MKpS)
 
 	Kip           = Kilo(PoundForce)
-	ShortTonForce = mustCreateNewUnit("short ton force", "stf", _force, BI)
+	ShortTonForce = Force.MustCreateUnit("short ton force", "stf", BI)
 )
 
 func initForceUnits() {
+	// Standard force definitions (remain hardcoded per standards)
 	// https://qudt.org/vocab/unit/LB_F  4.448222
 	NewRatioConversion(PoundForce, Newton, 4.448222)
 
 	// https://en.wikipedia.org/wiki/Dyne?oldid=494703827
 	NewRatioConversion(Dyne, Newton, 1e-5)
 
+	// Poundal can be calculated: 1 pdl = 1 lb⋅ft/s²
+	// Newton = kg⋅m/s², so we need the inverse of the force factor
 	// https://en.wikipedia.org/w/index.php?title=Poundal&oldid=1168735176
-	NewRatioConversion(Poundal, Newton, 0.138254954376)
+	NewRatioConversion(Poundal, Newton, 1.0/forceFactor(Pound, Foot))
 
 	// https://en.wikipedia.org/w/index.php?title=Kilogram-force&oldid=1159132202
 	NewRatioConversion(KilogramForce, Newton, 9.80665)
@@ -61,4 +63,21 @@ func initForceUnits() {
 	TonneForce.AddSymbols("Mp")
 
 	NewRatioConversion(ShortTonForce, Newton, 2000*4.448222)
+}
+
+// forceFactor calculates the conversion factor for force units.
+// Force = mass × acceleration
+// Base unit: Newton = kg⋅m/s²
+//
+// Example: To convert N to poundal (lb⋅ft/s²):
+// - massRatio: how many pounds in 1 kg
+// - accelRatio: how many ft/s² in 1 m/s²
+// - forceFactor = massRatio × accelRatio
+func forceFactor(mass, length Unit) float64 {
+	// How many of the target mass unit in 1 kg
+	massRatio := KiloGram.to(mass)
+	// How many of the target acceleration unit in 1 m/s²
+	accelRatio := accelFactor(length)
+	// Force factor accounts for both mass and acceleration scaling
+	return massRatio * accelRatio
 }

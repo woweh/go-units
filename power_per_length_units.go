@@ -1,23 +1,26 @@
 package units
 
-// PowerPerLength is a unit quantity for power per length
-const PowerPerLength UnitQuantity = "power per length"
-
 var (
-	_powerPerLength = Quantity(PowerPerLength)
+	// PowerPerLength is the unit quantity for power per length.
+	PowerPerLength = NewUnitQuantity("power per length")
 
 	// SI base unit: watt per meter
-	WattPerMeter = mustCreateNewUnit("watt per meter", "W/m", _powerPerLength, SI)
+	WattPerMeter = PowerPerLength.MustCreateUnit("watt per meter", "W/m", SI)
 
 	// Imperial unit
-	WattPerFoot = mustCreateNewUnit("watt per foot", "W/ft", _powerPerLength, BI)
+	WattPerFoot = PowerPerLength.MustCreateUnit("watt per foot", "W/ft", BI)
 )
 
 func initPowerPerLengthUnits() {
-	// SI base unit: W/m
-	// Conversion: 1 W/m = 0.3048 W/ft (1 W/ft = 3.28084 W/m)
-	NewRatioConversion(WattPerMeter, WattPerFoot, 0.3048)
+	// Derive from length units (power/length)
+	NewRatioConversion(WattPerMeter, WattPerFoot, powerPerLengthFactor(Foot))
 
 	WattPerMeter.AddAliases("watts per meter", "watt per metre", "watts per metre")
 	WattPerFoot.AddAliases("watts per foot")
+}
+
+// powerPerLengthFactor computes the power per length conversion factor from length units.
+// power per length = power / length, for same power unit: 1 / length
+func powerPerLengthFactor(length Unit) float64 {
+	return length.to(Meter)
 }

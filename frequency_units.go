@@ -2,12 +2,11 @@ package units
 
 import "math"
 
-const Frequency UnitQuantity = "frequency"
-
 var (
-	_frequency = Quantity(Frequency)
+	// Frequency is the unit quantity for frequency.
+	Frequency = NewUnitQuantity("frequency")
 
-	Hertz      = mustCreateNewUnit("hertz", "Hz", _frequency, SI, Plural(PluralNone))
+	Hertz      = Frequency.MustCreateUnit("hertz", "Hz", SI, Plural(PluralNone))
 	DecaHertz  = Deca(Hertz)
 	HectoHertz = Hecto(Hertz)
 	KiloHertz  = Kilo(Hertz)
@@ -29,20 +28,20 @@ var (
 	ZeptoHertz = Zepto(Hertz)
 	YoctoHertz = Yocto(Hertz)
 
-	RadianPerSecond = mustCreateNewUnit("radian per second", "rad/s", _frequency, SI)
-	RadianPerMinute = mustCreateNewUnit("radian per minute", "rad/min", _frequency, SI)
-	RadianPerHour   = mustCreateNewUnit("radian per hour", "rad/h", _frequency, SI)
-	RadianPerDay    = mustCreateNewUnit("radian per day", "rad/d", _frequency, SI)
+	RadianPerSecond = Frequency.MustCreateUnit("radian per second", "rad/s", SI)
+	RadianPerMinute = Frequency.MustCreateUnit("radian per minute", "rad/min", SI)
+	RadianPerHour   = Frequency.MustCreateUnit("radian per hour", "rad/h", SI)
+	RadianPerDay    = Frequency.MustCreateUnit("radian per day", "rad/d", SI)
 
-	DegreePerSecond = mustCreateNewUnit("degree per second", "°/s", _frequency, SI)
-	DegreePerMinute = mustCreateNewUnit("degree per minute", "°/min", _frequency, SI)
-	DegreePerHour   = mustCreateNewUnit("degree per hour", "°/h", _frequency, SI)
-	DegreePerDay    = mustCreateNewUnit("degree per day", "°/d", _frequency, SI)
+	DegreePerSecond = Frequency.MustCreateUnit("degree per second", "°/s", SI)
+	DegreePerMinute = Frequency.MustCreateUnit("degree per minute", "°/min", SI)
+	DegreePerHour   = Frequency.MustCreateUnit("degree per hour", "°/h", SI)
+	DegreePerDay    = Frequency.MustCreateUnit("degree per day", "°/d", SI)
 
-	RevolutionPerSecond = mustCreateNewUnit("revolution per second", "rev/s", _frequency, SI)
-	RevolutionPerMinute = mustCreateNewUnit("revolution per minute", "rev/min", _frequency, SI)
-	RevolutionPerHour   = mustCreateNewUnit("revolution per hour", "rev/h", _frequency, SI)
-	RevolutionPerDay    = mustCreateNewUnit("revolution per day", "rev/d", _frequency, SI)
+	RevolutionPerSecond = Frequency.MustCreateUnit("revolution per second", "rev/s", SI)
+	RevolutionPerMinute = Frequency.MustCreateUnit("revolution per minute", "rev/min", SI)
+	RevolutionPerHour   = Frequency.MustCreateUnit("revolution per hour", "rev/h", SI)
+	RevolutionPerDay    = Frequency.MustCreateUnit("revolution per day", "rev/d", SI)
 )
 
 func initFrequencyUnits() {

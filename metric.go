@@ -172,10 +172,7 @@ func (mag magnitude) makeUnit(base Unit, addOpts ...UnitOption) Unit {
 	// append any supplemental options
 	opts = append(opts, addOpts...)
 
-	// append quantity name opt
-	opts = append(opts, Quantity(base.Quantity))
-
-	u := mustCreateNewUnit(name, symbol, opts...)
+	u := base.Quantity.MustCreateUnit(name, symbol, opts...)
 	u.base = base
 
 	// create conversions to and from the base unit
@@ -216,7 +213,7 @@ func findBestMatchingUnit(baseUnit Unit, exp int) Unit {
 	if extreme := handleUnitExtremes(choices, exp); extreme != nil {
 		return extreme
 	}
-	
+
 	lower, higher := findUnitNeighbors(choices, exp)
 	return chooseUnit(exp, lower, higher)
 }

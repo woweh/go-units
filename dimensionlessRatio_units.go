@@ -1,16 +1,14 @@
 package units
 
-const DimensionlessRatio UnitQuantity = "dimensionless ratio"
-
 var (
-	_dimensionlessRatio = Quantity(DimensionlessRatio)
-
-	Fraction         = mustCreateNewUnit("fraction", "", _dimensionlessRatio, SI, Plural(PluralNone))
-	Percent          = mustCreateNewUnit("percent", "%", _dimensionlessRatio, SI, Plural(PluralNone))
-	Permille         = mustCreateNewUnit("permille", "‰", _dimensionlessRatio, SI, Plural(PluralNone))
-	PartsPerMillion  = mustCreateNewUnit("partsPerMillion", "ppm", _dimensionlessRatio, SI, Plural(PluralNone))
-	PartsPerBillion  = mustCreateNewUnit("partsPerBillion", "", _dimensionlessRatio, SI, Plural(PluralNone))
-	PartsPerTrillion = mustCreateNewUnit("partsPerTrillion", "", _dimensionlessRatio, SI, Plural(PluralNone))
+	// DimensionlessRatio is the unit quantity for dimensionless ratio.
+	DimensionlessRatio = NewUnitQuantity("dimensionless ratio")
+	Fraction           = DimensionlessRatio.MustCreateUnit("fraction", "", SI, Plural(PluralNone))
+	Percent            = DimensionlessRatio.MustCreateUnit("percent", "%", SI, Plural(PluralNone))
+	Permille           = DimensionlessRatio.MustCreateUnit("permille", "‰", SI, Plural(PluralNone))
+	PartsPerMillion    = DimensionlessRatio.MustCreateUnit("partsPerMillion", "ppm", SI, Plural(PluralNone))
+	PartsPerBillion    = DimensionlessRatio.MustCreateUnit("partsPerBillion", "", SI, Plural(PluralNone))
+	PartsPerTrillion   = DimensionlessRatio.MustCreateUnit("partsPerTrillion", "", SI, Plural(PluralNone))
 )
 
 func initDimensionlessRatioUnits() {

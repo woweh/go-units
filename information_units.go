@@ -1,34 +1,32 @@
 package units
 
-const Information UnitQuantity = "information"
-
 var (
-	_information = Quantity(Information)
+	// Information is the unit quantity for information.
+	Information = NewUnitQuantity("information")
+	Byte        = Information.MustCreateUnit("byte", "B", SI)
+	KiloByte    = Kilo(Byte, Symbols("KB"))
+	MegaByte    = Mega(Byte)
+	GigaByte    = Giga(Byte)
+	TeraByte    = Tera(Byte)
+	PetaByte    = Peta(Byte)
+	ExaByte     = Exa(Byte)
+	ZettaByte   = Zetta(Byte)
+	YottaByte   = Yotta(Byte)
+	RonnaByte   = Ronna(Byte)
+	QuettaByte  = Quetta(Byte)
 
-	Byte       = mustCreateNewUnit("byte", "B", _information, SI)
-	KiloByte   = Kilo(Byte, Symbols("KB"))
-	MegaByte   = Mega(Byte)
-	GigaByte   = Giga(Byte)
-	TeraByte   = Tera(Byte)
-	PetaByte   = Peta(Byte)
-	ExaByte    = Exa(Byte)
-	ZettaByte  = Zetta(Byte)
-	YottaByte  = Yotta(Byte)
-	RonnaByte  = Ronna(Byte)
-	QuettaByte = Quetta(Byte)
+	Kibibyte = Information.MustCreateUnit("kibibyte", "KiB", IEC)
+	Mebibyte = Information.MustCreateUnit("mebibyte", "MiB", IEC)
+	Gibibyte = Information.MustCreateUnit("gibibyte", "GiB", IEC)
+	Tebibyte = Information.MustCreateUnit("tebibyte", "TiB", IEC)
+	Pebibyte = Information.MustCreateUnit("pebibyte", "PiB", IEC)
+	Exbibyte = Information.MustCreateUnit("exbibyte", "EiB", IEC)
+	Zebibyte = Information.MustCreateUnit("zebibyte", "ZiB", IEC)
+	Yobibyte = Information.MustCreateUnit("yobibyte", "YiB", IEC)
+	Robibyte = Information.MustCreateUnit("robi byte", "RiB", IEC)
+	Qubibyte = Information.MustCreateUnit("qubi byte", "QiB", IEC)
 
-	Kibibyte = mustCreateNewUnit("kibibyte", "KiB", _information, IEC)
-	Mebibyte = mustCreateNewUnit("mebibyte", "MiB", _information, IEC)
-	Gibibyte = mustCreateNewUnit("gibibyte", "GiB", _information, IEC)
-	Tebibyte = mustCreateNewUnit("tebibyte", "TiB", _information, IEC)
-	Pebibyte = mustCreateNewUnit("pebibyte", "PiB", _information, IEC)
-	Exbibyte = mustCreateNewUnit("exbibyte", "EiB", _information, IEC)
-	Zebibyte = mustCreateNewUnit("zebibyte", "ZiB", _information, IEC)
-	Yobibyte = mustCreateNewUnit("yobibyte", "YiB", _information, IEC)
-	Robibyte = mustCreateNewUnit("robi byte", "RiB", _information, IEC)
-	Qubibyte = mustCreateNewUnit("qubi byte", "QiB", _information, IEC)
-
-	Bit       = mustCreateNewUnit("bit", "b", _information, SI)
+	Bit       = Information.MustCreateUnit("bit", "b", SI)
 	KiloBit   = Kilo(Bit)
 	MegaBit   = Mega(Bit)
 	GigaBit   = Giga(Bit)
@@ -40,7 +38,7 @@ var (
 	RonnaBit  = Ronna(Bit)
 	QuettaBit = Quetta(Bit)
 
-	Nibble = mustCreateNewUnit("nibble", "", _information)
+	Nibble = Information.MustCreateUnit("nibble", "")
 )
 
 func initInformationUnits() {
